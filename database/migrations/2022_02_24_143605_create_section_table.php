@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('section', function (Blueprint $table) {
+        Schema::create('sections', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('form_id');
-            $table->integer('user_id');
+            $table->integer('form_id')->index();
+            $table->integer('user_id')->index();
             $table->boolean('active')->default(true);
 
             $table->timestamps();
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('section');
+        Schema::dropIfExists('sections');
     }
 };

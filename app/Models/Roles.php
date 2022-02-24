@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class Roles extends Model
 {
     use HasFactory;
 
@@ -17,6 +17,16 @@ class Role extends Model
     protected $fillable = [
         'name',
         'active'
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'created_at',
+        'updated_at'
     ];
 
     /**

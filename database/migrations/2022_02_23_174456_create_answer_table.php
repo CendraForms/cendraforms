@@ -13,16 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('answer', function (Blueprint $table) {
+        Schema::create('answers', function (Blueprint $table) {
             $table->id();
-            $table->string('content');
-            $table->foreignId('question_id')->constrained('question')
-            ->onUpdate('cascade');
-            $table->foreignId('user_id')->constrained('user')
-            ->onUpdate('cascade');
-            $table->boolean('active')->default(true);
-            $table->timestamps();
 
+            $table->string('content');
+            $table->integer('question_id')->index();
+            $table->integer('user_id')->index();
+            $table->boolean('active')->default(true);
+            
+            $table->timestamps();
         });
     }
 
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('answer');
+        Schema::dropIfExists('answers');
     }
 };
