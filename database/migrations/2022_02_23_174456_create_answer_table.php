@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('answer', function (Blueprint $table) {
             $table->id();
             $table->string('content');
-            $table->integer('question_id');
-            $table->integer('user_id');
-            $table->boolean('active');
+            $table->index('question_id');
+            $table->index('user_id');
+            $table->boolean('active')->default(true);
             $table->timestamps('created');
             $table->timestamps('updated');
         });
