@@ -19,8 +19,8 @@ return new class extends Migration
             $table->index('question_id');
             $table->index('user_id');
             $table->boolean('active')->default(true);
-            $table->timestamps('created');
-            $table->timestamps('updated');
+            $table->timestamps();
+
         });
     }
 
