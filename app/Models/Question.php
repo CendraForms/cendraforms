@@ -22,6 +22,9 @@ class Question extends Model
         'active',
     ];
 
+    /**
+     * Get the section that owns the question.
+     */
     public function section()
     {
         return $this->belongsTo(Section::class);
