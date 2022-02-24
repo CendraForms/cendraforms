@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class SectionSeeder extends Seeder
+class SectionsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +16,7 @@ class SectionSeeder extends Seeder
     public function run()
     {
         // DB::table('sections')->insert([
-            
+
         // ]);
     }
 }

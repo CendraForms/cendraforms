@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Question extends Model
+class Questions extends Model
 {
     use HasFactory;
 
@@ -22,7 +22,7 @@ class Question extends Model
         'active',
     ];
 
-    public function section()
+    public function sections()
     {
         return $this->belongsTo(Section::class);
     }

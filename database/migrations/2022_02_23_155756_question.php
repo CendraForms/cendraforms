@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('question', function (Blueprint $table) {
+        Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->json('content');
             $table->foreignId('section_id')
-                ->constrained('section')
+                ->constrained('sections')
                 ->onUpdate('cascade');
             $table->boolean('active')->default(true);
             $table->timestamps();
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::drop('question');
+        Schema::drop('questions');
     }
 };
