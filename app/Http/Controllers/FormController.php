@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class Form extends Controller
+class FormController extends Controller
 {
     public function Index()
     {
-
+        //
     }
 }
