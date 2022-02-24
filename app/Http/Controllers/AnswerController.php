@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class Question extends Controller
+class AnswerController extends Controller
 {
     public function Index()
     {
-
+        //
     }
 }
