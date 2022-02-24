@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('answer', function (Blueprint $table) {
             $table->id();
             $table->string('content');
-            $table->index('question_id');
-            $table->index('user_id');
+            $table->foreignId('question_id')->constrained('question')
+            ->onUpdate('cascade');
+            $table->foreignId('user_id')->constrained('user')
+            ->onUpdate('cascade');
             $table->boolean('active')->default(true);
             $table->timestamps();
 
