@@ -16,7 +16,7 @@ class Answer extends Model
      */
     protected $fillable = [
         'content',
-        'active',
+        'active'
     ];
 
     /**
