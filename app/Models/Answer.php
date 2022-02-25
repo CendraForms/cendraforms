@@ -2,23 +2,20 @@
 
 namespace App\Models;
 
-use App\Models\User;
-use App\Models\Form;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Section extends Model
+class Answer extends Model
 {
     use HasFactory;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $fillable = [
-        'form_id',
-        'user_id',
+        'content',
         'active'
     ];
 
@@ -33,15 +30,15 @@ class Section extends Model
     ];
 
     /**
-     * Get the form that owns the section.
+     * Get the question that owns the answer.
      */
-    public function form()
+    public function question()
     {
-        return $this->belongsTo(Form::class);
+        return $this->belongsTo(Question::class);
     }
 
     /**
-     * Get the user that owns the section.
+     * Get the user that owns the answer.
      */
     public function user()
     {

@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('forms', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('description');
-            $table->integer('user_id');
-            $table->boolean('active')->default(true);
-            $table->timestamps();
-        });
+        Schema::create('RoleUser', function (Blueprint $table) {
+        $table->integer('user_id')->index();
+        $table->integer('role_id')->index(); 
+        $table->timestamps();
+    });
     }
 
     /**
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('forms');
+        Schema::drop('RoleUser');
     }
 };

@@ -1,28 +1,31 @@
 <?php
 
 namespace App\Models;
-
 use App\Models\User;
-use App\Models\Form;
+use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Section extends Model
+class Form extends Model
 {
-    use HasFactory;
+    use HasApiTokens,HasFactory,Notifiable;
 
-    /**
+
+  /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'form_id',
+    protected $fillable= [
+        'name',
+        'description',
         'user_id',
-        'active'
+        'active',
     ];
 
-    /**
+     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
@@ -32,19 +35,11 @@ class Section extends Model
         'updated_at'
     ];
 
-    /**
-     * Get the form that owns the section.
-     */
-    public function form()
-    {
-        return $this->belongsTo(Form::class);
-    }
 
-    /**
-     * Get the user that owns the section.
-     */
-    public function user()
-    {
+
+    public function user(){
         return $this->belongsTo(User::class);
     }
 }
+
+
