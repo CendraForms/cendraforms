@@ -30,5 +30,6 @@ Route::get('/forms', [FormController::class, 'getForms']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+Route::get('/questions/{id}', [QuestionController::class, 'getQuestion']);
 
 require __DIR__.'/auth.php';
