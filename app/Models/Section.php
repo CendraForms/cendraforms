@@ -7,7 +7,7 @@ use App\Models\Form;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Sections extends Model
+class Section extends Model
 {
     use HasFactory;
 
