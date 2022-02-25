@@ -21,14 +21,12 @@ class RoleController extends Controller
     }
 
     /**
-     * Return now the specified role id
+     * Returns specified role object
      *
-     * @param Integer $id specified role id
+     * @param Role $role specified role id
      */
-    public function getRole($id)
+    public function getRole(Role $role)
     {
-        $role = Role::findOrFail($id);
-
         return $role;
 
         //In Future
