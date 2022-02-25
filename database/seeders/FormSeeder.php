@@ -22,7 +22,7 @@ class FormSeeder extends Seeder
     public function run()
     {
         foreach ($this->form as $i) {
-            DB::table('form')->insert([
+            DB::table('forms')->insert([
                 'name' => $i["name"],
                 'description' => $i["description"],
                 'user_id' => $i["user_id"]
