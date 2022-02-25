@@ -22,7 +22,10 @@ class Questions extends Model
         'active',
     ];
 
-    public function sections()
+    /**
+     * Get the section that owns the question.
+     */
+    public function section()
     {
         return $this->belongsTo(Section::class);
     }

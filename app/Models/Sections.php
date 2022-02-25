@@ -23,7 +23,7 @@ class Sections extends Model
     ];
 
     /**
-     * Get the form that owns the comment.
+     * Get the form that owns the section.
      */
     public function forms()
     {
@@ -31,7 +31,7 @@ class Sections extends Model
     }
 
     /**
-     * Get the user that owns the comment.
+     * Get the user that owns the section.
      */
     public function users()
     {
