@@ -18,9 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/roles', [ RoleController::class, 'getRoles' ])
-    ->name("roles");
-    
 Route::get('/roles/{id}', [RoleController::class, 'getRole']);
 
 Route::get('/dashboard', function () {
