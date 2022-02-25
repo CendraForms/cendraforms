@@ -8,6 +8,16 @@ use App\Models\Roles;
 class RoleController extends Controller
 {
     /**
+     * Returns all roles
+     * 
+     * @return JSON
+     */
+    public static function getRoles()
+    {
+        return Role::get();
+    }
+    
+    /**
      * Return now the specified role id
      *
      * (And return view "in future")
