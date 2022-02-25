@@ -18,6 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/roles', [RoleController::class, 'getRoles']);
+
 Route::get('/roles/{id}', [RoleController::class, 'getRole']);
 
 Route::get('/dashboard', function () {
