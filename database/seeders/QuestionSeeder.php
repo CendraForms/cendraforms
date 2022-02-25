@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class QuestionsSeeder extends Seeder
+class QuestionSeeder extends Seeder
 {
     private $questions = [
         ['name' => 'Del 1 al 10 quina nota hem posaries?', 'content' => '', 'section_id' => 1],
