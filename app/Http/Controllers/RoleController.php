@@ -1,0 +1,61 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Role;
+use Symfony\Contracts\Service\Attribute\Required;
+
+use function PHPUnit\Framework\isNull;
+
+class RoleController extends Controller
+{
+    /**
+     * Returns all roles
+     *
+     * @return JSON
+     */
+    public static function getRoles()
+    {
+        return Role::get();
+    }
+
+    /**
+     * Return now the specified role id
+     *
+     * @param Integer $id specified role id
+     */
+    public function getRole($id)
+    {
+        $role = Role::findOrFail($id);
+
+        return $role;
+
+        //In Future
+        //return view('');
+    }
+
+    /**
+     * Create new Role
+     *
+     * @param Request $request recipe parameters post
+     */
+    public function createRole(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'active' => ['nullable', 'string'],
+        ]);
+
+        $role = new Role;
+        $role->name = $validated['name'];
+        if (!isset($validated['active'])) {
+            $role->active = $validated['active'];
+        }
+        $role->save();
+
+        $newrole = Role::where('name', $validated['name'])->first();
+
+        return $newrole;
+    }
+}
