@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\FormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,13 @@ Route::get('/', function () {
 
 Route::get('/roles', [RoleController::class, 'getRoles']);
 
-Route::get('/roles/{id}', [RoleController::class, 'getRole']);
+Route::get('/roles/{role}', [RoleController::class, 'getRole']);
 
 Route::post('/roles', [RoleController::class, 'createRole']);
+
+Route::put('/role/{role}', [RoleController::class, 'updateRole']);
+
+Route::get('/forms', [FormController::class, 'getForms']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

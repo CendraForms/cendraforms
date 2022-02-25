@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\Role;
+use App\Models\Section;
+use App\Models\Answer;
+use App\Models\Form;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -21,6 +25,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'active',
     ];
 
     /**
@@ -31,6 +36,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -48,5 +55,29 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+
+    /**
+     * Get all of the sections for the user.
+     */
+    public function sections()
+    {
+        return $this->hasMany(Section::class);
+    }
+
+    /**
+     * Get all of the answers for the user.
+     */
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
+
+    /**
+     * Get all of the forms for the user.
+     */
+    public function forms()
+    {
+        return $this->hasMany(Form::class);
     }
 }
