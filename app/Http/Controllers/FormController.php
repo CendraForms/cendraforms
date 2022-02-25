@@ -16,4 +16,12 @@ class FormController extends Controller
     {
         return Form::get();
     }
+
+    public function getForm(Form $form)
+    {
+        return $form;
+        //In Future
+        //return view('');
+    }
+    
 }
