@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
+
             $table->string('name');
             $table->json('content');
-            $table->foreignId('section_id')
-                ->constrained('sections')
-                ->onUpdate('cascade');
+            $table->integer('section_id')->index();
             $table->boolean('active')->default(true);
+            
             $table->timestamps();
         });
     }

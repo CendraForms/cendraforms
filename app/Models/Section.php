@@ -7,7 +7,7 @@ use App\Models\Form;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Sections extends Model
+class Section extends Model
 {
     use HasFactory;
 
@@ -23,7 +23,7 @@ class Sections extends Model
     ];
 
     /**
-     * Get the form that owns the comment.
+     * Get the form that owns the section.
      */
     public function forms()
     {
@@ -31,7 +31,7 @@ class Sections extends Model
     }
 
     /**
-     * Get the user that owns the comment.
+     * Get the user that owns the section.
      */
     public function users()
     {

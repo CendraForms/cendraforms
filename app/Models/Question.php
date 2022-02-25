@@ -4,26 +4,29 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Roles extends Model
+class Question extends Model
 {
     use HasFactory;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $fillable = [
         'name',
-        'active'
+        'content',
+        'section_id',
+        'active',
     ];
 
     /**
-     * The users that belong to the role.
+     * Get the section that owns the question.
      */
-    public function users()
+    public function section()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(Section::class);
     }
 }
