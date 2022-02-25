@@ -23,9 +23,19 @@ class Section extends Model
     ];
 
     /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
+
+    /**
      * Get the form that owns the section.
      */
-    public function forms()
+    public function form()
     {
         return $this->belongsTo(Form::class);
     }
@@ -33,7 +43,7 @@ class Section extends Model
     /**
      * Get the user that owns the section.
      */
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
