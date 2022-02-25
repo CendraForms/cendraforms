@@ -22,6 +22,8 @@ Route::get('/roles', [RoleController::class, 'getRoles']);
 
 Route::get('/roles/{id}', [RoleController::class, 'getRole']);
 
+Route::post('/roles', [RoleController::class, 'createRole']);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
