@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Route::get('/roles', [ RoleController::class, 'getRoles' ])
     ->name("roles");
+    
+Route::get('/roles/{id}', [RoleController::class, 'getRole']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
