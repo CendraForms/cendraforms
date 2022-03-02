@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\FormController;
+use Laravel\Socialite\Facades\Socialite;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +34,33 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+
+
+Route::get('/login', function () {
+    return Socialite::driver('google')->redirect();
+});
+ 
+Route::get('/google-callback', function () {
+    $user = Socialite::driver('google')->user();
+    
+    $userExists = User::where('external_id', $user->id)->where('external_auth','google')->exists();
+    // $user->token
+
+    if($userExists){
+        Auth::login($userExists);
+    }else{
+      $userNew = User::create([
+            'name'=> $user ->name,
+            'email'=> $user ->email,
+            'avatar'=> $user ->avatar,
+            'external_id'=> $user ->id,
+            'external_auth'=> 'google',
+
+        ]);
+
+        Auth::login($userNew);
+    }
+
+    return redirect('/dashboard');
+});
