@@ -14,8 +14,18 @@ return new class extends Migration
     public function up()
     {
         Schema::create('role_user', function (Blueprint $table) {
-        $table->integer('user_id')->index();
-        $table->integer('role_id')->index();
+        $table->integer('user_id')
+            ->index()
+            ->constrained()
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+
+        $table->integer('role_id')
+            ->index()
+            ->constrained()
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            
         $table->timestamps();
     });
     }

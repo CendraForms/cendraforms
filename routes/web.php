@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RoleController;
 use App\Http\Controllers\FormController;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\QuestionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,6 +35,10 @@ Route::delete('/roles/{role}', [RoleController::class, 'deleteRole']);
 Route::get('/forms', [FormController::class, 'getForms']);
 
 Route::post('/forms', [FormController::class, 'createForm']);
+
+Route::delete('/forms/{form}', [FormController::class, 'deleteForm']);
+
+Route::delete('/questions/{question}', [QuestionController::class, 'deleteQuestion']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
