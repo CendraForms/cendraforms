@@ -45,4 +45,21 @@ class FormController extends Controller
 
         return $form;
     }
+
+    public function updateForm(Request $request, Form $form)
+    {
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'active' => ['nullable', 'string'],
+        ]);
+
+        $form->name = $validated['name'];
+        if (isset($validated['active'])) {
+            $form->active = $validated['active'];
+        }
+        
+        $form->save();
+
+        return $form;
+    }
 }
