@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class AnswerSeeder extends Seeder
 {
@@ -12,6 +12,7 @@ class AnswerSeeder extends Seeder
         ['content' => 'Normal'],
         ['content' => 'Molt']
     ];
+    
     /**
      * Run the database seeds.
      *
@@ -20,11 +21,11 @@ class AnswerSeeder extends Seeder
     public function run()
     {
         foreach ($this->answers as $item) {
-        DB::table('answer')->insert([
-            'content' => $item["content"],
-            'question_id' => "1",
-            'user_id' => "1"
-        ]);
-    }
+            DB::table('answer')->insert([
+                'content' => $item["content"],
+                'question_id' => "1",
+                'user_id' => "1"
+            ]);
+        }
     }
 }

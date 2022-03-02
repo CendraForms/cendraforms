@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RoleController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,15 +23,25 @@ Route::get('/', function () {
 
 Route::get('/roles', [RoleController::class, 'getRoles']);
 
-Route::get('/roles/{id}', [RoleController::class, 'getRole']);
+Route::get('/roles/{role}', [RoleController::class, 'getRole']);
 
 Route::post('/roles', [RoleController::class, 'createRole']);
+
+Route::put('/role/{role}', [RoleController::class, 'updateRole']);
+
+Route::delete('/roles/{role}', [RoleController::class, 'deleteRole']);
 
 Route::get('/forms', [FormController::class, 'getForms']);
 
 
+
 Route::delete('/sections/{section}', [Section::class, 'deleteSection']);
 Route::post('/forms', [FormController::class, 'createForm']);
+
+Route::delete('/forms/{form}', [FormController::class, 'deleteForm']);
+
+Route::delete('/questions/{question}', [QuestionController::class, 'deleteQuestion']);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

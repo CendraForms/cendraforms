@@ -17,19 +17,7 @@ class FormController extends Controller
     {
         return Form::get();
     }
-
-    public function updateForm(Request $request, Form $form)
-    {
-        $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'active' => ['nullable', 'string'],
-        ]);
-
-        $form->name = $validated['name'];
-        if (isset($validated['active'])) {
-            $form->active = $validated['active'];
-        }
-    }
+    
     /**
      * Create new Form
      *
@@ -56,5 +44,35 @@ class FormController extends Controller
         $form->save();
 
         return $form;
+    }
+    public function updateForm(Request $request, Form $form)
+    {
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'active' => ['nullable', 'string'],
+        ]);
+
+        $form->name = $validated['name'];
+        if (isset($validated['active'])) {
+            $form->active = $validated['active'];
+        }
+        
+        $form->save();
+
+        return $form;
+    }
+    /**
+     * Delete form
+     * 
+     * @param Form $form form to be deleted
+     * @return Response response JSON with status code
+     */
+    public function deleteForm(Form $form)
+    {
+        $form->delete();
+
+        return response()->json([
+            'state' => 'ok',
+        ]);
     }
 }
