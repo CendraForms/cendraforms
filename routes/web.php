@@ -34,6 +34,8 @@ Route::get('/forms', [FormController::class, 'getForms']);
 
 Route::post('/forms', [FormController::class, 'createForm']);
 
+Route::delete('/forms/{form}', [FormController::class, 'deleteForm']);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

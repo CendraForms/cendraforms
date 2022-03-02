@@ -17,7 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->integer('user_id');
+            $table->integer('user_id')
+                ->index()
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->boolean('active')->default(true);
             $table->timestamps();
         });
