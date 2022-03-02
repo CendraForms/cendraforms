@@ -27,6 +27,8 @@ Route::post('/roles', [RoleController::class, 'createRole']);
 
 Route::put('/role/{role}', [RoleController::class, 'updateRole']);
 
+Route::delete('/roles/{role}', [RoleController::class, 'deleteRole']);
+
 Route::get('/forms', [FormController::class, 'getForms']);
 
 Route::get('/dashboard', function () {

@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('RoleUser', function (Blueprint $table) {
+        Schema::create('role_user', function (Blueprint $table) {
         $table->integer('user_id')->index();
-        $table->integer('role_id')->index(); 
+        $table->integer('role_id')->index();
         $table->timestamps();
     });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::drop('RoleUser');
+        Schema::drop('role_user');
     }
 };
