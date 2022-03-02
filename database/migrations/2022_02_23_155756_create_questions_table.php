@@ -18,7 +18,11 @@ return new class extends Migration
 
             $table->string('name');
             $table->json('content');
-            $table->integer('section_id')->index();
+            $table->integer('section_id')
+                ->index()
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->boolean('active')->default(true);
             
             $table->timestamps();

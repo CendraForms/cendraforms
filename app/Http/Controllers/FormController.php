@@ -62,4 +62,19 @@ class FormController extends Controller
 
         return $form;
     }
+    
+    /**
+     * Delete form
+     * 
+     * @param Form $form form to be deleted
+     * @return Response response JSON with status code
+     */
+    public function deleteForm(Form $form)
+    {
+        $form->delete();
+
+        return response()->json([
+            'state' => 'ok',
+        ]);
+    }
 }
