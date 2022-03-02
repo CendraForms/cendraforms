@@ -16,8 +16,18 @@ return new class extends Migration
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('form_id')->index();
-            $table->integer('user_id')->index();
+            $table->integer('form_id')
+                ->index()
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->integer('user_id')
+                ->index()
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
             $table->boolean('active')->default(true);
 
             $table->timestamps();
