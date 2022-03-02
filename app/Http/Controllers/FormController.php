@@ -29,6 +29,7 @@ class FormController extends Controller
         if (isset($validated['active'])) {
             $form->active = $validated['active'];
         }
+    }
     /**
      * Create new Form
      *
