@@ -27,6 +27,7 @@ Route::post('/roles', [RoleController::class, 'createRole']);
 
 Route::get('/forms', [FormController::class, 'getForms']);
 
+Route::delete('/sections/{section}', [Section::class, 'deleteSection']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
