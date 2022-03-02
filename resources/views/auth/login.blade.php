@@ -1,56 +1,22 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+<x-app-layout>
+    <div class="w-screen h-screen flex flex-col items-center justify-center bg-red-700">
+        <img class="w-3/4 md:w-1/3 lg:w-1/5" src="/logo.png" draggable="false">
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+        <div class="w-3/4 md:w-1/2 lg:w-1/5 mt-10 flex flex-col gap-2 text-lg md:text-xl text-red-700 leading-none">
+            <button class="flex items-center gap-3 w-full h-14 px-3 bg-white rounded-lg hover:bg-gray-100">
+                <img class="w-8" src="/logos/google.png" draggable="false">
+                <span>Accedir amb <b>Google</b></span>
+            </button>
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+            <button class="flex items-center gap-3 w-full h-14 px-3 bg-white rounded-lg hover:bg-gray-100">
+                <img class="w-8" src="/logos/discord.png" draggable="false">
+                <span>Accedir amb <b>Discord</b></span>
+            </button>
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
-            </div>
-
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+            <button class="flex items-center gap-3 w-full h-14 px-3 bg-white rounded-lg hover:bg-gray-100">
+                <img class="w-8" src="/logos/github.png" draggable="false">
+                <span>Accedir amb <b>GitHub</b></span>
+            </button>
+        </ul>
+    </div>
+</x-app-layout>
