@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\SectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +28,13 @@ Route::post('/roles', [RoleController::class, 'createRole']);
 
 Route::get('/forms', [FormController::class, 'getForms']);
 
+
 Route::delete('/sections/{section}', [Section::class, 'deleteSection']);
+Route::post('/forms', [FormController::class, 'createForm']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/sections', [SectionController::class, 'getSection']);
 
 require __DIR__.'/auth.php';
