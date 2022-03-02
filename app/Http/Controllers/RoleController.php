@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Role;
+use App\Models\RoleUser;
 use Symfony\Contracts\Service\Attribute\Required;
 
 use function PHPUnit\Framework\isNull;
@@ -75,5 +76,21 @@ class RoleController extends Controller
         $role->save();
 
         return $role;
+    }
+
+    /**
+     * Delete Role
+     *
+     * @param Integer $id role id
+     */
+    public function deleteRole(Role $role)
+    {
+        $deleted = $role->deleteOrFail();
+
+        if ($deleted) {
+            RoleUser::where('role_id', $role['id'])->delete();
+        }
+
+        return $deleted;
     }
 }
