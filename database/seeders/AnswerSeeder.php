@@ -2,19 +2,19 @@
 
 namespace Database\Seeders;
 
+use App\Models\Answer;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class AnswerSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the database answer seeder.
      *
      * @return void
      */
     public function run()
     {
-        DB::table('answers')->insert([
+        Answer::create([
             'content' => 'Sí, has resolt els meus dubtes',
             'question_id' => 1,
             'user_id' => 1,

@@ -2,27 +2,27 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class RoleSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the database role seeder.
      *
      * @return void
      */
     public function run()
     {
-        DB::table('roles')->insert([
+        Role::create([
             'name' => 'direccio'
         ]);
 
-        DB::table('roles')->insert([
+        Role::create([
             'name' => 'professor'
         ]);
 
-        DB::table('roles')->insert([
+        Role::create([
             'name' => 'alumne'
         ]);
     }
