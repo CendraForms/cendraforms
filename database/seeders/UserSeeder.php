@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
@@ -15,22 +16,35 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'usuari1',
-            'email' => 'usuari1@mail.com',
-            'password' => Hash::make('passwdUltraSegura'),
-        ]);
+        $users = [
+            [
+                'name' => 'direccio',
+                'email' => 'direccio@cendrassos.net',
+                'password' => Hash::make('direccio'),
+                'roles' =>  [ Role::firstWhere('name', 'direccio') ],
+            ],
+            [
+                'name' => 'professor',
+                'email' => 'professor@cendrassos.net',
+                'password' => Hash::make('direccio'),
+                'roles' =>  [ Role::firstWhere('name', 'professor') ],
+            ],
+            [
+                'name' => 'alumne',
+                'email' => 'alumne@cendrassos.net',
+                'password' => Hash::make('alumne'),
+                'roles' =>  [ Role::firstWhere('name', 'alumne') ],
+            ],
+        ];
 
-        DB::table('users')->insert([
-            'name' => 'usuari2',
-            'email' => 'usuari2@mail.com',
-            'password' => Hash::make('passwdUltraSegura'),
-        ]);
+        foreach ($users as $user) {
+            $finalUser = User::create([
+                'name' => $user['name'],
+                'email' => $user['email'],
+                'password' => $user['password'],
+            ]);
 
-        DB::table('users')->insert([
-            'name' => 'usuari3',
-            'email' => 'usuari3@mail.com',
-            'password' => Hash::make('passwdUltraSegura'),
-        ]);
+            $finalUser->roles()->attach($user['roles']);
+        }
     }
 }
