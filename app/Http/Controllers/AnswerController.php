@@ -21,5 +21,16 @@ class AnswerController extends Controller
         //In Future
         //return view('');
     }
-    
+    /**
+     * Returns specified answer object
+     *
+     * @param Answer $answer specified answer id
+     */
+    public function getAnswer(Answer $answer)
+    {
+        return $answer;
+
+        //In Future
+        //return view('');
+    }
 }
