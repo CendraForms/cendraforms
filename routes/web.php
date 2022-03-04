@@ -28,7 +28,7 @@ Route::get('/roles/{role}', [RoleController::class, 'getRole']);
 
 Route::post('/roles', [RoleController::class, 'createRole']);
 
-Route::put('/role/{role}', [RoleController::class, 'updateRole']);
+Route::put('/roles/{role}', [RoleController::class, 'updateRole']);
 
 Route::delete('/roles/{role}', [RoleController::class, 'deleteRole']);
 
@@ -41,6 +41,8 @@ Route::delete('/forms/{form}', [FormController::class, 'deleteForm']);
 Route::put('/sections/{section}', [SectionController::class, 'updateSection']);
 
 Route::delete('/questions/{question}', [QuestionController::class, 'deleteQuestion']);
+
+Route::put('/questions/{question}', [QuestionController::class, 'updateQuestion']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
