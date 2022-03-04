@@ -18,7 +18,7 @@ class FormController extends Controller
         return Form::get();
     }
 
-<<<<<<< HEAD
+
     public function getForm(Form $form)
     {
         return $form;
@@ -26,7 +26,7 @@ class FormController extends Controller
         //return view('');
     }
     
-=======
+
     /**
      * Create new Form
      *
@@ -86,5 +86,5 @@ class FormController extends Controller
             'state' => 'ok',
         ]);
     }
->>>>>>> d5702eb1d1798d1221ed4192f1768b468176af48
+
 }
