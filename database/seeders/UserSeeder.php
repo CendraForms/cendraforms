@@ -21,19 +21,19 @@ class UserSeeder extends Seeder
                 'name' => 'direccio',
                 'email' => 'direccio@cendrassos.net',
                 'password' => Hash::make('direccio'),
-                'roles' =>  [ Role::firstWhere('name', 'direccio') ],
+                'roles' =>  [ Role::firstWhere('name', 'direccio')->id ],
             ],
             [
                 'name' => 'professor',
                 'email' => 'professor@cendrassos.net',
-                'password' => Hash::make('direccio'),
-                'roles' =>  [ Role::firstWhere('name', 'professor') ],
+                'password' => Hash::make('professor'),
+                'roles' =>  [ Role::firstWhere('name', 'professor')->id ],
             ],
             [
                 'name' => 'alumne',
                 'email' => 'alumne@cendrassos.net',
                 'password' => Hash::make('alumne'),
-                'roles' =>  [ Role::firstWhere('name', 'alumne') ],
+                'roles' =>  [ Role::firstWhere('name', 'alumne')->id ],
             ],
         ];
 
