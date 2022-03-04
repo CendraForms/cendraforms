@@ -34,9 +34,10 @@ Route::delete('/roles/{role}', [RoleController::class, 'deleteRole']);
 
 Route::get('/forms', [FormController::class, 'getForms']);
 
-
-
 Route::delete('/sections/{section}', [Section::class, 'deleteSection']);
+
+Route::get('/forms/{form}', [FormController::class, 'getForm']);
+
 Route::post('/forms', [FormController::class, 'createForm']);
 
 Route::delete('/forms/{form}', [FormController::class, 'deleteForm']);
@@ -52,5 +53,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/sections', [SectionController::class, 'getSection']);
+
 
 require __DIR__.'/auth.php';

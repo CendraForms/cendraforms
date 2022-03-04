@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Section;
 
 use App\Models\Question;
 use Illuminate\Http\Request;
@@ -45,4 +46,9 @@ class QuestionController extends Controller
             'state' => 'ok',
         ]);
     }
+    public static function getSection()
+    {
+        return Section::get();
+    }
+    
 }
