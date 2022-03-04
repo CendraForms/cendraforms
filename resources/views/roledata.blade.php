@@ -8,7 +8,7 @@
 </head>
 <body>
     <div>
-        <form action="" method="POST">
+        <form action="/api/roles/{{ $role->id }}" method="POST">
             @method('PUT')
             @csrf
 

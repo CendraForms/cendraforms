@@ -7,8 +7,15 @@ use Illuminate\Http\Request;
 
 class SectionController extends Controller
 {
-    //
-    public static function getSection()
+    // todo: function to get a specific section - getSection(Section $section)
+    // todo: function to create a sections - createSection()
+
+    /**
+     * Returns all sections
+     *
+     * @return JSON
+     */
+    public static function getSections()
     {
         return Section::get();
     }
@@ -31,6 +38,11 @@ class SectionController extends Controller
         return $section;
     }
 
+    /**
+     * Delete Section
+     *
+     * @param Integer $id section id
+     */
     public function deleteSection(Section $section)
     {
         $section->delete();
