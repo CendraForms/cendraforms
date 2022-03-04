@@ -93,4 +93,9 @@ class RoleController extends Controller
 
         return $deleted;
     }
+
+    public function getRoleView(Role $role)
+    {
+        return view('roledata', ['role' => $role]);
+    }
 }

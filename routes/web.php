@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 Route::get('/roles', [RoleController::class, 'getRoles']);
 
-Route::get('/roles/{role}', [RoleController::class, 'getRole']);
+Route::get('/roles/{role}', [RoleController::class, 'getRoleView']);
 
 Route::post('/roles', [RoleController::class, 'createRole']);
 
