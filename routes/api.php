@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnswerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
@@ -83,10 +84,10 @@ Route::delete('/questions/{question}', [QuestionController::class, 'deleteQuesti
  */
 // Route::get('/answers', [AnswerController::class, 'getAnswers']); method doesn't exist yet
 
-// Route::get('/answers/{question}', [AnswerController::class, 'getAnswer']); method doesn't exist yet
+// Route::get('/answers/{answer}', [AnswerController::class, 'getAnswer']); method doesn't exist yet
 
 // Route::post('/answers', [AnswerController::class, 'createAnswer']); method doesn't exist yet
 
-// Route::put('/answers/{question}', [AnswerController::class, 'updateAnswer']); method doesn't exist yet
+// Route::put('/answers/{answer}', [AnswerController::class, 'updateAnswer']); method doesn't exist yet
 
-// Route::delete('/answers/{question}', [AnswerController::class, 'deleteAnswer']); method doesn't exist yet
+Route::delete('/answers/{answer}', [AnswerController::class, 'deleteAnswer']);
