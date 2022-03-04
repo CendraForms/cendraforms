@@ -19,9 +19,17 @@ class RoleController extends Controller
     public static function getRoles()
     {
        $role=Role::get();
-       
-        return view('Roles/Roles', ['role' => $role]);
+
+
+        function getRolesView(Role $role)
+       {
+           return view('Roles/Roles', ['role' => $role]);
+   
+       }
+        return $role;
     }
+
+
 
     /**
      * Returns specified role object
