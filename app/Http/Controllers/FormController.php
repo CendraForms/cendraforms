@@ -17,7 +17,7 @@ class FormController extends Controller
     {
         return Form::get();
     }
-
+    
     /**
      * Create new Form
      *
@@ -45,7 +45,6 @@ class FormController extends Controller
 
         return $form;
     }
-
     public function updateForm(Request $request, Form $form)
     {
         $validated = $request->validate([
@@ -62,7 +61,6 @@ class FormController extends Controller
 
         return $form;
     }
-    
     /**
      * Delete form
      * 
