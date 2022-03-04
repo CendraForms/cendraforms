@@ -2,31 +2,31 @@
 
 namespace Database\Seeders;
 
+use App\Models\Question;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class QuestionSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the database question seeder.
      *
      * @return void
      */
     public function run()
     {
-        DB::table('questions')->insert([
+        Question::create([
             'name' => 'Del 1 al 10 quina nota em posaries?',
             'content' => '{}',
             'section_id' => 1,
         ]);
 
-        DB::table('questions')->insert([
+        Question::create([
             'name' => 'He resolt correctament els teus subtes?',
             'content' => '{}',
             'section_id' => 2,
         ]);
 
-        DB::table('questions')->insert([
+        Question::create([
             'name' => 'Creus que sóc un bon Professor?',
             'content' => '{}',
             'section_id' => 3,
