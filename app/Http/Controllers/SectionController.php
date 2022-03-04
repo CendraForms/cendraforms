@@ -12,4 +12,12 @@ class SectionController extends Controller
     {
         return Section::get();
     }
+    public function deleteSection(Section $section)
+    {
+        $section->delete();
+       
+        return response()->json([
+            'state' => 'ok',
+        ]);
+    }
 }

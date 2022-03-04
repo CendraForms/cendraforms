@@ -33,6 +33,9 @@ Route::delete('/roles/{role}', [RoleController::class, 'deleteRole']);
 
 Route::get('/forms', [FormController::class, 'getForms']);
 
+
+
+Route::delete('/sections/{section}', [Section::class, 'deleteSection']);
 Route::post('/forms', [FormController::class, 'createForm']);
 
 Route::delete('/forms/{form}', [FormController::class, 'deleteForm']);
