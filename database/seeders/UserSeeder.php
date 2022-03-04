@@ -2,35 +2,49 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the database user seeder.
      *
      * @return void
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'usuari1',
-            'email' => 'usuari1@mail.com',
-            'password' => Hash::make('passwdUltraSegura'),
-        ]);
+        $users = [
+            [
+                'name' => 'direccio',
+                'email' => 'direccio@cendrassos.net',
+                'password' => Hash::make('direccio'),
+                'roles' =>  [ Role::firstWhere('name', 'direccio')->id ],
+            ],
+            [
+                'name' => 'professor',
+                'email' => 'professor@cendrassos.net',
+                'password' => Hash::make('professor'),
+                'roles' =>  [ Role::firstWhere('name', 'professor')->id ],
+            ],
+            [
+                'name' => 'alumne',
+                'email' => 'alumne@cendrassos.net',
+                'password' => Hash::make('alumne'),
+                'roles' =>  [ Role::firstWhere('name', 'alumne')->id ],
+            ],
+        ];
 
-        DB::table('users')->insert([
-            'name' => 'usuari2',
-            'email' => 'usuari2@mail.com',
-            'password' => Hash::make('passwdUltraSegura'),
-        ]);
+        foreach ($users as $user) {
+            $finalUser = User::create([
+                'name' => $user['name'],
+                'email' => $user['email'],
+                'password' => $user['password'],
+            ]);
 
-        DB::table('users')->insert([
-            'name' => 'usuari3',
-            'email' => 'usuari3@mail.com',
-            'password' => Hash::make('passwdUltraSegura'),
-        ]);
+            $finalUser->roles()->attach($user['roles']);
+        }
     }
 }

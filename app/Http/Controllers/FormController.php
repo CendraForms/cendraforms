@@ -18,6 +18,13 @@ class FormController extends Controller
         return Form::get();
     }
 
+    public function getForm(Form $form)
+    {
+        return $form;
+        //In Future
+        //return view('');
+    }
+
     /**
      * Create new Form
      *
@@ -28,7 +35,7 @@ class FormController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:1000'],
-            'active' => ['nullable', 'string'],
+            'active' => ['nullable', 'boolean'],
         ]);
 
         $form = new Form();
@@ -45,12 +52,11 @@ class FormController extends Controller
 
         return $form;
     }
-
     public function updateForm(Request $request, Form $form)
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'active' => ['nullable', 'string'],
+            'active' => ['nullable', 'boolean'],
         ]);
 
         $form->name = $validated['name'];
@@ -62,7 +68,6 @@ class FormController extends Controller
 
         return $form;
     }
-    
     /**
      * Delete form
      * 
@@ -77,4 +82,5 @@ class FormController extends Controller
             'state' => 'ok',
         ]);
     }
+
 }

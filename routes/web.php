@@ -28,23 +28,32 @@ Route::get('/roles/{role}', [RoleController::class, 'getRole']);
 
 Route::post('/roles', [RoleController::class, 'createRole']);
 
-Route::put('/role/{role}', [RoleController::class, 'updateRole']);
+Route::put('/roles/{role}', [RoleController::class, 'updateRole']);
 
 Route::delete('/roles/{role}', [RoleController::class, 'deleteRole']);
 
 Route::get('/forms', [FormController::class, 'getForms']);
 
+Route::delete('/sections/{section}', [Section::class, 'deleteSection']);
+
+Route::get('/forms/{form}', [FormController::class, 'getForm']);
+
 Route::post('/forms', [FormController::class, 'createForm']);
 
 Route::delete('/forms/{form}', [FormController::class, 'deleteForm']);
 
+Route::put('/sections/{section}', [SectionController::class, 'updateSection']);
+
 Route::delete('/questions/{question}', [QuestionController::class, 'deleteQuestion']);
 
+
+Route::put('/questions/{question}', [QuestionController::class, 'updateQuestion']);
 
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+Route::get('/questions/{question}', [QuestionController::class, 'getQuestion']);
 
 Route::get('/sections', [SectionController::class, 'getSection']);
 Route::get('/sections/{id}', [RoleController::class, 'getSectionid']);
@@ -52,6 +61,7 @@ Route::get('/sections', [FormController::class, 'getSections']);
 Route::post('/sections', [FormController::class, 'createSection']);
 Route::put('/sections/{section}', [RoleController::class, 'updateSection']);
 Route::delete('/sections/{section}', [FormController::class, 'deleteSection']);
+
 
 require __DIR__.'/auth.php';
 

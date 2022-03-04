@@ -21,6 +21,7 @@ class SectionController extends Controller
         return Section::get();
     }
 
+
     public function getSection($id){
         $section = Section::findOrFail($id);
         return $section;
@@ -50,26 +51,35 @@ class SectionController extends Controller
 
     }
 
-    public function updateSection(Request $request, Section $section){
-        $validated = $request->validate([
-           
-            'active' => ['nullable', 'string']
-        ]);
-        if (isset($validated['active'])) {
-            $section->active = $validated['active'];
-        }
-        $section->save();
+ 
 
-        return $section;
 
-    }
 
     public function deleteSection(Section $section)
     {
         $section->delete();
-
+       
         return response()->json([
             'state' => 'ok',
         ]);
-    }    
+    }
+
+    /**
+     * Update Section
+     *
+     * @param Request $request recipe parameters put
+     * @param Integer $section section id (Section Model)
+     */
+    public function updateSection(Request $request, Section $section)
+    {
+        $validate = $request->validate([
+            'active' => ['nullable', 'boolean']
+        ]);
+
+        $section->active = $validate['active'];
+        $section->save();
+
+        return $section;
+    }
+
 }
