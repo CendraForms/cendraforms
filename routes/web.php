@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
-use App\Http\Controllers\RoleController;
+use Laravel\Socialite\Facades\Socialite;
+use App\Models\User;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\QuestionController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,10 +40,47 @@ Route::delete('/forms/{form}', [FormController::class, 'deleteForm']);
 
 Route::delete('/questions/{question}', [QuestionController::class, 'deleteQuestion']);
 
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/sections', [SectionController::class, 'getSection']);
+Route::get('/sections/{id}', [RoleController::class, 'getSectionid']);
+Route::get('/sections', [FormController::class, 'getSections']);
+Route::post('/sections', [FormController::class, 'createSection']);
+Route::put('/sections/{section}', [RoleController::class, 'updateSection']);
+Route::delete('/sections/{section}', [FormController::class, 'deleteSection']);
 
 require __DIR__.'/auth.php';
+
+
+
+Route::get('/login-google', function () {
+    return Socialite::driver('google')->redirect();
+});
+ 
+Route::get('/google-callback', function () {
+    $user = Socialite::driver('google')->user();
+    
+    $userExists = User::where('external_id', $user->id)->where('external_auth','google')->exists();
+    // $user->token
+
+    if($userExists){
+        Auth::login($userExists);
+    }else{
+      $userNew = User::create([
+            'name'=> $user ->name,
+            'email'=> $user ->email,
+            'avatar'=> $user ->avatar,
+            'external_id'=> $user ->id,
+            'external_auth'=> 'google',
+
+        ]);
+
+        Auth::login($userNew);
+    }
+
+    return redirect('/dashboard');
+});
