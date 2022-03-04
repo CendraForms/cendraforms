@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,6 @@ Route::get('/forms', [FormController::class, 'getForms']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-Route::get('/questions/{id}', [QuestionController::class, 'getQuestion']);
+Route::get('/questions/{question}', [QuestionController::class, 'getQuestion']);
 
 require __DIR__.'/auth.php';
