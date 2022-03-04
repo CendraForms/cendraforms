@@ -8,12 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class FormSeeder extends Seeder
 {
-    private $form = [
-        ['name' => 'Enquesta Covid19', 'description' => 'Com ta ha afectat la coronita?', 'user_id' => 1],
-        ['name' => 'Enquesta Pfizer', 'description' => 'Com ta ha afectat la pfizer?', 'user_id' => 1],
-        ['name' => 'Enquesta Cendrassos', 'description' => 'Com ta ha afectat el cendrassos?', 'user_id' => 1]
-    ];
-
     /**
      * Run the database seeds.
      *
@@ -21,12 +15,22 @@ class FormSeeder extends Seeder
      */
     public function run()
     {
-        foreach ($this->form as $i) {
-            DB::table('forms')->insert([
-                'name' => $i["name"],
-                'description' => $i["description"],
-                'user_id' => $i["user_id"]
-            ]);
-        }
+        DB::table('forms')->insert([
+            'name' => 'Enquesta Covid19',
+            'description' => 'Com ta ha afectat la coronita?',
+            'user_id' => 1,
+        ]);
+
+        DB::table('forms')->insert([
+            'name' => 'Enquesta Pfizer',
+            'description' => 'Com ta ha afectat la pfizer?',
+            'user_id' => 1,
+        ]);
+
+        DB::table('forms')->insert([
+            'name' => 'Enquesta Cendrassos',
+            'description' => 'Com ta ha afectat el cendrassos?',
+            'user_id' => 1,
+        ]);
     }
 }

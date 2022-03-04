@@ -15,8 +15,19 @@ class SectionSeeder extends Seeder
      */
     public function run()
     {
-        // DB::table('sections')->insert([
+        DB::table('sections')->insert([
+            'form_id' => 1,
+            'user_id' => 1,
+        ]);
+        
+        DB::table('sections')->insert([
+            'form_id' => 2,
+            'user_id' => 1,
+        ]);
 
-        // ]);
+        DB::table('sections')->insert([
+            'form_id' => 3,
+            'user_id' => 1,
+        ]);
     }
 }
