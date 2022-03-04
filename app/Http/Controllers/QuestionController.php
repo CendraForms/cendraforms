@@ -2,12 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Section;
 use App\Models\Question;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
+    // todo: function to get all questions - getQuestions()
+    // todo: function to create a question - createQuestion()
+
+    /**
+     * Returns specified question object
+     *
+     * @param Question $question specified question id
+     */
+    public function getQuestion(Question $question)
+    {
+        return $question;
+    }
+
     /**
      * Update Question
      *
@@ -45,15 +57,5 @@ class QuestionController extends Controller
         return response()->json([
             'state' => 'ok',
         ]);
-    }
-    public static function getSection()
-    {
-        return Section::get();
-    }
-    
-    public function getQuestion(Question $question)
-    {
-        
-        return $question;
     }
 }
