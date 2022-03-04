@@ -20,13 +20,13 @@ class RoleController extends Controller
     {
        $role=Role::get();
 
-
-        function getRolesView(Role $role)
-       {
-           return view('Roles/Roles', ['role' => $role]);
-   
-       }
         return $role;
+    }
+
+    public function getRolesView()
+    {
+        $role = self::getRoles(); 
+        return view('Roles/Roles', ['role' => $role]);
     }
 
 
