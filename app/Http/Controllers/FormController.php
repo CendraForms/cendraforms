@@ -18,9 +18,15 @@ class FormController extends Controller
         return Form::get();
     }
 
+    /**
+     * Returns specified form object
+     *
+     * @param Form $form specified form id
+     */
     public function getForm(Form $form)
     {
         return $form;
+
         //In Future
         //return view('');
     }
@@ -52,6 +58,13 @@ class FormController extends Controller
 
         return $form;
     }
+
+    /**
+     * Update Form
+     *
+     * @param Request $request recipe parameters post
+     * @param Integer $id form id
+     */
     public function updateForm(Request $request, Form $form)
     {
         $validated = $request->validate([
@@ -68,6 +81,7 @@ class FormController extends Controller
 
         return $form;
     }
+
     /**
      * Delete form
      * 
@@ -82,5 +96,4 @@ class FormController extends Controller
             'state' => 'ok',
         ]);
     }
-
 }

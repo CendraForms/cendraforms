@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\RoleUser;
-use Symfony\Contracts\Service\Attribute\Required;
-
-use function PHPUnit\Framework\isNull;
 
 class RoleController extends Controller
 {
@@ -29,9 +26,6 @@ class RoleController extends Controller
     public function getRole(Role $role)
     {
         return $role;
-
-        //In Future
-        //return view('');
     }
 
     /**
