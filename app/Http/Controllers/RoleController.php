@@ -18,7 +18,9 @@ class RoleController extends Controller
      */
     public static function getRoles()
     {
-        return Role::get();
+       $role=Role::get();
+       
+        return view('Roles/Roles', ['role' => $role]);
     }
 
     /**
@@ -31,7 +33,7 @@ class RoleController extends Controller
         return $role;
 
         //In Future
-        //return view('');
+       
     }
 
     /**
