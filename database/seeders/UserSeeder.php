@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class UserSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the database user seeder.
      *
      * @return void
      */
