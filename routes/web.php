@@ -5,6 +5,7 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\Section;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,8 @@ Route::get('/forms', [FormController::class, 'getForms']);
 Route::post('/forms', [FormController::class, 'createForm']);
 
 Route::delete('/forms/{form}', [FormController::class, 'deleteForm']);
+
+Route::put('/sections/{section}', [SectionController::class, 'updateSection']);
 
 Route::delete('/questions/{question}', [QuestionController::class, 'deleteQuestion']);
 
