@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('forms', function (Blueprint $table) {
             $table->id();
+
             $table->string('name');
             $table->string('description');
             $table->integer('user_id')
@@ -22,7 +23,9 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+
             $table->boolean('active')->default(true);
+
             $table->timestamps();
         });
     }
