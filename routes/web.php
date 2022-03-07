@@ -31,4 +31,8 @@ Route::get('/roles', [RoleController::class, 'getRolesView']);
 
 Route::get('/sections', [SectionController::class, 'getSectionsView']);
 
+Route::get('/sections/create', [SectionController::class, 'getSectionsCreateView']);
+
+Route::post('/sections', [SectionController::class, 'createSection']);
+
 require __DIR__.'/auth.php';

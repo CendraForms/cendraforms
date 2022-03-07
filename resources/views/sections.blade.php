@@ -8,23 +8,30 @@
 </head>
 <body>
     <div>
-        <form action="" method="POST">
-            @csrf
-
-            <div>
-                <label for="formsection">Fomulari</label>
-                <select name="form_id" id="formsection">
-                    <option value="1">1</option>
-                </select>
-            </div>
-            <div>
-                <label for="activesection">Estat</label>
-                <select name="active" id="activesection">
-                    <option value="1">Si</option>
-                    <option value="0">No</option>
-                </select>
-            </div>
-        </form>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Form</th>
+                    <th>User</th>
+                    <th>Estat</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($sections as $key => $value)
+                    <tr>
+                        <td>{{ $value->id }}</td>
+                        <td>{{ $value->form_id }}</td>
+                        <td>{{ $value->user_id }}</td>
+                        @if($value->active == '1')
+                            <td>Activa</td>
+                        @else
+                            <td>Inactiva</td>
+                        @endif
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 </body>
 </html>

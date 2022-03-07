@@ -58,7 +58,7 @@ Route::get('/sections', [SectionController::class, 'getSections']);
 
 // Route::get('/sections/{section}', [SectionController::class, 'getSection']); method doesn't exist yet
 
-// Route::post('/sections', [SectionController::class, 'createSection']); method doesn't exist yet
+// Route::post('/sections', [SectionController::class, 'createSection']);
 
 Route::put('/sections/{section}', [SectionController::class, 'updateSection']);
 
