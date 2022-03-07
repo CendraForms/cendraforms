@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 
@@ -26,5 +27,10 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/roles', [RoleController::class, 'getRolesView']);
+
+
+
+
+Route::get('/questions/{question}', [QuestionController::class, 'getQuestionView']);
 
 require __DIR__.'/auth.php';

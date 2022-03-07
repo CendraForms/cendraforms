@@ -10,6 +10,11 @@ class QuestionController extends Controller
     // todo: function to get all questions - getQuestions()
     // todo: function to create a question - createQuestion()
 
+    public function getQuestions()
+    {
+         return Question::get();
+    }
+
     /**
      * Returns specified question object
      *
@@ -19,6 +24,14 @@ class QuestionController extends Controller
     {
         return $question;
     }
+
+
+
+    public function getQuestionView(Question $question)
+    {
+        return view('Questions/question', ['question' => $question]);
+    }
+
 
     /**
      * Update Question
