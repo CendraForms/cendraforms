@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Section;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SectionController extends Controller
 {
@@ -18,6 +19,33 @@ class SectionController extends Controller
     public static function getSections()
     {
         return Section::get();
+    }
+
+    /**
+     * Update Section
+     *
+     * @param Request $request recipe parameters put
+     * @param Integer $section section id (Section Model)
+     */
+    public function createSection(Request $request)
+    {
+        $validate = $request->validate([
+            'form_id' => ['nullable', 'integer'],
+            'active' => ['required', 'boolean']
+        ]);
+
+        $section = new Section();
+
+        if (isset($validate['form_id'])) {
+            $section->form_id = $validate['form_id'];
+        }
+
+        $section->active = $validate['active'];
+        // $section->user_id = Auth::user()->id;
+        $section->user_id = 1;
+        $section->save();
+
+        return redirect('/sections');
     }
 
     /**
@@ -50,5 +78,17 @@ class SectionController extends Controller
         return response()->json([
             'state' => 'ok',
         ]);
+    }
+
+    public function getSectionsView()
+    {
+        $sections = $this->getSections();
+
+        return view('sections', ['sections' => $sections]);
+    }
+
+    public function getSectionsCreateView()
+    {
+        return view('sectioncreate');
     }
 }
