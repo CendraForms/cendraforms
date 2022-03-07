@@ -7,6 +7,7 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,3 +92,11 @@ Route::get('/answers', [AnswerController::class, 'getAnswers']);
 // Route::put('/answers/{answer}', [AnswerController::class, 'updateAnswer']); method doesn't exist yet
 
 Route::delete('/answers/{answer}', [AnswerController::class, 'deleteAnswer']);
+
+
+/**
+ * Users
+ */
+
+Route::get('/users', [UserController::class, 'getUsers']);
+Route::get('/users/{user}', [UserController::class, 'getUser']);
