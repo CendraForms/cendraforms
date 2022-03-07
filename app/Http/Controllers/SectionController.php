@@ -51,4 +51,9 @@ class SectionController extends Controller
             'state' => 'ok',
         ]);
     }
+
+    public function getSectionsView()
+    {
+        return view('sections');
+    }
 }
