@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\FormController;
 use App\Models\Section;
 
 /*
@@ -34,5 +35,7 @@ Route::get('/sections', [SectionController::class, 'getSectionsView']);
 Route::get('/sections/create', [SectionController::class, 'getSectionsCreateView']);
 
 Route::post('/sections', [SectionController::class, 'createSection']);
+
+Route::get('/forms', [FormController::class, 'getFormsView']);
 
 require __DIR__.'/auth.php';

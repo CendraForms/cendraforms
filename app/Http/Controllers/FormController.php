@@ -76,7 +76,7 @@ class FormController extends Controller
         if (isset($validated['active'])) {
             $form->active = $validated['active'];
         }
-        
+
         $form->save();
 
         return $form;
@@ -84,7 +84,7 @@ class FormController extends Controller
 
     /**
      * Delete form
-     * 
+     *
      * @param Form $form form to be deleted
      * @return Response response JSON with status code
      */
@@ -95,5 +95,12 @@ class FormController extends Controller
         return response()->json([
             'state' => 'ok',
         ]);
+    }
+
+    public function getFormsView()
+    {
+        $forms = $this->getForms();
+
+        return view('forms.forms', ['forms' => $forms]);
     }
 }

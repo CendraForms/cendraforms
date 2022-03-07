@@ -84,11 +84,11 @@ class SectionController extends Controller
     {
         $sections = $this->getSections();
 
-        return view('sections', ['sections' => $sections]);
+        return view('sections.sections', ['sections' => $sections]);
     }
 
     public function getSectionsCreateView()
     {
-        return view('sectioncreate');
+        return view('sections.sectioncreate');
     }
 }
