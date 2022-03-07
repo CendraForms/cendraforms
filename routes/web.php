@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +27,10 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/roles', [RoleController::class, 'getRolesView']);
+
+
+
+
+Route::get('/section/{section}', [SectionController::class, 'getSectionView']);
 
 require __DIR__.'/auth.php';

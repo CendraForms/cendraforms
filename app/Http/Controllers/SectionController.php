@@ -20,6 +20,14 @@ class SectionController extends Controller
         return Section::get();
     }
 
+    public static function getSectionView(Section $section)
+    {
+        return view('Sections/section', ['section' => $section]);
+    }
+
+  
+
+
     /**
      * Update Section
      *
