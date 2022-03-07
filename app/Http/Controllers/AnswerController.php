@@ -10,4 +10,16 @@ class AnswerController extends Controller
     {
         //
     }
+    /**
+     * Returns all answers
+     *
+     * @return JSON
+     */
+    public static function getAnswers()
+    {
+        return Answer::get();
+        //In Future
+        //return view('');
+    }
+    
 }
