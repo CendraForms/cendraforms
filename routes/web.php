@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnswerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SectionController;
@@ -40,5 +41,7 @@ Route::post('/sections', [SectionController::class, 'createSection']);
 Route::get('/forms', [FormController::class, 'getFormsView']);
 
 Route::get('/questions', [QuestionController::class, 'getQuestionsView']);
+
+Route::get('/answers', [AnswerController::class, 'getAnswersView']);
 
 require __DIR__.'/auth.php';
