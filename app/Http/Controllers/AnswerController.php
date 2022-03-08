@@ -32,5 +32,12 @@ class AnswerController extends Controller
         //In Future
         //return view('');
     }
+
+
+    public function getAnswerView(Answer $answer)
+    {
+        
+        return view('Answer/answer', ['answer' => $answer]);
+    }
     
 }
