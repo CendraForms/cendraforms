@@ -18,6 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('/question', [RoleController::class, 'createQuestion']);
+
+Route::put('/question/{question}', [RoleController::class, 'updateQuestion']);
+
+Route::delete('/question/{question}', [RoleController::class, 'deleteQuestion']);
+
 Route::get('/roles/{role}', [RoleController::class, 'getRoleView']);
 
 Route::get('/dashboard', function () {
