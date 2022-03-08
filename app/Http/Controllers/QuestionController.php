@@ -10,6 +10,11 @@ class QuestionController extends Controller
     // todo: function to get all questions - getQuestions()
     // todo: function to create a question - createQuestion()
 
+    public function getQuestions()
+    {
+        return Question::get();
+    }
+
     /**
      * Returns specified question object
      *
@@ -34,7 +39,7 @@ class QuestionController extends Controller
         ]);
 
         $question->name = $validated['name'];
-        
+
         if (isset($validated['active'])) {
             $question->active = $validated['active'];
         }
@@ -46,7 +51,7 @@ class QuestionController extends Controller
 
     /**
      * Delete question
-     * 
+     *
      * @param Question $question question to be deleted
      * @return Response response JSON with status code
      */
@@ -57,5 +62,12 @@ class QuestionController extends Controller
         return response()->json([
             'state' => 'ok',
         ]);
+    }
+
+    public function getQuestionsView()
+    {
+        $question = $this->getQuestions();
+
+        return view('questions.questions', ['question' => $question]);
     }
 }
