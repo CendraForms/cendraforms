@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 
@@ -26,5 +27,7 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/roles', [RoleController::class, 'getRolesView']);
+
+Route::get('/forms/{form}', [FormController::class, 'getFormView']);
 
 require __DIR__.'/auth.php';

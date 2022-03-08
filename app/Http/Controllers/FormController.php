@@ -96,4 +96,11 @@ class FormController extends Controller
             'state' => 'ok',
         ]);
     }
+
+
+    public function getFormView(Form $form)
+    {
+
+        return view('Form/form', ['form' => $form]);
+    }
 }
