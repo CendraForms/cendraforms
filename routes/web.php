@@ -38,6 +38,10 @@ Route::get('/sections/create', [SectionController::class, 'getSectionsCreateView
 
 Route::post('/sections', [SectionController::class, 'createSection']);
 
+Route::get('/sections/{section}', [SectionController::class, 'updateSectionView']);
+
+Route::put('/sections/{section}', [SectionController::class, 'updateSection']);
+
 Route::get('/forms', [FormController::class, 'getFormsView']);
 
 Route::get('/questions', [QuestionController::class, 'getQuestionsView']);
