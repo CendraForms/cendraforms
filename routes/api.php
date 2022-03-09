@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AnswerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnswerController;
@@ -92,7 +91,7 @@ Route::get('/answers', [AnswerController::class, 'getAll']);
 Route::put('/answers/{answer}', [AnswerController::class, 'update']);
 
 Route::delete('/answers/{answer}', [AnswerController::class, 'delete']);
-
+Route::post('/answers', [AnswerController::class, 'create']);
 /**
  * Users
  */
