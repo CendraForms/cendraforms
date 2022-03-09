@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SectionController;
+use App\Models\Section;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,5 +37,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+
+Route::get('/roles', [RoleController::class, 'getRolesView']);
+
+Route::get('/sections', [SectionController::class, 'getSectionsView']);
 
 require __DIR__.'/auth.php';
