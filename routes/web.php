@@ -22,6 +22,29 @@ Route::get('/', function () {
 });
 
 /**
+ * Roles
+ */
+Route::get('/roles', [RoleController::class, 'index'])
+    ->name('roles.index');
+
+Route::get('/roles/create', [RoleController::class, 'create'])
+    ->name('roles.create');
+
+Route::get('/roles/{role}', [RoleController::class, 'edit'])
+    ->name('roles.edit');
+
+Route::post('/roles', [RoleController::class, 'store'])
+    ->name('roles.store');
+
+Route::put('/roles/{role}', [RoleController::class, 'update'])
+    ->name('roles.update');
+
+Route::delete('/roles/{role}', [RoleController::class, 'destroy'])
+    ->name('roles.destroy');
+
+
+
+/**
  * User view
  */
 Route::get('/users', [UserController::class, 'getUsersView']);
@@ -30,15 +53,15 @@ Route::get('/users/{user}', [UserController::class, 'getUserView']);
  /*
  *Role view 
  */
-Route::get('/roles/{role}', [RoleController::class, 'getRoleView']);
-Route::get('/roles', [RoleController::class, 'getRolesView']);
+// Route::get('/roles/{role}', [RoleController::class, 'getRoleView']);
+// Route::get('/roles', [RoleController::class, 'getRolesView']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 
-Route::get('/roles', [RoleController::class, 'getRolesView']);
+// Route::get('/roles', [RoleController::class, 'getRolesView']);
 
 Route::get('/sections', [SectionController::class, 'getSectionsView']);
 
