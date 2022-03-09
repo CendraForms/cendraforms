@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SectionController;
-use App\Models\Section;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +41,12 @@ Route::put('/roles/{role}', [RoleController::class, 'update'])
 Route::delete('/roles/{role}', [RoleController::class, 'destroy'])
     ->name('roles.destroy');
 
+/**
+ * Questions
+ */
+Route::put('/questions/{question}', [QuestionController::class, 'update'])
+    ->name('questions.update');
+
 
 
 /**
@@ -50,18 +55,9 @@ Route::delete('/roles/{role}', [RoleController::class, 'destroy'])
 Route::get('/users', [UserController::class, 'getUsersView']);
 Route::get('/users/{user}', [UserController::class, 'getUserView']);
 
- /*
- *Role view 
- */
-// Route::get('/roles/{role}', [RoleController::class, 'getRoleView']);
-// Route::get('/roles', [RoleController::class, 'getRolesView']);
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-
-
-// Route::get('/roles', [RoleController::class, 'getRolesView']);
 
 Route::get('/sections', [SectionController::class, 'getSectionsView']);
 
