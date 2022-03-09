@@ -44,6 +44,10 @@ Route::put('/sections/{section}', [SectionController::class, 'updateSection']);
 
 Route::get('/forms', [FormController::class, 'getFormsView']);
 
+Route::get('/forms/{form}', [FormController::class, 'updateFormView']);
+
+Route::put('/forms/{form}', [FormController::class, 'updateForm']);
+
 Route::get('/questions', [QuestionController::class, 'getQuestionsView']);
 
 Route::get('/answers', [AnswerController::class, 'getAnswersView']);

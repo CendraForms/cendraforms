@@ -69,17 +69,20 @@ class FormController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255'],
             'active' => ['nullable', 'boolean'],
         ]);
 
         $form->name = $validated['name'];
+        $form->description = $validated['description'];
         if (isset($validated['active'])) {
             $form->active = $validated['active'];
         }
 
         $form->save();
 
-        return $form;
+        //return $form;
+        return redirect('/forms/'.$form->id);
     }
 
     /**
@@ -102,5 +105,10 @@ class FormController extends Controller
         $forms = $this->getForms();
 
         return view('forms.forms', ['forms' => $forms]);
+    }
+
+    public function updateFormView(Form $form)
+    {
+        return view('forms.formsupdate', ['forms' => $form]);
     }
 }
