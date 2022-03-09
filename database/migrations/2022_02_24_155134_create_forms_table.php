@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->integer('user_id')
+                ->nullable()
+                ->default(null)
                 ->index()
                 ->constrained()
                 ->onUpdate('cascade')

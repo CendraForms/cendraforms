@@ -8,13 +8,27 @@ use Illuminate\Http\Request;
 
 class AnswerController extends Controller
 {
+    // todo: function to get specific answer - get()
+    // todo: function to create a answer - create()
+    // todo: function to update a answer - update()
+
+    /**
+     * Gets all answers
+     *
+     * @return JSON All obtained answers
+     */
+    public static function getAll()
+    {
+        return Answer::get();
+    }
+
     /**
      * Delete answer
      *
      * @param Answer $answer answer to be deleted
      * @return Response response JSON with status code
      */
-    public function deleteAnswer(Answer $answer)
+    public function delete(Answer $answer)
     {
         $answer->delete();
 
@@ -22,6 +36,7 @@ class AnswerController extends Controller
             'state' => 'ok',
         ]);
     }
+    
     /**
      * Returns all answers
      *
@@ -34,7 +49,7 @@ class AnswerController extends Controller
         //return view('');
     }
 
-    public function updateAnswer(Request $request, Answer $answer)
+    public function update(Request $request, Answer $answer)
     {
         $validated = $request->validate([
             'content' => ['required', 'string', 'max:255'],
