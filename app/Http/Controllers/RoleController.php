@@ -4,108 +4,77 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Role;
-use App\Models\RoleUser;
-use Symfony\Contracts\Service\Attribute\Required;
-
-use function PHPUnit\Framework\isNull;
 
 class RoleController extends Controller
 {
     /**
-     * Returns all roles
+     * Gets all roles
      *
-     * @return JSON
+     * @return JSON All obtained roles
      */
-    public static function getRoles()
+    public static function getAll()
     {
-       $role=Role::get();
-
-        return $role;
-    }
-
-    public function getRolesView()
-    {
-        $role = self::getRoles(); 
-        return view('Roles/Roles', ['role' => $role]);
-    }
-
-
-
-    /**
-     * Returns specified role object
-     *
-     * @param Role $role specified role id
-     */
-    public function getRole(Role $role)
-    {
-        return $role;
-
-        //In Future
-       
+        return Role::get();
     }
 
     /**
-     * Create new Role
+     * Gets specified Role object
+     *
+     * @param Role $role Role id
+     * @return JSON obtained role
+     */
+    public function get(Role $role)
+    {
+        return $role;
+    }
+
+    /**
+     * Creates a new Role
      *
      * @param Request $request recipe parameters post
+     * @return JSON created role
      */
-    public function createRole(Request $request)
+    public function create(Request $request)
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'active' => ['nullable', 'boolean'],
+            'active' => ['sometimes', 'boolean'],
         ]);
 
-        $role = new Role();
-        $role->name = $validated['name'];
-        if (isset($validated['active'])) {
-            $role->active = $validated['active'];
-        }
-        $role->save();
-
-        return $role;
+        return Role::create($validated);
     }
 
     /**
-     * Update Role
+     * Updates parsed Role
      *
      * @param Request $request recipe parameters post
-     * @param Integer $id role id
+     * @param Role $role Role id
+     * @return JSON updated role
      */
-    public function updateRole(Request $request, Role $role)
+    public function update(Request $request, Role $role)
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'active' => ['nullable', 'boolean'],
+            'active' => ['sometimes', 'boolean'],
         ]);
-
-        $role->name = $validated['name'];
-        if (isset($validated['active'])) {
-            $role->active = $validated['active'];
-        }
-        $role->save();
+        
+        $role->update($validated);
 
         return $role;
     }
 
     /**
-     * Delete Role
-     *
-     * @param Integer $id role id
+     * Deletes parsed Role
+     * 
+     * @param Role $role Role to be deleted
+     * @return Response JSON response with status code
      */
-    public function deleteRole(Role $role)
+    public function delete(Role $role)
     {
-        $deleted = $role->deleteOrFail();
+        $role->delete();
 
-        if ($deleted) {
-            RoleUser::where('role_id', $role['id'])->delete();
-        }
-
-        return $deleted;
-    }
-
-    public function getRoleView(Role $role)
-    {
-        return view('roledata', ['role' => $role]);
+        return response()->json([
+            'state' => 'ok',
+        ]);
     }
 }

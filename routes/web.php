@@ -3,6 +3,7 @@
 use App\Http\Controllers\AnswerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\QuestionController;
@@ -23,7 +24,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/**
+ * User view
+ */
+Route::get('/users', [UserController::class, 'getUsersView']);
+Route::get('/users/{user}', [UserController::class, 'getUserView']);
+
+ /*
+ *Role view 
+ */
 Route::get('/roles/{role}', [RoleController::class, 'getRoleView']);
+Route::get('/roles', [RoleController::class, 'getRolesView']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -43,6 +54,10 @@ Route::get('/sections/{section}', [SectionController::class, 'updateSectionView'
 Route::put('/sections/{section}', [SectionController::class, 'updateSection']);
 
 Route::get('/forms', [FormController::class, 'getFormsView']);
+
+Route::get('/forms/{form}', [FormController::class, 'updateFormView']);
+
+Route::put('/forms/{form}', [FormController::class, 'updateForm']);
 
 Route::get('/questions', [QuestionController::class, 'getQuestionsView']);
 

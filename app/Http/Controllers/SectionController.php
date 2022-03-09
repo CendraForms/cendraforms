@@ -8,24 +8,25 @@ use Illuminate\Support\Facades\Auth;
 
 class SectionController extends Controller
 {
-    // todo: function to get a specific section - getSection(Section $section)
-    // todo: function to create a sections - createSection()
+    // todo: function to get a specific section - get(Section $section)
+    // todo: function to create a sections - create()
 
     /**
-     * Returns all sections
+     * Gets all sections
      *
-     * @return JSON
+     * @return JSON All obtained sections
      */
-    public static function getSections()
+    public static function getAll()
     {
         return Section::get();
     }
 
     /**
-     * Update Section
+     * Updates parsed Section
      *
-     * @param Request $request recipe parameters put
-     * @param Integer $section section id (Section Model)
+     * @param Request $request recipe parameters post
+     * @param Section $section Section id
+     * @return JSON updated section
      */
     public function createSection(Request $request)
     {
@@ -68,11 +69,12 @@ class SectionController extends Controller
     }
 
     /**
-     * Delete Section
+     * Deletes parsed Section
      *
-     * @param Integer $id section id
+     * @param Section $section Section to be deleted
+     * @return Response JSON response with status code
      */
-    public function deleteSection(Section $section)
+    public function delete(Section $section)
     {
         $section->delete();
 
