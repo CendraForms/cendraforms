@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AnswerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
+use App\Models\Answer;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +28,9 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/roles', [RoleController::class, 'getRolesView']);
+
+Route::get('/answers', [AnswerController::class, 'CreatreAnswerView']);
+
+
 
 require __DIR__.'/auth.php';
