@@ -3,6 +3,7 @@
 use App\Http\Controllers\AnswerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SectionController;
@@ -88,6 +89,6 @@ Route::get('/answers', [AnswerController::class, 'getAnswers']);
 
 // Route::post('/answers', [AnswerController::class, 'createAnswer']); method doesn't exist yet
 
-// Route::put('/answers/{answer}', [AnswerController::class, 'updateAnswer']); method doesn't exist yet
+Route::put('/answers/{answer}', [AnswerController::class, 'updateAnswer']);
 
 Route::delete('/answers/{answer}', [AnswerController::class, 'deleteAnswer']);
