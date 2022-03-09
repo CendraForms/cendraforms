@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Answer;
+use App\Models\Question;
 use Illuminate\Http\Request;
 
 class AnswerController extends Controller
@@ -22,10 +23,10 @@ class AnswerController extends Controller
     }
 
     /**
-     * Deletes parsed Answer
-     * 
-     * @param Answer $answer Answer to be deleted
-     * @return Response JSON response with status code
+     * Delete answer
+     *
+     * @param Answer $answer answer to be deleted
+     * @return Response response JSON with status code
      */
     public function delete(Answer $answer)
     {
@@ -34,6 +35,18 @@ class AnswerController extends Controller
         return response()->json([
             'state' => 'ok',
         ]);
+    }
+    
+    /**
+     * Returns all answers
+     *
+     * @return JSON
+     */
+    public static function getAnswers()
+    {
+        return Answer::get();
+        //In Future
+        //return view('');
     }
 
     public function update(Request $request, Answer $answer)
