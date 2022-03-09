@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +19,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/**
+ * User view
+ */
+Route::get('/users', [UserController::class, 'getUsersView']);
+Route::get('/users/{user}', [UserController::class, 'getUserView']);
+
+ /*
+ *Role view 
+ */
 Route::get('/roles/{role}', [RoleController::class, 'getRoleView']);
+Route::get('/roles', [RoleController::class, 'getRolesView']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-
-Route::get('/roles', [RoleController::class, 'getRolesView']);
 
 require __DIR__.'/auth.php';
