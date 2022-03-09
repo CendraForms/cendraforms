@@ -65,9 +65,6 @@ class AnswerController extends Controller
         ]);
         $validated['user_id'] = Auth::id();
 
-        
-      
-
         return Answer::create($validated);
     }
 }
