@@ -7,7 +7,6 @@
         <input name="name" type="text" value="{{ $role->name }}">
 
         <label for="active">Active</label>
-
         <select name="active">
             <option selected disabled></option>
             <option value="1" {{ $role->active == 1 ? 'selected' : '' }}>Yes</option>
