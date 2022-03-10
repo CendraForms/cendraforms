@@ -2,79 +2,58 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Role;
+use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
-    /**
-     * Gets all roles
-     *
-     * @return JSON All obtained roles
-     */
-    public static function getAll()
+    public function index()
     {
-        return Role::get();
+        return view('roles.index', [
+            'roles' => Role::get()
+        ]);
     }
 
-    /**
-     * Gets specified Role object
-     *
-     * @param Role $role Role id
-     * @return JSON obtained role
-     */
-    public function get(Role $role)
+    public function create()
     {
-        return $role;
+      return view('roles.create');
     }
 
-    /**
-     * Creates a new Role
-     *
-     * @param Request $request recipe parameters post
-     * @return JSON created role
-     */
-    public function create(Request $request)
+    public function edit(Role $role)
+    {
+        return view('roles.edit', [
+            'role' => $role
+        ]);
+    }
+
+    public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'active' => ['sometimes', 'boolean'],
+            'name' => ['required', 'string', 'alpha_dash', 'min:3', 'max:30', 'unique:roles'],
+            'active' => ['required', 'boolean'],
         ]);
 
-        return Role::create($validated);
+        Role::create($validated);
+
+        return redirect()->route('roles.index')->with('success', 'Rol creat.');
     }
 
-    /**
-     * Updates parsed Role
-     *
-     * @param Request $request recipe parameters post
-     * @param Role $role Role id
-     * @return JSON updated role
-     */
     public function update(Request $request, Role $role)
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'active' => ['sometimes', 'boolean'],
         ]);
-        
+
         $role->update($validated);
 
-        return $role;
+        return redirect()->back()->with('success', 'Rol actualitzat.');
     }
 
-    /**
-     * Deletes parsed Role
-     * 
-     * @param Role $role Role to be deleted
-     * @return Response JSON response with status code
-     */
-    public function delete(Role $role)
+    public function destroy(Role $role)
     {
         $role->delete();
 
-        return response()->json([
-            'state' => 'ok',
-        ]);
+        return redirect()->route('roles.index')->with('success', 'Rol eliminat.');
     }
 }
