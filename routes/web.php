@@ -75,8 +75,7 @@ Route::get('/section/{section}', [SectionController::class, 'getSectionView']);
 
 Route::get('/forms', [FormController::class, 'getFormsView']);
 
-
-
+Route::get('/questions', [QuestionController::class, 'getQuestionsView']);
 
 Route::get('/questions/{question}', [QuestionController::class, 'getQuestionView']);
 

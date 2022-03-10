@@ -15,6 +15,11 @@ class QuestionController extends Controller
          return Question::get();
     }
 
+    public function getQuestions()
+    {
+        return Question::get();
+    }
+
     /**
      * Gets specified Question object
      *
@@ -47,7 +52,7 @@ class QuestionController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'active' => ['nullable', 'boolean'],
         ]);
-
+      
         $question->update($validated);
 
         return $question;
@@ -66,5 +71,12 @@ class QuestionController extends Controller
         return response()->json([
             'state' => 'ok',
         ]);
+    }
+
+    public function getQuestionsView()
+    {
+        $question = $this->getQuestions();
+
+        return view('questions.questions', ['question' => $question]);
     }
 }
