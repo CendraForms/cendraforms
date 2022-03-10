@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\AnswerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,68 +26,84 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 /**
  * Roles
  */
-Route::get('/roles', [RoleController::class, 'getRoles']);
+Route::get('/roles', [RoleController::class, 'getAll']);
 
-Route::get('/roles/{role}', [RoleController::class, 'getRole']);
+Route::get('/roles/{role}', [RoleController::class, 'get']);
 
-Route::post('/roles', [RoleController::class, 'createRole']);
+Route::post('/roles', [RoleController::class, 'create']);
 
-Route::put('/roles/{role}', [RoleController::class, 'updateRole']);
+Route::put('/roles/{role}', [RoleController::class, 'update']);
 
-Route::delete('/roles/{role}', [RoleController::class, 'deleteRole']);
+Route::delete('/roles/{role}', [RoleController::class, 'delete']);
 
 
 /**
  * Forms
  */
-Route::get('/forms', [FormController::class, 'getForms']);
+Route::get('/forms', [FormController::class, 'getAll']);
 
-Route::get('/forms/{form}', [FormController::class, 'getForm']);
+Route::get('/forms/{form}', [FormController::class, 'get']);
 
-Route::post('/forms', [FormController::class, 'createForm']);
+Route::post('/forms', [FormController::class, 'create']);
 
-Route::put('/forms/{form}', [FormController::class, 'updateForm']);
+Route::put('/forms/{form}', [FormController::class, 'update']);
 
-Route::delete('/forms/{form}', [FormController::class, 'deleteForm']);
+Route::delete('/forms/{form}', [FormController::class, 'delete']);
 
 
 /**
  * Sections
  */
-Route::get('/sections', [SectionController::class, 'getSections']);
+Route::get('/sections', [SectionController::class, 'getAll']);
 
-// Route::get('/sections/{section}', [SectionController::class, 'getSection']); method doesn't exist yet
+// Route::get('/sections/{section}', [SectionController::class, 'get']); // method doesn't exist yet
 
-// Route::post('/sections', [SectionController::class, 'createSection']); method doesn't exist yet
+// Route::post('/sections', [SectionController::class, 'create']); // method doesn't exist yet
 
-Route::put('/sections/{section}', [SectionController::class, 'updateSection']);
+Route::put('/sections/{section}', [SectionController::class, 'update']);
 
-Route::delete('/sections/{section}', [SectionController::class, 'deleteSection']);
+Route::delete('/sections/{section}', [SectionController::class, 'delete']);
 
 
 /**
  * Questions
  */
-// Route::get('/questions', [QuestionController::class, 'getQuestions']); method doesn't exist yet
+// Route::get('/questions', [QuestionController::class, 'getAll']); // method doesn't exist yet
 
-Route::get('/questions/{question}', [QuestionController::class, 'getQuestion']);
+Route::get('/questions/{question}', [QuestionController::class, 'get']);
 
-// Route::post('/questions', [QuestionController::class, 'createQuestion']); method doesn't exist yet
+// Route::post('/questions', [QuestionController::class, 'create']); // method doesn't exist yet
 
-Route::put('/questions/{question}', [QuestionController::class, 'updateQuestion']);
+Route::put('/questions/{question}', [QuestionController::class, 'update']);
 
-Route::delete('/questions/{question}', [QuestionController::class, 'deleteQuestion']);
+Route::delete('/questions/{question}', [QuestionController::class, 'delete']);
 
 
 /**
  * Answers
  */
-Route::get('/answers', [AnswerController::class, 'getAnswers']);
+Route::get('/answers', [AnswerController::class, 'getAll']);
 
-// Route::get('/answers/{answer}', [AnswerController::class, 'getAnswer']); method doesn't exist yet
+Route::get('/answers/{answer}', [AnswerController::class, 'get']);
 
-// Route::post('/answers', [AnswerController::class, 'createAnswer']); method doesn't exist yet
+// Route::post('/answers', [AnswerController::class, 'create']); // method doesn't exist yet
 
-// Route::put('/answers/{answer}', [AnswerController::class, 'updateAnswer']); method doesn't exist yet
+Route::put('/answers/{answer}', [AnswerController::class, 'update']);
 
-Route::delete('/answers/{answer}', [AnswerController::class, 'deleteAnswer']);
+Route::delete('/answers/{answer}', [AnswerController::class, 'delete']);
+
+/**
+ * Users
+ */
+// Route::get('/users', [UserController::class, 'getAll']); // method doesn't exist yet
+
+// Route::get('/users/{user}', [UserController::class, 'get']); // method doesn't exist yet
+
+// Route::post('/users', [UserController::class, 'create']); // method doesn't exist yet
+
+// Route::put('/users/{user}', [UserController::class, 'update']); // method doesn't exist yet
+
+// Route::delete('/users/{user}', [UserController::class, 'delete']); // method doesn't exist yet
+
+Route::get('/users', [UserController::class, 'getUsers']);
+Route::get('/users/{user}', [UserController::class, 'getUser']);
