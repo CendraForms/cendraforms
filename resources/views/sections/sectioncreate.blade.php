@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>sections</title>
+    <title>sections create</title>
 </head>
 <body>
     <div>
-        <form action="" method="POST">
+        <form action="/sections" method="POST">
             @csrf
 
             <div>
@@ -23,6 +23,9 @@
                     <option value="1">Si</option>
                     <option value="0">No</option>
                 </select>
+            </div>
+            <div>
+                <input type="submit" value="Crear">
             </div>
         </form>
     </div>

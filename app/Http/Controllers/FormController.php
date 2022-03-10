@@ -84,4 +84,11 @@ class FormController extends Controller
             'state' => 'ok',
         ]);
     }
+
+    public function getFormsView()
+    {
+        $forms = $this->getForms();
+
+        return view('forms.forms', ['forms' => $forms]);
+    }
 }

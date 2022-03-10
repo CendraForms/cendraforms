@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\FormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,5 +62,18 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/sections', [SectionController::class, 'getSectionsView']);
+
+Route::get('/sections/create', [SectionController::class, 'getSectionsCreateView']);
+
+Route::post('/sections', [SectionController::class, 'createSection']);
+
+Route::get('/section/{section}', [SectionController::class, 'getSectionView']);
+
+
+Route::get('/forms', [FormController::class, 'getFormsView']);
+
+Route::get('/questions', [QuestionController::class, 'getQuestionsView']);
+
+Route::get('/questions/{question}', [QuestionController::class, 'getQuestionView']);
 
 require __DIR__.'/auth.php';
