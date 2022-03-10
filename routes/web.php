@@ -50,8 +50,16 @@ Route::delete('/roles/{role}', [RoleController::class, 'destroy'])
 /**
  * User view
  */
-Route::get('/users', [UserController::class, 'getUsersView']);
+Route::get('/users', [UserController::class, 'index'])
+    ->name('users.index');
+
+Route::get('/users/create', [UserController::class, 'create'])
+    ->name('users.create');
+
 Route::get('/users/{user}', [UserController::class, 'getUserView']);
+
+Route::post('/users', [UserController::class, 'store'])
+    ->name('users.store');
 
  /*
  *Role view

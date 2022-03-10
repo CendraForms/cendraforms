@@ -3,21 +3,22 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Laravel</title>
+        <title>Section</title>
     </head>
     <body class="antialiased">
     <table class="default">
     <tr>
-<th>id</th>
-<th>Nom</th>
-<th>Email</th>
+<th>Seccio</th>
+<th>Id Formulari</th>
+<th>Id Usuari</th>
 <th>Estat</th>
 </tr>
-    <?php 
-foreach($user as $user){
-  print "<tr><td>".$user['id']."</td><td>".$user['name']."</td><td>".$user['email']."</td><td>".$user['active']."</td></tr>";
-}   
-    ?>
+<tr>
+    <td>{{ $section->id }}</td>
+    <td>{{ $section->form_id }}</td>
+    <td>{{ $section->user_id }}</td>
+    <td>{{ $section->active }}</td>
+</tr>
 </table>
     </body>
 </html>
