@@ -13,11 +13,6 @@ class QuestionController extends Controller
 
     public function getQuestions()
     {
-         return Question::get();
-    }
-
-    public function getQuestions()
-    {
         return Question::get();
     }
 
@@ -51,8 +46,6 @@ class QuestionController extends Controller
         return $question;
     }
 
-
-
     public function getQuestionView(Question $question)
     {
         return view('Questions/question', ['question' => $question]);
@@ -81,7 +74,7 @@ class QuestionController extends Controller
 
     /**
      * Deletes parsed Question
-     * 
+     *
      * @param Question $question Question to be deleted
      * @return Response JSON response with status code
      */

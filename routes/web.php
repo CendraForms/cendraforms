@@ -1,12 +1,12 @@
 <?php
 
 use App\Http\Controllers\AnswerController;
-use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,24 +50,40 @@ Route::delete('/roles/{role}', [RoleController::class, 'destroy'])
 Route::put('/questions/{question}', [QuestionController::class, 'update'])
     ->name('questions.update');
 
-
-
 /**
  * User view
  */
-Route::get('/users', [UserController::class, 'getUsersView']);
-Route::get('/users/{user}', [UserController::class, 'getUserView']);
+Route::get('/users', [UserController::class, 'index'])
+    ->name('users.index');
+
+Route::get('/users/create', [UserController::class, 'create'])
+    ->name('users.create');
+
+Route::get('/users/{user}', [UserController::class, 'edit'])
+    ->name('users.edit');
+
+Route::post('/users', [UserController::class, 'store'])
+    ->name('users.store');
+
+Route::put('/users/{user}', [UserController::class, 'update'])
+    ->name('users.update');
 
  /*
- *Role view 
+ *Role view
  */
 // Route::get('/roles/{role}', [RoleController::class, 'getRoleView']);
 // Route::get('/roles', [RoleController::class, 'getRolesView']);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/sections', [SectionController::class, 'getSectionsView']);
+
+
+Route::get('/createanswers', [AnswerController::class, 'CreateAnswerView']);
+
+
 
 Route::get('/sections/create', [SectionController::class, 'getSectionsCreateView']);
 
@@ -77,6 +93,27 @@ Route::get('/sections/{section}', [SectionController::class, 'updateSectionView'
 
 Route::put('/sections/{section}', [SectionController::class, 'updateSection']);
 
+Route::get('/forms', [FormController::class, 'index'])
+    ->name('forms.index');
+
+Route::get('/forms/create', [FormController::class, 'create'])
+    ->name('forms.create');
+
+Route::get('/forms/{form}', [FormController::class, 'edit'])
+    ->name('forms.edit');
+
+Route::post('/forms', [FormController::class, 'store'])
+    ->name('forms.store');
+
+Route::get('/section/{section}', [SectionController::class, 'getSectionView']);
+
+Route::get('/forms', [FormController::class, 'getFormsView']);
+
+Route::get('/forms/{form}', [FormController::class, 'updateFormView']);
+
+Route::put('/forms/{form}', [FormController::class, 'update'])
+    ->name('forms.update');
+
 Route::get('/section/{section}', [SectionController::class, 'getSectionView']);
 
 Route::get('/forms', [FormController::class, 'getFormsView']);
@@ -84,6 +121,10 @@ Route::get('/forms', [FormController::class, 'getFormsView']);
 Route::get('/questions', [QuestionController::class, 'getQuestionsView']);
 
 Route::get('/answers', [AnswerController::class, 'getAnswersView']);
+
+Route::get('/questions', [QuestionController::class, 'getQuestionsView']);
+
+Route::get('/questions/{question}', [QuestionController::class, 'getQuestionView']);
 
 Route::get('/questions/{question}', [QuestionController::class, 'getQuestionView']);
 

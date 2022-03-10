@@ -3,7 +3,6 @@
     
     <form method="POST"  action="{{ route('roles.update', $role->id) }}">
         @csrf @method("PUT")  
-
         <label for="name">Name</label>
         <input name="name" type="text" value="{{ $role->name }}">
 
