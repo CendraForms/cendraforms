@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\UserController;
 
@@ -84,7 +85,7 @@ Route::delete('/questions/{question}', [QuestionController::class, 'delete']);
  */
 Route::get('/answers', [AnswerController::class, 'getAll']);
 
-// Route::get('/answers/{answer}', [AnswerController::class, 'get']); // method doesn't exist yet
+Route::get('/answers/{answer}', [AnswerController::class, 'get']);
 
 // Route::post('/answers', [AnswerController::class, 'create']); // method doesn't exist yet
 
@@ -92,6 +93,7 @@ Route::put('/answers/{answer}', [AnswerController::class, 'update']);
 
 Route::delete('/answers/{answer}', [AnswerController::class, 'delete']);
 
+Route::post('/answers', [AnswerController::class, 'create']) ->name('answer.create');
 /**
  * Users
  */
