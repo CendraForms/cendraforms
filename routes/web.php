@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -73,5 +74,10 @@ Route::get('/section/{section}', [SectionController::class, 'getSectionView']);
 
 
 Route::get('/forms', [FormController::class, 'getFormsView']);
+
+
+
+
+Route::get('/questions/{question}', [QuestionController::class, 'getQuestionView']);
 
 require __DIR__.'/auth.php';
