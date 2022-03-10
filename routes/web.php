@@ -57,7 +57,6 @@ Route::get('/users/{user}', [UserController::class, 'getUserView']);
  */
 // Route::get('/roles/{role}', [RoleController::class, 'getRoleView']);
 // Route::get('/roles', [RoleController::class, 'getRolesView']);
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -84,7 +83,6 @@ Route::get('/questions', [QuestionController::class, 'getQuestionsView']);
 Route::get('/answers', [AnswerController::class, 'getAnswersView']);
 
 Route::get('/questions/{question}', [QuestionController::class, 'getQuestionView']);
-
 
 Route::get('/answer/{answer}', [AnswerController::class, 'getAnswerView']);
 
