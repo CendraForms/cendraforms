@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Answer;
-use App\Models\Question;
 use Illuminate\Http\Request;
 
 class AnswerController extends Controller
@@ -65,5 +64,18 @@ class AnswerController extends Controller
         $answer->save();
 
         return $answer;
+    }
+    
+    /**
+     * Returns specified answer object
+     *
+     * @param Answer $answer specified answer id
+     */
+    public function get(Answer $answer)
+    {
+        return $answer;
+
+        //In Future
+        //return view('');
     }
 }
