@@ -54,7 +54,7 @@ Route::get('/users', [UserController::class, 'getUsersView']);
 Route::get('/users/{user}', [UserController::class, 'getUserView']);
 
  /*
- *Role view 
+ *Role view
  */
 // Route::get('/roles/{role}', [RoleController::class, 'getRoleView']);
 // Route::get('/roles', [RoleController::class, 'getRolesView']);
@@ -76,11 +76,20 @@ Route::get('/sections/{section}', [SectionController::class, 'updateSectionView'
 
 Route::put('/sections/{section}', [SectionController::class, 'updateSection']);
 
-Route::get('/forms', [FormController::class, 'getFormsView']);
+Route::get('/forms', [FormController::class, 'index'])
+    ->name('forms.index');
 
-Route::get('/forms/{form}', [FormController::class, 'updateFormView']);
+Route::get('/forms/create', [FormController::class, 'create'])
+    ->name('forms.create');
 
-Route::put('/forms/{form}', [FormController::class, 'updateForm']);
+Route::get('/forms/{form}', [FormController::class, 'edit'])
+    ->name('forms.edit');
+
+Route::post('/forms', [FormController::class, 'store'])
+    ->name('forms.store');
+
+Route::put('/forms/{form}', [FormController::class, 'update'])
+    ->name('forms.update');
 
 Route::get('/questions', [QuestionController::class, 'getQuestionsView']);
 
