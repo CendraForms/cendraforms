@@ -69,15 +69,26 @@ class AnswerController extends Controller
     }
 
     public function create(Request $request)
-    {
-        
+    {    
+            
         $validated = $request->validate([
             'content' => ['required', 'string', 'max:255'],
-            'question_id' => ['required', 'int', 'max:255'],
-            'active' => ['sometimes', 'boolean'],
+            'question_id' => ['required', 'integer', 'max:255'],
+            'active' => ['required', 'boolean'],
         ]);
-        $validated['user_id'] = Auth::id();
 
-        return Answer::create($validated);
+        $answer = new Answer();
+
+        $answer->content = $validated['content'];
+        $answer->question_id = $validated['question_id'];
+        $answer->user_id = Auth::id();
+
+        $answer->save();
+
+        return redirect()->route('/answers')->with('success', 'answer creat.');
     }
+
+   public function  CreateAnswerView(){
+    return view('Answer/Createanswer');
+   }
 }

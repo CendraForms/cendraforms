@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\UserController;
 
@@ -91,7 +92,8 @@ Route::get('/answers', [AnswerController::class, 'getAll']);
 Route::put('/answers/{answer}', [AnswerController::class, 'update']);
 
 Route::delete('/answers/{answer}', [AnswerController::class, 'delete']);
-Route::post('/answers', [AnswerController::class, 'create']);
+
+Route::post('/answers', [AnswerController::class, 'create']) ->name('answer.create');
 /**
  * Users
  */
