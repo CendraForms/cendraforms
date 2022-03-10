@@ -48,6 +48,12 @@ class AnswerController extends Controller
         //return view('');
     }
 
+    public function getAnswerView(Answer $answer)
+    {
+
+        return view('Answer/answer', ['answer' => $answer]);
+    }
+
     public function update(Request $request, Answer $answer)
     {
         $validated = $request->validate([
@@ -71,5 +77,18 @@ class AnswerController extends Controller
         $answers = $this->getAnswers();
 
         return view('answers.answers', ['answers' => $answers]);
+    }
+
+    /**
+     * Returns specified answer object
+     *
+     * @param Answer $answer specified answer id
+     */
+    public function get(Answer $answer)
+    {
+        return $answer;
+
+        //In Future
+        //return view('');
     }
 }
