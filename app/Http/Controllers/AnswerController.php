@@ -36,7 +36,7 @@ class AnswerController extends Controller
             'state' => 'ok',
         ]);
     }
-    
+
     /**
      * Returns all answers
      *
@@ -47,6 +47,12 @@ class AnswerController extends Controller
         return Answer::get();
         //In Future
         //return view('');
+    }
+
+    public function getAnswerView(Answer $answer)
+    {
+        
+        return view('Answer/answer', ['answer' => $answer]);
     }
 
     public function update(Request $request, Answer $answer)
@@ -66,7 +72,6 @@ class AnswerController extends Controller
 
         return $answer;
     }
-
 
     public function create(Request $request)
     {    
@@ -88,10 +93,16 @@ class AnswerController extends Controller
         return redirect()->route('/answers')->with('success', 'answer creat.');
     }
 
-   public function  CreateAnswerView(){
+   public function CreateAnswerView() {
     return view('Answer/Createanswer');
    }
 
+    public function getAnswersView()
+    {
+        $answers = $this->getAnswers();
+
+        return view('answers.answers', ['answers' => $answers]);
+    }
     
     /**
      * Returns specified answer object

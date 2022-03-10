@@ -29,23 +29,44 @@ class FormController extends Controller
         return $form;
     }
 
+    public function index()
+    {
+        return view('forms.index', [
+            'forms' => Form::get()
+        ]);
+    }
+
+    public function create()
+    {
+        return view('forms.create');
+    }
+
+    public function edit(Form $form)
+    {
+        return view('forms.edit', [
+            'form' => $form
+        ]);
+    }
+
     /**
      * Creates a new Form
      *
      * @param Request $request recipe parameters post
      * @return JSON created form
      */
-    public function create(Request $request)
+    public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'alpha_dash', 'min:3', 'max:255', 'unique:forms'],
             'description' => ['required', 'string', 'max:1000'],
-            'active' => ['nullable', 'boolean'],
+            'active' => ['required', 'boolean'],
         ]);
 
         $validated['user_id'] = Auth::id();
 
-        return Form::create($validated);
+        Form::create($validated);
+
+        return redirect()->back()->with('success', 'Formulari Creat.');
     }
 
     /**
@@ -60,19 +81,17 @@ class FormController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:1000'],
-            'active' => ['nullable', 'boolean'],
+            'active' => ['sometimes', 'boolean'],
         ]);
-
-        $validated['user_id'] = Auth::id();
 
         $form->update($validated);
 
-        return $form;
+        return redirect()->back()->with('success', 'Formulari Actualitzat.');
     }
 
     /**
      * Deletes parsed Form
-     * 
+     *
      * @param Form $form Form to be deleted
      * @return Response JSON response with status code
      */
@@ -83,6 +102,17 @@ class FormController extends Controller
         return response()->json([
             'state' => 'ok',
         ]);
+    }
+
+    public function updateFormView(Form $form)
+    {
+        return view('forms.formsupdate', ['forms' => $form]);
+    }
+  
+    public function getFormView(Form $form)
+    {
+
+        return view('Form/form', ['form' => $form]);
     }
 
     public function getFormsView()

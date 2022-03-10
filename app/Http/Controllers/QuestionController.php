@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class QuestionController extends Controller
 {
@@ -12,7 +13,7 @@ class QuestionController extends Controller
 
     public function getQuestions()
     {
-         return Question::get();
+        return Question::get();
     }
 
     /**
@@ -23,6 +24,25 @@ class QuestionController extends Controller
      */
     public function get(Question $question)
     {
+
+        $question=Question::get();
+
+        return $question;
+    }
+
+    public function createQuestion (Request $request){
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'content' => ['required', 'string', 'max:1000'],
+            'active' => ['nullable', 'boolean'],
+        ]);
+        $question = new Question();
+        $question->name = $validated['name'];
+        if (isset($validated['active'])) {
+            $question->active = $validated['active'];
+        }
+        $question->save();
+
         return $question;
     }
 
@@ -45,9 +65,10 @@ class QuestionController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'content' => ['required', 'string', 'max:1000'],
             'active' => ['nullable', 'boolean'],
         ]);
-
+      
         $question->update($validated);
 
         return $question;
@@ -55,7 +76,7 @@ class QuestionController extends Controller
 
     /**
      * Deletes parsed Question
-     * 
+     *
      * @param Question $question Question to be deleted
      * @return Response JSON response with status code
      */
@@ -66,5 +87,12 @@ class QuestionController extends Controller
         return response()->json([
             'state' => 'ok',
         ]);
+    }
+
+    public function getQuestionsView()
+    {
+        $question = $this->getQuestions();
+
+        return view('questions.questions', ['question' => $question]);
     }
 }
