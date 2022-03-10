@@ -105,6 +105,10 @@ Route::get('/forms/{form}', [FormController::class, 'edit'])
 Route::post('/forms', [FormController::class, 'store'])
     ->name('forms.store');
 
+Route::get('/section/{section}', [SectionController::class, 'getSectionView']);
+
+Route::get('/forms', [FormController::class, 'getFormsView']);
+
 Route::get('/forms/{form}', [FormController::class, 'updateFormView']);
 
 Route::put('/forms/{form}', [FormController::class, 'update'])
@@ -119,6 +123,8 @@ Route::get('/questions', [QuestionController::class, 'getQuestionsView']);
 Route::get('/answers', [AnswerController::class, 'getAnswersView']);
 
 Route::get('/questions', [QuestionController::class, 'getQuestionsView']);
+
+Route::get('/questions/{question}', [QuestionController::class, 'getQuestionView']);
 
 Route::get('/questions/{question}', [QuestionController::class, 'getQuestionView']);
 
