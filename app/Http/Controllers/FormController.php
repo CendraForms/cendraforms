@@ -2,41 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Form;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Form;
 
 class FormController extends Controller
 {
     /**
-     * Returns all forms
+     * Gets all forms
      *
-     * @return JSON
+     * @return JSON All obtained forms
      */
-    public static function getForms()
+    public static function getAll()
     {
         return Form::get();
     }
 
     /**
-     * Returns specified form object
+     * Gets specified Form object
      *
-     * @param Form $form specified form id
+     * @param Form $form Form id
+     * @return JSON obtained form
      */
-    public function getForm(Form $form)
+    public function get(Form $form)
     {
         return $form;
-
-        //In Future
-        //return view('');
     }
 
     /**
-     * Create new Form
+     * Creates a new Form
      *
      * @param Request $request recipe parameters post
+     * @return JSON created form
      */
-    public function createForm(Request $request)
+    public function create(Request $request)
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -44,51 +43,40 @@ class FormController extends Controller
             'active' => ['nullable', 'boolean'],
         ]);
 
-        $form = new Form();
+        $validated['user_id'] = Auth::id();
 
-        $form->name = $validated['name'];
-        $form->description = $validated['description'];
-        $form->user_id = Auth::id();
-
-        if (isset($validated['active'])) {
-            $form->active = $validated['active'];
-        }
-
-        $form->save();
-
-        return $form;
+        return Form::create($validated);
     }
 
     /**
-     * Update Form
+     * Updates parsed Form
      *
      * @param Request $request recipe parameters post
-     * @param Integer $id form id
+     * @param Form $form Form id
+     * @return JSON updated form
      */
-    public function updateForm(Request $request, Form $form)
+    public function update(Request $request, Form $form)
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:1000'],
             'active' => ['nullable', 'boolean'],
         ]);
 
-        $form->name = $validated['name'];
-        if (isset($validated['active'])) {
-            $form->active = $validated['active'];
-        }
+        $validated['user_id'] = Auth::id();
 
-        $form->save();
+        $form->update($validated);
 
         return $form;
     }
 
     /**
-     * Delete form
-     *
-     * @param Form $form form to be deleted
-     * @return Response response JSON with status code
+     * Deletes parsed Form
+     * 
+     * @param Form $form Form to be deleted
+     * @return Response JSON response with status code
      */
-    public function deleteForm(Form $form)
+    public function delete(Form $form)
     {
         $form->delete();
 
