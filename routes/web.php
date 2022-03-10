@@ -7,7 +7,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\QuestionController;
-use App\Models\Section;
 
 /*
 |--------------------------------------------------------------------------
@@ -111,6 +110,8 @@ Route::put('/forms/{form}', [FormController::class, 'update'])
 Route::get('/questions', [QuestionController::class, 'getQuestionsView']);
 
 Route::get('/answers', [AnswerController::class, 'getAnswersView']);
+
+Route::get('/questions', [QuestionController::class, 'getQuestionsView']);
 
 Route::get('/questions/{question}', [QuestionController::class, 'getQuestionView']);
 
