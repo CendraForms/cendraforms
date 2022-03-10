@@ -45,7 +45,11 @@ Route::put('/roles/{role}', [RoleController::class, 'update'])
 Route::delete('/roles/{role}', [RoleController::class, 'destroy'])
     ->name('roles.destroy');
 
-
+/**
+ * Questions
+ */
+Route::put('/questions/{question}', [QuestionController::class, 'update'])
+    ->name('questions.update');
 
 /**
  * User view
@@ -71,9 +75,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-
-// Route::get('/roles', [RoleController::class, 'getRolesView']);
-
 Route::get('/sections', [SectionController::class, 'getSectionsView']);
 
 Route::get('/sections/create', [SectionController::class, 'getSectionsCreateView']);
@@ -96,11 +97,23 @@ Route::get('/forms/{form}', [FormController::class, 'edit'])
 Route::post('/forms', [FormController::class, 'store'])
     ->name('forms.store');
 
+Route::get('/forms/{form}', [FormController::class, 'updateFormView']);
+
 Route::put('/forms/{form}', [FormController::class, 'update'])
     ->name('forms.update');
+
+Route::get('/section/{section}', [SectionController::class, 'getSectionView']);
+
+Route::get('/forms', [FormController::class, 'getFormsView']);
 
 Route::get('/questions', [QuestionController::class, 'getQuestionsView']);
 
 Route::get('/answers', [AnswerController::class, 'getAnswersView']);
+
+Route::get('/questions/{question}', [QuestionController::class, 'getQuestionView']);
+
+Route::get('/answer/{answer}', [AnswerController::class, 'getAnswerView']);
+
+Route::get('/forms/{form}', [FormController::class, 'getFormView']);
 
 require __DIR__.'/auth.php';

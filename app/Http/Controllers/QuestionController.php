@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class QuestionController extends Controller
 {
@@ -23,8 +24,35 @@ class QuestionController extends Controller
      */
     public function get(Question $question)
     {
+
+        $question=Question::get();
+
         return $question;
     }
+
+    public function createQuestion (Request $request){
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'content' => ['required', 'string', 'max:1000'],
+            'active' => ['nullable', 'boolean'],
+        ]);
+        $question = new Question();
+        $question->name = $validated['name'];
+        if (isset($validated['active'])) {
+            $question->active = $validated['active'];
+        }
+        $question->save();
+
+        return $question;
+    }
+
+
+
+    public function getQuestionView(Question $question)
+    {
+        return view('Questions/question', ['question' => $question]);
+    }
+
 
     /**
      * Updates parsed Question
@@ -37,9 +65,10 @@ class QuestionController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'content' => ['required', 'string', 'max:1000'],
             'active' => ['nullable', 'boolean'],
         ]);
-
+      
         $question->update($validated);
 
         return $question;
