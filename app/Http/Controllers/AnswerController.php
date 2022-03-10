@@ -65,6 +65,12 @@ class AnswerController extends Controller
 
         return $answer;
     }
+
+    public function getAnswersView()
+    {
+        $answers = $this->getAnswers();
+
+        return view('answers.answers', ['answers' => $answers]);
     
     /**
      * Returns specified answer object

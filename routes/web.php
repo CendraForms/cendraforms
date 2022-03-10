@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
@@ -76,6 +77,8 @@ Route::get('/section/{section}', [SectionController::class, 'getSectionView']);
 Route::get('/forms', [FormController::class, 'getFormsView']);
 
 Route::get('/questions', [QuestionController::class, 'getQuestionsView']);
+
+Route::get('/answers', [AnswerController::class, 'getAnswersView']);
 
 Route::get('/questions/{question}', [QuestionController::class, 'getQuestionView']);
 
