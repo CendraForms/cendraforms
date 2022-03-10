@@ -7,8 +7,13 @@ use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
-    // todo: function to get all questions - getQuestions()
-    // todo: function to create a question - createQuestion()
+    // todo: function to get all questions - getAll()
+    // todo: function to create a question - create()
+
+    public function getQuestions()
+    {
+         return Question::get();
+    }
 
     public function getQuestions()
     {
@@ -16,46 +21,50 @@ class QuestionController extends Controller
     }
 
     /**
-     * Returns specified question object
+     * Gets specified Question object
      *
-     * @param Question $question specified question id
+     * @param Question $question Question id
+     * @return JSON obtained question
      */
-    public function getQuestion(Question $question)
+    public function get(Question $question)
     {
         return $question;
     }
 
+
+
+    public function getQuestionView(Question $question)
+    {
+        return view('Questions/question', ['question' => $question]);
+    }
+
+
     /**
-     * Update Question
+     * Updates parsed Question
      *
      * @param Request $request recipe parameters post
-     * @param Integer $id question id
+     * @param Question $question Question id
+     * @return JSON updated question
      */
-    public function updateQuestion(Request $request, Question $question)
+    public function update(Request $request, Question $question)
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'active' => ['nullable', 'boolean'],
         ]);
-
-        $question->name = $validated['name'];
-
-        if (isset($validated['active'])) {
-            $question->active = $validated['active'];
-        }
-
-        $question->save();
+      
+        $question->update($validated);
 
         return $question;
     }
 
     /**
-     * Delete question
-     *
-     * @param Question $question question to be deleted
-     * @return Response response JSON with status code
+     * Deletes parsed Question
+     * 
+     * @param Question $question Question to be deleted
+     * @return Response JSON response with status code
      */
-    public function deleteQuestion(Question $question)
+    public function delete(Question $question)
     {
         $question->delete();
 

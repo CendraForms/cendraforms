@@ -2,110 +2,58 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Role;
-use App\Models\RoleUser;
-use Symfony\Contracts\Service\Attribute\Required;
-
-use function PHPUnit\Framework\isNull;
+use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
-    /**
-     * Returns all roles
-     *
-     * @return JSON
-     */
-    public static function getRoles()
+    public function index()
     {
-       $role=Role::get();
-
-        return $role;
+        return view('roles.index', [
+            'roles' => Role::get()
+        ]);
     }
 
-    public function getRolesView()
+    public function create()
     {
-        $role = self::getRoles(); 
-        return view('Roles/Roles', ['role' => $role]);
+      return view('roles.create');
     }
 
-
-
-    /**
-     * Returns specified role object
-     *
-     * @param Role $role specified role id
-     */
-    public function getRole(Role $role)
+    public function edit(Role $role)
     {
-        return $role;
-
-        //In Future
-       
+        return view('roles.edit', [
+            'role' => $role
+        ]);
     }
 
-    /**
-     * Create new Role
-     *
-     * @param Request $request recipe parameters post
-     */
-    public function createRole(Request $request)
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'alpha_dash', 'min:3', 'max:30', 'unique:roles'],
+            'active' => ['required', 'boolean'],
+        ]);
+
+        Role::create($validated);
+
+        return redirect()->route('roles.index')->with('success', 'Rol creat.');
+    }
+
+    public function update(Request $request, Role $role)
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'active' => ['nullable', 'boolean'],
+            'active' => ['sometimes', 'boolean'],
         ]);
 
-        $role = new Role();
-        $role->name = $validated['name'];
-        if (isset($validated['active'])) {
-            $role->active = $validated['active'];
-        }
-        $role->save();
+        $role->update($validated);
 
-        return $role;
+        return redirect()->back()->with('success', 'Rol actualitzat.');
     }
 
-    /**
-     * Update Role
-     *
-     * @param Request $request recipe parameters post
-     * @param Integer $id role id
-     */
-    public function updateRole(Request $request, Role $role)
+    public function destroy(Role $role)
     {
-        $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'active' => ['nullable', 'boolean'],
-        ]);
+        $role->delete();
 
-        $role->name = $validated['name'];
-        if (isset($validated['active'])) {
-            $role->active = $validated['active'];
-        }
-        $role->save();
-
-        return $role;
-    }
-
-    /**
-     * Delete Role
-     *
-     * @param Integer $id role id
-     */
-    public function deleteRole(Role $role)
-    {
-        $deleted = $role->deleteOrFail();
-
-        if ($deleted) {
-            RoleUser::where('role_id', $role['id'])->delete();
-        }
-
-        return $deleted;
-    }
-
-    public function getRoleView(Role $role)
-    {
-        return view('roledata', ['role' => $role]);
+        return redirect()->route('roles.index')->with('success', 'Rol eliminat.');
     }
 }
