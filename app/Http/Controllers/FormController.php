@@ -86,15 +86,21 @@ class FormController extends Controller
         ]);
     }
 
+    public function updateFormView(Form $form)
+    {
+        return view('forms.formsupdate', ['forms' => $form]);
+    }
+  
+    public function getFormView(Form $form)
+    {
+
+        return view('Form/form', ['form' => $form]);
+    }
+
     public function getFormsView()
     {
         $forms = $this->getForms();
 
         return view('forms.forms', ['forms' => $forms]);
-    }
-
-    public function updateFormView(Form $form)
-    {
-        return view('forms.formsupdate', ['forms' => $form]);
     }
 }

@@ -25,6 +25,29 @@ Route::get('/', function () {
 });
 
 /**
+ * Roles
+ */
+Route::get('/roles', [RoleController::class, 'index'])
+    ->name('roles.index');
+
+Route::get('/roles/create', [RoleController::class, 'create'])
+    ->name('roles.create');
+
+Route::get('/roles/{role}', [RoleController::class, 'edit'])
+    ->name('roles.edit');
+
+Route::post('/roles', [RoleController::class, 'store'])
+    ->name('roles.store');
+
+Route::put('/roles/{role}', [RoleController::class, 'update'])
+    ->name('roles.update');
+
+Route::delete('/roles/{role}', [RoleController::class, 'destroy'])
+    ->name('roles.destroy');
+
+
+
+/**
  * User view
  */
 Route::get('/users', [UserController::class, 'getUsersView']);
@@ -33,15 +56,14 @@ Route::get('/users/{user}', [UserController::class, 'getUserView']);
  /*
  *Role view 
  */
-Route::get('/roles/{role}', [RoleController::class, 'getRoleView']);
-Route::get('/roles', [RoleController::class, 'getRolesView']);
-
+// Route::get('/roles/{role}', [RoleController::class, 'getRoleView']);
+// Route::get('/roles', [RoleController::class, 'getRolesView']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 
-Route::get('/roles', [RoleController::class, 'getRolesView']);
+// Route::get('/roles', [RoleController::class, 'getRolesView']);
 
 Route::get('/sections', [SectionController::class, 'getSectionsView']);
 
@@ -53,14 +75,22 @@ Route::get('/sections/{section}', [SectionController::class, 'updateSectionView'
 
 Route::put('/sections/{section}', [SectionController::class, 'updateSection']);
 
-Route::get('/forms', [FormController::class, 'getFormsView']);
-
 Route::get('/forms/{form}', [FormController::class, 'updateFormView']);
 
 Route::put('/forms/{form}', [FormController::class, 'updateForm']);
 
+Route::get('/section/{section}', [SectionController::class, 'getSectionView']);
+
+Route::get('/forms', [FormController::class, 'getFormsView']);
+
 Route::get('/questions', [QuestionController::class, 'getQuestionsView']);
 
 Route::get('/answers', [AnswerController::class, 'getAnswersView']);
+
+Route::get('/questions/{question}', [QuestionController::class, 'getQuestionView']);
+
+Route::get('/answer/{answer}', [AnswerController::class, 'getAnswerView']);
+
+Route::get('/forms/{form}', [FormController::class, 'getFormView']);
 
 require __DIR__.'/auth.php';
