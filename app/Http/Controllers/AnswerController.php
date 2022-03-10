@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Answer;
-use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -68,6 +67,7 @@ class AnswerController extends Controller
         return $answer;
     }
 
+
     public function create(Request $request)
     {    
             
@@ -91,4 +91,19 @@ class AnswerController extends Controller
    public function  CreateAnswerView(){
     return view('Answer/Createanswer');
    }
+
+    
+    /**
+     * Returns specified answer object
+     *
+     * @param Answer $answer specified answer id
+     */
+    public function get(Answer $answer)
+    {
+        return $answer;
+
+        //In Future
+        //return view('');
+    }
+
 }

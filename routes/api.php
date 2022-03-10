@@ -85,7 +85,7 @@ Route::delete('/questions/{question}', [QuestionController::class, 'delete']);
  */
 Route::get('/answers', [AnswerController::class, 'getAll']);
 
-// Route::get('/answers/{answer}', [AnswerController::class, 'get']); // method doesn't exist yet
+Route::get('/answers/{answer}', [AnswerController::class, 'get']);
 
 // Route::post('/answers', [AnswerController::class, 'create']); // method doesn't exist yet
 
