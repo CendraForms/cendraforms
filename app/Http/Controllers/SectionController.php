@@ -26,9 +26,6 @@ class SectionController extends Controller
         return view('Sections/section', ['section' => $section]);
     }
 
-  
-
-
     /**
      * Updates parsed Section
      *
@@ -82,5 +79,10 @@ class SectionController extends Controller
     public function getSectionsCreateView()
     {
         return view('sections.sectioncreate');
+    }
+
+    public function updateSectionView(Section $section)
+    {
+        return view('sections.sectionupdate', ['section' => $section]);
     }
 }

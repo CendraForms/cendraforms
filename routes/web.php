@@ -71,8 +71,11 @@ Route::get('/sections/create', [SectionController::class, 'getSectionsCreateView
 
 Route::post('/sections', [SectionController::class, 'createSection']);
 
-Route::get('/section/{section}', [SectionController::class, 'getSectionView']);
+Route::get('/sections/{section}', [SectionController::class, 'updateSectionView']);
 
+Route::put('/sections/{section}', [SectionController::class, 'updateSection']);
+
+Route::get('/section/{section}', [SectionController::class, 'getSectionView']);
 
 Route::get('/forms', [FormController::class, 'getFormsView']);
 
