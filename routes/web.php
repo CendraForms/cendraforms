@@ -7,7 +7,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\QuestionController;
-use App\Models\Section;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,6 +75,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/sections', [SectionController::class, 'getSectionsView']);
+
+
+Route::get('/createanswers', [AnswerController::class, 'CreateAnswerView']);
+
+
 
 Route::get('/sections/create', [SectionController::class, 'getSectionsCreateView']);
 
