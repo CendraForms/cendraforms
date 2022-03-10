@@ -31,9 +31,11 @@ class UserController extends Controller
         return view('users.create');
     }
 
-    public function getUserView(User $user)
+    public function edit(User $user)
     {
-        return view('Users/user', ['user' => $user]);
+        return view('users.edit', [
+            'user' => $user
+        ]);
     }
 
     public function store(Request $request)
@@ -50,5 +52,18 @@ class UserController extends Controller
         User::create($validated);
 
         return redirect()->route('users.index')->with('success', 'Usuari creat.');
+    }
+
+    public function update(Request $request, User $user)
+    {
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'max:255'],
+            'active' => ['sometimes', 'boolean'],
+        ]);
+
+        $user->update($validated);
+
+        return redirect()->route('users.index')->with('success', 'Usuari Actualitzat.');
     }
 }
