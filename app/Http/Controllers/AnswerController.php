@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Answer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AnswerController extends Controller
 {
@@ -72,6 +73,30 @@ class AnswerController extends Controller
         return $answer;
     }
 
+    public function create(Request $request)
+    {    
+            
+        $validated = $request->validate([
+            'content' => ['required', 'string', 'max:255'],
+            'question_id' => ['required', 'integer', 'max:255'],
+            'active' => ['required', 'boolean'],
+        ]);
+
+        $answer = new Answer();
+
+        $answer->content = $validated['content'];
+        $answer->question_id = $validated['question_id'];
+        $answer->user_id = Auth::id();
+
+        $answer->save();
+
+        return redirect()->route('/answers')->with('success', 'answer creat.');
+    }
+
+   public function CreateAnswerView() {
+    return view('Answer/Createanswer');
+   }
+
     public function getAnswersView()
     {
         $answers = $this->getAnswers();
@@ -91,4 +116,5 @@ class AnswerController extends Controller
         //In Future
         //return view('');
     }
+
 }
