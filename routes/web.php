@@ -1,12 +1,12 @@
 <?php
 
 use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\FormController;
-use App\Http\Controllers\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
