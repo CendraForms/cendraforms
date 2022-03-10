@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Answer;
-use App\Models\Question;
 use Illuminate\Http\Request;
 
 class AnswerController extends Controller
@@ -36,7 +35,7 @@ class AnswerController extends Controller
             'state' => 'ok',
         ]);
     }
-    
+
     /**
      * Returns all answers
      *
