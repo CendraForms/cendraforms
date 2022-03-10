@@ -7,13 +7,27 @@ use Illuminate\Http\Request;
 
 class AnswerController extends Controller
 {
+    // todo: function to get specific answer - get()
+    // todo: function to create a answer - create()
+    // todo: function to update a answer - update()
+
+    /**
+     * Gets all answers
+     *
+     * @return JSON All obtained answers
+     */
+    public static function getAll()
+    {
+        return Answer::get();
+    }
+
     /**
      * Delete answer
-     * 
+     *
      * @param Answer $answer answer to be deleted
      * @return Response response JSON with status code
      */
-    public function deleteAnswer(Answer $answer)
+    public function delete(Answer $answer)
     {
         $answer->delete();
 
@@ -21,6 +35,7 @@ class AnswerController extends Controller
             'state' => 'ok',
         ]);
     }
+    
     /**
      * Returns all answers
      *
@@ -32,5 +47,48 @@ class AnswerController extends Controller
         //In Future
         //return view('');
     }
+
+    public function getAnswerView(Answer $answer)
+    {
+        
+        return view('Answer/answer', ['answer' => $answer]);
+    }
+
+    public function update(Request $request, Answer $answer)
+    {
+        $validated = $request->validate([
+            'content' => ['required', 'string', 'max:255'],
+            'active' => ['nullable', 'boolean'],
+        ]);
+
+        $answer->content = $validated['content'];
+
+        if (isset($validated['active'])) {
+            $answer->active = $validated['active'];
+        }
+
+        $answer->save();
+
+        return $answer;
+    }
+
+    public function getAnswersView()
+    {
+        $answers = $this->getAnswers();
+
+        return view('answers.answers', ['answers' => $answers]);
+    }
     
+    /**
+     * Returns specified answer object
+     *
+     * @param Answer $answer specified answer id
+     */
+    public function get(Answer $answer)
+    {
+        return $answer;
+
+        //In Future
+        //return view('');
+    }
 }
