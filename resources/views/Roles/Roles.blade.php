@@ -12,7 +12,6 @@
 <th>Nom</th>
 <th>Estat</th>
 </tr>
-
     <?php 
 foreach($role as $role){
   print "<tr><td>".$role['id']."</td><td>".$role['name']."</td><td>".$role['active']."</td></tr>";
