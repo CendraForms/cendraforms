@@ -26,6 +26,14 @@ class QuestionController extends Controller
         return $question;
     }
 
+
+
+    public function getQuestionView(Question $question)
+    {
+        return view('Questions/question', ['question' => $question]);
+    }
+
+
     /**
      * Updates parsed Question
      *

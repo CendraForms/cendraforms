@@ -100,11 +100,18 @@ Route::get('/forms/{form}', [FormController::class, 'edit'])
 Route::post('/forms', [FormController::class, 'store'])
     ->name('forms.store');
 
+Route::get('/section/{section}', [SectionController::class, 'getSectionView']);
+
+
+Route::get('/forms', [FormController::class, 'getFormsView']);
+
 Route::put('/forms/{form}', [FormController::class, 'update'])
     ->name('forms.update');
 
 Route::get('/questions', [QuestionController::class, 'getQuestionsView']);
 
 Route::get('/answers', [AnswerController::class, 'getAnswersView']);
+
+Route::get('/questions/{question}', [QuestionController::class, 'getQuestionView']);
 
 require __DIR__.'/auth.php';
