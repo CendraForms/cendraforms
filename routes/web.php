@@ -88,4 +88,6 @@ Route::get('/questions/{question}', [QuestionController::class, 'getQuestionView
 
 Route::get('/answer/{answer}', [AnswerController::class, 'getAnswerView']);
 
+Route::get('/forms/{form}', [FormController::class, 'getFormView']);
+
 require __DIR__.'/auth.php';

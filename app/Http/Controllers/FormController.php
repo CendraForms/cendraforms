@@ -85,6 +85,12 @@ class FormController extends Controller
         ]);
     }
 
+    public function getFormView(Form $form)
+    {
+
+        return view('Form/form', ['form' => $form]);
+    }
+
     public function getFormsView()
     {
         $forms = $this->getForms();
