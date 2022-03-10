@@ -1,9 +1,13 @@
 <?php
 
+use App\Http\Controllers\AnswerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\FormController;
+use App\Http\Controllers\QuestionController;
+use App\Models\Section;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,10 +59,39 @@ Route::put('/questions/{question}', [QuestionController::class, 'update'])
 Route::get('/users', [UserController::class, 'getUsersView']);
 Route::get('/users/{user}', [UserController::class, 'getUserView']);
 
+ /*
+ *Role view 
+ */
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/sections', [SectionController::class, 'getSectionsView']);
+
+Route::get('/sections/create', [SectionController::class, 'getSectionsCreateView']);
+
+Route::post('/sections', [SectionController::class, 'createSection']);
+
+Route::get('/sections/{section}', [SectionController::class, 'updateSectionView']);
+
+Route::put('/sections/{section}', [SectionController::class, 'updateSection']);
+
+Route::get('/forms/{form}', [FormController::class, 'updateFormView']);
+
+Route::put('/forms/{form}', [FormController::class, 'updateForm']);
+
+Route::get('/section/{section}', [SectionController::class, 'getSectionView']);
+
+Route::get('/forms', [FormController::class, 'getFormsView']);
+
+Route::get('/questions', [QuestionController::class, 'getQuestionsView']);
+
+Route::get('/answers', [AnswerController::class, 'getAnswersView']);
+
+Route::get('/questions/{question}', [QuestionController::class, 'getQuestionView']);
+
+Route::get('/answer/{answer}', [AnswerController::class, 'getAnswerView']);
+
+Route::get('/forms/{form}', [FormController::class, 'getFormView']);
 
 require __DIR__.'/auth.php';
