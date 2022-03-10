@@ -25,7 +25,7 @@ class SectionController extends Controller
     {
         return view('Sections/section', ['section' => $section]);
     }
-
+  
     /**
      * Updates parsed Section
      *
