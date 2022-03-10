@@ -8,10 +8,10 @@
 </head>
 <body>
     <div>
-        <table border="1">
+        <table>
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th>Id</th>
                     <th>Nom</th>
                     <th>Contingut</th>
                     <th>Secció</th>
