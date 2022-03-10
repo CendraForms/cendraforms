@@ -35,7 +35,7 @@ class AnswerController extends Controller
             'state' => 'ok',
         ]);
     }
-    
+
     /**
      * Returns all answers
      *
