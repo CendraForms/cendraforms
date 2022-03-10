@@ -2,11 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -104,3 +104,6 @@ Route::post('/answers', [AnswerController::class, 'create']);
 // Route::put('/users/{user}', [UserController::class, 'update']); // method doesn't exist yet
 
 // Route::delete('/users/{user}', [UserController::class, 'delete']); // method doesn't exist yet
+
+Route::get('/users', [UserController::class, 'getUsers']);
+Route::get('/users/{user}', [UserController::class, 'getUser']);
