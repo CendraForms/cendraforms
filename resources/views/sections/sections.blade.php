@@ -12,8 +12,8 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Form</th>
-                    <th>User</th>
+                    <th>Formulari</th>
+                    <th>Usuari</th>
                     <th>Estat</th>
                 </tr>
             </thead>
