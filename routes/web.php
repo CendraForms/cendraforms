@@ -56,10 +56,14 @@ Route::get('/users', [UserController::class, 'index'])
 Route::get('/users/create', [UserController::class, 'create'])
     ->name('users.create');
 
-Route::get('/users/{user}', [UserController::class, 'getUserView']);
+Route::get('/users/{user}', [UserController::class, 'edit'])
+    ->name('users.edit');
 
 Route::post('/users', [UserController::class, 'store'])
     ->name('users.store');
+
+Route::put('/users/{user}', [UserController::class, 'update'])
+    ->name('users.update');
 
  /*
  *Role view
