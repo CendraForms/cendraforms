@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Section;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SectionController extends Controller
 {
@@ -20,6 +21,14 @@ class SectionController extends Controller
         return Section::get();
     }
 
+    public static function getSectionView(Section $section)
+    {
+        return view('Sections/section', ['section' => $section]);
+    }
+
+  
+
+
     /**
      * Updates parsed Section
      *
@@ -30,13 +39,22 @@ class SectionController extends Controller
     public function update(Request $request, Section $section)
     {
         $validate = $request->validate([
-            'active' => ['nullable', 'boolean']
+            'form_id' => ['nullable', 'integer'],
+            'active' => ['required', 'boolean']
         ]);
 
+        $section = new Section();
+
+        if (isset($validate['form_id'])) {
+            $section->form_id = $validate['form_id'];
+        }
+
         $section->active = $validate['active'];
+        // $section->user_id = Auth::user()->id;
+        $section->user_id = 1;
         $section->save();
 
-        return $section;
+        return redirect('/sections');
     }
 
     /**
@@ -56,6 +74,13 @@ class SectionController extends Controller
 
     public function getSectionsView()
     {
-        return view('sections');
+        $sections = $this->getSections();
+
+        return view('sections.sections', ['sections' => $sections]);
+    }
+
+    public function getSectionsCreateView()
+    {
+        return view('sections.sectioncreate');
     }
 }
