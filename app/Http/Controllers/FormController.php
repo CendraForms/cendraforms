@@ -67,12 +67,13 @@ class FormController extends Controller
 
         $form->update($validated);
 
-        return $form;
+        //return $form;
+        return redirect('/forms/'.$form->id);
     }
 
     /**
      * Deletes parsed Form
-     * 
+     *
      * @param Form $form Form to be deleted
      * @return Response JSON response with status code
      */
@@ -85,6 +86,11 @@ class FormController extends Controller
         ]);
     }
 
+    public function updateFormView(Form $form)
+    {
+        return view('forms.formsupdate', ['forms' => $form]);
+    }
+  
     public function getFormView(Form $form)
     {
 

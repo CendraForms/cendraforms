@@ -1,12 +1,13 @@
 <?php
 
 use App\Http\Controllers\AnswerController;
-use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\QuestionController;
+use App\Models\Section;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +74,10 @@ Route::post('/sections', [SectionController::class, 'createSection']);
 Route::get('/sections/{section}', [SectionController::class, 'updateSectionView']);
 
 Route::put('/sections/{section}', [SectionController::class, 'updateSection']);
+
+Route::get('/forms/{form}', [FormController::class, 'updateFormView']);
+
+Route::put('/forms/{form}', [FormController::class, 'updateForm']);
 
 Route::get('/section/{section}', [SectionController::class, 'getSectionView']);
 
