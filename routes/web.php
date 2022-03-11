@@ -49,8 +49,8 @@ Route::delete('/roles/{role}', [RoleController::class, 'destroy'])
 /**
  * Questions
  */
-Route::put('/questions/{question}', [QuestionController::class, 'update'])
-    ->name('questions.update');
+//Route::put('/questions/{question}', [QuestionController::class, 'update'])
+ //   ->name('questions.update');
 
 /**
  * User view
@@ -82,10 +82,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/sections', [SectionController::class, 'getSectionsView']);
 
-
 Route::get('/createanswers', [AnswerController::class, 'CreateAnswerView']);
-
-
 
 Route::get('/sections/create', [SectionController::class, 'getSectionsCreateView']);
 
@@ -120,18 +117,37 @@ Route::get('/section/{section}', [SectionController::class, 'getSectionView']);
 
 Route::get('/forms', [FormController::class, 'getFormsView']);
 
-Route::get('/questions', [QuestionController::class, 'getQuestionsView']);
+//Route::get('/questions', [QuestionController::class, 'getQuestionsView']);
 
 Route::get('/answers', [AnswerController::class, 'getAnswersView']);
 
-Route::get('/questions', [QuestionController::class, 'getQuestionsView']);
+//Route::get('/questions', [QuestionController::class, 'getQuestionsView']);
 
-Route::get('/questions/{question}', [QuestionController::class, 'getQuestionView']);
+//Route::get('/questions/{question}', [QuestionController::class, 'getQuestionView']);
 
-Route::get('/questions/{question}', [QuestionController::class, 'getQuestionView']);
+//Route::get('/questions/{question}', [QuestionController::class, 'getQuestionView']);
 
 Route::get('/answer/{answer}', [AnswerController::class, 'getAnswerView']);
 
 Route::get('/forms/{form}', [FormController::class, 'getFormView']);
 
 require __DIR__.'/auth.php';
+
+
+Route::get('/questions', [QuestionController::class, 'index'])
+    ->name('questions.index');
+
+Route::get('/questions/create', [QuestionController::class, 'create'])
+    ->name('questions.create');
+
+Route::get('/questions/{questions}', [QuestionController::class, 'edit'])
+    ->name('questions.edit');
+
+Route::post('/questions', [QuestionController::class, 'store'])
+    ->name('questions.store');
+
+Route::put('/questions/{questions}', [QuestionController::class, 'update'])
+    ->name('questions.update');
+
+Route::delete('/questions/{questions}', [QuestionController::class, 'destroy'])
+    ->name('questions.destroy');

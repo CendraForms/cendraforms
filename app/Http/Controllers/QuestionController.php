@@ -11,6 +11,41 @@ class QuestionController extends Controller
     // todo: function to get all questions - getAll()
     // todo: function to create a question - create()
 
+    public function index()
+    {
+        return view('questions.index', [
+            'questions' => Question::get()
+        ]);
+    }
+
+    public function create()
+    {
+        return view('questions.create');
+
+    }
+
+    public function edit(Question $questions)
+    {
+        return view('questions.edit', [
+            'questions' => $questions
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+        'name' => ['required', 'string', 'alpha_dash', 'min:3', 'max:30'],
+        'content' => ['required','string','max:1000'],
+        'active' => ['required', 'boolean'],
+    ]);
+
+        Question::create($validated);
+
+        return redirect()->route('questions.index')->with('success', 'Pregunta creada.');
+    }
+
+    
+
     public function getQuestions()
     {
         return Question::get();
@@ -22,33 +57,33 @@ class QuestionController extends Controller
      * @param Question $question Question id
      * @return JSON obtained question
      */
-    public function get(Question $question)
+    public function get(Question $questions)
     {
 
-        $question=Question::get();
+        $questions=Question::get();
 
-        return $question;
+        return $questions;
     }
 
-    public function createQuestion (Request $request){
+    public function createQuestions (Request $request){
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'content' => ['required', 'string', 'max:1000'],
             'active' => ['nullable', 'boolean'],
         ]);
-        $question = new Question();
-        $question->name = $validated['name'];
+        $questions = new Question();
+        $questions->name = $validated['name'];
         if (isset($validated['active'])) {
-            $question->active = $validated['active'];
+            $questions->active = $validated['active'];
         }
-        $question->save();
+        $questions->save();
 
-        return $question;
+        return $questions;
     }
 
-    public function getQuestionView(Question $question)
+    public function getQuestionsView(Question $questions)
     {
-        return view('Questions/question', ['question' => $question]);
+        return view('Questions/questions', ['questions' => $questions]);
     }
 
 
@@ -59,7 +94,7 @@ class QuestionController extends Controller
      * @param Question $question Question id
      * @return JSON updated question
      */
-    public function update(Request $request, Question $question)
+    public function update(Request $request, Question $questions)
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -67,9 +102,9 @@ class QuestionController extends Controller
             'active' => ['nullable', 'boolean'],
         ]);
       
-        $question->update($validated);
+        $questions->update($validated);
 
-        return $question;
+        return $questions;
     }
 
     /**
@@ -78,19 +113,13 @@ class QuestionController extends Controller
      * @param Question $question Question to be deleted
      * @return Response JSON response with status code
      */
-    public function delete(Question $question)
+    public function destroy(Question $questions)
     {
-        $question->delete();
+        $questions->delete();
 
-        return response()->json([
-            'state' => 'ok',
-        ]);
+        return redirect()->route('questions.index')->with('success', 'Pregunta eliminada.');
+
     }
 
-    public function getQuestionsView()
-    {
-        $question = $this->getQuestions();
-
-        return view('questions.questions', ['question' => $question]);
-    }
+    
 }

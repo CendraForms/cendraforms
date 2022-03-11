@@ -17,12 +17,13 @@ return new class extends Migration
             $table->id();
 
             $table->string('name');
-            $table->json('content');
+            $table->string('content');
             $table->integer('section_id')
                 ->index()
                 ->constrained()
                 ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->onDelete('cascade')
+                ->nullable();
                 
             $table->boolean('active')->default(true);
 
