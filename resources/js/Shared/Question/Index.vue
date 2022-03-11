@@ -1,7 +1,10 @@
 <template>
-  <div v-if="type == 'text'">
-    <input type="text" name="" id="">
-  </div>
+  <QuestionText
+    v-if="type == 'text'" 
+    :value="content.value"
+    :min="content.min" 
+    :max="content.max"
+  />
 
   <QuestionNumber
     v-if="type == 'number'"
@@ -12,6 +15,7 @@
 </template>
 
 <script setup>
+import QuestionText from './Text.vue'
 import QuestionNumber from './Number'
 
 defineProps({
