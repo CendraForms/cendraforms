@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnswerController;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SectionController;
@@ -20,7 +21,8 @@ use App\Http\Controllers\QuestionController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return Inertia::render('Form/Create');
 });
 
 /**
