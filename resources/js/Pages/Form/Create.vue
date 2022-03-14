@@ -74,6 +74,17 @@ const sections = ref([
         },
         type: 'number',
       },
+
+      {
+        id: 3,
+        title: 'Quin àmbit prefereixes?',
+        content: {
+          left: 'frontend',
+          right: 'backend',
+          defaultVal: 'right'
+        },
+        type: 'switch',
+      },
     ],
     locked: false,
     visible: false,
