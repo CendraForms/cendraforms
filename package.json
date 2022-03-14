@@ -19,19 +19,13 @@
         "lodash": "^4.17.19",
         "postcss": "^8.4.6",
         "postcss-import": "^14.0.2",
-<<<<<<< HEAD
-        "tailwindcss": "^3.0.18"
-    },
-    "dependencies": {
-        "npm-watch": "^0.11.0"
-=======
         "tailwindcss": "^3.0.18",
         "vue-loader": "^16.8.3"
     },
     "dependencies": {
         "@inertiajs/inertia": "^0.11.0",
         "@inertiajs/inertia-vue3": "^0.6.0",
+        "npm-watch": "^0.11.0",
         "vue": "^3.2.31"
->>>>>>> f2dc3e152e172528902c77f2e5ad8533da9122a9
     }
 }
