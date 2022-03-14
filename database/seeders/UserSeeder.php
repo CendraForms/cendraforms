@@ -35,6 +35,12 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('alumne'),
                 'roles' =>  [ Role::firstWhere('name', 'alumne')->id ],
             ],
+            [
+                'name' => 'alumne2',
+                'email' => 'alumne2@cendrassos.net',
+                'password' => Hash::make('alumne2'),
+                'roles' =>  [ Role::firstWhere('name', 'alumne')->id ],
+            ],
         ];
 
         foreach ($users as $user) {

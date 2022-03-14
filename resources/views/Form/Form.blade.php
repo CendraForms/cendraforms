@@ -3,21 +3,24 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Laravel</title>
+        <title>Answer</title>
     </head>
     <body class="antialiased">
     <table class="default">
     <tr>
-<th>id</th>
+<th>Id</th>
 <th>Nom</th>
+<th>Descripcio</th>
+<th>Usuari</th>
 <th>Estat</th>
 </tr>
-
-    <?php 
-foreach($role as $role){
-  print "<tr><td>".$role['id']."</td><td>".$role['name']."</td><td>".$role['active']."</td></tr>";
-}   
-    ?>
+<tr>
+    <td>{{ $form->id }}</td>
+    <td>{{ $form->name }}</td>
+    <td>{{ $form->description }}</td>
+    <td>{{ $form->user_id }}</td>
+    <td>{{ $form->active}}</td>
+</tr>
 </table>
     </body>
-</html>
+</html> 
