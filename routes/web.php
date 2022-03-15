@@ -1,13 +1,15 @@
 <?php
 
 use App\Http\Controllers\AnswerController;
-use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\SectionController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SectionController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
+use Inertia\Inertia;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +21,25 @@ use App\Http\Controllers\QuestionController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/auth/discord/redirect', function () {
+    //dd(Socialite::driver('discord'));
+    return Socialite::driver('discord')->redirect();
+});
+
+Route::get('/auth/discord/callback', function () {
+    $user = Socialite::driver('discord')->user();
+
+    dd($user);
+
+    if (Str::endsWith($user->getEmail(), '@cendrassos.net')) {
+        echo "Email is @cendrassos.net";
+    } else {
+        echo "Email is not @cendrassos.net";
+    }
+
+    // $user->token
+});
 
 Route::get('/', function () {
     // return view('welcome');
@@ -70,8 +91,8 @@ Route::post('/users', [UserController::class, 'store'])
 Route::put('/users/{user}', [UserController::class, 'update'])
     ->name('users.update');
 
- /*
- *Role view
+/**
+ * Role view
  */
 // Route::get('/roles/{role}', [RoleController::class, 'getRoleView']);
 // Route::get('/roles', [RoleController::class, 'getRolesView']);
@@ -84,7 +105,6 @@ Route::get('/sections', [SectionController::class, 'getSectionsView']);
 
 
 Route::get('/createanswers', [AnswerController::class, 'CreateAnswerView']);
-
 
 
 Route::get('/sections/create', [SectionController::class, 'getSectionsCreateView']);
@@ -134,4 +154,4 @@ Route::get('/answer/{answer}', [AnswerController::class, 'getAnswerView']);
 
 Route::get('/forms/{form}', [FormController::class, 'getFormView']);
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
