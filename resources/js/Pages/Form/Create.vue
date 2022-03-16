@@ -62,7 +62,7 @@ const sections = ref([
       {
         id: null,
         title: 'Què és el que més t\'ha agradat?',
-        type: 'text',
+        type: 'checkbox',
       },
 
       {
