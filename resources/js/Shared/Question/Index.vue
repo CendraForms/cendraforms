@@ -1,18 +1,17 @@
 <template>
-  <div v-if="type == 'text'">
-    <input type="text" name="" id="">
+  <div class="mt-5">
+    <QuestionNumber
+      v-if="type == 'number'"
+      :value="content.value"
+      :min="content.min"
+      :max="content.max"
+    />
   </div>
-
-  <QuestionNumber
-    v-if="type == 'number'"
-    :value="content.value"
-    :min="content.min"
-    :max="content.max"
-  />
 
   <CheckBox
     v-if="type == 'checkbox'"
   />
+
 </template>
 
 <script setup>

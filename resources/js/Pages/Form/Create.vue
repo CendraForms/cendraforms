@@ -6,7 +6,7 @@
     
     <input type="text" :value="form.title" class="w-full bg-transparent rounded-xl">
 
-    <div v-for="section in sections" :key="section.id" class="my-5 p-10 bg-stone-700 rounded-xl" :class="{ 'opacity-50': section.locked }">
+    <div v-for="section in form.sections" :key="section.id" class="my-5 p-10 bg-stone-700 rounded-xl" :class="{ 'opacity-50': section.locked }">
       <div class="mb-5 flex justify-between">
         <span class="text-2xl font-bold uppercase">
           Section #{{ section.id }}
@@ -62,7 +62,7 @@ const sections = ref([
       {
         id: null,
         title: 'Què és el que més t\'ha agradat?',
-        type: 'checkbox',
+        type: 'select',
       },
 
       {
@@ -116,8 +116,9 @@ const sections = ref([
   },
 ])
 
+
 const createSection = () => {
-  sections.value.push({
+  form.sections.value.push({
     id: sections.value.length,
     title: '',
     questions: [
