@@ -34,6 +34,15 @@
         <img class="w-8" src="/logos/github.png" draggable="false" />
         <span>Accedir amb <b>GitHub</b></span>
       </a>
+
+      <a
+        class="flex items-center gap-3 w-full h-14 px-3 bg-white rounded-lg hover:bg-gray-100"
+        href="/accedir/gitlab"
+        as="button"
+      >
+        <img class="w-8" src="/logos/gitLab.png" draggable="false" />
+        <span>Accedir amb <b>GitLab</b></span>
+      </a>
     </div>
   </div>
 </template>
