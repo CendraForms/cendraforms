@@ -39,7 +39,7 @@ return [
     'gitlab' => [
         'client_id' => env('GITLAB_CLIENT_ID'), 
         'client_secret' => env('GITLAB_CLIENT_SECRET'),
-        'redirect' => 'https://cendraforms-1040.herokuapp.com/accedir/gitlab/callback', 
+        'redirect' => env('GITLAB_REDIRECT_URI'), 
     ], 
 
 ];
