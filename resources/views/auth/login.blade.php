@@ -19,10 +19,10 @@
             </button>
 
             {{-- GitLab OAuth --}}
-            <a href="{{ route('AuthGitlabRedirect') }}" class="flex items-center gap-3 w-full h-14 px-3 bg-white rounded-lg hover:bg-gray-100">
+            <button class="flex items-center gap-3 w-full h-14 px-3 bg-white rounded-lg hover:bg-gray-100">
                 <img class="w-8" src="/logos/gitLab.png" draggable="false">
                 <span>Accedir amb <b>GitLab</b></span>
-            </a>
+            </button>
         </ul>
     </div>
 </x-app-layout>

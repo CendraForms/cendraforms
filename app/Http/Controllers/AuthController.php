@@ -18,7 +18,7 @@ class AuthController extends Controller
 
     public function socialRedirect($provider)
     {
-        $providers = ["google", "discord", "github"];
+        $providers = ["google", "discord", "github", "gitlab"];
 
         if (!in_array($provider, $providers))
         {
@@ -32,7 +32,7 @@ class AuthController extends Controller
     {
         try
         {
-            $providers = ["google", "discord", "github"];
+            $providers = ["google", "discord", "github", "gitlab"];
 
             if (!in_array($provider, $providers))
             {
