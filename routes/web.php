@@ -3,11 +3,15 @@
 use App\Http\Controllers\AnswerController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Str;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\QuestionController;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +23,19 @@ use App\Http\Controllers\QuestionController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/auth/gitlab/redirect', function() {
+    return Socialite::driver('gitlab')->redirect();
+})->name('AuthGitlabRedirect');
+
+Route::get('/auth/gitlab/callback', function() {
+    $user = Socialite::driver('gitlab')->user();
+
+    if (Str::endsWith($user->getEmail(), '@cendrassos.net'))
+        echo "Email is @cendrassos.net";
+    else
+        echo "Email is not @cendrassos.net";
+});
 
 Route::get('/', function () {
     // return view('welcome');

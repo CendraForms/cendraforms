@@ -36,4 +36,10 @@ return [
         'redirect' => 'http://example.com/callback-url',
     ],
 
+    'gitlab' => [
+        'client_id' => env('GITLAB_CLIENT_ID'), 
+        'client_secret' => env('GITLAB_CLIENT_SECRET'),
+        'redirect' => env('GITLAB_REDIRECT_URI'),
+    ], 
+
 ];
