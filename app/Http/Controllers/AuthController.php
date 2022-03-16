@@ -14,7 +14,7 @@ class AuthController extends Controller
     {
         $user = Socialite::driver('gitlab')->user();
 
-        if (!Str::endsWith($user->getEmail(), '@cendrassos.net'))
+        /*if (!Str::endsWith($user->getEmail(), '@cendrassos.net'))
         {
             return redirect()->route('auth')->with('error', 'Usuari no autoritzat. Recorda utilitzar el correu del centre.');
         }
@@ -22,7 +22,7 @@ class AuthController extends Controller
         $user = User::firstOrCreate([
             "name" => str_replace('@cendrassos.net', '', $user->getEmail()),
             "email" => $user->getEmail(),
-        ]);
+        ]);*/
 
         Auth::login($user);
 
