@@ -21291,7 +21291,7 @@ __webpack_require__.r(__webpack_exports__);
       questions: [{
         id: null,
         title: 'Què és el que més t\'ha agradat?',
-        type: 'text'
+        type: 'select'
       }, {
         id: 2,
         title: 'Què és el que menys t\'ha agradat?',
@@ -21299,7 +21299,7 @@ __webpack_require__.r(__webpack_exports__);
           min: 0,
           max: 10
         },
-        type: 'number'
+        type: 'select'
       }],
       locked: false,
       visible: false
