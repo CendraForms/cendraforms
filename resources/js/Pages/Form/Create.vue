@@ -6,7 +6,7 @@
     
     <input type="text" :value="form.title" class="w-full bg-transparent rounded-xl">
 
-    <div v-for="section in sections" :key="section.id" class="my-5 p-10 bg-stone-700 rounded-xl" :class="{ 'opacity-50': section.locked }">
+    <div v-for="section in form.sections" :key="section.id" class="my-5 p-10 bg-stone-700 rounded-xl" :class="{ 'opacity-50': section.locked }">
       <div class="mb-5 flex justify-between">
         <span class="text-2xl font-bold uppercase">
           Section #{{ section.id }}
@@ -51,84 +51,84 @@ import QuestionType from '../../Shared/Question/Index'
 
 const form = ref({
   id: 1,
-  title: 'Avaluació DAW2 curs 2021-22'
+  title: 'Avaluació DAW2 curs 2021-22',
+  sections: [
+    {
+      id: 1,
+      title: 'DAW2_MP_02 - Bases de dades',
+      questions: [
+        {
+          id: null,
+          title: 'Què és el que més t\'ha agradat?',
+          type: 'text',
+        },
+
+        {
+          id: 2,
+          title: 'Què és el que menys t\'ha agradat?',
+          content: {
+            min: 0,
+            max: 10,
+          },
+          type: 'number',
+        },
+      ],
+      locked: false,
+      visible: false,
+    },
+
+    {
+      id: 2,
+      title: 'DAW2_MP_03 - Programació',
+      questions: [
+        {
+          id: null,
+          title: 'Què és el que més t\'ha agradat?',
+        },
+
+        {
+          id: 2,
+          title: 'Què és el que menys t\'ha agradat?',
+        },
+      ],
+      locked: true,
+      visible: false,
+    },
+
+    {
+      id: 3,
+      title: 'DAW2_MP_06 - Desenvolupament web en entorn de client',
+      questions: [
+        {
+          id: null,
+          title: 'Què és el que més t\'ha agradat?',
+        },
+
+        {
+          id: 2,
+          title: 'Què és el que menys t\'ha agradat?',
+        },
+      ],
+      locked: false,
+      visible: true,
+    },
+
+    {
+      id: 4,
+      title: 'Quin àmbit prefereixes?',
+      content: {
+        left: 'frontend',
+        right: 'backend',
+        defaultVal: 'right'
+      },
+      type: 'switch',
+    },
+  ]
+
 })
 
-const sections = ref([
-  {
-    id: 1,
-    title: 'DAW2_MP_02 - Bases de dades',
-    questions: [
-      {
-        id: null,
-        title: 'Què és el que més t\'ha agradat?',
-        type: 'text',
-      },
-
-      {
-        id: 2,
-        title: 'Què és el que menys t\'ha agradat?',
-        content: {
-          min: 0,
-          max: 10,
-        },
-        type: 'number',
-      },
-
-      {
-        id: 3,
-        title: 'Quin àmbit prefereixes?',
-        content: {
-          left: 'frontend',
-          right: 'backend',
-          defaultVal: 'right'
-        },
-        type: 'switch',
-      },
-    ],
-    locked: false,
-    visible: false,
-  },
-
-  {
-    id: 2,
-    title: 'DAW2_MP_03 - Programació',
-    questions: [
-      {
-        id: null,
-        title: 'Què és el que més t\'ha agradat?',
-      },
-
-      {
-        id: 2,
-        title: 'Què és el que menys t\'ha agradat?',
-      },
-    ],
-    locked: true,
-    visible: false,
-  },
-
-  {
-    id: 3,
-    title: 'DAW2_MP_06 - Desenvolupament web en entorn de client',
-    questions: [
-      {
-        id: null,
-        title: 'Què és el que més t\'ha agradat?',
-      },
-
-      {
-        id: 2,
-        title: 'Què és el que menys t\'ha agradat?',
-      },
-    ],
-    locked: false,
-    visible: true,
-  },
-])
-
 const createSection = () => {
-  sections.value.push({
+  form.sections.value.push({
     id: sections.value.length,
     title: '',
     questions: [

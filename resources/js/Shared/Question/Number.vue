@@ -1,20 +1,20 @@
 <template>
-<div class="flex gap-5">
-  <div>
-    <label class="block">Min</label>
-    <input type="number" v-model="min" class="bg-transparent rounded-xl">
-  </div>
+  <div class="flex gap-5">
+    <div>
+      <label class="block mb-1">Min</label>
+      <input type="number" v-model="min" :max="max" class="bg-transparent border-white rounded-xl">
+    </div>
 
-  <div>
-    <label class="block">Max</label>
-    <input type="number" v-model="max" class="bg-transparent rounded-xl">
-  </div>
+    <div>
+      <label class="block mb-1">Max</label>
+      <input type="number" v-model="max" :min="min" class="bg-transparent border-white rounded-xl">
+    </div>
 
-  <div>
-    <label class="block">Default</label>
-    <input type="number" :value="value" :min="min" :max="max" class="bg-transparent rounded-xl">
+    <div>
+      <label class="block mb-1">Default</label>
+      <input type="number" :value="value" :min="min" :max="max" class="bg-transparent border-white rounded-xl">
+    </div>
   </div>
-</div>
 </template>
 
 <script setup>
