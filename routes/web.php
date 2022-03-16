@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Socialite\Facades\Socialite;
@@ -28,14 +29,7 @@ Route::get('/auth/gitlab/redirect', function() {
     return Socialite::driver('gitlab')->redirect();
 })->name('AuthGitlabRedirect');
 
-Route::get('/auth/gitlab/callback', function() {
-    $user = Socialite::driver('gitlab')->user();
-
-    if (Str::endsWith($user->getEmail(), '@cendrassos.net'))
-        echo "Email is @cendrassos.net";
-    else
-        echo "Email is not @cendrassos.net";
-});
+Route::get('/auth/gitlab/callback', [AuthController::class, 'socialCallbackGitlab']);
 
 Route::get('/', function () {
     // return view('welcome');
