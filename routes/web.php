@@ -3,7 +3,6 @@
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\SocialiteController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 // use App\Http\Controllers\AnswerController;
 // use App\Http\Controllers\RoleController;
@@ -14,7 +13,7 @@ use Inertia\Inertia;
 
 
 Route::get('/', function () {
-    return Inertia::render('Form/Create');
+    return inertia('Form/Create');
 });
 
 /**
