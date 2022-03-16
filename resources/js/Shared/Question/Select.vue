@@ -56,6 +56,6 @@ arr.value.splice(posicio,1)
 const arr = ref([]);
 
 const valor = ref(props.valor)
-const options = ref(props.options)
+const options = ref(props.options);
 const selected = ref(props.selected);
 </script>
