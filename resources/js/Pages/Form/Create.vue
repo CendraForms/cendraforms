@@ -72,7 +72,7 @@ const sections = ref([
           min: 0,
           max: 10,
         },
-        type: 'select',
+        type: 'number',
       },
     ],
     locked: false,
