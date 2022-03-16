@@ -1,11 +1,10 @@
 <?php
 
-use Inertia\Inertia;
-use Illuminate\Support\Str;
-
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
-use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\SocialiteController;
+use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
+
 // use App\Http\Controllers\AnswerController;
 // use App\Http\Controllers\RoleController;
 // use App\Http\Controllers\UserController;
@@ -13,25 +12,6 @@ use Laravel\Socialite\Facades\Socialite;
 // use App\Http\Controllers\GitHubController;
 // use App\Http\Controllers\QuestionController;
 
-
-Route::get('/auth/discord/redirect', function () {
-    //dd(Socialite::driver('discord'));
-    return Socialite::driver('discord')->redirect();
-});
-
-Route::get('/auth/discord/callback', function () {
-    $user = Socialite::driver('discord')->user();
-
-    dd($user);
-
-    if (Str::endsWith($user->getEmail(), '@cendrassos.net')) {
-        echo "Email is @cendrassos.net";
-    } else {
-        echo "Email is not @cendrassos.net";
-    }
-
-    // $user->token
-});
 
 Route::get('/', function () {
     return Inertia::render('Form/Create');
@@ -41,13 +21,13 @@ Route::get('/', function () {
  * Auth
  */
 
-Route::get('/accedir', [AuthController::class, 'render'])
+Route::get('/accedir', [SocialiteController::class, 'render'])
     ->name('auth');
 
-Route::get('/accedir/{provider}', [AuthController::class, 'socialRedirect'])
+Route::get('/accedir/{provider}', [SocialiteController::class, 'socialRedirect'])
     ->name('auth.redirect');
 
-Route::get('/accedir/{provider}/callback', [AuthController::class, 'socialCallback'])
+Route::get('/accedir/{provider}/callback', [SocialiteController::class, 'socialCallback'])
     ->name('auth.callback');
 
 /**
@@ -61,7 +41,6 @@ Route::get('/formulari/crear', [FormController::class, 'create'])
 Route::get('/formulari/{form}', [FormController::class, 'answer'])
     ->name('form.answer')
     ->middleware('auth');
-
 
 
 /**
@@ -123,7 +102,6 @@ Route::get('/formulari/{form}', [FormController::class, 'answer'])
 
 
 // Route::get('/createanswers', [AnswerController::class, 'CreateAnswerView']);
-
 
 
 // Route::get('/sections/create', [SectionController::class, 'getSectionsCreateView']);
