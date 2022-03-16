@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FormController;
 // use App\Http\Controllers\AnswerController;
 // use App\Http\Controllers\RoleController;
@@ -13,7 +13,7 @@ use App\Http\Controllers\FormController;
 
 
 Route::get('/', function () {
-    return Inertia::render('Form/Create');
+    return inertia('Form/Create');
 });
 
 /**
