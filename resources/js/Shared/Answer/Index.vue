@@ -1,5 +1,12 @@
 <template>
   <div class="mt-5">
+    <AnswerText
+      v-if="type == 'text'"
+      :value="content.value"
+      :min="content.min"
+      :max="content.max"
+    />
+
     <AnswerNumber
       v-if="type == 'number'"
       :value="content.value"
@@ -10,6 +17,7 @@
 </template>
 
 <script setup>
+import AnswerText from './Text'
 import AnswerNumber from './Number'
 
 defineProps({
