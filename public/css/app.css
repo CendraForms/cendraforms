@@ -775,14 +775,14 @@ select {
 .w-6 {
   width: 1.5rem;
 }
+.w-1\/5 {
+  width: 20%;
+}
 .w-4\/5 {
   width: 80%;
 }
 .w-9 {
   width: 2.25rem;
-}
-.w-1\/5 {
-  width: 20%;
 }
 .max-w-xl {
   max-width: 36rem;
@@ -977,12 +977,12 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(41 37 36 / var(--tw-bg-opacity));
 }
-.bg-transparent {
-  background-color: transparent;
-}
 .bg-stone-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(68 64 60 / var(--tw-bg-opacity));
+}
+.bg-transparent {
+  background-color: transparent;
 }
 .bg-stone-600 {
   --tw-bg-opacity: 1;
