@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7e19cfe819f155ba4d1030c0c7081c89",
+    "content-hash": "5162c89eb5c6a3fcefa89e0d9a146d6c",
     "packages": [
         {
             "name": "brick/math",
@@ -2938,6 +2938,47 @@
             "time": "2021-09-25T23:10:38+00:00"
         },
         {
+            "name": "socialiteproviders/discord",
+            "version": "4.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/Discord.git",
+                "reference": "c6eddeb07ace7473e82d02d4db852dfacf5ef574"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SocialiteProviders/Discord/zipball/c6eddeb07ace7473e82d02d4db852dfacf5ef574",
+                "reference": "c6eddeb07ace7473e82d02d4db852dfacf5ef574",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^7.2 || ^8.0",
+                "socialiteproviders/manager": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\Discord\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christopher Eklund",
+                    "email": "eklundchristopher@gmail.com"
+                }
+            ],
+            "description": "Discord OAuth2 Provider for Laravel Socialite",
+            "support": {
+                "source": "https://github.com/SocialiteProviders/Discord/tree/4.1.1"
+            },
+            "time": "2021-01-05T22:03:58+00:00"
+        },
+        {
             "name": "socialiteproviders/gitlab",
             "version": "4.1.0",
             "source": {
@@ -2975,6 +3016,47 @@
             "description": "GitLab OAuth2 Provider for Laravel Socialite",
             "support": {
                 "source": "https://github.com/SocialiteProviders/GitLab/tree/4.1.0"
+            },
+            "time": "2020-12-01T23:10:59+00:00"
+        },
+        {
+            "name": "socialiteproviders/google",
+            "version": "4.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/Google-Plus.git",
+                "reference": "1cb8f6fb2c0dd0fc8b34e95f69865663fdf0b401"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SocialiteProviders/Google-Plus/zipball/1cb8f6fb2c0dd0fc8b34e95f69865663fdf0b401",
+                "reference": "1cb8f6fb2c0dd0fc8b34e95f69865663fdf0b401",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^7.2 || ^8.0",
+                "socialiteproviders/manager": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\Google\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "xstoop",
+                    "email": "myenglishnameisx@gmail.com"
+                }
+            ],
+            "description": "Google OAuth2 Provider for Laravel Socialite",
+            "support": {
+                "source": "https://github.com/SocialiteProviders/Google-Plus/tree/4.1.0"
             },
             "time": "2020-12-01T23:10:59+00:00"
         },
