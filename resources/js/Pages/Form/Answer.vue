@@ -5,7 +5,7 @@
     </span>
 
     <div v-text="form.title" />
-    
+
     <div v-for="section in form.sections" :key="section.id" class="my-5 p-10 bg-stone-700 rounded-xl" :class="{ 'opacity-50': section.locked }">
       <div class="mb-5 flex justify-between">
         <span class="text-2xl font-bold uppercase">
@@ -19,7 +19,7 @@
           </span>
         </div>
       </div>
-      
+
       <input type="text" :value="section.title" :disabled="section.locked" class="mb-5 block w-full bg-transparent rounded-xl">
 
       <div class="p-5 bg-stone-600 rounded-xl">
@@ -30,9 +30,13 @@
         <div v-for="question in section.questions" :key="question.id">
           <input type="text" :value="question.title" :disabled="section.locked" class="mb-5 w-full bg-transparent rounded-xl">
 
-          <QuestionType :type="question.type" :content="question.content" />
+          <AnswerType
+            :type="question.type"
+            :content="question.content"
+            :answer="question.answer"
+          />
         </div>
-        
+
         <button v-if="!section.locked" @click="createQuestion(section)" class="p-1 bg-stone-500 text-sm font-medium uppercase leading-none rounded hover:opacity-75">
           New question
         </button>
@@ -47,7 +51,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import QuestionType from '../../Shared/Question/Index'
+import AnswerType from '../../Shared/Answer/Index'
 
 const form = ref({
   id: 1,
@@ -108,12 +112,25 @@ const form = ref({
           id: 2,
           title: 'Què és el que menys t\'ha agradat?',
         },
+
+        {
+          id: 3,
+          title: 'Quin àmbit prefereixes?',
+          content: {
+            left: 'frontend',
+            right: 'backend',
+            defaultVal: 'right'
+          },
+          answer: {
+            selected: 'todo eric'
+          },
+          type: 'switch',
+        },
       ],
       locked: false,
       visible: true,
-    },
+    }
   ]
-
 })
 
 const createSection = () => {

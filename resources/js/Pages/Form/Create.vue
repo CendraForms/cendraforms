@@ -108,20 +108,20 @@ const form = ref({
           id: 2,
           title: 'Què és el que menys t\'ha agradat?',
         },
+
+        {
+          id: 3,
+          title: 'Quin àmbit prefereixes?',
+          content: {
+            left: 'frontend',
+            right: 'backend',
+            defaultVal: 'right'
+          },
+          type: 'switch',
+        },
       ],
       locked: false,
       visible: true,
-    },
-
-    {
-      id: 4,
-      title: 'Quin àmbit prefereixes?',
-      content: {
-        left: 'frontend',
-        right: 'backend',
-        defaultVal: 'right'
-      },
-      type: 'switch',
     },
   ]
 
