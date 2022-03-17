@@ -7,7 +7,6 @@
       :max="content.max"
     />
   </div>
-<<<<<<< HEAD
 
   <QuestionNumber
     v-if="type == 'number'"
@@ -16,13 +15,7 @@
     :max="content.max"
   />
   <Textarea
-    v-if="type == 'textarea'"
-    :value="content.value"
-    :min="content.min"
-    :max="content.max"
   />
-=======
->>>>>>> 939f5fd2f52549675e591754197b1e4a9389d41e
 </template>
 
 <script setup>
