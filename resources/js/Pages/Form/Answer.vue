@@ -30,7 +30,7 @@
         <div v-for="question in section.questions" :key="question.id">
           <input type="text" :value="question.title" :disabled="section.locked" class="mb-5 w-full bg-transparent rounded-xl">
 
-          <QuestionType :type="question.type" :content="question.content" />
+          <AnswerType :type="question.type" :content="question.content" />
         </div>
         
         <button v-if="!section.locked" @click="createQuestion(section)" class="p-1 bg-stone-500 text-sm font-medium uppercase leading-none rounded hover:opacity-75">
@@ -47,7 +47,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import QuestionType from '../../Shared/Question/Index'
+import AnswerType from '../../Shared/Answer/Index'
 
 const form = ref({
   id: 1,
@@ -61,16 +61,22 @@ const form = ref({
           id: null,
           title: 'Què és el que més t\'ha agradat?',
           type: 'text',
+          content: {
+            value: 'Text de Resposta', 
+            min: 0, 
+            max: 50,
+          },
         },
 
         {
           id: 2,
           title: 'Què és el que menys t\'ha agradat?',
+          type: 'text',
           content: {
-            min: 0,
-            max: 10,
+            value: 'Text de Resposta', 
+            min: 0, 
+            max: 1000,
           },
-          type: 'number',
         },
       ],
       locked: false,
@@ -84,11 +90,21 @@ const form = ref({
         {
           id: null,
           title: 'Què és el que més t\'ha agradat?',
+          type: 'number', 
+          content: { 
+            min: 0, 
+            max: 1000,
+          },
         },
 
         {
           id: 2,
           title: 'Què és el que menys t\'ha agradat?',
+          type: 'number', 
+          content: { 
+            min: 0, 
+            max: 1000,
+          },
         },
       ],
       locked: true,
@@ -102,11 +118,21 @@ const form = ref({
         {
           id: null,
           title: 'Què és el que més t\'ha agradat?',
+          type: 'number', 
+          content: { 
+            min: 0, 
+            max: 1000,
+          },
         },
 
         {
           id: 2,
           title: 'Què és el que menys t\'ha agradat?',
+          type: 'number', 
+          content: { 
+            min: 0, 
+            max: 1000,
+          },
         },
       ],
       locked: false,
