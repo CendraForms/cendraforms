@@ -18,7 +18,6 @@ Route::get('/', function () {
 /**
  * Auth
  */
-
 Route::get('/accedir', [AuthController::class, 'render'])
     ->name('auth');
 
