@@ -4,8 +4,8 @@
       Form #{{ form.id }}
     </span>
 
-    <input type="text" :value="form.title" class="w-full bg-transparent rounded-xl">
-
+    <div v-text="form.title" />
+    
     <div v-for="section in form.sections" :key="section.id" class="my-5 p-10 bg-stone-700 rounded-xl" :class="{ 'opacity-50': section.locked }">
       <div class="mb-5 flex justify-between">
         <span class="text-2xl font-bold uppercase">
@@ -19,7 +19,7 @@
           </span>
         </div>
       </div>
-
+      
       <input type="text" :value="section.title" :disabled="section.locked" class="mb-5 block w-full bg-transparent rounded-xl">
 
       <div class="p-5 bg-stone-600 rounded-xl">
@@ -32,7 +32,7 @@
 
           <QuestionType :type="question.type" :content="question.content" />
         </div>
-
+        
         <button v-if="!section.locked" @click="createQuestion(section)" class="p-1 bg-stone-500 text-sm font-medium uppercase leading-none rounded hover:opacity-75">
           New question
         </button>
@@ -51,10 +51,70 @@ import QuestionType from '../../Shared/Question/Index'
 
 const form = ref({
   id: 1,
-  title: 'Avaluació DAW2 curs 2021-22'
-})
+  title: 'Avaluació DAW2 curs 2021-22',
+  sections: [
+    {
+      id: 1,
+      title: 'DAW2_MP_02 - Bases de dades',
+      questions: [
+        {
+          id: null,
+          title: 'Què és el que més t\'ha agradat?',
+          type: 'text',
+        },
 
-const sections = ref()
+        {
+          id: 2,
+          title: 'Què és el que menys t\'ha agradat?',
+          content: {
+            min: 0,
+            max: 10,
+          },
+          type: 'number',
+        },
+      ],
+      locked: false,
+      visible: false,
+    },
+
+    {
+      id: 2,
+      title: 'DAW2_MP_03 - Programació',
+      questions: [
+        {
+          id: null,
+          title: 'Què és el que més t\'ha agradat?',
+        },
+
+        {
+          id: 2,
+          title: 'Què és el que menys t\'ha agradat?',
+        },
+      ],
+      locked: true,
+      visible: false,
+    },
+
+    {
+      id: 3,
+      title: 'DAW2_MP_06 - Desenvolupament web en entorn de client',
+      questions: [
+        {
+          id: null,
+          title: 'Què és el que més t\'ha agradat?',
+        },
+
+        {
+          id: 2,
+          title: 'Què és el que menys t\'ha agradat?',
+        },
+      ],
+      locked: false,
+      visible: true,
+    },
+  ]
+
+})
 
 const createSection = () => {
   form.sections.value.push({
