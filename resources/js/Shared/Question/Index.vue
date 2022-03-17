@@ -12,7 +12,6 @@
     v-if="type == 'switch'"
     :left="content.left"
     :right="content.right"
-    :defaultVal="content.defaultVal"
   />
 </template>
 
