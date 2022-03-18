@@ -24,6 +24,10 @@ class AuthController extends Controller
         {
             return redirect()->route('auth');
         }
+        else
+        {
+            return Socialite::driver($provider)->redirect();
+        }
     }
 
     public function socialCallback($provider)
@@ -36,7 +40,7 @@ class AuthController extends Controller
             {
                 return redirect()->route('auth');
             }
-            
+
             $user = Socialite::driver($provider)->user();
 
             if (!Str::endsWith($user->getEmail(), '@cendrassos.net'))
