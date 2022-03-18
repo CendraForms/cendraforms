@@ -126,6 +126,24 @@ const form = ref({
             },
           },
         },
+
+        {
+          id: 4,
+          title: 'Fruita o verdura?',
+          type: 'radio',
+          content: {
+            left: {
+              text: 'fruita',
+              selected: false,
+              defaultVal: true
+            },
+            right: {
+              text: 'verdura',
+              selected: false,
+              defaultVal: false
+            },
+          },
+        },
       ],
       locked: false,
       visible: true,

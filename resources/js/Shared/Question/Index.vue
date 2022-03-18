@@ -13,11 +13,18 @@
     :left="content.left"
     :right="content.right"
   />
+
+  <QuestionRadio
+    v-if="type == 'radio'"
+    :left="content.left"
+    :right="content.right"
+  />
 </template>
 
 <script setup>
 import QuestionNumber from './Number'
 import QuestionSwitch from './Switch'
+import QuestionRadio from './Radio'
 
 defineProps({
   type: String,
