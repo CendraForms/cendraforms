@@ -116,16 +116,23 @@ const form = ref({
         {
           id: 3,
           title: 'Quin àmbit prefereixes?',
+          type: 'switch',
           content: {
-            left: 'frontend',
-            right: 'backend',
-            defaultVal: 'right'
+            left: {
+              text: 'frontend',
+              selected: false,
+              defaultVal: false
+            },
+            right: {
+              text: 'backend',
+              selected: false,
+              defaultVal: true
+            },
           },
           answer: {
             selected: 'todo eric'
           },
-          type: 'switch',
-        },
+        }
       ],
       locked: false,
       visible: true,

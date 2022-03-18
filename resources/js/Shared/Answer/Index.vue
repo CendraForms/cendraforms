@@ -11,6 +11,7 @@
       v-if="type == 'switch'"
       :left="content.left"
       :right="content.right"
+      :answer="answer"
     />
   </div>
 </template>
