@@ -28,8 +28,8 @@ class AuthController extends Controller
 
     public function socialCallback($provider)
     {
-        try
-        {
+        // try
+        // {
             $providers = ["google", "discord", "github", "gitlab"];
 
             if (!in_array($provider, $providers))
@@ -52,10 +52,10 @@ class AuthController extends Controller
             Auth::login($user);
 
             return redirect()->route('form.create');
-        }
-        catch (Exception $exception)
-        {
-            return redirect('/accedir')->with('error', 'Error. Has d\'acceptar per poder accedir.');
-        }
+        // }
+        // catch (Exception $exception)
+        // {
+        //     return redirect('/accedir')->with('error', 'Error. Has d\'acceptar per poder accedir.');
+        // }
     }
 }

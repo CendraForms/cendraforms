@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Providers;
+
+use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
