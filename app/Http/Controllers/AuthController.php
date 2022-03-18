@@ -32,7 +32,6 @@ class AuthController extends Controller
 
     public function socialCallback($provider)
     {
-        dd($provider);
         try
         {
             $providers = ["google", "discord", "github", "gitlab"];
@@ -43,6 +42,8 @@ class AuthController extends Controller
             }
 
             $user = Socialite::driver($provider)->user();
+
+            dd($user);
 
             if (!Str::endsWith($user->getEmail(), '@cendrassos.net'))
             {
