@@ -43,12 +43,12 @@ class AuthController extends Controller
 
             $user = Socialite::driver($provider)->user();
 
-            dd($user);
-
             if (!Str::endsWith($user->getEmail(), '@cendrassos.net'))
             {
                 return redirect()->route('auth')->with('error', 'Usuari no autoritzat. Recorda utilitzar el correu del centre.');
             }
+
+            dd($user);
 
             $user = User::firstOrCreate([
                 "name" => str_replace('@cendrassos.net', '', $user->getEmail()),
