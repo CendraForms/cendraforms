@@ -22,7 +22,7 @@ class AuthController extends Controller
 
         if (!in_array($provider, $providers))
         {
-            return redirect()->route('auth.callback');
+            return redirect()->route('auth');
         }
     }
 
