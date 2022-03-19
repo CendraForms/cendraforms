@@ -108,20 +108,45 @@ const form = ref({
           id: 2,
           title: 'Què és el que menys t\'ha agradat?',
         },
+
+        {
+          id: 3,
+          title: 'Quin àmbit prefereixes?',
+          type: 'switch',
+          content: {
+            left: {
+              text: 'frontend',
+              selected: false,
+              defaultVal: false
+            },
+            right: {
+              text: 'backend',
+              selected: false,
+              defaultVal: true
+            },
+          },
+        },
+
+        {
+          id: 4,
+          title: 'Fruita o verdura?',
+          type: 'radio',
+          content: {
+            left: {
+              text: 'fruita',
+              selected: false,
+              defaultVal: true
+            },
+            right: {
+              text: 'verdura',
+              selected: false,
+              defaultVal: false
+            },
+          },
+        },
       ],
       locked: false,
       visible: true,
-    },
-
-    {
-      id: 4,
-      title: 'Quin àmbit prefereixes?',
-      content: {
-        left: 'frontend',
-        right: 'backend',
-        defaultVal: 'right'
-      },
-      type: 'switch',
     },
   ]
 
