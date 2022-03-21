@@ -8,7 +8,6 @@ use Exception;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Laravel\Socialite\Facades\Socialite;
-use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -19,7 +18,7 @@ class AuthController extends Controller
 
     public function socialRedirect($provider)
     {
-        $providers = ["google", "discord", "github", "gitlab"];
+        $providers = ["google", "discord", "github"];
 
         if (!in_array($provider, $providers))
         {
@@ -33,7 +32,7 @@ class AuthController extends Controller
     {
         try
         {
-            $providers = ["google", "discord", "github", "gitlab"];
+            $providers = ["google", "discord", "github"];
 
             if (!in_array($provider, $providers))
             {
@@ -47,14 +46,10 @@ class AuthController extends Controller
                 return redirect()->route('auth')->with('error', 'Usuari no autoritzat. Recorda utilitzar el correu del centre.');
             }
 
-            // dd($user); // Funciona
-
             $user = User::firstOrCreate([
                 "name" => str_replace('@cendrassos.net', '', $user->getEmail()),
                 "email" => $user->getEmail(),
             ]);
-
-            // dd($user); // No Funciona
 
             Auth::login($user);
 
@@ -62,7 +57,6 @@ class AuthController extends Controller
         }
         catch (Exception $exception)
         {
-            dd($exception);
             return redirect('/accedir')->with('error', 'Error. Has d\'acceptar per poder accedir.');
         }
     }
