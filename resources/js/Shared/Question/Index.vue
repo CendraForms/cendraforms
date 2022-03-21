@@ -16,8 +16,7 @@
 
   <QuestionRadio
     v-if="type == 'radio'"
-    :left="content.left"
-    :right="content.right"
+    :options="content.options"
   />
 </template>
 
