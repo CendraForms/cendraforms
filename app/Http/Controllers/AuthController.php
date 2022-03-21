@@ -24,10 +24,8 @@ class AuthController extends Controller
         {
             return redirect()->route('auth');
         }
-        else
-        {
-            return Socialite::driver($provider)->redirect();
-        }
+
+        return Socialite::driver($provider)->redirect();
     }
 
     public function socialCallback($provider)
@@ -53,7 +51,6 @@ class AuthController extends Controller
             $user = User::firstOrCreate([
                 "name" => str_replace('@cendrassos.net', '', $user->getEmail()),
                 "email" => $user->getEmail(),
-                "password" => "1234",
             ]);
 
             // dd($user); // No Funciona
