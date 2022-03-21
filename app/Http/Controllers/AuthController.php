@@ -49,11 +49,10 @@ class AuthController extends Controller
 
             // dd($user); // Funciona
 
-            $user = User::where("email", $user->getEmail())->get();
-            // $user = User::firstOrCreate([
-            //     "name" => str_replace('@cendrassos.net', '', $user->getEmail()),
-            //     "email" => $user->getEmail(),
-            // ]);
+            $user = User::firstOrCreate([
+                "name" => str_replace('@cendrassos.net', '', $user->getEmail()),
+                "email" => $user->getEmail(),
+            ]);
 
             // dd($user); // No Funciona
 
