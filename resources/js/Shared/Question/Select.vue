@@ -1,7 +1,7 @@
 <template>
 <!-- -->
  <div class="flex gap-5 text-black" >
-  <select name="test" v-model="selected" class="text-black w-1/3">
+  <select name="test" class="text-black w-1/3">
      <option  class="text-black" v-for="option in arr" :value="option.value" :key="option.id">{{option.text}}</option>
 </select>
 </div>
@@ -31,8 +31,7 @@ import { ref } from 'vue'
 
 const props = defineProps({
   value: String,
-  min: Number,
-  max: Number,
+  arr:  []
 })
 
 
@@ -53,9 +52,5 @@ const DeleteOptions = (posicio) => {
 arr.value.splice(posicio,1)
 }
 
-const arr = ref([]);
-
-const valor = ref(props.valor)
-const options = ref(props.options);
-const selected = ref(props.selected);
+const arr = ref([],props.arr);
 </script>
