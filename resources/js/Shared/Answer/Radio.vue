@@ -1,10 +1,9 @@
 <template>
-  <div v-for="(option, index) in options">
+  <div v-for="(option, index) in options" :key="index">
     <label
       v-text="option.text"
       for="`radio-option-` + {{ option.index }}"
     />
-
     <input
       id="`radio-option-` + {{ option.index }}"
       type="radio"
