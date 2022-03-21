@@ -21392,7 +21392,7 @@ __webpack_require__.r(__webpack_exports__);
         questions: [{
           id: null,
           title: 'Què és el que més t\'ha agradat?',
-          type: 'text'
+          type: 'textarea'
         }, {
           id: 2,
           title: 'Què és el que menys t\'ha agradat?',
