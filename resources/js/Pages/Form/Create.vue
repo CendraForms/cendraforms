@@ -129,21 +129,27 @@ const form = ref({
 
         {
           id: 4,
-          title: 'Fruita o verdura?',
+          title: 'Fruita, verdura o xocolata?',
           type: 'radio',
           content: {
-            left: {
-              text: 'fruita',
-              selected: false,
-              defaultVal: true
-            },
-            right: {
-              text: 'verdura',
-              selected: false,
-              defaultVal: false
-            },
-          },
-        },
+            options: [
+              {
+                text: 'fruita',
+                selected: false,
+              },
+
+              {
+                text: 'verdura',
+                selected: false,
+              },
+
+              {
+                text: 'xocolata',
+                selected: false,
+              }
+            ],
+          }
+        }
       ],
       locked: false,
       visible: true,
