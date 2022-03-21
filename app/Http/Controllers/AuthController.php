@@ -57,7 +57,6 @@ class AuthController extends Controller
         }
         catch (Exception $exception)
         {
-            dd($exception);
             return redirect('/accedir')->with('error', 'Error. Has d\'acceptar per poder accedir.');
         }
     }
