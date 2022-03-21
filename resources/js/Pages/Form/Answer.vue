@@ -143,19 +143,16 @@ const form = ref({
               {
                 text: 'fruita',
                 selected: false,
-                defaultVal: true
               },
 
               {
                 text: 'verdura',
                 selected: false,
-                defaultVal: false
               },
 
               {
                 text: 'xocolata',
                 selected: false,
-                defaultVal: false
               }
             ],
           },
