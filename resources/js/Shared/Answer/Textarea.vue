@@ -14,7 +14,7 @@
       return{
         message: "",
         maxcharacters: 30,
-        remaincharactersText: "Max 30 caracters",
+        remaincharactersText: "Faltan 300 caracters",
       };
     },
     methods:{

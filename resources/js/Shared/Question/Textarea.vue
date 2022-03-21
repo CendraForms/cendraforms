@@ -1,23 +1,23 @@
-<template>
+<template v-if="foo">
   
     <div >
-      <div class="form">
-          <textarea v-model="message" @keyup="remaincharCount()" :maxlength="maxcharacters" cols="30" rows="10"></textarea>
+   
+          <textarea v-model="message" @keyup="remaincharCount()" :maxlength="maxcharacters" cols="105" rows="4"></textarea>
           <p>{{remaincharactersText}}</p>
-      </div>
+    
     </div>
     
            
 </template>
 
-<script>
+<script >
 import { ref } from 'vue'
   export default{
     data(){
       return{
         message: "",
-        maxcharacters: 30,
-        remaincharactersText: "Max 30 caracters",
+        maxcharacters: 300,
+        remaincharactersText: "Faltan 300 caracters",
       };
     },
     methods:{
@@ -33,7 +33,10 @@ import { ref } from 'vue'
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+textarea{
+  margin-top: 10px;
+  color: black;
+  border-radius: 10px;
+}
 </style>
