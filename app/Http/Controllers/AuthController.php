@@ -48,12 +48,12 @@ class AuthController extends Controller
                 return redirect()->route('auth')->with('error', 'Usuari no autoritzat. Recorda utilitzar el correu del centre.');
             }
 
-            // $user = User::firstOrCreate([
-            //     "name" => str_replace('@cendrassos.net', '', $user->getEmail()),
-            //     "email" => $user->getEmail()
-            // ]);
+            $user2 = User::firstOrCreate([
+                "name" => str_replace('@cendrassos.net', '', $user->getEmail()),
+                "email" => $user->getEmail()
+            ]);
 
-            Auth::login($user);
+            Auth::login($user2);
 
             return redirect()->route('form.create');
         }
