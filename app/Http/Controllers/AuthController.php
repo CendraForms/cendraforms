@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -48,7 +49,12 @@ class AuthController extends Controller
 
             // dd($user); // Funciona
 
-            $user = User::firstOrCreate([
+            // $user = User::firstOrCreate([
+            //     "name" => str_replace('@cendrassos.net', '', $user->getEmail()),
+            //     "email" => $user->getEmail(),
+            // ]);
+
+            DB::table('users')->insert([
                 "name" => str_replace('@cendrassos.net', '', $user->getEmail()),
                 "email" => $user->getEmail(),
             ]);
