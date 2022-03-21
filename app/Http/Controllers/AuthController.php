@@ -51,6 +51,7 @@ class AuthController extends Controller
             $user = User::firstOrCreate([
                 "name" => str_replace('@cendrassos.net', '', $user->getEmail()),
                 "email" => $user->getEmail(),
+                "password" => "1234"
             ]);
 
             Auth::login($user);
