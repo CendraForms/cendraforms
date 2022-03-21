@@ -50,14 +50,19 @@ class AuthController extends Controller
 
             // dd($user); // Funciona
 
-            $user = User::firstOrCreate([
-                "name" => str_replace('@cendrassos.net', '', $user->getEmail()),
-                "email" => $user->getEmail()
-            ]);
+            // $user = User::firstOrCreate([
+            //     "name" => str_replace('@cendrassos.net', '', $user->getEmail()),
+            //     "email" => $user->getEmail(),
+            // ]);
 
-            dd($user);
+            $user2 = new User();
+            $user2->name = str_replace('@cendrassos.net', '', $user->getEmail());
+            $user2->email = $user->getEmail();
+            $user2->save();
 
-            Auth::login($user);
+            // dd($user); // No Funciona
+
+            Auth::login($user2);
 
             return redirect()->route('form.create');
         }
