@@ -35,7 +35,13 @@ class Form extends Model
         'updated_at'
     ];
 
-
+    /**
+     * Get the sections that belongs to the form.
+     */
+    public function sections()
+    {
+        return $this->hasMany(Section::class);
+    }
 
     public function user(){
         return $this->belongsTo(User::class);

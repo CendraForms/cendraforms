@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Form;
+use Inertia\Inertia;
 
 class FormController extends Controller
 {
@@ -17,8 +18,8 @@ class FormController extends Controller
     {
         return inertia('Form/Answer');
     }
-    
-    
+
+
     /**
      * Gets all forms
      *
@@ -54,9 +55,29 @@ class FormController extends Controller
 
     public function edit(Form $form)
     {
-        return view('forms.edit', [
-            'form' => $form
+        //Form = $form
+        //Sections = $form->sections
+        //Questions = $form->sections[0]->questions
+
+        $sections = $form->sections()->get();
+
+        foreach ($sections as $section) {
+            echo $section->questions;
+        }
+        $sections = $sections->each(function($item, $key) {
+            echo $item->questions;
+        });
+        dd();
+
+        return Inertia::render('Form/Edit', [
+            'form' => $form,
+            'sections' => $form->sections,
+            'questions' => $form->sections[0]->questions,
         ]);
+
+        // return view('forms.edit', [
+        //     'form' => $form
+        // ]);
     }
 
     /**
@@ -119,7 +140,7 @@ class FormController extends Controller
     {
         return view('forms.formsupdate', ['forms' => $form]);
     }
-  
+
     public function getFormView(Form $form)
     {
 
