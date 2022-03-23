@@ -1,26 +1,29 @@
 <template>
-  <div v-if="type == 'text'">
-    <input type="text" name="" id="">
+  <div class="mt-5">
+    <QuestionNumber
+      v-if="type == 'number'"
+      :value="content.value"
+      :min="content.min"
+      :max="content.max"
+    />
   </div>
-
-  <QuestionNumber
-    v-if="type == 'number'"
-    :value="content.value"
-    :min="content.min"
-    :max="content.max"
-  />
 
   <QuestionSwitch
     v-if="type == 'switch'"
     :left="content.left"
     :right="content.right"
-    :defaultVal="content.defaultVal"
+  />
+
+  <QuestionRadio
+    v-if="type == 'radio'"
+    :options="content.options"
   />
 </template>
 
 <script setup>
 import QuestionNumber from './Number'
 import QuestionSwitch from './Switch'
+import QuestionRadio from './Radio'
 
 defineProps({
   type: String,
