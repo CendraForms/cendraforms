@@ -21,13 +21,13 @@ return new class extends Migration
                 ->index()
                 ->constrained()
                 ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->onDelete('cascade')->nullable();
 
             $table->integer('user_id')
                 ->index()
                 ->constrained()
                 ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->onDelete('cascade')->nullable();
                 
             $table->boolean('active')->default(true);
             

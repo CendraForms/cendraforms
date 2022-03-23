@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -20,19 +19,21 @@ class UserSeeder extends Seeder
             [
                 'name' => 'direccio',
                 'email' => 'direccio@cendrassos.net',
-                'password' => Hash::make('direccio'),
                 'roles' =>  [ Role::firstWhere('name', 'direccio')->id ],
             ],
             [
                 'name' => 'professor',
                 'email' => 'professor@cendrassos.net',
-                'password' => Hash::make('professor'),
                 'roles' =>  [ Role::firstWhere('name', 'professor')->id ],
             ],
             [
                 'name' => 'alumne',
                 'email' => 'alumne@cendrassos.net',
-                'password' => Hash::make('alumne'),
+                'roles' =>  [ Role::firstWhere('name', 'alumne')->id ],
+            ],
+            [
+                'name' => 'alumne2',
+                'email' => 'alumne2@cendrassos.net',
                 'roles' =>  [ Role::firstWhere('name', 'alumne')->id ],
             ],
         ];
@@ -41,7 +42,6 @@ class UserSeeder extends Seeder
             $finalUser = User::create([
                 'name' => $user['name'],
                 'email' => $user['email'],
-                'password' => $user['password'],
             ]);
 
             $finalUser->roles()->attach($user['roles']);
