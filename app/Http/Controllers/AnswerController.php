@@ -51,7 +51,7 @@ class AnswerController extends Controller
 
     public function getAnswerView(Answer $answer)
     {
-        
+
         return view('Answer/answer', ['answer' => $answer]);
     }
 
@@ -103,7 +103,7 @@ class AnswerController extends Controller
 
         return view('answers.answers', ['answers' => $answers]);
     }
-    
+
     /**
      * Returns specified answer object
      *

@@ -66,7 +66,7 @@ class QuestionController extends Controller
             'content' => ['required', 'string', 'max:1000'],
             'active' => ['nullable', 'boolean'],
         ]);
-      
+
         $question->update($validated);
 
         return $question;
