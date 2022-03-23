@@ -3,12 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Database\Seeders\FormSeeder;
-use Database\Seeders\RoleSeeder;
-use Database\Seeders\UserSeeder;
-use Database\Seeders\AnswerSeeder;
-use Database\Seeders\SectionSeeder;
-use Database\Seeders\QuestionSeeder;
 
 class DatabaseSeeder extends Seeder
 {

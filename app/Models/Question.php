@@ -19,7 +19,6 @@ class Question extends Model
         'name',
         'content',
         'section_id',
-        'active',
     ];
 
     /**
@@ -34,8 +33,10 @@ class Question extends Model
 
     /**
      * Get the section that owns the question.
+     *
+     * @return BelongsTo
      */
-    public function section()
+    public function section(): BelongsTo
     {
         return $this->belongsTo(Section::class);
     }
