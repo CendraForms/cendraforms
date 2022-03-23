@@ -1,6 +1,6 @@
 <template>
   <div class="mt-5">
-    <QuestionNumber
+    <AnswerNumber
       v-if="type == 'number'"
       :value="content.value"
       :min="content.min"
@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import QuestionNumber from './Number'
+import AnswerNumber from './Number'
 
 defineProps({
   type: String,

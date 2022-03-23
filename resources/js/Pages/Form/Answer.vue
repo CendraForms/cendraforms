@@ -3,9 +3,9 @@
     <span class="mb-5 block text-4xl font-bold uppercase">
       Form #{{ form.id }}
     </span>
-    
-    <input type="text" :value="form.title" class="w-full bg-transparent rounded-xl">
 
+    <div v-text="form.title" />
+    
     <div v-for="section in form.sections" :key="section.id" class="my-5 p-10 bg-stone-700 rounded-xl" :class="{ 'opacity-50': section.locked }">
       <div class="mb-5 flex justify-between">
         <span class="text-2xl font-bold uppercase">

@@ -8,6 +8,17 @@ use App\Models\Form;
 
 class FormController extends Controller
 {
+    public function create()
+    {
+        return inertia('Form/Create');
+    }
+
+    public function answer(Form $form)
+    {
+        return inertia('Form/Answer');
+    }
+    
+    
     /**
      * Gets all forms
      *
@@ -36,10 +47,10 @@ class FormController extends Controller
         ]);
     }
 
-    public function create()
-    {
-        return view('forms.create');
-    }
+    // public function create()
+    // {
+    //     return view('forms.create');
+    // }
 
     public function edit(Form $form)
     {
