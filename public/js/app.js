@@ -21447,95 +21447,85 @@ __webpack_require__.r(__webpack_exports__);
   setup: function setup(__props, _ref) {
     var expose = _ref.expose;
     expose();
-    var form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([{
-      questions: [{
-        id: null,
-        title: 'Què és el que més t\'ha agradat?',
-        type: 'text',
-        content: {
-          value: 'Text de Resposta',
-          min: 0,
-          max: 1000
-        }
-      }, {
-        id: 2,
-        title: 'Què és el que menys t\'ha agradat?',
-        content: {
-          min: 0,
-          max: 10
-        },
-        type: 'number'
-      }],
-      locked: false,
-      visible: false
-    }, {
-      id: 2,
-      title: 'DAW2_MP_03 - Programació',
-      questions: [{
-        id: null,
-        title: 'Què és el que més t\'ha agradat?'
-      }, {
-        id: 2,
-        title: 'Què és el que menys t\'ha agradat?'
-      }],
-      locked: true,
-      visible: false
-    }, {
-      id: 3,
-      title: 'DAW2_MP_06 - Desenvolupament web en entorn de client',
-      questions: [{
-        id: null,
-        title: 'Què és el que més t\'ha agradat?'
-      }, {
-        id: 2,
-        title: 'Què és el que menys t\'ha agradat?'
-      }],
-      locked: false,
-      visible: true
-    }]);
-    var sections = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([{
+    var form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)({
       id: 1,
-      title: 'DAW2_MP_02 - Bases de dades',
-      questions: [{
-        id: null,
-        title: 'Què és el que més t\'ha agradat?',
-        type: 'select'
+      title: 'Avaluació DAW2 curs 2021-22',
+      sections: [{
+        id: 1,
+        title: 'DAW2_MP_02 - Bases de dades',
+        questions: [{
+          id: null,
+          title: 'Què és el que més t\'ha agradat?',
+          type: 'textarea'
+        }, {
+          id: 2,
+          title: 'Què és el que menys t\'ha agradat?',
+          content: {
+            min: 0,
+            max: 10
+          },
+          type: 'number'
+        }],
+        locked: false,
+        visible: false
       }, {
         id: 2,
-        title: 'Què és el que menys t\'ha agradat?',
-        content: {
-          min: 0,
-          max: 10
-        },
-        type: 'number'
-      }],
-      locked: false,
-      visible: false
-    }, {
-      id: 2,
-      title: 'DAW2_MP_03 - Programació',
-      questions: [{
-        id: null,
-        title: 'Què és el que més t\'ha agradat?'
+        title: 'DAW2_MP_03 - Programació',
+        questions: [{
+          id: null,
+          title: 'Què és el que més t\'ha agradat?'
+        }, {
+          id: 2,
+          title: 'Què és el que menys t\'ha agradat?'
+        }],
+        locked: true,
+        visible: false
       }, {
-        id: 2,
-        title: 'Què és el que menys t\'ha agradat?'
-      }],
-      locked: true,
-      visible: false
-    }, {
-      id: 3,
-      title: 'DAW2_MP_06 - Desenvolupament web en entorn de client',
-      questions: [{
-        id: null,
-        title: 'Què és el que més t\'ha agradat?'
-      }, {
-        id: 2,
-        title: 'Què és el que menys t\'ha agradat?'
-      }],
-      locked: false,
-      visible: true
-    }]);
+        id: 3,
+        title: 'DAW2_MP_06 - Desenvolupament web en entorn de client',
+        questions: [{
+          id: null,
+          title: 'Què és el que més t\'ha agradat?'
+        }, {
+          id: 2,
+          title: 'Què és el que menys t\'ha agradat?'
+        }, {
+          id: 3,
+          title: 'Quin àmbit prefereixes?',
+          type: 'switch',
+          content: {
+            left: {
+              text: 'frontend',
+              selected: false,
+              defaultVal: false
+            },
+            right: {
+              text: 'backend',
+              selected: false,
+              defaultVal: true
+            }
+          }
+        }, {
+          id: 4,
+          title: 'Fruita, verdura o xocolata?',
+          type: 'radio',
+          content: {
+            options: [{
+              text: 'fruita',
+              selected: false
+            }, {
+              text: 'verdura',
+              selected: false
+            }, {
+              text: 'xocolata',
+              selected: false
+            }]
+          }
+        }],
+        locked: false,
+        visible: true
+      }]
+    });
 
     var createSection = function createSection() {
       sections.value.push({
@@ -21557,7 +21547,6 @@ __webpack_require__.r(__webpack_exports__);
 
     var __returned__ = {
       form: form,
-      sections: sections,
       createSection: createSection,
       createQuestion: createQuestion,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
@@ -22772,7 +22761,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "w-full bg-transparent rounded-xl"
   }, null, 8
   /* PROPS */
-  , _hoisted_3), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.sections, function (section) {
+  , _hoisted_3), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.sections, function (section) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: section.id,
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["my-5 p-10 bg-stone-700 rounded-xl", {

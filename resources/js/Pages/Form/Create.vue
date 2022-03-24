@@ -49,132 +49,114 @@
 import { ref } from 'vue'
 import QuestionType from '../../Shared/Question/Index'
 
-const form = ref([{
-    questions: [
-      {
-        id: null,
-        title: 'Què és el que més t\'ha agradat?',
-        type: 'text',
-        content: {
-          value: 'Text de Resposta',
-          min: 0,
-          max: 1000
+const form = ref({
+  id: 1,
+  title: 'Avaluació DAW2 curs 2021-22',
+  sections: [
+    {
+      id: 1,
+      title: 'DAW2_MP_02 - Bases de dades',
+      questions: [
+        {
+          id: null,
+          title: 'Què és el que més t\'ha agradat?',
+          type: 'textarea',
+        },
+
+        {
+          id: 2,
+          title: 'Què és el que menys t\'ha agradat?',
+          content: {
+            min: 0,
+            max: 10,
+          },
+          type: 'number',
+        },
+      ],
+      locked: false,
+      visible: false,
+    },
+
+    {
+      id: 2,
+      title: 'DAW2_MP_03 - Programació',
+      questions: [
+        {
+          id: null,
+          title: 'Què és el que més t\'ha agradat?',
+        },
+
+        {
+          id: 2,
+          title: 'Què és el que menys t\'ha agradat?',
+        },
+      ],
+      locked: true,
+      visible: false,
+    },
+
+    {
+      id: 3,
+      title: 'DAW2_MP_06 - Desenvolupament web en entorn de client',
+      questions: [
+        {
+          id: null,
+          title: 'Què és el que més t\'ha agradat?',
+        },
+
+        {
+          id: 2,
+          title: 'Què és el que menys t\'ha agradat?',
+        },
+
+        {
+          id: 3,
+          title: 'Quin àmbit prefereixes?',
+          type: 'switch',
+          content: {
+            left: {
+              text: 'frontend',
+              selected: false,
+              defaultVal: false
+            },
+            right: {
+              text: 'backend',
+              selected: false,
+              defaultVal: true
+            },
+          },
+        },
+
+        {
+          id: 4,
+          title: 'Fruita, verdura o xocolata?',
+          type: 'radio',
+          content: {
+            options: [
+              {
+                text: 'fruita',
+                selected: false,
+              },
+
+              {
+                text: 'verdura',
+                selected: false,
+              },
+
+              {
+                text: 'xocolata',
+                selected: false,
+              }
+            ],
+          }
         }
-      },
+      ],
+      locked: false,
+      visible: true,
+    },
+  ]
 
-      {
-        id: 2,
-        title: 'Què és el que menys t\'ha agradat?',
-        content: {
-          min: 0,
-          max: 10,
-        },
-        type: 'number',
-      },
-    ],
-    locked: false,
-    visible: false,
-  },
-
-  {
-    id: 2,
-    title: 'DAW2_MP_03 - Programació',
-    questions: [
-      {
-        id: null,
-        title: 'Què és el que més t\'ha agradat?',
-      },
-
-      {
-        id: 2,
-        title: 'Què és el que menys t\'ha agradat?',
-      },
-    ],
-    locked: true,
-    visible: false,
-  },
-
-  {
-    id: 3,
-    title: 'DAW2_MP_06 - Desenvolupament web en entorn de client',
-    questions: [
-      {
-        id: null,
-        title: 'Què és el que més t\'ha agradat?',
-      },
-
-      {
-        id: 2,
-        title: 'Què és el que menys t\'ha agradat?',
-      },
-    ],
-    locked: false,
-    visible: true,
-  }
-])
-
-const sections = ref([
-  {
-    id: 1,
-    title: 'DAW2_MP_02 - Bases de dades',
-    questions: [
-      {
-        id: null,
-        title: 'Què és el que més t\'ha agradat?',
-        type: 'select',
-      },
-
-      {
-        id: 2,
-        title: 'Què és el que menys t\'ha agradat?',
-        content: {
-          min: 0,
-          max: 10,
-        },
-        type: 'number',
-      },
-    ],
-    locked: false,
-    visible: false,
-  },
-
-  {
-    id: 2,
-    title: 'DAW2_MP_03 - Programació',
-    questions: [
-      {
-        id: null,
-        title: 'Què és el que més t\'ha agradat?',
-      },
-
-      {
-        id: 2,
-        title: 'Què és el que menys t\'ha agradat?',
-      },
-    ],
-    locked: true,
-    visible: false,
-  },
-
-  {
-    id: 3,
-    title: 'DAW2_MP_06 - Desenvolupament web en entorn de client',
-    questions: [
-      {
-        id: null,
-        title: 'Què és el que més t\'ha agradat?',
-      },
-
-      {
-        id: 2,
-        title: 'Què és el que menys t\'ha agradat?',
-      },
-    ],
-    locked: false,
-    visible: true,
-  },
-])
-
+})
 
 const createSection = () => {
   sections.value.push({
