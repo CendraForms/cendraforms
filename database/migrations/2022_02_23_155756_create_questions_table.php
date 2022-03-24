@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->id();
 
             $table->string('name');
+            $table->string('type');
             $table->json('content');
 
             $table->integer('section_id')
