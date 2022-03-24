@@ -130,7 +130,37 @@ const form = ref({
             },
           },
           answer: {
-            selected: 'todo eric'
+            selected: null
+          },
+        },
+
+        {
+          id: 4,
+          title: 'Fruita, verdura o xocolata?',
+          type: 'radio',
+          content: {
+            options: [
+              {
+                text: 'fruita',
+                selected: false,
+                defaultVal: true
+              },
+
+              {
+                text: 'verdura',
+                selected: false,
+                defaultVal: false
+              },
+
+              {
+                text: 'xocolata',
+                selected: false,
+                defaultVal: false
+              }
+            ],
+          },
+          answer: {
+            selected: null
           },
         }
       ],

@@ -126,6 +126,30 @@ const form = ref({
             },
           },
         },
+
+        {
+          id: 4,
+          title: 'Fruita, verdura o xocolata?',
+          type: 'radio',
+          content: {
+            options: [
+              {
+                text: 'fruita',
+                selected: false,
+              },
+
+              {
+                text: 'verdura',
+                selected: false,
+              },
+
+              {
+                text: 'xocolata',
+                selected: false,
+              }
+            ],
+          }
+        }
       ],
       locked: false,
       visible: true,
