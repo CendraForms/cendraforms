@@ -18,10 +18,10 @@
     v-if="type == 'radio'"
     :options="content.options"
   />
-    <SelectOption
-    v-if="type == 'select'"
-    />
 
+  <SelectOption
+    v-if="type == 'select'"
+  />
   
 
   <!--<option v-for="content.option in content.option" :value="content.option.value" >{{content.option.text}}</option>-->
