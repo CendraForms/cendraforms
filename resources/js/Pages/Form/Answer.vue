@@ -65,16 +65,22 @@ const form = ref({
           id: null,
           title: 'Què és el que més t\'ha agradat?',
           type: 'text',
+          content: {
+            value: 'Text de Resposta', 
+            min: 0, 
+            max: 50,
+          },
         },
 
         {
           id: 2,
           title: 'Què és el que menys t\'ha agradat?',
+          type: 'text',
           content: {
-            min: 0,
-            max: 10,
+            value: 'Text de Resposta', 
+            min: 0, 
+            max: 1000,
           },
-          type: 'number',
         },
       ],
       locked: false,
@@ -88,11 +94,21 @@ const form = ref({
         {
           id: null,
           title: 'Què és el que més t\'ha agradat?',
+          type: 'number', 
+          content: { 
+            min: 0, 
+            max: 1000,
+          },
         },
 
         {
           id: 2,
           title: 'Què és el que menys t\'ha agradat?',
+          type: 'number', 
+          content: { 
+            min: 0, 
+            max: 1000,
+          },
         },
       ],
       locked: true,
@@ -106,11 +122,21 @@ const form = ref({
         {
           id: null,
           title: 'Què és el que més t\'ha agradat?',
+          type: 'number', 
+          content: { 
+            min: 0, 
+            max: 1000,
+          },
         },
 
         {
           id: 2,
           title: 'Què és el que menys t\'ha agradat?',
+          type: 'number', 
+          content: { 
+            min: 0, 
+            max: 1000,
+          },
         },
 
         {

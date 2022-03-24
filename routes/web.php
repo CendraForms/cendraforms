@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\GitHubController;
 // use App\Http\Controllers\QuestionController;
 
-
 Route::get('/', function () {
     return inertia('Form/Create');
 });
