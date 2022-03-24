@@ -13,13 +13,16 @@
       :min="content.min"
       :max="content.max"
     />
+    <AnswerCheckbox
+      v-if="type == 'checkbox'"
+    />
   </div>
 </template>
 
 <script setup>
 import AnswerText from './Text'
 import AnswerNumber from './Number'
-
+import AnswerCheckbox from './Checkbox'
 defineProps({
   type: String,
   content: Object,

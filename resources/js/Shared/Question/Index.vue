@@ -1,21 +1,15 @@
 <template>
-  <QuestionText
-    v-if="type == 'text'" 
-    :value="content.value"
-    :min="content.min" 
-    :max="content.max"
-  />
-
-  <QuestionNumber
-    v-if="type == 'number'"
-    :value="content.value"
-    :min="content.min"
-    :max="content.max"
-  />
+  <div class="mt-5">
+    <QuestionNumber
+      v-if="type == 'number'"
+      :value="content.value"
+      :min="content.min"
+      :max="content.max"
+    />
+  </div>
 </template>
 
 <script setup>
-import QuestionText from './Text.vue'
 import QuestionNumber from './Number'
 
 defineProps({
