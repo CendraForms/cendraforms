@@ -9,6 +9,7 @@ use App\Models\Form;
 use App\Models\User;
 use App\Models\Question;
 use App\Models\Answer;
+use App\Models\Role;
 
 class AngularController extends Controller
 {
@@ -38,5 +39,17 @@ class AngularController extends Controller
     public function countAnswers()
     {
         return Answer::get()->count();
+    }
+
+    public function getRoles()
+    {
+        $roles = array();
+        $totals = array();
+        foreach(Role::get() as $role){
+            $roles[] = $role->name;
+            $totals[] = $role->users->count();
+        }
+
+        return array(array($roles),array($totals));
     }
 }
