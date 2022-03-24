@@ -647,6 +647,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> 056d52131025ce7c34783c91cf6b3d5aa315e4be
@@ -661,6 +662,11 @@ select {
   margin-top: 2.5rem;
 }
 >>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
+=======
+.mt-10 {
+  margin-top: 2.5rem;
+}
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 .ml-1 {
   margin-left: 0.25rem;
 }
@@ -700,6 +706,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 1a6243a9b124f4222b4a481a57863662cb44202d
 .mt-10 {
@@ -733,6 +740,11 @@ select {
   margin-top: 1.5rem;
 }
 >>>>>>> 056d52131025ce7c34783c91cf6b3d5aa315e4be
+=======
+.mt-6 {
+  margin-top: 1.5rem;
+}
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 .mt-3 {
   margin-top: 0.75rem;
 }
@@ -751,6 +763,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 1a6243a9b124f4222b4a481a57863662cb44202d
 =======
@@ -761,12 +774,15 @@ select {
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
 =======
 >>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
+=======
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 .mt-5 {
   margin-top: 1.25rem;
 }
 .mb-1 {
   margin-bottom: 0.25rem;
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -784,6 +800,11 @@ select {
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
 =======
 >>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
+=======
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 .block {
   display: block;
 }
@@ -809,6 +830,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> 056d52131025ce7c34783c91cf6b3d5aa315e4be
@@ -816,12 +838,15 @@ select {
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
 =======
 >>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
+=======
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 .h-screen {
   height: 100vh;
 }
 .h-14 {
   height: 3.5rem;
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -832,6 +857,8 @@ select {
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
 =======
 >>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
+=======
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 .h-8 {
   height: 2rem;
 }
@@ -845,6 +872,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .h-screen {
   height: 100vh;
 }
@@ -859,6 +887,8 @@ select {
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
 =======
 >>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
+=======
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 .h-10 {
   height: 2.5rem;
 }
@@ -878,6 +908,18 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+.w-screen {
+  width: 100vw;
+}
+.w-3\/4 {
+  width: 75%;
+}
+.w-full {
+  width: 100%;
+}
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 .w-8 {
   width: 2rem;
 }
@@ -887,6 +929,7 @@ select {
 .w-20 {
   width: 5rem;
 }
+<<<<<<< HEAD
 .w-full {
   width: 100%;
 }
@@ -912,6 +955,8 @@ select {
 .w-20 {
   width: 5rem;
 }
+=======
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 .w-48 {
   width: 12rem;
 }
@@ -921,6 +966,7 @@ select {
 .w-6 {
   width: 1.5rem;
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -996,12 +1042,18 @@ select {
   width: 20%;
 }
 >>>>>>> 056d52131025ce7c34783c91cf6b3d5aa315e4be
+=======
+.w-1\/5 {
+  width: 20%;
+}
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 .w-4\/5 {
   width: 80%;
 }
 .w-9 {
   width: 2.25rem;
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1021,13 +1073,21 @@ select {
 >>>>>>> 34682cbe3e538996a5ca9a9a6e7c356da9a945bf
 =======
 >>>>>>> 507c312992e5ffb3cba04fafb3408f8b7497fd8d
+=======
+.w-1\/3 {
+  width: 33.333333%;
+}
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 .max-w-xl {
   max-width: 36rem;
 }
+.max-w-6xl {
+  max-width: 72rem;
+}
 .max-w-7xl {
   max-width: 80rem;
->>>>>>> bfe9ed097f2da8359295b1dbb00946279ab711c9
 }
+<<<<<<< HEAD
 .max-w-7xl {
   max-width: 80rem;
 }
@@ -1058,6 +1118,8 @@ select {
 .max-w-7xl {
   max-width: 80rem;
 }
+=======
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1178,6 +1240,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .border-b {
   border-bottom-width: 1px;
 }
@@ -1218,6 +1281,10 @@ select {
 }
 .border-b {
   border-bottom-width: 1px;
+=======
+.border-2 {
+  border-width: 2px;
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 }
 .border-b-2 {
   border-bottom-width: 2px;
@@ -1233,7 +1300,10 @@ select {
 }
 .border-r {
   border-right-width: 1px;
+<<<<<<< HEAD
 >>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
+=======
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 }
 .border-b {
   border-bottom-width: 1px;
@@ -1249,6 +1319,7 @@ select {
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
 }
 .border-gray-200 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   --tw-border-opacity: 1;
@@ -1282,6 +1353,15 @@ select {
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
 =======
 >>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
+=======
+  --tw-border-opacity: 1;
+  border-color: rgb(229 231 235 / var(--tw-border-opacity));
+}
+.border-gray-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(156 163 175 / var(--tw-border-opacity));
+}
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 .border-transparent {
   border-color: transparent;
 }
@@ -1293,11 +1373,14 @@ select {
   --tw-border-opacity: 1;
   border-color: rgb(243 244 246 / var(--tw-border-opacity));
 }
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
 .border-white {
-=======
->>>>>>> bfe9ed097f2da8359295b1dbb00946279ab711c9
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
+<<<<<<< HEAD
 }
 <<<<<<< HEAD
 .border-transparent {
@@ -1310,6 +1393,8 @@ select {
 .border-gray-100 {
   --tw-border-opacity: 1;
   border-color: rgb(243 244 246 / var(--tw-border-opacity));
+=======
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 }
 =======
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
@@ -1323,6 +1408,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 =======
@@ -1330,8 +1416,19 @@ select {
 =======
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
 .bg-red-700 {
+=======
+.bg-red-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(185 28 28 / var(--tw-bg-opacity));
+}
+.bg-gray-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+.bg-zinc-900 {
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
+  --tw-bg-opacity: 1;
+  background-color: rgb(24 24 27 / var(--tw-bg-opacity));
 }
 >>>>>>> 507c312992e5ffb3cba04fafb3408f8b7497fd8d
 .bg-gray-100 {
@@ -1398,6 +1495,10 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(238 242 255 / var(--tw-bg-opacity));
 }
+.bg-red-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+}
 .bg-stone-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(41 37 36 / var(--tw-bg-opacity));
@@ -1432,11 +1533,11 @@ select {
 .p-2 {
   padding: 0.5rem;
 }
-.p-10 {
-  padding: 2.5rem;
-}
 .p-5 {
   padding: 1.25rem;
+}
+.p-10 {
+  padding: 2.5rem;
 }
 .p-1 {
   padding: 0.25rem;
@@ -1453,6 +1554,7 @@ select {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1489,6 +1591,12 @@ select {
 >>>>>>> 1a6243a9b124f4222b4a481a57863662cb44202d
 =======
 >>>>>>> 631d42947516c41e34761df1b52c3b563839a121
+=======
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -1503,12 +1611,16 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
+=======
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 .py-12 {
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
+<<<<<<< HEAD
 >>>>>>> 631d42947516c41e34761df1b52c3b563839a121
 >>>>>>> hichamaraid-number
 .px-3 {
@@ -1525,6 +1637,8 @@ select {
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
+=======
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -1618,6 +1732,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   line-height: 1.75rem;
 }
 <<<<<<< HEAD
@@ -1636,12 +1751,15 @@ select {
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
 =======
 >>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
+=======
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
   line-height: 1.75rem;
 }
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1659,13 +1777,11 @@ select {
 =======
 >>>>>>> 631d42947516c41e34761df1b52c3b563839a121
 >>>>>>> hichamaraid-number
+=======
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
 }
 .text-base {
   font-size: 1rem;
@@ -1698,6 +1814,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 .leading-7 {
   line-height: 1.75rem;
@@ -1717,6 +1834,19 @@ select {
 <<<<<<< HEAD
 .leading-none {
   line-height: 1;
+=======
+.leading-none {
+  line-height: 1;
+}
+.leading-7 {
+  line-height: 1.75rem;
+}
+.leading-tight {
+  line-height: 1.25;
+}
+.tracking-wider {
+  letter-spacing: 0.05em;
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 }
 >>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 =======
@@ -1795,9 +1925,12 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 .text-gray-200 {
 =======
+=======
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 .text-red-700 {
   --tw-text-opacity: 1;
   color: rgb(185 28 28 / var(--tw-text-opacity));
@@ -1822,6 +1955,7 @@ select {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
+<<<<<<< HEAD
 .text-white {
 >>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
   --tw-text-opacity: 1;
@@ -1894,6 +2028,8 @@ select {
 >>>>>>> 1a6243a9b124f4222b4a481a57863662cb44202d
 =======
 >>>>>>> 631d42947516c41e34761df1b52c3b563839a121
+=======
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -1901,14 +2037,18 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 1a6243a9b124f4222b4a481a57863662cb44202d
 =======
 >>>>>>> 631d42947516c41e34761df1b52c3b563839a121
+=======
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 .text-gray-800 {
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
 }
+<<<<<<< HEAD
 .text-red-700 {
   --tw-text-opacity: 1;
 <<<<<<< HEAD
@@ -1979,6 +2119,8 @@ select {
 }
 =======
 >>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
+=======
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 .text-green-600 {
   --tw-text-opacity: 1;
   color: rgb(22 163 74 / var(--tw-text-opacity));
@@ -2129,6 +2271,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 1a6243a9b124f4222b4a481a57863662cb44202d
 =======
@@ -2139,10 +2282,13 @@ select {
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
 =======
 >>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
+=======
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 .focus\:border-gray-900:focus {
   --tw-border-opacity: 1;
   border-color: rgb(17 24 39 / var(--tw-border-opacity));
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -2160,6 +2306,8 @@ select {
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
 =======
 >>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
+=======
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 .focus\:border-indigo-300:focus {
   --tw-border-opacity: 1;
   border-color: rgb(165 180 252 / var(--tw-border-opacity));
@@ -2170,6 +2318,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 .focus\:border-gray-900:focus {
   --tw-border-opacity: 1;
@@ -2186,6 +2335,8 @@ select {
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
 =======
 >>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
+=======
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
 .focus\:border-indigo-700:focus {
   --tw-border-opacity: 1;
   border-color: rgb(67 56 202 / var(--tw-border-opacity));
