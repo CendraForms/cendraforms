@@ -154,6 +154,17 @@ const form = ref({
       locked: false,
       visible: true,
     },
+
+    {
+      id: 4,
+      title: 'Quin àmbit prefereixes?',
+      content: {
+        left: 'frontend',
+        right: 'backend',
+        defaultVal: 'right'
+      },
+      type: 'switch',
+    },
   ]
 
 })

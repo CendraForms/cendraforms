@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\FormController;
+use App\Http\Controllers\SocialiteController;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\FormController;
 // use App\Http\Controllers\AnswerController;
 // use App\Http\Controllers\RoleController;
 // use App\Http\Controllers\UserController;
@@ -20,13 +20,13 @@ Route::get('/', function () {
  * Auth
  */
 
-Route::get('/accedir', [AuthController::class, 'render'])
+Route::get('/accedir', [SocialiteController::class, 'render'])
     ->name('auth');
 
-Route::get('/accedir/{provider}', [AuthController::class, 'socialRedirect'])
+Route::get('/accedir/{provider}', [SocialiteController::class, 'socialRedirect'])
     ->name('auth.redirect');
 
-Route::get('/accedir/{provider}/callback', [AuthController::class, 'socialCallback'])
+Route::get('/accedir/{provider}/callback', [SocialiteController::class, 'socialCallback'])
     ->name('auth.callback');
 
 /**
@@ -40,7 +40,6 @@ Route::get('/formulari/crear', [FormController::class, 'create'])
 Route::get('/formulari/{form}', [FormController::class, 'answer'])
     ->name('form.answer')
     ->middleware('auth');
-
 
 
 /**
@@ -88,8 +87,8 @@ Route::get('/formulari/{form}', [FormController::class, 'answer'])
 // Route::put('/users/{user}', [UserController::class, 'update'])
 //     ->name('users.update');
 
- /*
- *Role view
+/**
+ * Role view
  */
 // Route::get('/roles/{role}', [RoleController::class, 'getRoleView']);
 // Route::get('/roles', [RoleController::class, 'getRolesView']);
@@ -102,7 +101,6 @@ Route::get('/formulari/{form}', [FormController::class, 'answer'])
 
 
 // Route::get('/createanswers', [AnswerController::class, 'CreateAnswerView']);
-
 
 
 // Route::get('/sections/create', [SectionController::class, 'getSectionsCreateView']);
@@ -152,4 +150,4 @@ Route::get('/formulari/{form}', [FormController::class, 'answer'])
 
 // Route::get('/forms/{form}', [FormController::class, 'getFormView']);
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
