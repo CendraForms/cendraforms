@@ -24,6 +24,8 @@
       :answer="answer"
     />
   </div>
+
+  <Textarea/>
 </template>
 
 <script setup>
@@ -31,6 +33,7 @@ import AnswerNumber from './Number'
 import AnswerCheckbox from './Checkbox'
 import AnswerSwitch from './Switch'
 import AnswerRadio from './Radio'
+import Textarea from './Textarea'
 
 defineProps({
   type: String,
