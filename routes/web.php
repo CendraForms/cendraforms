@@ -41,7 +41,8 @@ Route::get('/formulari/{form}', [FormController::class, 'answer'])
     ->middleware('auth');
 
 Route::get('/formulari/{form}/edita', [FormController::class, 'edit'])
-    ->name('form.edit'); //->middleware('auth');
+    ->name('form.edit')
+    ->middleware('auth');
 
 
 /**

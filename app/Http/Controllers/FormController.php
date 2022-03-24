@@ -53,31 +53,93 @@ class FormController extends Controller
     //     return view('forms.create');
     // }
 
+    /**
+     * Generate the form object and send it to the vue component that lets the user edit the form.
+     *
+     * @param Form $form Form model
+     * @return Inertia view inertia
+     */
     public function edit(Form $form)
     {
-        //Form = $form
-        //Sections = $form->sections
-        //Questions = $form->sections[0]->questions
+        $formulari = $this->getFormEdit($form);
 
-        $sections = $form->sections()->get();
-
-        foreach ($sections as $section) {
-            echo $section->questions;
-        }
-        $sections = $sections->each(function($item, $key) {
-            echo $item->questions;
-        });
-        dd();
-
+        // return view inertia
         return Inertia::render('Form/Edit', [
-            'form' => $form,
-            'sections' => $form->sections,
-            'questions' => $form->sections[0]->questions,
+            'form' => $formulari,
         ]);
 
         // return view('forms.edit', [
         //     'form' => $form
         // ]);
+    }
+
+    /**
+     * Get Form object
+     *
+     * @param Form $form Form model
+     * @return Object object form
+     */
+    private function getFormEdit(Form $form)
+    {
+        // create object form
+        $formulari = [];
+
+        // assign form id, name and description
+        $formulari['id'] = $form->id;
+        $formulari['name'] = $form->name;
+        $formulari['description'] = $form->description;
+
+        // get a sections to the form
+        $sections = $form->sections()->get();
+
+        // create object sections
+        $sections2 = [];
+        $comptador = 1;
+        foreach ($sections as $section) {
+            // create object section
+            $section2 = [];
+            // assign section id, name, visible, collapsed, locked and deleted
+            $section2['id'] = $section->id;
+            $section2['name'] = $section->name;
+            $section2['visible'] = true;
+            $section2['collapsed'] = true;
+            $section2['locked'] = true;
+            $section2['deleted'] = false;
+
+            // get a questions to the section
+            $questions = $section->questions;
+
+            // create object questions
+            $questions2 = [];
+            $comptador2 = 1;
+            foreach ($questions as $question) {
+                // create object question
+                $question2 = [];
+                // assign question id, name, type, visible, deleted and content
+                $question2['id'] = $question->id;
+                $question2['name'] = $question->name;
+                $question2['type'] = $question->type;
+                $question2['visible'] = true;
+                $question2['deleted'] = false;
+                $question2['content'] = $question->content;
+
+                // assign question to questions
+                $questions2[$comptador2] = $question2;
+                $comptador2++;
+            }
+
+            // assign section questions
+            $section2['questions'] = $questions2;
+
+            // assign section to sections
+            $sections2[$comptador] = $section2;
+            $comptador++;
+        }
+        // assign sections form
+        $formulari['sections'] = $sections2;
+
+        // return object form
+        return $formulari;
     }
 
     /**

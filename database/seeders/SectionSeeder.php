@@ -15,16 +15,19 @@ class SectionSeeder extends Seeder
     public function run()
     {
         Section::create([
+            'name' => 'DAW2_MP_02 - Bases de dades',
             'form_id' => 1,
             'user_id' => 1,
         ]);
-        
+
         Section::create([
+            'name' => 'DAW2_MP_03 - Programació',
             'form_id' => 2,
             'user_id' => 1,
         ]);
 
         Section::create([
+            'name' => 'DAW2_MP_06 - Desenvolupament web en entorn de client',
             'form_id' => 3,
             'user_id' => 1,
         ]);

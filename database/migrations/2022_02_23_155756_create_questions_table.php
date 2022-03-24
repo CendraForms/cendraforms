@@ -15,15 +15,15 @@ return new class extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-
             $table->string('name');
+            $table->string('type');
             $table->json('content');
             $table->integer('section_id')
                 ->index()
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-                
+
             $table->boolean('active')->default(true);
 
             $table->timestamps();
