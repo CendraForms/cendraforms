@@ -20,9 +20,10 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        SocialiteWasCalled::class => [
-            DiscordExtendSocialite::class . '@handle',
-            GoogleExtendSocialite::class . '@handle',
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+            \SocialiteProviders\Discord\DiscordExtendSocialite::class.'@handle',
+            \SocialiteProviders\Google\GoogleExtendSocialite::class.'@handle',
+            \SocialiteProviders\GitLab\GitLabExtendSocialite::class.'@handle',
         ],
     ];
 

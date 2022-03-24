@@ -18,7 +18,7 @@ class SocialiteController extends Controller
 
     public function socialRedirect($provider)
     {
-        $providers = ["google", "discord", "github"];
+        $providers = ["google", "discord", "github", "gitlab"];
 
         if (!in_array($provider, $providers)) {
             return redirect()->route('auth');
@@ -30,7 +30,7 @@ class SocialiteController extends Controller
     public function socialCallback($provider)
     {
         try {
-            $providers = ["google", "discord", "github"];
+            $providers = ["google", "discord", "github", "gitlab"];
 
             if (!in_array($provider, $providers)) {
                 return redirect()->route('auth');
