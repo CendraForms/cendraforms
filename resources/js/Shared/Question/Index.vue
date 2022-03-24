@@ -1,22 +1,38 @@
 <template>
-  <QuestionText
-    v-if="type == 'text'" 
-    :value="content.value"
-    :min="content.min" 
-    :max="content.max"
+  <div class="mt-5">
+    <QuestionNumber
+      v-if="type == 'number'"
+      :value="content.value"
+      :min="content.min"
+      :max="content.max"
+    />
+  </div>
+
+  <QuestionSwitch
+    v-if="type == 'switch'"
+    :left="content.left"
+    :right="content.right"
   />
 
-  <QuestionNumber
-    v-if="type == 'number'"
-    :value="content.value"
-    :min="content.min"
-    :max="content.max"
+  <QuestionRadio
+    v-if="type == 'radio'"
+    :options="content.options"
   />
+    <SelectOption
+    v-if="type == 'select'"
+    />
+
+  
+
+  <!--<option v-for="content.option in content.option" :value="content.option.value" >{{content.option.text}}</option>-->
+
 </template>
 
 <script setup>
-import QuestionText from './Text.vue'
 import QuestionNumber from './Number'
+import QuestionSwitch from './Switch'
+import QuestionRadio from './Radio'
+import SelectOption from './Select'
 
 defineProps({
   type: String,

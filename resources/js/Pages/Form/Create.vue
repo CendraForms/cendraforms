@@ -64,8 +64,8 @@ const sections = ref([
         title: 'Què és el que més t\'ha agradat?',
         type: 'text',
         content: {
-          value: 'Text de Resposta', 
-          min: 0, 
+          value: 'Text de Resposta',
+          min: 0,
           max: 1000
         }
       },

@@ -2,10 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\User;
-use App\Models\Form;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Section extends Model
 {
@@ -17,9 +15,9 @@ class Section extends Model
      * @var array
      */
     protected $fillable = [
+        'name',
         'form_id',
         'user_id',
-        'active'
     ];
 
     /**
@@ -38,6 +36,14 @@ class Section extends Model
     public function form()
     {
         return $this->belongsTo(Form::class);
+    }
+
+    /**
+     * Get the questions that belongs to the section.
+     */
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
     }
 
     /**

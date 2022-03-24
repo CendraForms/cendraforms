@@ -8,7 +8,7 @@ use App\Http\Controllers\SectionController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\AngularController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -94,6 +94,7 @@ Route::put('/answers/{answer}', [AnswerController::class, 'update']);
 Route::delete('/answers/{answer}', [AnswerController::class, 'delete']);
 
 Route::post('/answers', [AnswerController::class, 'create']) ->name('answer.create');
+
 /**
  * Users
  */
@@ -109,3 +110,12 @@ Route::post('/answers', [AnswerController::class, 'create']) ->name('answer.crea
 
 Route::get('/users', [UserController::class, 'getUsers']);
 Route::get('/users/{user}', [UserController::class, 'getUser']);
+
+/**
+ * Angular
+ */
+
+Route::get('/angular/countforms', [AngularController::class, 'countForms']);
+Route::get('/angular/countusers', [AngularController::class, 'countUsers']);
+Route::get('/angular/countQuestions', [AngularController::class, 'countQuestions']);
+Route::get('/angular/countAnswers', [AngularController::class, 'countAnswers']);
