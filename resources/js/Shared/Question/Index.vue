@@ -30,6 +30,8 @@
     v-if="type == 'checkbox'"
   />
 
+  <Textarea
+  />
 </template>
 
 <script setup>
@@ -38,6 +40,7 @@ import QuestionSwitch from './Switch'
 import QuestionRadio from './Radio'
 import SelectOption from './Select'
 import CheckBox from './Checkbox'
+import Textarea from './Textarea'
 
 defineProps({
   type: String,
