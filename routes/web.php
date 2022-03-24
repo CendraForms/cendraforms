@@ -34,12 +34,12 @@ Route::get('/accedir/{provider}/callback', [SocialiteController::class, 'socialC
  */
 
 Route::get('/formulari/crear', [FormController::class, 'create'])
-    ->name('form.create')
-    ->middleware('auth');
+    ->name('form.create');
+    // ->middleware('auth'); // todo -> uncomment when push feature
 
 Route::get('/formulari/{form}', [FormController::class, 'answer'])
-    ->name('form.answer')
-    ->middleware('auth');
+    ->name('form.answer');
+    //->middleware('auth'); // todo -> uncomment when push feature
 
 
 /**

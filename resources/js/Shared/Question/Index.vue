@@ -22,15 +22,13 @@
   <SelectOption
     v-if="type == 'select'"
   />
-  
-
-  <!--<option v-for="content.option in content.option" :value="content.option.value" >{{content.option.text}}</option>-->
 
   <CheckBox
     v-if="type == 'checkbox'"
   />
 
   <Textarea
+    v-if="type == 'textarea'"
   />
 </template>
 
