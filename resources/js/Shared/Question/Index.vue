@@ -1,4 +1,7 @@
 <template>
+<Textarea
+  
+  />
   <div class="mt-5">
     <QuestionNumber
       v-if="type == 'number'"
@@ -30,6 +33,7 @@
   <Textarea
     v-if="type == 'textarea'"
   />
+  
 </template>
 
 <script setup>
