@@ -18,12 +18,21 @@
     v-if="type == 'radio'"
     :options="content.options"
   />
+    <SelectOption
+    v-if="type == 'select'"
+    />
+
+  
+
+  <!--<option v-for="content.option in content.option" :value="content.option.value" >{{content.option.text}}</option>-->
+
 </template>
 
 <script setup>
 import QuestionNumber from './Number'
 import QuestionSwitch from './Switch'
 import QuestionRadio from './Radio'
+import SelectOption from './Select'
 
 defineProps({
   type: String,

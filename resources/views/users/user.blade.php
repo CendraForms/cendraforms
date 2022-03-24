@@ -13,12 +13,20 @@
 <th>Email</th>
 <th>Estat</th>
 </tr>
+
+    <?php 
+foreach($role as $role){
+  print "<tr><td>".$role['id']."</td><td>".$role['name']."</td><td>".$role['active']."</td></tr>";
+}   
+    ?>
+
 <tr>
     <td>{{ $user->id }}</td>
     <td>{{ $user->name }}</td>
     <td>{{ $user->email }}</td>
     <td>{{ $user->active }}</td>
 </tr>
+
 </table>
     </body>
 </html>
