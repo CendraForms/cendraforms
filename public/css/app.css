@@ -643,6 +643,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> 056d52131025ce7c34783c91cf6b3d5aa315e4be
@@ -652,6 +653,11 @@ select {
   margin-top: 2.5rem;
 }
 >>>>>>> 507c312992e5ffb3cba04fafb3408f8b7497fd8d
+=======
+.mt-10 {
+  margin-top: 2.5rem;
+}
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 .ml-1 {
   margin-left: 0.25rem;
 }
@@ -690,6 +696,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 1a6243a9b124f4222b4a481a57863662cb44202d
 .mt-10 {
@@ -697,6 +704,8 @@ select {
 }
 =======
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
+=======
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 .mt-6 {
   margin-top: 1.5rem;
 }
@@ -738,6 +747,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 1a6243a9b124f4222b4a481a57863662cb44202d
 =======
@@ -746,12 +756,15 @@ select {
 >>>>>>> 056d52131025ce7c34783c91cf6b3d5aa315e4be
 =======
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
+=======
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 .mt-5 {
   margin-top: 1.25rem;
 }
 .mb-1 {
   margin-bottom: 0.25rem;
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -766,6 +779,8 @@ select {
 >>>>>>> 056d52131025ce7c34783c91cf6b3d5aa315e4be
 =======
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
+=======
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 .block {
   display: block;
 }
@@ -790,11 +805,14 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> 056d52131025ce7c34783c91cf6b3d5aa315e4be
 =======
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
+=======
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 .h-screen {
   height: 100vh;
 }
@@ -803,11 +821,14 @@ select {
 }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 507c312992e5ffb3cba04fafb3408f8b7497fd8d
 =======
 >>>>>>> 056d52131025ce7c34783c91cf6b3d5aa315e4be
 =======
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
+=======
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 .h-8 {
   height: 2rem;
 }
@@ -820,6 +841,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .h-screen {
   height: 100vh;
 }
@@ -832,6 +854,8 @@ select {
 >>>>>>> 056d52131025ce7c34783c91cf6b3d5aa315e4be
 =======
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
+=======
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 .h-10 {
   height: 2.5rem;
 }
@@ -850,6 +874,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .w-8 {
   width: 2rem;
 }
@@ -864,6 +889,8 @@ select {
 }
 =======
 >>>>>>> 507c312992e5ffb3cba04fafb3408f8b7497fd8d
+=======
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 .w-screen {
   width: 100vw;
 }
@@ -891,6 +918,7 @@ select {
 .w-6 {
   width: 1.5rem;
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -940,6 +968,10 @@ select {
   width: 12rem;
 <<<<<<< HEAD
 =======
+=======
+.w-1\/5 {
+  width: 20%;
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 }
 .w-4 {
   width: 1rem;
@@ -972,6 +1004,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .max-w-6xl {
   max-width: 72rem;
 }
@@ -1000,12 +1033,17 @@ select {
 =======
 =======
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
+=======
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 .max-w-xl {
   max-width: 36rem;
 }
 .max-w-6xl {
   max-width: 72rem;
 >>>>>>> 056d52131025ce7c34783c91cf6b3d5aa315e4be
+}
+.max-w-7xl {
+  max-width: 80rem;
 }
 .max-w-7xl {
   max-width: 80rem;
@@ -1132,6 +1170,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .border-b {
   border-bottom-width: 1px;
 }
@@ -1179,6 +1218,13 @@ select {
 }
 .border-b-2 {
   border-bottom-width: 2px;
+=======
+.border-t {
+  border-top-width: 1px;
+}
+.border-r {
+  border-right-width: 1px;
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 }
 .border-b {
   border-bottom-width: 1px;
@@ -1199,14 +1245,18 @@ select {
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
 }
+<<<<<<< HEAD
 =======
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
 }
+=======
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 .border-gray-400 {
   --tw-border-opacity: 1;
   border-color: rgb(156 163 175 / var(--tw-border-opacity));
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1217,6 +1267,8 @@ select {
 >>>>>>> 056d52131025ce7c34783c91cf6b3d5aa315e4be
 =======
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
+=======
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 .border-transparent {
   border-color: transparent;
 }
@@ -1257,6 +1309,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 =======
@@ -1276,6 +1329,11 @@ select {
 .bg-zinc-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(24 24 27 / var(--tw-bg-opacity));
+=======
+.bg-red-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 }
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1286,6 +1344,7 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
+<<<<<<< HEAD
 .bg-red-700 {
 =======
 .bg-gray-800 {
@@ -1303,6 +1362,14 @@ select {
 .bg-gray-800 {
   --tw-bg-opacity: 1;
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
+=======
+.bg-zinc-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(24 24 27 / var(--tw-bg-opacity));
+}
+.bg-gray-800 {
+  --tw-bg-opacity: 1;
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
 .bg-indigo-50 {
@@ -1369,6 +1436,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .py-12 {
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -1387,6 +1455,11 @@ select {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
+=======
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 }
 =======
 >>>>>>> bfe9ed097f2da8359295b1dbb00946279ab711c9
@@ -1404,6 +1477,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -1412,6 +1486,8 @@ select {
 >>>>>>> 056d52131025ce7c34783c91cf6b3d5aa315e4be
 =======
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
+=======
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 .py-12 {
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -1427,6 +1503,7 @@ select {
 <<<<<<< HEAD
 >>>>>>> 507c312992e5ffb3cba04fafb3408f8b7497fd8d
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 =======
@@ -1455,6 +1532,8 @@ select {
 =======
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
 }
+=======
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
@@ -1505,6 +1584,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   line-height: 1.75rem;
 }
 <<<<<<< HEAD
@@ -1521,12 +1601,15 @@ select {
 >>>>>>> 056d52131025ce7c34783c91cf6b3d5aa315e4be
 =======
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
+=======
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
   line-height: 1.75rem;
 }
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1537,6 +1620,8 @@ select {
 >>>>>>> 056d52131025ce7c34783c91cf6b3d5aa315e4be
 =======
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
+=======
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
@@ -1575,6 +1660,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 .leading-7 {
   line-height: 1.75rem;
@@ -1590,11 +1676,17 @@ select {
 =======
 =======
 >>>>>>> 507c312992e5ffb3cba04fafb3408f8b7497fd8d
+=======
+.leading-none {
+  line-height: 1;
+}
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 .leading-7 {
   line-height: 1.75rem;
 }
 .leading-tight {
   line-height: 1.25;
+<<<<<<< HEAD
 <<<<<<< HEAD
 }
 .leading-none {
@@ -1617,6 +1709,8 @@ select {
 >>>>>>> 056d52131025ce7c34783c91cf6b3d5aa315e4be
 =======
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
+=======
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 }
 .tracking-wider {
   letter-spacing: 0.05em;
@@ -1625,6 +1719,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .leading-none {
   line-height: 1;
 }
@@ -1636,6 +1731,8 @@ select {
 >>>>>>> 056d52131025ce7c34783c91cf6b3d5aa315e4be
 =======
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
+=======
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 .tracking-widest {
   letter-spacing: 0.1em;
 }
@@ -1652,8 +1749,36 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 .text-gray-200 {
+=======
+.text-red-700 {
+  --tw-text-opacity: 1;
+  color: rgb(185 28 28 / var(--tw-text-opacity));
+}
+.text-gray-200 {
+  --tw-text-opacity: 1;
+  color: rgb(229 231 235 / var(--tw-text-opacity));
+}
+.text-gray-300 {
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+.text-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+.text-gray-600 {
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+.text-gray-900 {
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+.text-white {
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
   --tw-text-opacity: 1;
   color: rgb(229 231 235 / var(--tw-text-opacity));
 =======
@@ -1666,6 +1791,7 @@ select {
 >>>>>>> 056d52131025ce7c34783c91cf6b3d5aa315e4be
   color: rgb(185 28 28 / var(--tw-text-opacity));
 }
+<<<<<<< HEAD
 >>>>>>> 507c312992e5ffb3cba04fafb3408f8b7497fd8d
 =======
 .text-red-700 {
@@ -1792,6 +1918,8 @@ select {
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
 }
+=======
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 .text-green-600 {
   --tw-text-opacity: 1;
   color: rgb(22 163 74 / var(--tw-text-opacity));
@@ -1937,6 +2065,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 1a6243a9b124f4222b4a481a57863662cb44202d
 =======
@@ -1945,10 +2074,13 @@ select {
 >>>>>>> 056d52131025ce7c34783c91cf6b3d5aa315e4be
 =======
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
+=======
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 .focus\:border-gray-900:focus {
   --tw-border-opacity: 1;
   border-color: rgb(17 24 39 / var(--tw-border-opacity));
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1963,6 +2095,8 @@ select {
 >>>>>>> 056d52131025ce7c34783c91cf6b3d5aa315e4be
 =======
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
+=======
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 .focus\:border-indigo-300:focus {
   --tw-border-opacity: 1;
   border-color: rgb(165 180 252 / var(--tw-border-opacity));
@@ -1972,6 +2106,7 @@ select {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 .focus\:border-gray-900:focus {
   --tw-border-opacity: 1;
@@ -1986,6 +2121,8 @@ select {
 >>>>>>> 056d52131025ce7c34783c91cf6b3d5aa315e4be
 =======
 >>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
+=======
+>>>>>>> f0594d90a9e32ce1255deaabc8b7672cdd8ff7f9
 .focus\:border-indigo-700:focus {
   --tw-border-opacity: 1;
   border-color: rgb(67 56 202 / var(--tw-border-opacity));
