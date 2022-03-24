@@ -1,9 +1,14 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "/js/app.js": "/js/app.js?id=9fc221086384586be895c3d09b4ae057",
     "/css/app.css": "/css/app.css?id=40d5a00de018bac2413a7200fd4abc68"
 =======
     "/js/app.js": "/js/app.js?id=2701494828501ec74c77c73e6dc585c1",
     "/css/app.css": "/css/app.css?id=bb2c393d724a7300d1c09d3979f24c61"
 >>>>>>> 34682cbe3e538996a5ca9a9a6e7c356da9a945bf
+=======
+    "/js/app.js": "/js/app.js?id=b38480a8d10183cf308f2bcb772998a7",
+    "/css/app.css": "/css/app.css?id=bf21c65474a9a2cde071a1ad588a052c"
+>>>>>>> 507c312992e5ffb3cba04fafb3408f8b7497fd8d
 }

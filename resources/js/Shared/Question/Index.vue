@@ -33,13 +33,14 @@
   <Textarea
     v-if="type == 'textarea'"
   />
-  
+
   <QuestionText
     v-if="type == 'text'"
     :value="content.value"
     :min="content.min"
     :max="content.max"
   />
+  
 </template>
 
 <script setup>
