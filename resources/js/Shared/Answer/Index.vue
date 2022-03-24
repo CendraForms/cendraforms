@@ -6,8 +6,16 @@
       :min="content.min"
       :max="content.max"
     />
+
     <AnswerCheckbox
       v-if="type == 'checkbox'"
+    />
+
+    <AnswerSwitch
+      v-if="type == 'switch'"
+      :left="content.left"
+      :right="content.right"
+      :answer="answer"
     />
   </div>
 </template>
@@ -15,8 +23,11 @@
 <script setup>
 import AnswerNumber from './Number'
 import AnswerCheckbox from './Checkbox'
+import AnswerSwitch from './Switch'
+
 defineProps({
   type: String,
   content: Object,
+  answer: Object
 })
 </script>
