@@ -964,6 +964,16 @@
         },
         {
             "name": "laravel/framework",
+            "version": "v9.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/framework.git",
+                "reference": "35be2599c9ac3d58bf1578895c2e85ea4848a0d7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/35be2599c9ac3d58bf1578895c2e85ea4848a0d7",
+                "reference": "35be2599c9ac3d58bf1578895c2e85ea4848a0d7",
             "version": "v9.3.1",
             "source": {
                 "type": "git",
@@ -1139,7 +1149,15 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
+<<<<<<< HEAD
             "time": "2022-03-03T15:15:10+00:00"
+=======
+<<<<<<< HEAD
+            "time": "2022-03-15T14:41:19+00:00"
+=======
+            "time": "2022-03-03T15:15:10+00:00"
+>>>>>>> 495e4ab79f151fe9859d32684077d0abeeacf8f9
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
         },
         {
             "name": "laravel/sanctum",
@@ -1589,6 +1607,21 @@
         },
         {
             "name": "league/flysystem",
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            "version": "3.0.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/flysystem.git",
+                "reference": "4744d96fb2456d9808be3ad596a2520b902996e2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/4744d96fb2456d9808be3ad596a2520b902996e2",
+                "reference": "4744d96fb2456d9808be3ad596a2520b902996e2",
+=======
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
             "version": "3.0.11",
             "source": {
                 "type": "git",
@@ -1599,6 +1632,10 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/1ca148713c23cadeb9d7526973f81fb4a04090a3",
                 "reference": "1ca148713c23cadeb9d7526973f81fb4a04090a3",
+<<<<<<< HEAD
+=======
+>>>>>>> 495e4ab79f151fe9859d32684077d0abeeacf8f9
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
                 "shasum": ""
             },
             "require": {
@@ -1659,7 +1696,15 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/thephpleague/flysystem/tree/3.0.11"
+=======
+<<<<<<< HEAD
+                "source": "https://github.com/thephpleague/flysystem/tree/3.0.12"
+=======
+                "source": "https://github.com/thephpleague/flysystem/tree/3.0.11"
+>>>>>>> 495e4ab79f151fe9859d32684077d0abeeacf8f9
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
             },
             "funding": [
                 {
@@ -1675,7 +1720,15 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2022-03-04T16:40:17+00:00"
+=======
+<<<<<<< HEAD
+            "time": "2022-03-12T19:32:12+00:00"
+=======
+            "time": "2022-03-04T16:40:17+00:00"
+>>>>>>> 495e4ab79f151fe9859d32684077d0abeeacf8f9
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
         },
         {
             "name": "league/mime-type-detection",
@@ -2942,6 +2995,206 @@
             "time": "2021-09-25T23:10:38+00:00"
         },
         {
+<<<<<<< HEAD
+=======
+            "name": "socialiteproviders/discord",
+            "version": "4.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/Discord.git",
+                "reference": "c6eddeb07ace7473e82d02d4db852dfacf5ef574"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SocialiteProviders/Discord/zipball/c6eddeb07ace7473e82d02d4db852dfacf5ef574",
+                "reference": "c6eddeb07ace7473e82d02d4db852dfacf5ef574",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^7.2 || ^8.0",
+                "socialiteproviders/manager": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\Discord\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christopher Eklund",
+                    "email": "eklundchristopher@gmail.com"
+                }
+            ],
+            "description": "Discord OAuth2 Provider for Laravel Socialite",
+            "support": {
+                "source": "https://github.com/SocialiteProviders/Discord/tree/4.1.1"
+            },
+            "time": "2021-01-05T22:03:58+00:00"
+        },
+        {
+            "name": "socialiteproviders/gitlab",
+            "version": "4.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/GitLab.git",
+                "reference": "a8f67d3b02c9ee8c70c25c6728417c0eddcbbb9d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SocialiteProviders/GitLab/zipball/a8f67d3b02c9ee8c70c25c6728417c0eddcbbb9d",
+                "reference": "a8f67d3b02c9ee8c70c25c6728417c0eddcbbb9d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^7.2 || ^8.0",
+                "socialiteproviders/manager": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\GitLab\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christoffer Martinsen",
+                    "email": "christoffermartinsen@gmail.com"
+                }
+            ],
+            "description": "GitLab OAuth2 Provider for Laravel Socialite",
+            "support": {
+                "source": "https://github.com/SocialiteProviders/GitLab/tree/4.1.0"
+            },
+            "time": "2020-12-01T23:10:59+00:00"
+        },
+        {
+            "name": "socialiteproviders/google",
+            "version": "4.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/Google-Plus.git",
+                "reference": "1cb8f6fb2c0dd0fc8b34e95f69865663fdf0b401"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SocialiteProviders/Google-Plus/zipball/1cb8f6fb2c0dd0fc8b34e95f69865663fdf0b401",
+                "reference": "1cb8f6fb2c0dd0fc8b34e95f69865663fdf0b401",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^7.2 || ^8.0",
+                "socialiteproviders/manager": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\Google\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "xstoop",
+                    "email": "myenglishnameisx@gmail.com"
+                }
+            ],
+            "description": "Google OAuth2 Provider for Laravel Socialite",
+            "support": {
+                "source": "https://github.com/SocialiteProviders/Google-Plus/tree/4.1.0"
+            },
+            "time": "2020-12-01T23:10:59+00:00"
+        },
+        {
+            "name": "socialiteproviders/manager",
+            "version": "v4.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/Manager.git",
+                "reference": "4e63afbd26dc45ff263591de2a0970436a6a0bf9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SocialiteProviders/Manager/zipball/4e63afbd26dc45ff263591de2a0970436a6a0bf9",
+                "reference": "4e63afbd26dc45ff263591de2a0970436a6a0bf9",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "laravel/socialite": "~4.0 || ~5.0",
+                "php": "^7.2 || ^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.2",
+                "phpunit/phpunit": "^6.0 || ^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "SocialiteProviders\\Manager\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\Manager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andy Wendt",
+                    "email": "andy@awendt.com"
+                },
+                {
+                    "name": "Anton Komarev",
+                    "email": "a.komarev@cybercog.su"
+                },
+                {
+                    "name": "Miguel Piedrafita",
+                    "email": "soy@miguelpiedrafita.com"
+                },
+                {
+                    "name": "atymic",
+                    "email": "atymicq@gmail.com",
+                    "homepage": "https://atymic.dev"
+                }
+            ],
+            "description": "Easily add new or override built-in providers in Laravel Socialite.",
+            "homepage": "https://socialiteproviders.com",
+            "keywords": [
+                "laravel",
+                "manager",
+                "oauth",
+                "providers",
+                "socialite"
+            ],
+            "support": {
+                "issues": "https://github.com/socialiteproviders/manager/issues",
+                "source": "https://github.com/socialiteproviders/manager"
+            },
+            "time": "2022-01-23T22:40:23+00:00"
+        },
+        {
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
             "name": "symfony/console",
             "version": "v6.0.5",
             "source": {
@@ -5298,6 +5551,94 @@
     ],
     "packages-dev": [
         {
+<<<<<<< HEAD
+=======
+            "name": "barryvdh/laravel-debugbar",
+            "version": "v3.6.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-debugbar.git",
+                "reference": "b96f9820aaf1ff9afe945207883149e1c7afb298"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/b96f9820aaf1ff9afe945207883149e1c7afb298",
+                "reference": "b96f9820aaf1ff9afe945207883149e1c7afb298",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/routing": "^6|^7|^8|^9",
+                "illuminate/session": "^6|^7|^8|^9",
+                "illuminate/support": "^6|^7|^8|^9",
+                "maximebf/debugbar": "^1.17.2",
+                "php": ">=7.2",
+                "symfony/debug": "^4.3|^5|^6",
+                "symfony/finder": "^4.3|^5|^6"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.3.3",
+                "orchestra/testbench-dusk": "^4|^5|^6|^7",
+                "phpunit/phpunit": "^8.5|^9.0",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.6-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Barryvdh\\Debugbar\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Debugbar": "Barryvdh\\Debugbar\\Facades\\Debugbar"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Barryvdh\\Debugbar\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "PHP Debugbar integration for Laravel",
+            "keywords": [
+                "debug",
+                "debugbar",
+                "laravel",
+                "profiler",
+                "webprofiler"
+            ],
+            "support": {
+                "issues": "https://github.com/barryvdh/laravel-debugbar/issues",
+                "source": "https://github.com/barryvdh/laravel-debugbar/tree/v3.6.7"
+            },
+            "funding": [
+                {
+                    "url": "https://fruitcake.nl",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/barryvdh",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-02-09T07:52:32+00:00"
+        },
+        {
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
             "name": "doctrine/instantiator",
             "version": "1.4.1",
             "source": {
@@ -6602,6 +6943,21 @@
         },
         {
             "name": "phpunit/phpunit",
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            "version": "9.5.19",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/phpunit.git",
+                "reference": "35ea4b7f3acabb26f4bb640f8c30866c401da807"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/35ea4b7f3acabb26f4bb640f8c30866c401da807",
+                "reference": "35ea4b7f3acabb26f4bb640f8c30866c401da807",
+=======
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
             "version": "9.5.17",
             "source": {
                 "type": "git",
@@ -6612,6 +6968,10 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/5c5abcfaa2cbd44b2203995d7a339ef910fe0c8f",
                 "reference": "5c5abcfaa2cbd44b2203995d7a339ef910fe0c8f",
+<<<<<<< HEAD
+=======
+>>>>>>> 495e4ab79f151fe9859d32684077d0abeeacf8f9
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
                 "shasum": ""
             },
             "require": {
@@ -6689,7 +7049,15 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.17"
+=======
+<<<<<<< HEAD
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.19"
+=======
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.17"
+>>>>>>> 495e4ab79f151fe9859d32684077d0abeeacf8f9
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
             },
             "funding": [
                 {
@@ -6701,7 +7069,15 @@
                     "type": "github"
                 }
             ],
+<<<<<<< HEAD
             "time": "2022-03-05T16:54:31+00:00"
+=======
+<<<<<<< HEAD
+            "time": "2022-03-15T09:57:31+00:00"
+=======
+            "time": "2022-03-05T16:54:31+00:00"
+>>>>>>> 495e4ab79f151fe9859d32684077d0abeeacf8f9
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
         },
         {
             "name": "sebastian/cli-parser",
@@ -7731,6 +8107,21 @@
         },
         {
             "name": "spatie/flare-client-php",
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/flare-client-php.git",
+                "reference": "ceab058852a1278d9f57a7b95f1c348e4956d866"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/flare-client-php/zipball/ceab058852a1278d9f57a7b95f1c348e4956d866",
+                "reference": "ceab058852a1278d9f57a7b95f1c348e4956d866",
+=======
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
             "version": "1.0.5",
             "source": {
                 "type": "git",
@@ -7741,6 +8132,10 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/spatie/flare-client-php/zipball/8ada1e5f4d7a2869f491c5e75d1f689b69db423e",
                 "reference": "8ada1e5f4d7a2869f491c5e75d1f689b69db423e",
+<<<<<<< HEAD
+=======
+>>>>>>> 495e4ab79f151fe9859d32684077d0abeeacf8f9
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
                 "shasum": ""
             },
             "require": {
@@ -7783,7 +8178,15 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/flare-client-php/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/spatie/flare-client-php/tree/1.0.5"
+=======
+<<<<<<< HEAD
+                "source": "https://github.com/spatie/flare-client-php/tree/1.1.0"
+=======
+                "source": "https://github.com/spatie/flare-client-php/tree/1.0.5"
+>>>>>>> 495e4ab79f151fe9859d32684077d0abeeacf8f9
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
             },
             "funding": [
                 {
@@ -7791,6 +8194,25 @@
                     "type": "github"
                 }
             ],
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            "time": "2022-03-11T13:21:28+00:00"
+        },
+        {
+            "name": "spatie/ignition",
+            "version": "1.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/ignition.git",
+                "reference": "ec58c125c15eecaa20180f01ef9667d41a568ba8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/ignition/zipball/ec58c125c15eecaa20180f01ef9667d41a568ba8",
+                "reference": "ec58c125c15eecaa20180f01ef9667d41a568ba8",
+=======
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
             "time": "2022-03-01T10:52:59+00:00"
         },
         {
@@ -7805,6 +8227,10 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/spatie/ignition/zipball/090518ff676e17a038dfe77490018363ff66af20",
                 "reference": "090518ff676e17a038dfe77490018363ff66af20",
+<<<<<<< HEAD
+=======
+>>>>>>> 495e4ab79f151fe9859d32684077d0abeeacf8f9
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
                 "shasum": ""
             },
             "require": {
@@ -7861,7 +8287,15 @@
                     "type": "github"
                 }
             ],
+<<<<<<< HEAD
             "time": "2022-03-04T12:52:17+00:00"
+=======
+<<<<<<< HEAD
+            "time": "2022-03-11T13:28:02+00:00"
+=======
+            "time": "2022-03-04T12:52:17+00:00"
+>>>>>>> 495e4ab79f151fe9859d32684077d0abeeacf8f9
+>>>>>>> bc0642bf1ab93e138c07e436fd9fc352eb56636a
         },
         {
             "name": "spatie/laravel-ignition",

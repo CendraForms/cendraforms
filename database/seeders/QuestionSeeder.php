@@ -16,18 +16,21 @@ class QuestionSeeder extends Seeder
     {
         Question::create([
             'name' => 'Del 1 al 10 quina nota em posaries?',
+            'type' => 'number',
             'content' => '{}',
             'section_id' => 1,
         ]);
 
         Question::create([
             'name' => 'He resolt correctament els teus subtes?',
+            'type' => 'text',
             'content' => '{}',
             'section_id' => 2,
         ]);
 
         Question::create([
             'name' => 'Creus que sóc un bon Professor?',
+            'type' => 'text',
             'content' => '{}',
             'section_id' => 3,
         ]);
