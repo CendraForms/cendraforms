@@ -26,6 +26,10 @@
 
   <!--<option v-for="content.option in content.option" :value="content.option.value" >{{content.option.text}}</option>-->
 
+  <CheckBox
+    v-if="type == 'checkbox'"
+  />
+
 </template>
 
 <script setup>
@@ -33,6 +37,7 @@ import QuestionNumber from './Number'
 import QuestionSwitch from './Switch'
 import QuestionRadio from './Radio'
 import SelectOption from './Select'
+import CheckBox from './Checkbox'
 
 defineProps({
   type: String,

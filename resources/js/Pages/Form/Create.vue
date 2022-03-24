@@ -169,6 +169,69 @@ const form = ref({
 
 })
 
+const sections = ref([
+  {
+    id: 1,
+    title: 'DAW2_MP_02 - Bases de dades',
+    questions: [
+      {
+        id: null,
+        title: 'Què és el que més t\'ha agradat?',
+        type: 'select',
+      },
+
+      {
+        id: 2,
+        title: 'Què és el que menys t\'ha agradat?',
+        content: {
+          min: 0,
+          max: 10,
+        },
+        type: 'number',
+      },
+    ],
+    locked: false,
+    visible: false,
+  },
+
+  {
+    id: 2,
+    title: 'DAW2_MP_03 - Programació',
+    questions: [
+      {
+        id: null,
+        title: 'Què és el que més t\'ha agradat?',
+      },
+
+      {
+        id: 2,
+        title: 'Què és el que menys t\'ha agradat?',
+      },
+    ],
+    locked: true,
+    visible: false,
+  },
+
+  {
+    id: 3,
+    title: 'DAW2_MP_06 - Desenvolupament web en entorn de client',
+    questions: [
+      {
+        id: null,
+        title: 'Què és el que més t\'ha agradat?',
+      },
+
+      {
+        id: 2,
+        title: 'Què és el que menys t\'ha agradat?',
+      },
+    ],
+    locked: false,
+    visible: true,
+  },
+])
+
+
 const createSection = () => {
   form.sections.value.push({
     id: sections.value.length,
