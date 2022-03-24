@@ -17,6 +17,12 @@
       :right="content.right"
       :answer="answer"
     />
+
+    <AnswerRadio
+      v-if="type == 'radio'"
+      :options="content.options"
+      :answer="answer"
+    />
   </div>
 </template>
 
@@ -24,6 +30,7 @@
 import AnswerNumber from './Number'
 import AnswerCheckbox from './Checkbox'
 import AnswerSwitch from './Switch'
+import AnswerRadio from './Radio'
 
 defineProps({
   type: String,
