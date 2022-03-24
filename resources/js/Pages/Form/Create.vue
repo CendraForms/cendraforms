@@ -3,7 +3,7 @@
     <span class="mb-5 block text-4xl font-bold uppercase">
       Form #{{ form.id }}
     </span>
-    
+
     <input type="text" :value="form.title" class="w-full bg-transparent rounded-xl">
 
     <div v-for="section in form.sections" :key="section.id" class="my-5 p-10 bg-stone-700 rounded-xl" :class="{ 'opacity-50': section.locked }">
@@ -19,7 +19,7 @@
           </span>
         </div>
       </div>
-      
+
       <input type="text" :value="section.title" :disabled="section.locked" class="mb-5 block w-full bg-transparent rounded-xl">
 
       <div class="p-5 bg-stone-600 rounded-xl">
@@ -32,7 +32,7 @@
 
           <QuestionType :type="question.type" :content="question.content" />
         </div>
-        
+
         <button v-if="!section.locked" @click="createQuestion(section)" class="p-1 bg-stone-500 text-sm font-medium uppercase leading-none rounded hover:opacity-75">
           New question
         </button>
@@ -108,6 +108,48 @@ const form = ref({
           id: 2,
           title: 'Què és el que menys t\'ha agradat?',
         },
+
+        {
+          id: 3,
+          title: 'Quin àmbit prefereixes?',
+          type: 'switch',
+          content: {
+            left: {
+              text: 'frontend',
+              selected: false,
+              defaultVal: false
+            },
+            right: {
+              text: 'backend',
+              selected: false,
+              defaultVal: true
+            },
+          },
+        },
+
+        {
+          id: 4,
+          title: 'Fruita, verdura o xocolata?',
+          type: 'radio',
+          content: {
+            options: [
+              {
+                text: 'fruita',
+                selected: false,
+              },
+
+              {
+                text: 'verdura',
+                selected: false,
+              },
+
+              {
+                text: 'xocolata',
+                selected: false,
+              }
+            ],
+          }
+        }
       ],
       locked: false,
       visible: true,
