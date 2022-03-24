@@ -2,6 +2,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "/js/app.js": "/js/app.js?id=9fc221086384586be895c3d09b4ae057",
     "/css/app.css": "/css/app.css?id=40d5a00de018bac2413a7200fd4abc68"
 =======
@@ -16,4 +17,8 @@
     "/js/app.js": "/js/app.js?id=4d9501b8a6f36d342304511a8a94fd54",
     "/css/app.css": "/css/app.css?id=bf21c65474a9a2cde071a1ad588a052c"
 >>>>>>> 056d52131025ce7c34783c91cf6b3d5aa315e4be
+=======
+    "/js/app.js": "/js/app.js?id=4d9501b8a6f36d342304511a8a94fd54",
+    "/css/app.css": "/css/app.css?id=bf21c65474a9a2cde071a1ad588a052c"
+>>>>>>> 9ebde4cddf55522f3765afb6e333ae91d36aaace
 }
