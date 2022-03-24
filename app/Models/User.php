@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-use App\Models\Role;
-use App\Models\Section;
-use App\Models\Answer;
-use App\Models\Form;
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -37,33 +35,41 @@ class User extends Authenticatable
     ];
 
     /**
-     * The roles that belong to the user.
+     * Get the roles that belong to the user.
+     *
+     * @return BelongsToMany
      */
-    public function roles()
+    public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class)->withTimestamps();
     }
 
     /**
-     * Get all of the sections for the user.
+     * Get the sections that belong to the user.
+     *
+     * @return HasMany
      */
-    public function sections()
+    public function sections(): HasMany
     {
         return $this->hasMany(Section::class);
     }
 
     /**
-     * Get all of the answers for the user.
+     * Get the answers that belong to the user.
+     *
+     * @return HasMany
      */
-    public function answers()
+    public function answers(): HasMany
     {
         return $this->hasMany(Answer::class);
     }
 
     /**
-     * Get all of the forms for the user.
+     * Get the forms that belong to the user.
+     *
+     * @return HasMany
      */
-    public function forms()
+    public function forms(): HasMany
     {
         return $this->hasMany(Form::class);
     }

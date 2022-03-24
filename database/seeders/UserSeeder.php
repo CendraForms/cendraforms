@@ -19,22 +19,22 @@ class UserSeeder extends Seeder
             [
                 'name' => 'direccio',
                 'email' => 'direccio@cendrassos.net',
-                'roles' =>  [ Role::firstWhere('name', 'direccio')->id ],
+                'roles' => [Role::firstWhere('name', 'direccio')->id],
             ],
             [
                 'name' => 'professor',
                 'email' => 'professor@cendrassos.net',
-                'roles' =>  [ Role::firstWhere('name', 'professor')->id ],
+                'roles' => [Role::firstWhere('name', 'professor')->id],
             ],
             [
                 'name' => 'alumne',
                 'email' => 'alumne@cendrassos.net',
-                'roles' =>  [ Role::firstWhere('name', 'alumne')->id ],
+                'roles' => [Role::firstWhere('name', 'alumne')->id],
             ],
             [
                 'name' => 'alumne2',
                 'email' => 'alumne2@cendrassos.net',
-                'roles' =>  [ Role::firstWhere('name', 'alumne')->id ],
+                'roles' => [Role::firstWhere('name', 'alumne')->id],
             ],
         ];
 
