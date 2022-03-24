@@ -964,6 +964,7 @@
         },
         {
             "name": "laravel/framework",
+<<<<<<< HEAD
             "version": "v9.5.1",
             "source": {
                 "type": "git",
@@ -974,6 +975,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/framework/zipball/35be2599c9ac3d58bf1578895c2e85ea4848a0d7",
                 "reference": "35be2599c9ac3d58bf1578895c2e85ea4848a0d7",
+=======
+            "version": "v9.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/framework.git",
+                "reference": "c1c4404511b83fbf90ccbcdf864d4a85537f35e4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/c1c4404511b83fbf90ccbcdf864d4a85537f35e4",
+                "reference": "c1c4404511b83fbf90ccbcdf864d4a85537f35e4",
+>>>>>>> 495e4ab79f151fe9859d32684077d0abeeacf8f9
                 "shasum": ""
             },
             "require": {
@@ -1139,7 +1152,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
+<<<<<<< HEAD
             "time": "2022-03-15T14:41:19+00:00"
+=======
+            "time": "2022-03-03T15:15:10+00:00"
+>>>>>>> 495e4ab79f151fe9859d32684077d0abeeacf8f9
         },
         {
             "name": "laravel/sanctum",
@@ -1589,6 +1606,7 @@
         },
         {
             "name": "league/flysystem",
+<<<<<<< HEAD
             "version": "3.0.12",
             "source": {
                 "type": "git",
@@ -1599,6 +1617,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/4744d96fb2456d9808be3ad596a2520b902996e2",
                 "reference": "4744d96fb2456d9808be3ad596a2520b902996e2",
+=======
+            "version": "3.0.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/flysystem.git",
+                "reference": "1ca148713c23cadeb9d7526973f81fb4a04090a3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/1ca148713c23cadeb9d7526973f81fb4a04090a3",
+                "reference": "1ca148713c23cadeb9d7526973f81fb4a04090a3",
+>>>>>>> 495e4ab79f151fe9859d32684077d0abeeacf8f9
                 "shasum": ""
             },
             "require": {
@@ -1659,7 +1689,11 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/thephpleague/flysystem/tree/3.0.12"
+=======
+                "source": "https://github.com/thephpleague/flysystem/tree/3.0.11"
+>>>>>>> 495e4ab79f151fe9859d32684077d0abeeacf8f9
             },
             "funding": [
                 {
@@ -1675,7 +1709,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2022-03-12T19:32:12+00:00"
+=======
+            "time": "2022-03-04T16:40:17+00:00"
+>>>>>>> 495e4ab79f151fe9859d32684077d0abeeacf8f9
         },
         {
             "name": "league/mime-type-detection",
@@ -6950,6 +6988,7 @@
         },
         {
             "name": "phpunit/phpunit",
+<<<<<<< HEAD
             "version": "9.5.19",
             "source": {
                 "type": "git",
@@ -6960,6 +6999,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/35ea4b7f3acabb26f4bb640f8c30866c401da807",
                 "reference": "35ea4b7f3acabb26f4bb640f8c30866c401da807",
+=======
+            "version": "9.5.17",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/phpunit.git",
+                "reference": "5c5abcfaa2cbd44b2203995d7a339ef910fe0c8f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/5c5abcfaa2cbd44b2203995d7a339ef910fe0c8f",
+                "reference": "5c5abcfaa2cbd44b2203995d7a339ef910fe0c8f",
+>>>>>>> 495e4ab79f151fe9859d32684077d0abeeacf8f9
                 "shasum": ""
             },
             "require": {
@@ -7037,7 +7088,11 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.19"
+=======
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.17"
+>>>>>>> 495e4ab79f151fe9859d32684077d0abeeacf8f9
             },
             "funding": [
                 {
@@ -7049,7 +7104,11 @@
                     "type": "github"
                 }
             ],
+<<<<<<< HEAD
             "time": "2022-03-15T09:57:31+00:00"
+=======
+            "time": "2022-03-05T16:54:31+00:00"
+>>>>>>> 495e4ab79f151fe9859d32684077d0abeeacf8f9
         },
         {
             "name": "sebastian/cli-parser",
@@ -8079,6 +8138,7 @@
         },
         {
             "name": "spatie/flare-client-php",
+<<<<<<< HEAD
             "version": "1.1.0",
             "source": {
                 "type": "git",
@@ -8089,6 +8149,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/spatie/flare-client-php/zipball/ceab058852a1278d9f57a7b95f1c348e4956d866",
                 "reference": "ceab058852a1278d9f57a7b95f1c348e4956d866",
+=======
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/flare-client-php.git",
+                "reference": "8ada1e5f4d7a2869f491c5e75d1f689b69db423e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/flare-client-php/zipball/8ada1e5f4d7a2869f491c5e75d1f689b69db423e",
+                "reference": "8ada1e5f4d7a2869f491c5e75d1f689b69db423e",
+>>>>>>> 495e4ab79f151fe9859d32684077d0abeeacf8f9
                 "shasum": ""
             },
             "require": {
@@ -8131,7 +8203,11 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/flare-client-php/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/spatie/flare-client-php/tree/1.1.0"
+=======
+                "source": "https://github.com/spatie/flare-client-php/tree/1.0.5"
+>>>>>>> 495e4ab79f151fe9859d32684077d0abeeacf8f9
             },
             "funding": [
                 {
@@ -8139,6 +8215,7 @@
                     "type": "github"
                 }
             ],
+<<<<<<< HEAD
             "time": "2022-03-11T13:21:28+00:00"
         },
         {
@@ -8153,6 +8230,22 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/spatie/ignition/zipball/ec58c125c15eecaa20180f01ef9667d41a568ba8",
                 "reference": "ec58c125c15eecaa20180f01ef9667d41a568ba8",
+=======
+            "time": "2022-03-01T10:52:59+00:00"
+        },
+        {
+            "name": "spatie/ignition",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/ignition.git",
+                "reference": "090518ff676e17a038dfe77490018363ff66af20"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/ignition/zipball/090518ff676e17a038dfe77490018363ff66af20",
+                "reference": "090518ff676e17a038dfe77490018363ff66af20",
+>>>>>>> 495e4ab79f151fe9859d32684077d0abeeacf8f9
                 "shasum": ""
             },
             "require": {
@@ -8209,7 +8302,11 @@
                     "type": "github"
                 }
             ],
+<<<<<<< HEAD
             "time": "2022-03-11T13:28:02+00:00"
+=======
+            "time": "2022-03-04T12:52:17+00:00"
+>>>>>>> 495e4ab79f151fe9859d32684077d0abeeacf8f9
         },
         {
             "name": "spatie/laravel-ignition",
