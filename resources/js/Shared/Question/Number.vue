@@ -1,17 +1,17 @@
 <template>
   <div class="flex gap-5">
     <div>
-      <label class="block mb-1">Min</label>
+      <label class="block mb-1">Min Number</label>
       <input type="number" v-model="min" :max="max" class="bg-transparent border-white rounded-xl">
     </div>
 
     <div>
-      <label class="block mb-1">Max</label>
+      <label class="block mb-1">Max Number</label>
       <input type="number" v-model="max" :min="min" class="bg-transparent border-white rounded-xl">
     </div>
 
     <div>
-      <label class="block mb-1">Default</label>
+      <label class="block mb-1">Default Number</label>
       <input type="number" :value="value" :min="min" :max="max" class="bg-transparent border-white rounded-xl">
     </div>
   </div>
