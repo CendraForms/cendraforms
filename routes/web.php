@@ -33,8 +33,8 @@ Route::get('/accedir/{provider}/callback', [SocialiteController::class, 'socialC
  */
 
 Route::get('/formulari/crear', [FormController::class, 'create'])
-    ->name('form.create');
-    // ->middleware('auth'); // todo -> uncomment when push feature
+    ->name('form.create')
+    ->middleware('auth');
 
 Route::get('/formulari/{form}', [FormController::class, 'answer'])
     ->name('form.answer')

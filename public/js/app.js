@@ -22990,7 +22990,7 @@ var _hoisted_1 = {
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "block mb-1"
-}, "Min", -1
+}, "Min Number", -1
 /* HOISTED */
 );
 
@@ -22998,7 +22998,7 @@ var _hoisted_3 = ["max"];
 
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "block mb-1"
-}, "Max", -1
+}, "Max Number", -1
 /* HOISTED */
 );
 
@@ -23006,7 +23006,7 @@ var _hoisted_5 = ["min"];
 
 var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "block mb-1"
-}, "Default", -1
+}, "Default Number", -1
 /* HOISTED */
 );
 
@@ -23417,7 +23417,7 @@ var _hoisted_1 = {
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "block mb-1"
-}, "Min", -1
+}, "Min Number", -1
 /* HOISTED */
 );
 
@@ -23425,7 +23425,7 @@ var _hoisted_3 = ["max"];
 
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "block mb-1"
-}, "Max", -1
+}, "Max Number", -1
 /* HOISTED */
 );
 
@@ -23433,7 +23433,7 @@ var _hoisted_5 = ["min"];
 
 var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "block mb-1"
-}, "Default", -1
+}, "Default Number", -1
 /* HOISTED */
 );
 

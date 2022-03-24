@@ -43,14 +43,6 @@ class Section extends Model
     }
 
     /**
-     * Get the questions that belongs to the section.
-     */
-    public function questions()
-    {
-        return $this->hasMany(Question::class);
-    }
-
-    /**
      * Get the user that owns the section.
      *
      * @return BelongsTo
