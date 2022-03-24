@@ -1,5 +1,22 @@
 <template>
   <div class="mt-5">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <AnswerNumber
       v-if="type == 'number'"
       :value="content.value"
