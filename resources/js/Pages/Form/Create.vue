@@ -49,15 +49,7 @@
 import { ref } from 'vue'
 import QuestionType from '../../Shared/Question/Index'
 
-const form = ref({
-  id: 1,
-  title: 'Avaluació DAW2 curs 2021-22'
-})
-
-const sections = ref([
-  {
-    id: 1,
-    title: 'DAW2_MP_02 - Bases de dades',
+const form = ref([{
     questions: [
       {
         id: null,
@@ -118,8 +110,71 @@ const sections = ref([
     ],
     locked: false,
     visible: true,
+  }
+])
+
+const sections = ref([
+  {
+    id: 1,
+    title: 'DAW2_MP_02 - Bases de dades',
+    questions: [
+      {
+        id: null,
+        title: 'Què és el que més t\'ha agradat?',
+        type: 'select',
+      },
+
+      {
+        id: 2,
+        title: 'Què és el que menys t\'ha agradat?',
+        content: {
+          min: 0,
+          max: 10,
+        },
+        type: 'number',
+      },
+    ],
+    locked: false,
+    visible: false,
+  },
+
+  {
+    id: 2,
+    title: 'DAW2_MP_03 - Programació',
+    questions: [
+      {
+        id: null,
+        title: 'Què és el que més t\'ha agradat?',
+      },
+
+      {
+        id: 2,
+        title: 'Què és el que menys t\'ha agradat?',
+      },
+    ],
+    locked: true,
+    visible: false,
+  },
+
+  {
+    id: 3,
+    title: 'DAW2_MP_06 - Desenvolupament web en entorn de client',
+    questions: [
+      {
+        id: null,
+        title: 'Què és el que més t\'ha agradat?',
+      },
+
+      {
+        id: 2,
+        title: 'Què és el que menys t\'ha agradat?',
+      },
+    ],
+    locked: false,
+    visible: true,
   },
 ])
+
 
 const createSection = () => {
   sections.value.push({

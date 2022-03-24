@@ -3,8 +3,8 @@
   <input
     id="left"
     type="text"
-    v-model="left"
-  >
+    v-model="left.text"
+  />
 
   <br>
 
@@ -12,15 +12,24 @@
   <input
     id="right"
     type="text"
-    v-model="right"
-  >
+    v-model="right.text"
+  />
 
   <br>
 
   <label v-text="`Opció per defecte`" for="defaultVal" />
-  <select id="defaultVal" v-model="defaultVal">
-    <option value="left" v-text="left" />
-    <option value="right" v-text="right" />
+  <select id="defaultVal">
+    <option
+      value="left.text"
+      v-text="left.text"
+      :selected="left.defaultVal"
+    />
+
+    <option
+      value="right.text"
+      v-text="right.text"
+      :selected="right.defaultVal"
+    />
   </select>
 </template>
 
@@ -28,12 +37,10 @@
 import { ref } from 'vue'
 
 const props = defineProps({
-  left: String,
-  right: String,
-  defaultVal: String,
+  left: Object,
+  right: Object,
 })
 
 const left = ref(props.left)
 const right = ref(props.right)
-const defaultVal = ref(props.defaultVal)
 </script>

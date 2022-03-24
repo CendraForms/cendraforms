@@ -5,7 +5,9 @@ namespace App\Providers;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
+use SocialiteProviders\Discord\DiscordExtendSocialite;
+use SocialiteProviders\Google\GoogleExtendSocialite;
+use SocialiteProviders\Manager\SocialiteWasCalled;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -18,10 +20,16 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+<<<<<<< HEAD
         \SocialiteProviders\Manager\SocialiteWasCalled::class => [
             \SocialiteProviders\Discord\DiscordExtendSocialite::class.'@handle',
             \SocialiteProviders\Google\GoogleExtendSocialite::class.'@handle',
             \SocialiteProviders\GitLab\GitLabExtendSocialite::class.'@handle',
+=======
+        SocialiteWasCalled::class => [
+            DiscordExtendSocialite::class . '@handle',
+            GoogleExtendSocialite::class . '@handle',
+>>>>>>> 0b322bdf866910fddd4963e2582c67434322dbf2
         ],
     ];
 
@@ -40,7 +48,7 @@ class EventServiceProvider extends ServiceProvider
      *
      * @return bool
      */
-    public function shouldDiscoverEvents()
+    public function shouldDiscoverEvents(): bool
     {
         return false;
     }

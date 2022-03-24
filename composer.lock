@@ -5988,6 +5988,7 @@
         },
         {
             "name": "laravel/sail",
+<<<<<<< HEAD
             "version": "v1.13.7",
             "source": {
                 "type": "git",
@@ -5998,6 +5999,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/sail/zipball/2092e1ce6e4ba534bff443de8c3a7bb280aba121",
                 "reference": "2092e1ce6e4ba534bff443de8c3a7bb280aba121",
+=======
+            "version": "v1.13.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/sail.git",
+                "reference": "6205041336b09b965af1d6af29261584e787bf52"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/6205041336b09b965af1d6af29261584e787bf52",
+                "reference": "6205041336b09b965af1d6af29261584e787bf52",
+>>>>>>> 0b322bdf866910fddd4963e2582c67434322dbf2
                 "shasum": ""
             },
             "require": {
@@ -6044,6 +6057,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
+<<<<<<< HEAD
             "time": "2022-03-11T14:11:15+00:00"
         },
         {
@@ -6111,6 +6125,9 @@
                 "source": "https://github.com/maximebf/php-debugbar/tree/v1.18.0"
             },
             "time": "2021-12-27T18:49:48+00:00"
+=======
+            "time": "2022-03-07T15:35:47+00:00"
+>>>>>>> 0b322bdf866910fddd4963e2582c67434322dbf2
         },
         {
             "name": "mockery/mockery",
@@ -8310,6 +8327,7 @@
         },
         {
             "name": "spatie/laravel-ignition",
+<<<<<<< HEAD
             "version": "1.0.10",
             "source": {
                 "type": "git",
@@ -8320,6 +8338,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/spatie/laravel-ignition/zipball/71df77cad94aae4db904aaef1cc2f06950daed76",
                 "reference": "71df77cad94aae4db904aaef1cc2f06950daed76",
+=======
+            "version": "1.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-ignition.git",
+                "reference": "d7b223300d511145eea87fdabae1663c7c0088aa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-ignition/zipball/d7b223300d511145eea87fdabae1663c7c0088aa",
+                "reference": "d7b223300d511145eea87fdabae1663c7c0088aa",
+>>>>>>> 0b322bdf866910fddd4963e2582c67434322dbf2
                 "shasum": ""
             },
             "require": {
@@ -8393,6 +8423,7 @@
                     "type": "github"
                 }
             ],
+<<<<<<< HEAD
             "time": "2022-03-17T11:01:36+00:00"
         },
         {
@@ -8462,6 +8493,9 @@
                 }
             ],
             "time": "2022-01-02T09:41:36+00:00"
+=======
+            "time": "2022-03-11T14:19:27+00:00"
+>>>>>>> 0b322bdf866910fddd4963e2582c67434322dbf2
         },
         {
             "name": "theseer/tokenizer",

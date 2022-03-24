@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Str;
 use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Laravel\Socialite\Facades\Socialite;
 
-class AuthController extends Controller
+class SocialiteController extends Controller
 {
     public function render()
     {
@@ -20,8 +20,7 @@ class AuthController extends Controller
     {
         $providers = ["google", "discord", "github", "gitlab"];
 
-        if (!in_array($provider, $providers))
-        {
+        if (!in_array($provider, $providers)) {
             return redirect()->route('auth');
         }
 
@@ -34,16 +33,16 @@ class AuthController extends Controller
         {
             $providers = ["google", "discord", "github", "gitlab"];
 
-            if (!in_array($provider, $providers))
-            {
+            if (!in_array($provider, $providers)) {
                 return redirect()->route('auth');
             }
 
             $user = Socialite::driver($provider)->user();
 
-            if (!Str::endsWith($user->getEmail(), '@cendrassos.net'))
-            {
-                return redirect()->route('auth')->with('error', 'Usuari no autoritzat. Recorda utilitzar el correu del centre.');
+            if (!Str::endsWith($user->getEmail(), '@cendrassos.net')) {
+                return redirect()
+                    ->route('auth')
+                    ->with('error', 'Usuari no autoritzat. Recorda utilitzar el correu del centre.');
             }
 
             $user = User::firstOrCreate([
@@ -54,9 +53,7 @@ class AuthController extends Controller
             Auth::login($user);
 
             return redirect()->route('form.create');
-        }
-        catch (Exception $exception)
-        {
+        } catch (Exception) {
             return redirect('/accedir')->with('error', 'Error. Has d\'acceptar per poder accedir.');
         }
     }
