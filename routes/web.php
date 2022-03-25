@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\GitHubController;
 // use App\Http\Controllers\QuestionController;
 
-
 Route::get('/', function () {
     return inertia('Form/Create');
 });
@@ -34,12 +33,16 @@ Route::get('/accedir/{provider}/callback', [SocialiteController::class, 'socialC
  */
 
 Route::get('/formulari/crear', [FormController::class, 'create'])
-    ->name('form.create');
-    // ->middleware('auth'); // todo -> uncomment when push feature
+    ->name('form.create')
+    ->middleware('auth');
 
 Route::get('/formulari/{form}', [FormController::class, 'answer'])
-    ->name('form.answer');
-    //->middleware('auth'); // todo -> uncomment when push feature
+    ->name('form.answer')
+    ->middleware('auth');
+
+Route::get('/formulari/{form}/edita', [FormController::class, 'edit'])
+    ->name('form.edit')
+    ->middleware('auth');
 
 
 /**

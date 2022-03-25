@@ -3,10 +3,10 @@
     <span class="mb-5 block text-4xl font-bold uppercase">
       Form #{{ form.id }}
     </span>
-    
+
     <input type="text" :value="form.title" class="w-full bg-transparent rounded-xl">
 
-    <div v-for="section in form.sections" :key="section.id" class="my-5 p-10 bg-stone-700 rounded-xl" :class="{ 'opacity-50': section.locked }">
+    <div v-for="section in sections" :key="section.id" class="my-5 p-10 bg-stone-700 rounded-xl" :class="{ 'opacity-50': section.locked }">
       <div class="mb-5 flex justify-between">
         <span class="text-2xl font-bold uppercase">
           Section #{{ section.id }}
@@ -19,7 +19,7 @@
           </span>
         </div>
       </div>
-      
+
       <input type="text" :value="section.title" :disabled="section.locked" class="mb-5 block w-full bg-transparent rounded-xl">
 
       <div class="p-5 bg-stone-600 rounded-xl">
@@ -32,7 +32,7 @@
 
           <QuestionType :type="question.type" :content="question.content" />
         </div>
-        
+
         <button v-if="!section.locked" @click="createQuestion(section)" class="p-1 bg-stone-500 text-sm font-medium uppercase leading-none rounded hover:opacity-75">
           New question
         </button>
@@ -60,7 +60,7 @@ const form = ref({
         {
           id: null,
           title: 'Què és el que més t\'ha agradat?',
-          type: 'text',
+          type: 'textarea',
         },
 
         {
@@ -159,7 +159,7 @@ const form = ref({
 })
 
 const createSection = () => {
-  form.sections.value.push({
+  sections.value.push({
     id: sections.value.length,
     title: '',
     questions: [

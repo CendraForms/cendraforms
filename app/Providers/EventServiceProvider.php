@@ -6,6 +6,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use SocialiteProviders\Discord\DiscordExtendSocialite;
+use SocialiteProviders\GitLab\GitLabExtendSocialite;
 use SocialiteProviders\Google\GoogleExtendSocialite;
 use SocialiteProviders\Manager\SocialiteWasCalled;
 
@@ -23,6 +24,7 @@ class EventServiceProvider extends ServiceProvider
         SocialiteWasCalled::class => [
             DiscordExtendSocialite::class . '@handle',
             GoogleExtendSocialite::class . '@handle',
+            GitLabExtendSocialite::class . '@handle',
         ],
     ];
 
