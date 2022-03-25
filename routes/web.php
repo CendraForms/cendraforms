@@ -40,8 +40,12 @@ Route::get('/formulari/{form}', [FormController::class, 'answer'])
     ->name('form.answer')
     ->middleware('auth');
 
-Route::get('/formulari/{form}/edita', [FormController::class, 'edit'])
+Route::get('/formulari/{form}/editar', [FormController::class, 'edit'])
     ->name('form.edit')
+    ->middleware('auth');
+
+Route::post('/formulari/{form}/editar', [FormController::class, 'store'])
+    ->name('form.store')
     ->middleware('auth');
 
 

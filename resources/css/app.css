@@ -1,3 +1,6 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+.cf-section { @apply mx-auto p-8 w-2/3 bg-stone-800 rounded-md; }
+.cf-input { @apply px-0.5 pt-0 bg-transparent border-0 border-b-2 border-stone-200 focus:ring-0 focus:border-white placeholder:text-stone-400; }
