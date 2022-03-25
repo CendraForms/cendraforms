@@ -143,13 +143,13 @@
               />
 
               <!-- Deleted -->
-              <button class="ml-2" @click="deleteQuestion(question, index)">
-                <svg class="h-8 text-red-400 hover:opacity-75" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                  <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
-              </button>
+              <Icon
+                class="ml-2 h-8 text-red-400 hover:opacity-75 cursor-pointer"
+                :disabled="section.locked"
+                v-if="!section.locked"
+                name="x"
+                @click="deleteQuestion(index, question, section)"
+              />
             </div>
           </div>
         </div>
@@ -377,15 +377,16 @@ const duplicateQuestion = (index, section, question) => {
   section.questions.splice(index++, 0, { ...question });
 }
 
-// const deleteQuestion = (question, index) => {
-//   if (confirm('Estàs segur que vols eliminar aquesta qüestió?')) {
-//     if (question.id == null) {
-//       form.value.sections[index].questions
-//     }
+const deleteQuestion = (index, question, section) => {
+  if (confirm('Estàs segur que vols eliminar aquesta qüestió?')) {
+    if (question.id == null) {
+      section.questions.splice(index, 1)
+      return
+    }
 
-//     question.deleted = true;
-//   }
-// }
+    question.deleted = true
+  }
+}
 
 const newQuestion = (section) => {
   section.questions.push({
@@ -395,6 +396,10 @@ const newQuestion = (section) => {
     content: {},
   })
 }
+
+/*
+ * Roles
+ */
 
 const availableRoles = [
   'Direcció',
