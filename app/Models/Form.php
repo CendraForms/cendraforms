@@ -65,4 +65,15 @@ class Form extends Model
     {
         return $this->belongsToMany(Role::class)->withTimestamps();
     }
+
+    /**
+     * Get the roles that can answer the form.
+     *
+     * @return BelongsToMany
+     */
+    public function canBeAnsweredBy(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class)->withTimestamps();
+    }
+
 }
