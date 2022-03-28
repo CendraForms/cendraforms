@@ -23,14 +23,14 @@ class QuestionSeeder extends Seeder
 
         Question::create([
             'name' => 'He resolt correctament els teus subtes?',
-            'type' => 'text',
+            'type' => 'switch',
             'content' => '{}',
             'section_id' => 2,
         ]);
 
         Question::create([
             'name' => 'Creus que sóc un bon Professor?',
-            'type' => 'text',
+            'type' => 'radio',
             'content' => '{}',
             'section_id' => 3,
         ]);
