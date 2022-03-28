@@ -199,7 +199,7 @@
                   class="flex items-center justify-between px-4 py-2 select-none"
                   :class="{ 'bg-stone-600': active }"
                 >
-                  {{ role }}
+                  {{ role.name }}
 
                   <svg v-if="selected" class="h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -221,10 +221,10 @@
       </div>
 
       <ul class="flex gap-2 w-full leading-none">
-        <li v-for="role in form.roles.edit" class="flex items-center gap-1 p-2 border border-white/25 rounded">
+        <li v-for="(role, index) in form.roles.edit" :key="index" class="flex items-center gap-1 p-2 border border-white/25 rounded">
           {{ role }}
 
-          <svg class="h-4 hover:opacity-75" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <svg @click="removeEditRole(index)" class="h-4 hover:opacity-75" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <line x1="18" y1="6" x2="6" y2="18" />
             <line x1="6" y1="6" x2="18" y2="18" />
@@ -246,7 +246,7 @@
     </button>
 
     <button class="px-2 py-1 text-lg font-medium bg-emerald-600 rounded hover:opacity-90">
-      Guardar formulari
+      Crear formulari
     </button>
   </div>
 </template>
@@ -261,19 +261,19 @@ import Icon from '../../Shared/Icon.vue'
 import { Combobox, ComboboxInput, ComboboxButton, ComboboxOptions, ComboboxOption } from '@headlessui/vue'
 
 const props = defineProps({
-    form: Object
+    form: Object,
+    availableRoles: Object
 })
 
 const form = ref(props.form)
+const availableRoles = ref(props.availableRoles)
 
 /*
  * Sections
  */
 
 const getSections = computed(() => {
-    console.log(isArray(form.value.sections));
-    return form.value.sections
-//   return form.value.sections.filter(section => !section.deleted)
+  return form.value.sections.filter(section => !section.deleted)
 })
 
 const toggleSectionCollapsed = (section) => {
@@ -334,8 +334,7 @@ const deleteSection = (section, index) => {
  */
 
 const getQuestions = (section) => {
-    return section.questions
-//   return section.questions.filter(question => !question.deleted)
+  return section.questions.filter(question => !question.deleted)
 }
 
 const questionArrows = (direction, section, index) => {
@@ -380,13 +379,13 @@ const newQuestion = (section) => {
  * Roles
  */
 
-const availableRoles = [
-  'Direcció',
-  'Professor',
-  'Alumne',
-  'DAW',
-  'SMX',
-]
+// const availableRoles = [
+//   'Direcció',
+//   'Professor',
+//   'Alumne',
+//   'DAW',
+//   'SMX',
+// ]
 
 const roles = ref({
   edit: {
@@ -401,8 +400,15 @@ const roles = ref({
 
 const addEditRole = () => {
   const selected = roles.value.edit.selected
-  form.value.roles.edit.push(selected)
+  form.value.roles.edit.push(selected['name']);
 
   roles.value.edit.selected = ''
+}
+
+const removeEditRole = (index) => {
+    if (confirm('Estàs segur que vols eliminar el rol?')) {
+        form.value.roles.edit.splice(index, 1)
+        return
+    }
 }
 </script>

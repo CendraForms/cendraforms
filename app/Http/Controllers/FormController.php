@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Form;
+use App\Models\FormRoleEditor;
 use App\Models\Question;
+use App\Models\Role;
 use App\Models\Section;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -34,7 +36,8 @@ class FormController extends Controller
     public function edit(Form $form)
     {
         return inertia('Form/Edit', [
-            'form' => $this->generateFormObject($form)
+            'form' => $this->generateFormObject($form),
+            'availableRoles' => $this->generateRoleObject(),
         ]);
     }
 
@@ -103,20 +106,59 @@ class FormController extends Controller
         // todo -> això dels roles està ben fet? no s'hauria d'iterar en comptes de fer-ho així?
         $roles = [];
 
+        // get source form's roles editor
+        $srcRolesEdit = $srcForm->canBeEditedBy()->get();
+
         $edit = [];
-        $edit[] = 'Direcció';
-        $edit[] = 'Professor';
+        foreach ($srcRolesEdit as $rolesEdit) {
+            // save role name editor
+            $edit[] = $rolesEdit->name;
+        }
+
+        // save roles editor
+        $roles['edit'] = $edit;
+
+        // get source form's roles answered
+        $srcRolesAnswer = $srcForm->canBeAnsweredBy()->get();
 
         $answer = [];
-        $answer[] = 'Alumne';
+        foreach ($srcRolesAnswer as $rolesAnswer) {
+            // save role name answered
+            $answer[] = $rolesAnswer->name;
+        }
 
-        $roles['edit'] = $edit;
+        // save roles answered
         $roles['answer'] = $answer;
 
+        // save roles
         $form['roles'] = $roles;
 
         // return object form
         return $form;
+    }
+
+    /**
+     * From source roles, it generates needed roles object, and it sends it to the view.
+     * It adds required variables for Vue.
+     *
+     * @return array
+     */
+    private function generateRoleObject()
+    {
+        $srcRoles = Role::where('active', true)->get();
+
+        $roles = [];
+
+        foreach ($srcRoles as $srcRole) {
+            $role = [];
+
+            $role['id'] = $srcRole->id;
+            $role['name'] = $srcRole->name;
+
+            $roles[] = $role;
+        }
+
+        return $roles;
     }
 
     /**
