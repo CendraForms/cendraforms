@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return inertia('Form/Create');
-});
+})->name('home');
 
 /**
  * Auth
@@ -47,6 +47,12 @@ Route::post('/formulari/{form}/editar', [FormController::class, 'store'])
     ->name('form.store')
     ->middleware('auth');
 
+// todo - temporal
+Route::get('/kernel', function () {
+    return inertia('kernel');
+});
+Route::post('/kernel', [FormController::class, 'store']);
+// todo - end temporal
 
 /**
  * Roles
