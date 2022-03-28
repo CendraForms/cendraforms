@@ -63,5 +63,4 @@ class Role extends Model
             ->belongsToMany(Role::class, 'form_role_answerer')
             ->withTimestamps();
     }
-
 }
