@@ -17,6 +17,7 @@ class Question extends Model
      */
     protected $fillable = [
         'name',
+        'type',
         'content',
         'section_id',
     ];

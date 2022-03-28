@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -12,20 +13,20 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('questions', function (Blueprint $table) {
+        Schema::create('form_role_editor', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name');
-            $table->string('type');
-            $table->json('content');
-
-            $table->integer('section_id')
+            $table->integer('form_id')
                 ->index()
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-
-            $table->boolean('active')->default(true);
+            
+            $table->integer('role_id')
+                ->index()
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
 
             $table->timestamps();
         });
@@ -38,6 +39,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::drop('questions');
+        Schema::dropIfExists('form_role_editor');
     }
 };
