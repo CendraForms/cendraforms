@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             SectionSeeder::class,
             QuestionSeeder::class,
             AnswerSeeder::class,
+            FormRoleEditorSeeder::class,
         ]);
     }
 }
