@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 class RoleUser extends Pivot
 {
     /**
-     * The pivot table associated with the models.
+     * The pivot table associated to Role and User models.
      *
      * @var string
      */

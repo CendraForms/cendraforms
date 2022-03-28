@@ -39,4 +39,14 @@ class Role extends Model
     {
         return $this->belongsToMany(User::class)->withTimestamps();
     }
+
+    /**
+     * Get the forms that can be edited by the role.
+     *
+     * @return BelongsToMany
+     */
+    public function editableForms(): BelongsToMany
+    {
+        return $this->belongsToMany(Form::class)->withTimestamps();
+    }
 }
