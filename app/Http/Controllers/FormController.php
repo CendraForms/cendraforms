@@ -88,6 +88,7 @@ class FormController extends Controller
         $formulari['id'] = $form->id;
         $formulari['name'] = $form->name;
         $formulari['description'] = $form->description;
+        $formulari['published'] = false;
 
         // get a sections to the form
         $sections = $form->sections()->get();
@@ -102,8 +103,8 @@ class FormController extends Controller
             $section2['id'] = $section->id;
             $section2['name'] = $section->name;
             $section2['visible'] = true;
-            $section2['collapsed'] = true;
-            $section2['locked'] = true;
+            $section2['collapsed'] = false;
+            $section2['locked'] = false;
             $section2['deleted'] = false;
 
             // get a questions to the section
@@ -137,6 +138,19 @@ class FormController extends Controller
         }
         // assign sections form
         $formulari['sections'] = $sections2;
+
+
+
+        $roles2 = [];
+        $edit2 = [];
+        $edit2[0] = 'Direcció';
+        $edit2[1] = 'Professor';
+        $answer2 = [];
+        $answer2[0] = 'Alumne';
+
+        $roles2['edit'] = $edit2;
+        $roles2['answer'] = $answer2;
+        $formulari['roles'] = $roles2;
 
         // return object form
         return $formulari;
