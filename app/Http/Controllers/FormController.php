@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use Inertia\Response;
 use Inertia\ResponseFactory;
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\NoReturn;
 
 class FormController extends Controller
 {
@@ -35,7 +33,7 @@ class FormController extends Controller
      * @param Form $form Form to be edited in the view.
      * @return Response|ResponseFactory
      */
-    #[NoReturn] public function edit(Form $form): Response|ResponseFactory
+    public function edit(Form $form): Response|ResponseFactory
     {
         return inertia('Form/Edit', [
             'form' => $this->generateForm($form)
@@ -49,14 +47,6 @@ class FormController extends Controller
      * @param Form $srcForm source Form from where to generate the new Form.
      * @return array
      */
-    #[NoReturn] #[ArrayShape([
-        'id' => "mixed",
-        'name' => "mixed",
-        'description' => "mixed",
-        'published' => "false",
-        'editors' => "array",
-        'sections' => "array"
-    ])]
     private function generateForm(Form $srcForm): array
     {
         // start building new form container
