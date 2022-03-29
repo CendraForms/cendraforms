@@ -16,6 +16,28 @@ const form = ref({
     name: "random form name",
     description: "random description",
     published: false,
+    roles: {
+        edit: [
+            {
+                id: 0,
+                name: "Professor",
+                deleted: false,
+            },
+        ],
+        answer: [
+            {
+                id: 1,
+                name: "random213",
+                deleted: false,
+            },
+
+            {
+                id: 2,
+                name: "loremmm",
+                deleted: false,
+            },
+        ],
+    },
     sections: [
         {
             id: null,
@@ -35,27 +57,5 @@ const form = ref({
             ],
         },
     ],
-    roles: {
-        edit: [
-            {
-                id: 0,
-                name: "Professor",
-                deleted: false,
-            },
-        ],
-        answer: [
-            {
-                id: 1,
-                name: "DAW",
-                deleted: false,
-            },
-
-            {
-                id: 2,
-                name: "SMX",
-                deleted: false,
-            },
-        ],
-    },
 });
 </script>
