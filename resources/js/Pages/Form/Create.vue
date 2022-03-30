@@ -265,6 +265,7 @@ const form = ref({
   name: '',
   description: '',
   published: false,
+  anonymized: false,
   sections: [
     {
       id: null,

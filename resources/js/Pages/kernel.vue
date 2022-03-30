@@ -16,6 +16,7 @@ const form = ref({
     name: "random form name",
     description: "random description",
     published: false,
+    anonymized: true,
     roles: {
         edit: [
             {

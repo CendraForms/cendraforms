@@ -194,6 +194,7 @@ class FormController extends Controller
             'form.name' => ['required', 'string', 'min:3', 'max:255'],
             'form.description' => ['required', 'string', 'max:1000'],
             'form.published' => ['required', 'boolean'],
+            'form.anonymized' => ['required', 'boolean'],
 
             'form.roles' => ['required', 'array', 'min:1'],
             'form.sections' => ['required', 'array', 'min:1'],
@@ -236,6 +237,7 @@ class FormController extends Controller
             'description' => $validatedForm['description'],
             'user_id' => Auth::id(),
             'published' => $validatedForm['published'],
+            'anonymized' => $validatedForm['anonymized'],
         ];
 
         $formId = $validatedForm['id'];
