@@ -119,3 +119,4 @@ Route::get('/angular/countforms', [AngularController::class, 'countForms']);
 Route::get('/angular/countusers', [AngularController::class, 'countUsers']);
 Route::get('/angular/countQuestions', [AngularController::class, 'countQuestions']);
 Route::get('/angular/countAnswers', [AngularController::class, 'countAnswers']);
+Route::get('/angular/getRoles', [AngularController::class, 'getRoles']);
