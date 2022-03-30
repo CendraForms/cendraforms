@@ -155,9 +155,7 @@ const form = ref({
               defaultVal: true
             },
           },
-          answer: {
-            selected: null
-          },
+          answer: null,
         },
 
         {
@@ -182,9 +180,7 @@ const form = ref({
               }
             ],
           },
-          answer: {
-            selected: null
-          },
+          answer: null,
         }
       ],
       locked: false,
