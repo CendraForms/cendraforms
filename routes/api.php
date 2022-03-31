@@ -120,3 +120,4 @@ Route::get('/angular/countusers', [AngularController::class, 'countUsers']);
 Route::get('/angular/countQuestions', [AngularController::class, 'countQuestions']);
 Route::get('/angular/countAnswers', [AngularController::class, 'countAnswers']);
 Route::get('/angular/getRoles', [AngularController::class, 'getRoles']);
+Route::get('/angular/GetLast10Days', [AngularController::class, 'GetLast10Days']);
