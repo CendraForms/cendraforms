@@ -53,6 +53,7 @@ class AngularController extends Controller
 
         return array(array($roles),array($totals));
     }
+}
 
     public function GetLast10Days()
     {
