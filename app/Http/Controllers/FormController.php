@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Form;
-use App\Models\FormRoleAnswerer;
-use App\Models\FormRoleEditor;
-use App\Models\Question;
+use App\Models\Role;
+use Inertia\Response;
 use App\Models\Section;
-use Illuminate\Http\RedirectResponse;
+use App\Models\Question;
 use Illuminate\Http\Request;
+use Inertia\ResponseFactory;
+use App\Models\FormRoleEditor;
+use App\Models\FormRoleAnswerer;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
-use Inertia\Response;
-use Inertia\ResponseFactory;
 
 class FormController extends Controller
 {
@@ -36,7 +37,8 @@ class FormController extends Controller
     public function edit(Form $form): Response|ResponseFactory
     {
         return inertia('Form/Edit', [
-            'form' => $this->generateForm($form)
+            'form' => $this->generateForm($form),
+            'activeRoles' => Role::getActiveRoles(),
         ]);
     }
 
@@ -110,17 +112,29 @@ class FormController extends Controller
 
         $formEditors = [];
 
-        // save them in the new form container
-        foreach ($srcFormEditors as $srcEditor) {
-            $formEditors[] = $srcEditor->name;
-            // $formEditors[] = $srcEditor->id; fer-ho per nom o id?
+        // save them in the new form editors container
+        foreach ($srcFormEditors as $srcFormEditor) {
+            $formEditors[] = $srcFormEditor->name;
         }
 
-        $form['editors'] = $formEditors;
+        // save roles that can edit the form
+        $form['edit'] = $formEditors;
 
-        // todo: fer el mateix amb els form answerers
+        // get the roles that can answer the form
+        $srcRolesAnswers = $srcForm->canBeAnsweredBy()->get();
 
-        dd($form);
+        $formAnswerers = [];
+
+        // save them in the new form answerers container
+        foreach ($srcRolesAnswers as $srcRolesAnswer) {
+            // save role name answered
+            $formAnswerers[] = $srcRolesAnswer->name;
+        }
+
+        // save roles that can answer the form
+        $form['answer'] = $formAnswerers;
+
+        // return form object
         return $form;
     }
 
