@@ -7,7 +7,7 @@
     <input
       id="`radio-option-` + {{ option.index }}"
       type="radio"
-      v-model="answer.selected"
+      v-model="answer"
       :value="option.text"
     />
   </div>
@@ -18,7 +18,7 @@ import { ref } from 'vue'
 
 const props = defineProps({
   options: Array,
-  answer: Object,
+  answer: String,
 })
 
 const options = ref(props.options)

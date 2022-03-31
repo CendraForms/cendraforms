@@ -24,7 +24,7 @@ import { ref } from 'vue'
 const props = defineProps({
   left: Object,
   right: Object,
-  answer: Object,
+  answer: String,
 })
 
 const left = ref(props.left)
@@ -36,6 +36,6 @@ const toggleChecked = (clickedBtn) => {
   right.value.selected = false
 
   clickedBtn.selected = true
-  answer.value.selected = clickedBtn.text
+  answer.value = clickedBtn.text
 }
 </script>

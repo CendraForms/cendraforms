@@ -188,7 +188,7 @@
             </div>
             <ComboboxOptions class="absolute w-full bg-stone-700 rounded-b-md">
               <ComboboxOption
-                v-for="(role, index) in availableRoles"
+                v-for="(role, index) in activeRoles"
                 :key="index"
                 as="template"
                 :value="role"
@@ -265,6 +265,7 @@ const form = ref({
   name: '',
   description: '',
   published: false,
+  anonymized: false,
   sections: [
     {
       id: null,
@@ -275,7 +276,7 @@ const form = ref({
       questions: [
         {
           id: null,
-          title: '',
+          name: '',
           type: 'text',
           visible: true,
           deleted: false,
@@ -330,7 +331,7 @@ const newSection = () => {
     deleted: false,
     questions: [{
       id: null,
-      title: '',
+      name: '',
       type: 'text',
       deleted: false,
       content: {},
@@ -390,7 +391,7 @@ const deleteQuestion = (index, question, section) => {
 
 const newQuestion = (section) => {
   section.questions.push({
-    title: '',
+    name: '',
     type: 'text',
     deleted: false,
     content: {},
@@ -401,7 +402,7 @@ const newQuestion = (section) => {
  * Roles
  */
 
-const availableRoles = [
+const activeRoles = [
   'Direcció',
   'Professor',
   'Alumne',

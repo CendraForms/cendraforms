@@ -73,4 +73,38 @@ class User extends Authenticatable
     {
         return $this->hasMany(Form::class);
     }
+
+    // juanjo -> està fent funció que retorna tots els formularis que l'usuari té per respondre
+    // juanjo -> està fent funció que retorna tots els formularis que l'usuari ja ha respost
+
+    /**
+     * Checks if user can answer parsed Form.
+     * 
+     * @param int Form id where to obtain the roles
+     * @return bool true if user can answer parsed form, otherwise false.
+     */
+    public function canAnswerForm(int $formId): bool
+    {
+        // get user roles
+        $userRoles = $this->roles->all();
+
+        // get roles that can answer parsed form
+        $formRoleAnswerers = Form::where('id', '=', $formId)
+                                    ->first()
+                                    ->canBeAnsweredBy()
+                                    ->get()
+                                    ->all();
+
+        // find if user can answer the form
+        foreach ($formRoleAnswerers as $formRoleAnswerer) {
+            foreach ($userRoles as $userRole) {
+                dd($formRoleAnswerer->name);
+                if ($formRoleAnswerer->id == $userRole->id) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
 }

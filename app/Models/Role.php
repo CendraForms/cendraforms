@@ -48,7 +48,7 @@ class Role extends Model
     public function editableForms(): BelongsToMany
     {
         return $this
-            ->belongsToMany(Role::class, 'form_role_editor')
+            ->belongsToMany(Form::class, 'form_role_editor')
             ->withTimestamps();
     }
 
@@ -60,7 +60,31 @@ class Role extends Model
     public function answerableForms(): BelongsToMany
     {
         return $this
-            ->belongsToMany(Role::class, 'form_role_answerer')
+            ->belongsToMany(Form::class, 'form_role_answerer')
             ->withTimestamps();
+    }
+
+    /**
+     * Get the roles that its active field is true.
+     * Note that it only obtains id and name of active roles.
+     * 
+     * @return array Array containing all active roles.
+     */
+    public static function getActiveRoles(): array
+    {
+        $srcActiveRoles = Role::where('active', true)->get();
+
+        $activeRoles = [];
+
+        foreach ($srcActiveRoles as $srcActiveRole) {
+            $role = [
+                'id' => $srcActiveRole->id,
+                'name' => $srcActiveRole->name,
+            ];
+
+            $activeRoles[] = $role;
+        }
+
+        return $activeRoles;
     }
 }

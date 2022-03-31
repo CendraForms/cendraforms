@@ -24,6 +24,7 @@ class Form extends Model
         'description',
         'user_id',
         'published',
+        'anonymized',
     ];
 
     /**
@@ -79,5 +80,4 @@ class Form extends Model
             ->belongsToMany(Role::class, 'form_role_answerer')
             ->withTimestamps();
     }
-
 }

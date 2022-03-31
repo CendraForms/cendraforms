@@ -30,6 +30,8 @@ class FormSeeder extends Seeder
             'name' => 'Enquesta Cendrassos',
             'description' => 'Com t\'ha afectat el cendrassos?',
             'user_id' => 1,
+            'published' => true,
+            'anonymized' => true,
         ]);
     }
 }
