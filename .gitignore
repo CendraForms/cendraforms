@@ -14,8 +14,3 @@ yarn-error.log
 /.idea
 /.vscode
 Procfile
-package-lock.json
-composer.lock
-public/css/app.css
-public/js/app.js
-public/mix-manifest.json
