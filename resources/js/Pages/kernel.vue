@@ -1,11 +1,10 @@
 <template>
-    <form @submit.prevent="submit">
-        <button
-            type="submit"
-            class="bg-red-600 p-5 m-3 border-2 border-black"
-            v-text="`Kernel`"
-        />
-    </form>
+    <!-- todo -> this file is temporal, delete it when functionality is done -->
+    <button
+        class="bg-red-600 p-5 m-3 border-2 border-black"
+        v-text="`Kernel`"
+        @click="Inertia.post('/kernel', { form: form })"
+    />
 </template>
 
 <script setup>
@@ -14,165 +13,20 @@ import { Inertia } from "@inertiajs/inertia";
 
 const form = ref({
     id: null,
-    name: "Avaluació DAW2 curs 2021-22",
-    description:
-        "Un formulari per avaluar totes les assignatures de DAW2 del curs 2021-22",
+    name: "random form name",
+    description: "random description",
     published: false,
     sections: [
         {
             id: null,
-            name: "DAW2_MP_02 - Bases de dades",
+            name: "random section name",
             collapsed: false,
             locked: false,
             deleted: false,
             questions: [
                 {
                     id: null,
-                    name: "Què és el que més t'ha agradat?",
-                    type: "text",
-                    visible: true,
-                    deleted: false,
-                    content: {},
-                },
-
-                {
-                    id: null,
-                    name: "Què és el que menys t'ha agradat?",
-                    type: "text",
-                    visible: true,
-                    deleted: false,
-                    content: {},
-                },
-            ],
-        },
-
-        {
-            id: null,
-            name: "DAW2_MP_03 - Programació",
-            collapsed: false,
-            locked: false,
-            deleted: false,
-            questions: [
-                {
-                    id: null,
-                    name: "Què és el que més t'ha agradat?",
-                    type: "text",
-                    visible: true,
-                    deleted: false,
-                    content: {},
-                },
-
-                {
-                    id: null,
-                    name: "Què és el que menys t'ha agradat?",
-                    type: "text",
-                    visible: true,
-                    deleted: false,
-                    content: {},
-                },
-            ],
-        },
-
-        {
-            id: null,
-            name: "DAW2_MP_05 - Entorn de desenvolupament",
-            collapsed: false,
-            locked: false,
-            deleted: false,
-            questions: [
-                {
-                    id: null,
-                    name: "Què és el que més t'ha agradat?",
-                    type: "text",
-                    visible: true,
-                    deleted: false,
-                    content: {},
-                },
-
-                {
-                    id: null,
-                    name: "Què és el que menys t'ha agradat?",
-                    type: "text",
-                    visible: true,
-                    deleted: false,
-                    content: {},
-                },
-            ],
-        },
-
-        {
-            id: null,
-            name: "DAW2_MP_06 - Desenvolupament web en entorn de client",
-            collapsed: false,
-            locked: false,
-            deleted: false,
-            questions: [
-                {
-                    id: null,
-                    name: "Què és el que més t'ha agradat?",
-                    type: "text",
-                    visible: true,
-                    deleted: false,
-                    content: {},
-                },
-
-                {
-                    id: null,
-                    name: "Què és el que menys t'ha agradat?",
-                    type: "text",
-                    visible: true,
-                    deleted: false,
-                    content: {},
-                },
-            ],
-        },
-
-        {
-            id: null,
-            name: "DAW2_MP_08 - Desplegament d'aplicacions web",
-            collapsed: false,
-            locked: false,
-            deleted: false,
-            questions: [
-                {
-                    id: null,
-                    name: "Què és el que més t'ha agradat?",
-                    type: "text",
-                    visible: true,
-                    deleted: false,
-                    content: {},
-                },
-
-                {
-                    id: null,
-                    name: "Què és el que menys t'ha agradat?",
-                    type: "text",
-                    visible: true,
-                    deleted: false,
-                    content: {},
-                },
-            ],
-        },
-
-        {
-            id: null,
-            name: "DAW2_MP_09 - Disseny d'interfícies web",
-            collapsed: false,
-            locked: false,
-            deleted: false,
-            questions: [
-                {
-                    id: null,
-                    name: "Què és el que més t'ha agradat?",
-                    type: "text",
-                    visible: true,
-                    deleted: false,
-                    content: {},
-                },
-
-                {
-                    id: null,
-                    name: "Què és el que menys t'ha agradat?",
+                    name: "random question name",
                     type: "text",
                     visible: true,
                     deleted: false,
@@ -181,11 +35,27 @@ const form = ref({
             ],
         },
     ],
+    roles: {
+        edit: [
+            {
+                id: 0,
+                name: "Professor",
+                deleted: false,
+            },
+        ],
+        answer: [
+            {
+                id: 1,
+                name: "DAW",
+                deleted: false,
+            },
+
+            {
+                id: 2,
+                name: "SMX",
+                deleted: false,
+            },
+        ],
+    },
 });
-
-function submit() {
-    Inertia.post("/kernel", { form: form.value });
-}
-
-// todo -> this file is temporal, delete it when functionality is done
 </script>
