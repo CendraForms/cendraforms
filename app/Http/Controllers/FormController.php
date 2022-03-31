@@ -198,6 +198,7 @@ class FormController extends Controller
 
             'form.roles' => ['required', 'array', 'min:1'],
             'form.sections' => ['required', 'array', 'min:1'],
+            'form.sections.*.questions' => ['required', 'array', 'min:1'],
 
             'form.roles.edit' => ['required', 'array', 'min:1'],
             'form.roles.edit.*.id' => ['required', 'integer'],
