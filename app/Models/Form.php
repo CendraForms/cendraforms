@@ -24,6 +24,7 @@ class Form extends Model
         'description',
         'user_id',
         'published',
+        'anonymized',
     ];
 
     /**
