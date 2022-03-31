@@ -392,3 +392,5 @@ class FormController extends Controller
         }
     }
 }
+
+// todo -> canviar forma de fer el mètode store: primer validar-ho tot, si tot ha passat la validació, fer store
