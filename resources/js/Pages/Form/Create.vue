@@ -188,7 +188,7 @@
             </div>
             <ComboboxOptions class="absolute w-full bg-stone-700 rounded-b-md">
               <ComboboxOption
-                v-for="(role, index) in availableRoles"
+                v-for="(role, index) in activeRoles"
                 :key="index"
                 as="template"
                 :value="role"
@@ -402,7 +402,7 @@ const newQuestion = (section) => {
  * Roles
  */
 
-const availableRoles = [
+const activeRoles = [
   'Direcció',
   'Professor',
   'Alumne',
