@@ -2,217 +2,354 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Form;
-use Inertia\Inertia;
+use App\Models\Role;
+use Inertia\Response;
+use App\Models\Section;
+use App\Models\Question;
+use Illuminate\Http\Request;
+use Inertia\ResponseFactory;
+use App\Models\FormRoleEditor;
+use App\Models\FormRoleAnswerer;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class FormController extends Controller
 {
-    public function create()
+    /**
+     * Returns the view to create a form.
+     *
+     * @return Response|ResponseFactory
+     */
+    public function create(): Response|ResponseFactory
     {
         return inertia('Form/Create');
     }
 
-    public function answer(Form $form)
-    {
-        return inertia('Form/Answer');
-    }
-
-
     /**
-     * Gets all forms
+     * Returns the view to edit parsed form.
      *
-     * @return JSON All obtained forms
+     * @param Form $form Form to be edited in the view.
+     * @return Response|ResponseFactory
      */
-    public static function getAll()
+    public function edit(Form $form): Response|ResponseFactory
     {
-        return Form::get();
+        return inertia('Form/Edit', [
+            'form' => $this->generateForm($form),
+            'activeRoles' => Role::getActiveRoles(),
+        ]);
     }
 
     /**
-     * Gets specified Form object
+     * From source form, it generates needed form object, and it sends it to the view.
+     * It adds required variables for Vue.
      *
-     * @param Form $form Form id
-     * @return JSON obtained form
+     * @param Form $srcForm source Form from where to generate the new Form.
+     * @return array
      */
-    public function get(Form $form)
+    private function generateForm(Form $srcForm): array
     {
+        // start building new form container
+        $form = [
+            'id' => $srcForm->id,
+            'name' => $srcForm->name,
+            'description' => $srcForm->description,
+            'published' => false,
+        ];
+
+        // get source form's sections
+        $srcSections = $srcForm->sections()->get();
+
+        // create new sections container
+        $sections = [];
+
+        foreach ($srcSections as $srcSection) {
+            // build new section
+            $section = [
+                'id' => $srcSection->id,
+                'name' => $srcSection->name,
+                'visible' => true,
+                'collapsed' => true,
+                'locked' => true,
+                'deleted' => false,
+            ];
+
+            // get source section's questions
+            $srcQuestions = $srcSection->questions;
+
+            // create new questions container
+            $questions = [];
+
+            foreach ($srcQuestions as $srcQuestion) {
+                // build new question
+                $question = [
+                    'id' => $srcQuestion->id,
+                    'name' => $srcQuestion->name,
+                    'type' => $srcQuestion->type,
+                    'visible' => true,
+                    'deleted' => false,
+                    'content' => $srcQuestion->content,
+                ];
+
+                // save new question to new questions container
+                $questions[] = $question;
+            }
+
+            // save new questions to new section container
+            $section['questions'] = $questions;
+
+            // save new section to new sections container
+            $sections[] = $section;
+        }
+
+        // save new sections to new form container
+        $form['sections'] = $sections;
+
+        // get the roles that can edit the form
+        $srcFormEditors = $srcForm->canBeEditedBy()->get();
+
+        $formEditors = [];
+
+        // save them in the new form editors container
+        foreach ($srcFormEditors as $srcFormEditor) {
+            $formEditors[] = $srcFormEditor->name;
+        }
+
+        // save roles that can edit the form
+        $form['edit'] = $formEditors;
+
+        // get the roles that can answer the form
+        $srcRolesAnswers = $srcForm->canBeAnsweredBy()->get();
+
+        $formAnswerers = [];
+
+        // save them in the new form answerers container
+        foreach ($srcRolesAnswers as $srcRolesAnswer) {
+            // save role name answered
+            $formAnswerers[] = $srcRolesAnswer->name;
+        }
+
+        // save roles that can answer the form
+        $form['answer'] = $formAnswerers;
+
+        // return form object
         return $form;
     }
 
-    public function index()
-    {
-        return view('forms.index', [
-            'forms' => Form::get()
-        ]);
-    }
-
-    // public function create()
-    // {
-    //     return view('forms.create');
-    // }
-
     /**
-     * Generate the form object and send it to the vue component that lets the user edit the form.
+     * Returns the view to answer parsed form.
      *
-     * @param Form $form Form model
-     * @return Inertia view inertia
+     * @param Form $form Form to be answered in the view.
+     * @return Response|ResponseFactory
      */
-    public function edit(Form $form)
+    public function answer(Form $form): Response|ResponseFactory
     {
-        $formulari = $this->getFormEdit($form);
-
-        // return view inertia
-        return Inertia::render('Form/Edit', [
-            'form' => $formulari,
-        ]);
-
-        // return view('forms.edit', [
-        //     'form' => $form
-        // ]);
+        // todo -> send $form to view!
+        return inertia('Form/Answer');
     }
 
     /**
-     * Get Form object
+     * Manages the request and calls required methods to validate
+     * and store the objects into the database.
      *
-     * @param Form $form Form model
-     * @return Object object form
+     * Collects the request (Form object).
+     * Validates the request (Form / FormRoles / Sections / Questions).
+     * Stores (creates, updates or deletes) Form object, its sections, its questions and its roles.
+     *
+     * Note that IDs can be null or integer.
+     * If IDs are null, means that they are new objects (create),
+     * otherwise it understands that they are existent objects (update).
+     *
+     * Some objects can also be deleted.
+     * An object will be deleted if it has deleted field set to true.
+     *
+     * @param Request $request Request to be validated and stored
+     * @return RedirectResponse
+     * @throws ValidationException
      */
-    private function getFormEdit(Form $form)
+    public function store(Request $request): RedirectResponse
     {
-        // create object form
-        $formulari = [];
+        if (!Auth::id()) {
+            return redirect()
+                ->back()
+                ->with('validationErrors', 'user must be authenticated');
+        }
 
-        // assign form id, name and description
-        $formulari['id'] = $form->id;
-        $formulari['name'] = $form->name;
-        $formulari['description'] = $form->description;
+        $validator = $this->validateRequest($request);
 
-        // get a sections to the form
-        $sections = $form->sections()->get();
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->with('validationErrors', $validator->errors());
+        }
 
-        // create object sections
-        $sections2 = [];
-        $comptador = 1;
+        $this->storeValidatedForm($validator->validated()['form']);
+
+        $mode = $validator->validated()['form']['id'] == null ? "created" : "updated";
+
+        return redirect()
+            ->route('home')
+            ->with('message', 'form ' . $mode . ' successfully');
+    }
+
+    /**
+     * Validates parsed request.
+     * It checks all nested objects and fields.
+     *
+     * @param Request $request Validated request.
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    private function validateRequest(Request $request): \Illuminate\Contracts\Validation\Validator
+    {
+        return Validator::make($request->all(), [
+            'form.id' => ['present', 'nullable', 'integer'],
+            'form.name' => ['required', 'string', 'min:3', 'max:255'],
+            'form.description' => ['required', 'string', 'max:1000'],
+            'form.published' => ['required', 'boolean'],
+            'form.anonymized' => ['required', 'boolean'],
+
+            'form.roles' => ['required', 'array', 'min:1'],
+            'form.sections' => ['required', 'array', 'min:1'],
+            'form.sections.*.questions' => ['required', 'array', 'min:1'],
+
+            'form.roles.edit' => ['required', 'array', 'min:1'],
+            'form.roles.edit.*.id' => ['required', 'integer'],
+            'form.roles.edit.*.name' => ['required', 'string'],
+            'form.roles.edit.*.deleted' => ['required', 'boolean'],
+
+            'form.roles.answer' => ['required', 'array', 'min:1'],
+            'form.roles.answer.*.id' => ['required', 'integer'],
+            'form.roles.answer.*.name' => ['required', 'string'],
+            'form.roles.answer.*.deleted' => ['required', 'boolean'],
+
+            'form.sections.*.id' => ['present', 'nullable', 'integer'],
+            'form.sections.*.name' => ['required', 'string'],
+            'form.sections.*.deleted' => ['required', 'boolean'],
+
+            'form.sections.*.questions.*.id' => ['present', 'nullable', 'integer'],
+            'form.sections.*.questions.*.name' => ['required', 'string'],
+            'form.sections.*.questions.*.type' => ['required', 'string'],
+            'form.sections.*.questions.*.content' => ['present', 'array'],
+            'form.sections.*.questions.*.deleted' => ['required', 'boolean'],
+        ]);
+    }
+
+    /**
+     * Stores validated form and nested objects (create, update or delete).
+     * It understands that parsed form is already validated.
+     * This method must be called after retrieving the validated form, otherwise will fail.
+     *
+     * @param array $validatedForm Validated form to be stored.
+     * @return void
+     */
+    private function storeValidatedForm(array $validatedForm)
+    {
+        // store form
+        $formToBeStored = [
+            'name' => $validatedForm['name'],
+            'description' => $validatedForm['description'],
+            'user_id' => Auth::id(),
+            'published' => $validatedForm['published'],
+            'anonymized' => $validatedForm['anonymized'],
+        ];
+
+        $formId = $validatedForm['id'];
+
+        // if the form id is null
+        if (blank($formId)) {
+            $formObj = Form::create($formToBeStored);
+
+            $formId = $formObj->id;
+        } else {
+            Form::where('id', '=', $formId)
+                ->update($formToBeStored);
+        }
+
+        // store form editors
+        $formEditors = $validatedForm['roles']['edit'];
+
+        foreach ($formEditors as $formEditor) {
+            if ($formEditor['deleted']) {
+                FormRoleEditor::where('form_id', '=', $formId)
+                    ->where('role_id', '=', $formEditor['id'])
+                    ->delete();
+            } else {
+                FormRoleEditor::create([
+                    'form_id' => $formId,
+                    'role_id' => $formEditor['id'],
+                ]);
+            }
+        }
+
+        // store form answerers
+        $formAnswerers = $validatedForm['roles']['answer'];
+
+        foreach ($formAnswerers as $formAnswerer) {
+            if ($formAnswerer['deleted']) {
+                FormRoleAnswerer::where('form_id', '=', $formId)
+                    ->where('role_id', '=', $formAnswerer['id'])
+                    ->delete();
+            } else {
+                FormRoleAnswerer::create([
+                    'form_id' => $formId,
+                    'role_id' => $formAnswerer['id'],
+                ]);
+            }
+        }
+
+        // store sections
+        $sections = $validatedForm['sections'];
+
         foreach ($sections as $section) {
-            // create object section
-            $section2 = [];
-            // assign section id, name, visible, collapsed, locked and deleted
-            $section2['id'] = $section->id;
-            $section2['name'] = $section->name;
-            $section2['visible'] = true;
-            $section2['collapsed'] = true;
-            $section2['locked'] = true;
-            $section2['deleted'] = false;
+            $sectionId = $section['id'];
 
-            // get a questions to the section
-            $questions = $section->questions;
+            if ($section['deleted']) {
+                Section::where('id', '=', $sectionId)->delete();
+            } else {
+                $sectionToBeStored = [
+                    'name' => $section['name'],
+                    'form_id' => $formId,
+                    'user_id' => Auth::id(),
+                ];
 
-            // create object questions
-            $questions2 = [];
-            $comptador2 = 1;
-            foreach ($questions as $question) {
-                // create object question
-                $question2 = [];
-                // assign question id, name, type, visible, deleted and content
-                $question2['id'] = $question->id;
-                $question2['name'] = $question->name;
-                $question2['type'] = $question->type;
-                $question2['visible'] = true;
-                $question2['deleted'] = false;
-                $question2['content'] = $question->content;
+                // if the section id is null
+                if (blank($sectionId)) {
+                    $sectionObj = Section::create($sectionToBeStored);
 
-                // assign question to questions
-                $questions2[$comptador2] = $question2;
-                $comptador2++;
+                    $sectionId = $sectionObj->id;
+                } else {
+                    Section::where('id', '=', $sectionId)
+                        ->update($sectionToBeStored);
+                }
             }
 
-            // assign section questions
-            $section2['questions'] = $questions2;
+            $questions = $section['questions'];
 
-            // assign section to sections
-            $sections2[$comptador] = $section2;
-            $comptador++;
+            // store questions
+            foreach ($questions as $question) {
+                if ($question['deleted']) {
+                    Question::where('deleted', '=', $question['id'])->delete();
+                } else {
+                    $questionToBeStored = [
+                        'name' => $question['name'],
+                        'type' => $question['type'],
+                        'content' => json_encode($question['content']),
+                        'section_id' => $sectionId,
+                    ];
+
+                    $questionId = $question['id'];
+
+                    // if the question id is null
+                    if (blank($questionId)) {
+                        Question::create($questionToBeStored);
+                    } else {
+                        Question::where('id', '=', $questionId)
+                            ->update($questionToBeStored);
+                    }
+                }
+            }
         }
-        // assign sections form
-        $formulari['sections'] = $sections2;
-
-        // return object form
-        return $formulari;
-    }
-
-    /**
-     * Creates a new Form
-     *
-     * @param Request $request recipe parameters post
-     * @return JSON created form
-     */
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'name' => ['required', 'string', 'alpha_dash', 'min:3', 'max:255', 'unique:forms'],
-            'description' => ['required', 'string', 'max:1000'],
-            'active' => ['required', 'boolean'],
-        ]);
-
-        $validated['user_id'] = Auth::id();
-
-        Form::create($validated);
-
-        return redirect()->back()->with('success', 'Formulari Creat.');
-    }
-
-    /**
-     * Updates parsed Form
-     *
-     * @param Request $request recipe parameters post
-     * @param Form $form Form id
-     * @return JSON updated form
-     */
-    public function update(Request $request, Form $form)
-    {
-        $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:1000'],
-            'active' => ['sometimes', 'boolean'],
-        ]);
-
-        $form->update($validated);
-
-        return redirect()->back()->with('success', 'Formulari Actualitzat.');
-    }
-
-    /**
-     * Deletes parsed Form
-     *
-     * @param Form $form Form to be deleted
-     * @return Response JSON response with status code
-     */
-    public function delete(Form $form)
-    {
-        $form->delete();
-
-        return response()->json([
-            'state' => 'ok',
-        ]);
-    }
-
-    public function updateFormView(Form $form)
-    {
-        return view('forms.formsupdate', ['forms' => $form]);
-    }
-
-    public function getFormView(Form $form)
-    {
-
-        return view('Form/form', ['form' => $form]);
-    }
-
-    public function getFormsView()
-    {
-        $forms = $this->getForms();
-
-        return view('forms.forms', ['forms' => $forms]);
     }
 }

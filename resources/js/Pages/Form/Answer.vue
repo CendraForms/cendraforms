@@ -55,15 +55,15 @@ import AnswerType from '../../Shared/Answer/Index'
 
 const form = ref({
   id: 1,
-  title: 'Avaluació DAW2 curs 2021-22',
+  name: 'Avaluació DAW2 curs 2021-22',
   sections: [
     {
       id: 1,
-      title: 'DAW2_MP_02 - Bases de dades',
+      name: 'DAW2_MP_02 - Bases de dades',
       questions: [
         {
           id: null,
-          title: 'Què és el que més t\'ha agradat?',
+          name: 'Què és el que més t\'ha agradat?',
           type: 'text',
           content: {
             value: 'Text de Resposta', 
@@ -74,7 +74,7 @@ const form = ref({
 
         {
           id: 2,
-          title: 'Què és el que menys t\'ha agradat?',
+          name: 'Què és el que menys t\'ha agradat?',
           type: 'text',
           content: {
             value: 'Text de Resposta', 
@@ -89,11 +89,11 @@ const form = ref({
 
     {
       id: 2,
-      title: 'DAW2_MP_03 - Programació',
+      name: 'DAW2_MP_03 - Programació',
       questions: [
         {
           id: null,
-          title: 'Què és el que més t\'ha agradat?',
+          name: 'Què és el que més t\'ha agradat?',
           type: 'number', 
           content: { 
             min: 0, 
@@ -103,7 +103,7 @@ const form = ref({
 
         {
           id: 2,
-          title: 'Què és el que menys t\'ha agradat?',
+          name: 'Què és el que menys t\'ha agradat?',
           type: 'number', 
           content: { 
             min: 0, 
@@ -117,11 +117,11 @@ const form = ref({
 
     {
       id: 3,
-      title: 'DAW2_MP_06 - Desenvolupament web en entorn de client',
+      name: 'DAW2_MP_06 - Desenvolupament web en entorn de client',
       questions: [
         {
           id: null,
-          title: 'Què és el que més t\'ha agradat?',
+          name: 'Què és el que més t\'ha agradat?',
           type: 'number', 
           content: { 
             min: 0, 
@@ -131,7 +131,7 @@ const form = ref({
 
         {
           id: 2,
-          title: 'Què és el que menys t\'ha agradat?',
+          name: 'Què és el que menys t\'ha agradat?',
           type: 'number', 
           content: { 
             min: 0, 
@@ -141,7 +141,7 @@ const form = ref({
 
         {
           id: 3,
-          title: 'Quin àmbit prefereixes?',
+          name: 'Quin àmbit prefereixes?',
           type: 'switch',
           content: {
             left: {
@@ -155,14 +155,12 @@ const form = ref({
               defaultVal: true
             },
           },
-          answer: {
-            selected: null
-          },
+          answer: null,
         },
 
         {
           id: 4,
-          title: 'Fruita, verdura o xocolata?',
+          name: 'Fruita, verdura o xocolata?',
           type: 'radio',
           content: {
             options: [
@@ -182,9 +180,7 @@ const form = ref({
               }
             ],
           },
-          answer: {
-            selected: null
-          },
+          answer: null,
         }
       ],
       locked: false,
@@ -196,11 +192,11 @@ const form = ref({
 const createSection = () => {
   form.sections.value.push({
     id: sections.value.length,
-    title: '',
+    name: '',
     questions: [
       {
         id: null,
-        title: '',
+        name: '',
       }
     ],
   })
@@ -209,7 +205,7 @@ const createSection = () => {
 const createQuestion = (section) => {
   section.questions.push({
     id: null,
-    title: '',
+    name: '',
   });
 }
 </script>

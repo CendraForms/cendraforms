@@ -14,6 +14,7 @@ return new class extends Migration {
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
+
             $table->string('name');
             $table->string('type');
             $table->json('content');
@@ -23,6 +24,8 @@ return new class extends Migration {
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+
+            $table->boolean('active')->default(true);
 
             $table->timestamps();
         });
