@@ -25,6 +25,7 @@ return new class extends Migration {
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->boolean('published')->default(false);
+            $table->boolean('anonymized')->default(false);
 
             $table->timestamps();
         });

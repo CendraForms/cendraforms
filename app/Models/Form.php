@@ -24,6 +24,7 @@ class Form extends Model
         'description',
         'user_id',
         'published',
+        'anonymized',
     ];
 
     /**
@@ -63,7 +64,9 @@ class Form extends Model
      */
     public function canBeEditedBy(): BelongsToMany
     {
-        return $this->belongsToMany(Role::class)->withTimestamps();
+        return $this
+            ->belongsToMany(Role::class, 'form_role_editor')
+            ->withTimestamps();
     }
 
     /**
@@ -73,7 +76,8 @@ class Form extends Model
      */
     public function canBeAnsweredBy(): BelongsToMany
     {
-        return $this->belongsToMany(Role::class)->withTimestamps();
+        return $this
+            ->belongsToMany(Role::class, 'form_role_answerer')
+            ->withTimestamps();
     }
-
 }
