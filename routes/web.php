@@ -1,19 +1,14 @@
 <?php
 
-use App\Http\Controllers\FormController;
-use App\Http\Controllers\SocialiteController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FormController;
+use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\SocialiteController;
 
-// use App\Http\Controllers\AnswerController;
-// use App\Http\Controllers\RoleController;
-// use App\Http\Controllers\UserController;
-// use App\Http\Controllers\SectionController;
-// use App\Http\Controllers\GitHubController;
-// use App\Http\Controllers\QuestionController;
-
-Route::get('/', function () {
-    return inertia('Form/Create');
-})->name('home');
+Route::get('/', [HomeController::class, 'home'])
+    ->name('home')
+    ->middleware('auth');
 
 /**
  * Auth
@@ -36,10 +31,6 @@ Route::get('/formulari/crear', [FormController::class, 'create'])
     ->name('form.create')
     ->middleware('auth');
 
-Route::get('/formulari/{form}', [FormController::class, 'answer'])
-    ->name('form.answer')
-    ->middleware('auth');
-
 Route::get('/formulari/{form}/editar', [FormController::class, 'edit'])
     ->name('form.edit')
     ->middleware('auth');
@@ -48,11 +39,26 @@ Route::post('/formulari/{form}/editar', [FormController::class, 'store'])
     ->name('form.store')
     ->middleware('auth');
 
+Route::get('/formulari/{form}', [FormController::class, 'answer'])
+    ->name('form.answer')
+    ->middleware('auth');
+
+Route::post('/formulari/{form}', [AnswerController::class, 'store'])
+    ->name('answer.store')
+    ->middleware('auth');
+
 // todo - temporal
+// when deleting this routes, delete also related Vue components
 Route::get('/kernel', function () {
     return inertia('kernel');
 });
 Route::post('/kernel', [FormController::class, 'store']);
+
+Route::get('/kernel/answer/{form}', function () {
+    return inertia('kernelAnswer');
+});
+Route::post('/kernel/answer', [AnswerController::class, 'store']);
+// when deleting this routes, delete also related Vue components
 // todo - end temporal
 
 /**
