@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\SocialiteController;
 use Illuminate\Support\Facades\Route;
@@ -11,9 +12,9 @@ use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\GitHubController;
 // use App\Http\Controllers\QuestionController;
 
-Route::get('/', function () {
-    return inertia('Form/Create');
-})->name('home');
+Route::get('/', [HomeController::class, 'home'])
+    ->name('home')
+    ->middleware('auth');
 
 /**
  * Auth

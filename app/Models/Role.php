@@ -48,7 +48,7 @@ class Role extends Model
     public function editableForms(): BelongsToMany
     {
         return $this
-            ->belongsToMany(Role::class, 'form_role_editor')
+            ->belongsToMany(Form::class, 'form_role_editor')
             ->withTimestamps();
     }
 
@@ -60,7 +60,7 @@ class Role extends Model
     public function answerableForms(): BelongsToMany
     {
         return $this
-            ->belongsToMany(Role::class, 'form_role_answerer')
+            ->belongsToMany(Form::class, 'form_role_answerer')
             ->withTimestamps();
     }
 }

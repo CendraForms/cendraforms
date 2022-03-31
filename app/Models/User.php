@@ -35,6 +35,67 @@ class User extends Authenticatable
     ];
 
     /**
+     * Return Forms to be Answered
+     *
+     * @param Integer $limit forms limit
+     * @return Object Forms to be Answered
+     */
+    public function formsToBeAnswered($limit)
+    {
+        // Get roles the logged user
+        $roles = $this->roles;
+
+        $answerableForms = [];
+        // Get forms that logged user have permission to answer
+        foreach ($roles as $role) {
+            $answerableForms[] = $role->answerableForms;
+        }
+
+        $formsAvaiable = [];
+        // Filter forms where the field published is equals true
+        foreach ($answerableForms as $answerableForm) {
+            $formsAvaiable[] = $answerableForm->where('published', true);
+        }
+
+        // Return forms avaiable object
+        return $formsAvaiable[0]->take($limit);
+    }
+
+    /**
+     * Return Answered Forms
+     *
+     * @param Integer $limit forms limit
+     * @return Object Forms Answered
+     */
+    public function answeredForms($limit)
+    {
+        // Get answers the logged user
+        $answers = $this->answers;
+
+        $forms = [];
+        // Get forms that logged user the answer
+        foreach ($answers as $answer) {
+            $forms[] = $answer->question->section->form;
+        }
+
+        // Get Forms Avaiable
+        $formsAvaiable = $this->formsToBeAnswered($limit);
+
+        $formsAnsweredAvaiable = [];
+        // Filter Forms where answered forms is avaiable
+        foreach ($formsAvaiable as $formAvaiable) {
+            foreach ($forms as $form) {
+                if ($formAvaiable->id == $form->id) {
+                    $formsAnsweredAvaiable[] = $form;
+                }
+            }
+        }
+
+        //Return forms avaiable and answer object
+        return $formsAnsweredAvaiable;
+    }
+
+    /**
      * Get the roles that belong to the user.
      *
      * @return BelongsToMany
