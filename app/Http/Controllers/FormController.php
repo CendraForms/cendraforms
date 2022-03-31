@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Form;
-use App\Models\FormRoleAnswerer;
 use App\Models\FormRoleEditor;
 use App\Models\Question;
+use App\Models\Role;
 use App\Models\Section;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -22,7 +22,7 @@ class FormController extends Controller
      *
      * @return Response|ResponseFactory
      */
-    public function create(): Response|ResponseFactory
+    public function create()
     {
         return inertia('Form/Create');
     }
@@ -30,13 +30,14 @@ class FormController extends Controller
     /**
      * Returns the view to edit parsed form.
      *
-     * @param Form $form Form to be edited in the view.
+     * @param Form $form Form to be edited in the view
      * @return Response|ResponseFactory
      */
-    public function edit(Form $form): Response|ResponseFactory
+    public function edit(Form $form)
     {
         return inertia('Form/Edit', [
-            'form' => $this->generateForm($form)
+            'form' => $this->generateFormObject($form),
+            'availableRoles' => $this->generateRoleObject(),
         ]);
     }
 
@@ -44,18 +45,17 @@ class FormController extends Controller
      * From source form, it generates needed form object, and it sends it to the view.
      * It adds required variables for Vue.
      *
-     * @param Form $srcForm source Form from where to generate the new Form.
+     * @param Form $srcForm source Form from where to generate the new Form
      * @return array
      */
-    private function generateForm(Form $srcForm): array
+    private function generateFormObject(Form $srcForm)
     {
         // start building new form container
-        $form = [
-            'id' => $srcForm->id,
-            'name' => $srcForm->name,
-            'description' => $srcForm->description,
-            'published' => false,
-        ];
+        $form = [];
+        $form['id'] = $srcForm->id;
+        $form['name'] = $srcForm->name;
+        $form['description'] = $srcForm->description;
+        $form['published'] = false;
 
         // get source form's sections
         $srcSections = $srcForm->sections()->get();
@@ -65,14 +65,13 @@ class FormController extends Controller
 
         foreach ($srcSections as $srcSection) {
             // build new section
-            $section = [
-                'id' => $srcSection->id,
-                'name' => $srcSection->name,
-                'visible' => true,
-                'collapsed' => true,
-                'locked' => true,
-                'deleted' => false,
-            ];
+            $section = [];
+            $section['id'] = $srcSection->id;
+            $section['name'] = $srcSection->name;
+            $section['visible'] = true;
+            $section['collapsed'] = true;
+            $section['locked'] = true;
+            $section['deleted'] = false;
 
             // get source section's questions
             $srcQuestions = $srcSection->questions;
@@ -82,14 +81,13 @@ class FormController extends Controller
 
             foreach ($srcQuestions as $srcQuestion) {
                 // build new question
-                $question = [
-                    'id' => $srcQuestion->id,
-                    'name' => $srcQuestion->name,
-                    'type' => $srcQuestion->type,
-                    'visible' => true,
-                    'deleted' => false,
-                    'content' => $srcQuestion->content,
-                ];
+                $question = [];
+                $question['id'] = $srcQuestion->id;
+                $question['name'] = $srcQuestion->name;
+                $question['type'] = $srcQuestion->type;
+                $question['visible'] = true;
+                $question['deleted'] = false;
+                $question['content'] = $srcQuestion->content;
 
                 // save new question to new questions container
                 $questions[] = $question;
@@ -105,32 +103,71 @@ class FormController extends Controller
         // save new sections to new form container
         $form['sections'] = $sections;
 
-        // get the roles that can edit the form
-        $srcFormEditors = $srcForm->canBeEditedBy()->get();
+        // todo -> això dels roles està ben fet? no s'hauria d'iterar en comptes de fer-ho així?
+        $roles = [];
 
-        $formEditors = [];
+        // get source form's roles editor
+        $srcRolesEdit = $srcForm->canBeEditedBy()->get();
 
-        // save them in the new form container
-        foreach ($srcFormEditors as $srcEditor) {
-            $formEditors[] = $srcEditor->name;
-            // $formEditors[] = $srcEditor->id; fer-ho per nom o id?
+        $edit = [];
+        foreach ($srcRolesEdit as $rolesEdit) {
+            // save role name editor
+            $edit[] = $rolesEdit->name;
         }
 
-        $form['editors'] = $formEditors;
+        // save roles editor
+        $roles['edit'] = $edit;
 
-        // todo: fer el mateix amb els form answerers
+        // get source form's roles answered
+        $srcRolesAnswer = $srcForm->canBeAnsweredBy()->get();
 
-        dd($form);
+        $answer = [];
+        foreach ($srcRolesAnswer as $rolesAnswer) {
+            // save role name answered
+            $answer[] = $rolesAnswer->name;
+        }
+
+        // save roles answered
+        $roles['answer'] = $answer;
+
+        // save roles
+        $form['roles'] = $roles;
+
+        // return object form
         return $form;
+    }
+
+    /**
+     * From source roles, it generates needed roles object, and it sends it to the view.
+     * It adds required variables for Vue.
+     *
+     * @return array
+     */
+    private function generateRoleObject()
+    {
+        $srcRoles = Role::where('active', true)->get();
+
+        $roles = [];
+
+        foreach ($srcRoles as $srcRole) {
+            $role = [];
+
+            $role['id'] = $srcRole->id;
+            $role['name'] = $srcRole->name;
+
+            $roles[] = $role;
+        }
+
+        return $roles;
     }
 
     /**
      * Returns the view to answer parsed form.
      *
-     * @param Form $form Form to be answered in the view.
+     * @param Form $form Form to be answered in the view
      * @return Response|ResponseFactory
      */
-    public function answer(Form $form): Response|ResponseFactory
+    public function answer(Form $form)
     {
         // todo -> send $form to view!
         return inertia('Form/Answer');
@@ -141,199 +178,167 @@ class FormController extends Controller
      * and store the objects into the database.
      *
      * Collects the request (Form object).
-     * Validates the request (Form / FormRoles / Sections / Questions).
-     * Stores (creates, updates or deletes) Form object, its sections, its questions and its roles.
+     * Recursively validates the request (Form -> Sections -> Questions).
+     * Stores (creates or updates) Form object, its sections and its questions.
      *
      * Note that IDs can be null or integer.
      * If IDs are null, means that they are new objects (create),
-     * otherwise it understands that they are existent objects (update).
+     * otherwise it understands that they are existent objects (update)
      *
-     * Some objects can also be deleted.
-     * An object will be deleted if it has deleted field set to true.
-     *
-     * @param Request $request Request to be validated and stored
+     * @param Request $request
      * @return RedirectResponse
      * @throws ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public static function store(Request $request): RedirectResponse
     {
-        if (!Auth::id()) {
-            return redirect()
-                ->back()
-                ->with('validationErrors', 'user must be authenticated');
-        }
+        // get the form from the request
+        $form = $request->get('form');
 
-        $validator = $this->validateRequest($request);
+        self::validateAndStoreForm($form);
+
+        return redirect()
+            ->route('home')
+            ->with('message', 'validation succeed');
+    }
+
+    /**
+     * Validates parsed form and stores it in the database.
+     * It also calls the method that validates and stores the form sections.
+     *
+     * @param $form array form to be validated and stored
+     * @return RedirectResponse|void
+     * @throws ValidationException
+     */
+    private static function validateAndStoreForm(array $form)
+    {
+        // validate the form
+        $validator = Validator::make($form, [
+            'id' => ['present', 'nullable', 'integer'],
+            'name' => ['required', 'string', 'min:3', 'max:255'],
+            'description' => ['required', 'string', 'max:1000'],
+            'published' => ['required', 'boolean'],
+        ]);
 
         if ($validator->fails()) {
             return redirect()
                 ->back()
-                ->with('validationErrors', $validator->errors());
-        }
-
-        $this->storeValidatedForm($validator->validated()['form']);
-
-        $mode = $validator->validated()['form']['id'] == null ? "created" : "updated";
-
-        return redirect()
-            ->route('home')
-            ->with('message', 'form ' . $mode . ' successfully');
-    }
-
-    /**
-     * Validates parsed request.
-     * It checks all nested objects and fields.
-     *
-     * @param Request $request Validated request.
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    private function validateRequest(Request $request): \Illuminate\Contracts\Validation\Validator
-    {
-        return Validator::make($request->all(), [
-            'form.id' => ['present', 'nullable', 'integer'],
-            'form.name' => ['required', 'string', 'min:3', 'max:255'],
-            'form.description' => ['required', 'string', 'max:1000'],
-            'form.published' => ['required', 'boolean'],
-            'form.anonymized' => ['required', 'boolean'],
-
-            'form.roles' => ['required', 'array', 'min:1'],
-            'form.sections' => ['required', 'array', 'min:1'],
-            'form.sections.*.questions' => ['required', 'array', 'min:1'],
-
-            'form.roles.edit' => ['required', 'array', 'min:1'],
-            'form.roles.edit.*.id' => ['required', 'integer'],
-            'form.roles.edit.*.name' => ['required', 'string'],
-            'form.roles.edit.*.deleted' => ['required', 'boolean'],
-
-            'form.roles.answer' => ['required', 'array', 'min:1'],
-            'form.roles.answer.*.id' => ['required', 'integer'],
-            'form.roles.answer.*.name' => ['required', 'string'],
-            'form.roles.answer.*.deleted' => ['required', 'boolean'],
-
-            'form.sections.*.id' => ['present', 'nullable', 'integer'],
-            'form.sections.*.name' => ['required', 'string'],
-            'form.sections.*.deleted' => ['required', 'boolean'],
-
-            'form.sections.*.questions.*.id' => ['present', 'nullable', 'integer'],
-            'form.sections.*.questions.*.name' => ['required', 'string'],
-            'form.sections.*.questions.*.type' => ['required', 'string'],
-            'form.sections.*.questions.*.content' => ['present', 'array'],
-            'form.sections.*.questions.*.deleted' => ['required', 'boolean'],
-        ]);
-    }
-
-    /**
-     * Stores validated form and nested objects (create, update or delete).
-     * It understands that parsed form is already validated.
-     * This method must be called after retrieving the validated form, otherwise will fail.
-     *
-     * @param array $validatedForm Validated form to be stored.
-     * @return void
-     */
-    private function storeValidatedForm(array $validatedForm)
-    {
-        // store form
-        $formToBeStored = [
-            'name' => $validatedForm['name'],
-            'description' => $validatedForm['description'],
-            'user_id' => Auth::id(),
-            'published' => $validatedForm['published'],
-            'anonymized' => $validatedForm['anonymized'],
-        ];
-
-        $formId = $validatedForm['id'];
-
-        // if the form id is null
-        if (blank($formId)) {
-            $formObj = Form::create($formToBeStored);
-
-            $formId = $formObj->id;
+                ->with('message', 'validation failed - form');
         } else {
-            Form::where('id', '=', $formId)
-                ->update($formToBeStored);
-        }
+            // retrieve the validated input
+            $validated = $validator->validated();
 
-        // store form editors
-        $formEditors = $validatedForm['roles']['edit'];
+            $validated['user_id'] = Auth::id();
 
-        foreach ($formEditors as $formEditor) {
-            if ($formEditor['deleted']) {
-                FormRoleEditor::where('form_id', '=', $formId)
-                    ->where('role_id', '=', $formEditor['id'])
-                    ->delete();
+            $formId = $form['id'];
+
+            // if the form id is null
+            if (blank($formId)) {
+                $formObj = Form::create($validated);
+
+                $formId = $formObj->id;
             } else {
-                FormRoleEditor::create([
-                    'form_id' => $formId,
-                    'role_id' => $formEditor['id'],
-                ]);
+                Form::where('id', '=', $formId)
+                    ->update($validated);
             }
+
+            // get the form sections
+            $sections = $form['sections'];
+
+            // validate the sections and their questions
+            self::validateAndStoreSections($sections, $formId);
         }
+    }
 
-        // store form answerers
-        $formAnswerers = $validatedForm['roles']['answer'];
-
-        foreach ($formAnswerers as $formAnswerer) {
-            if ($formAnswerer['deleted']) {
-                FormRoleAnswerer::where('form_id', '=', $formId)
-                    ->where('role_id', '=', $formAnswerer['id'])
-                    ->delete();
-            } else {
-                FormRoleAnswerer::create([
-                    'form_id' => $formId,
-                    'role_id' => $formAnswerer['id'],
-                ]);
-            }
-        }
-
-        // store sections
-        $sections = $validatedForm['sections'];
-
+    /**
+     * Validates parsed sections and stores them in the database.
+     * It also calls the method that validates and stores the sections questions.
+     *
+     * @param $sections array sections to be validated and stored
+     * @param $formId integer form id where the sections belong to
+     * @return RedirectResponse|void
+     * @throws ValidationException
+     */
+    private static function validateAndStoreSections(array $sections, int $formId)
+    {
         foreach ($sections as $section) {
-            $sectionId = $section['id'];
+            // validate the section
+            $validator = Validator::make($section, [
+                'id' => ['present', 'nullable', 'integer'],
+                'name' => ['required', 'string'],
+            ]);
 
-            if ($section['deleted']) {
-                Section::where('id', '=', $sectionId)->delete();
+            if ($validator->fails()) {
+                return redirect()
+                    ->back()
+                    ->with('message', 'validation failed - section');
             } else {
-                $sectionToBeStored = [
-                    'name' => $section['name'],
-                    'form_id' => $formId,
-                    'user_id' => Auth::id(),
-                ];
+                // retrieve the validated input
+                $validated = $validator->validated();
+
+                $validated['form_id'] = $formId;
+                $validated['user_id'] = Auth::id();
+
+                $sectionId = $section['id'];
 
                 // if the section id is null
                 if (blank($sectionId)) {
-                    $sectionObj = Section::create($sectionToBeStored);
+                    $sectionObj = Section::create($validated);
 
                     $sectionId = $sectionObj->id;
                 } else {
                     Section::where('id', '=', $sectionId)
-                        ->update($sectionToBeStored);
+                        ->update($validated);
                 }
+
+                // get the section questions
+                $questions = $section['questions'];
+
+                // validate the questions
+                self::validateAndStoreQuestions($questions, $sectionId);
             }
+        }
+    }
 
-            $questions = $section['questions'];
+    /**
+     * Validates parsed questions and stores them in the database
+     *
+     * @param $questions array questions to be validated and stored
+     * @param $sectionId integer section id where the questions belong to
+     * @return RedirectResponse|void
+     * @throws ValidationException
+     */
+    private static function validateAndStoreQuestions(array $questions, int $sectionId)
+    {
+        foreach ($questions as $question) {
+            // convert array to JSON
+            $question['content'] = json_encode($question['content']);
 
-            // store questions
-            foreach ($questions as $question) {
-                if ($question['deleted']) {
-                    Question::where('deleted', '=', $question['id'])->delete();
+            // validate the question
+            $validator = Validator::make($question, [
+                'id' => ['present', 'nullable', 'integer'],
+                'name' => ['required', 'string'],
+                'type' => ['required', 'string'],
+                'content' => ['required', 'json']
+            ]);
+
+            if ($validator->fails()) {
+                return redirect()
+                    ->back()
+                    ->with('message', 'validation failed - question');
+            } else {
+                // retrieve the validated input
+                $validated = $validator->validated();
+
+                $validated['section_id'] = $sectionId;
+
+                $questionId = $question['id'];
+
+                // if the question id is null
+                if (blank($questionId)) {
+                    Question::create($validated);
                 } else {
-                    $questionToBeStored = [
-                        'name' => $question['name'],
-                        'type' => $question['type'],
-                        'content' => json_encode($question['content']),
-                        'section_id' => $sectionId,
-                    ];
-
-                    $questionId = $question['id'];
-
-                    // if the question id is null
-                    if (blank($questionId)) {
-                        Question::create($questionToBeStored);
-                    } else {
-                        Question::where('id', '=', $questionId)
-                            ->update($questionToBeStored);
-                    }
+                    Question::where('id', '=', $questionId)
+                        ->update($validated);
                 }
             }
         }
