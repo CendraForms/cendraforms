@@ -222,7 +222,7 @@
       <ul class="flex gap-2 w-full leading-none">
         <li v-for="role in form.roles.edit" class="flex items-center gap-1 p-2 border border-white/25 rounded">
           {{ role }}
-
+          
           <svg class="h-4 hover:opacity-75" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <line x1="18" y1="6" x2="6" y2="18" />
@@ -334,7 +334,7 @@ const newSection = () => {
       name: '',
       type: 'text',
       deleted: false,
-      content: {},
+      content: {}, 
     }],
   })
 }

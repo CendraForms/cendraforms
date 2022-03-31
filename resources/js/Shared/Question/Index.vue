@@ -1,6 +1,6 @@
 <template>
 <Textarea
-
+  
   />
   <div class="mt-5">
     <QuestionNumber
@@ -40,6 +40,7 @@
     :min="content.min"
     :max="content.max"
   />
+  
 </template>
 
 <script setup>
