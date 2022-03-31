@@ -276,7 +276,7 @@ const form = ref({
       questions: [
         {
           id: null,
-          title: '',
+          name: '',
           type: 'text',
           visible: true,
           deleted: false,
@@ -331,7 +331,7 @@ const newSection = () => {
     deleted: false,
     questions: [{
       id: null,
-      title: '',
+      name: '',
       type: 'text',
       deleted: false,
       content: {}, 
@@ -391,7 +391,7 @@ const deleteQuestion = (index, question, section) => {
 
 const newQuestion = (section) => {
   section.questions.push({
-    title: '',
+    name: '',
     type: 'text',
     deleted: false,
     content: {},
