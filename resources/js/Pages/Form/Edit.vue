@@ -189,7 +189,7 @@
             </div>
             <ComboboxOptions class="absolute w-full bg-stone-700 rounded-b-md">
               <ComboboxOption
-                v-for="(role, index) in availableRoles"
+                v-for="(role, index) in activeRoles"
                 :key="index"
                 as="template"
                 :value="role"
@@ -262,11 +262,11 @@ import { Combobox, ComboboxInput, ComboboxButton, ComboboxOptions, ComboboxOptio
 
 const props = defineProps({
     form: Object,
-    availableRoles: Object
+    activeRoles: Object
 })
 
 const form = ref(props.form)
-const availableRoles = ref(props.availableRoles)
+const activeRoles = ref(props.activeRoles)
 
 /*
  * Sections
@@ -379,7 +379,7 @@ const newQuestion = (section) => {
  * Roles
  */
 
-// const availableRoles = [
+// const activeRoles = [
 //   'Direcció',
 //   'Professor',
 //   'Alumne',
