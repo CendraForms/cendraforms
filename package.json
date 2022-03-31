@@ -10,7 +10,8 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "@tailwindcss/forms": "^0.4.0",
+        "@tailwindcss/forms": "^0.4.1",
+        "@types/lodash": "^4.14.180",
         "@vue/compiler-sfc": "^3.2.31",
         "alpinejs": "^3.4.2",
         "autoprefixer": "^10.4.2",
@@ -23,6 +24,7 @@
         "vue-loader": "^16.8.3"
     },
     "dependencies": {
+        "@headlessui/vue": "^1.5.0",
         "@inertiajs/inertia": "^0.11.0",
         "@inertiajs/inertia-vue3": "^0.6.0",
         "vue": "^3.2.31"

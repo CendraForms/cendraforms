@@ -13,19 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('role_user', function (Blueprint $table) {
-            $table->integer('user_id')
+        Schema::create('form_role_editor', function (Blueprint $table) {
+            $table->id();
+
+            $table->integer('form_id')
                 ->index()
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-
+            
             $table->integer('role_id')
                 ->index()
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-                
+
             $table->timestamps();
         });
     }
@@ -37,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::drop('role_user');
+        Schema::dropIfExists('form_role_editor');
     }
 };

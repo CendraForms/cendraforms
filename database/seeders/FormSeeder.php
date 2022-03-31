@@ -16,19 +16,19 @@ class FormSeeder extends Seeder
     {
         Form::create([
             'name' => 'Enquesta Covid19',
-            'description' => 'Com ta ha afectat la coronita?',
+            'description' => 'Com t\'ha afectat la coronita?',
             'user_id' => 1,
         ]);
 
         Form::create([
             'name' => 'Enquesta Pfizer',
-            'description' => 'Com ta ha afectat la pfizer?',
+            'description' => 'Com t\'ha afectat la pfizer?',
             'user_id' => 1,
         ]);
 
         Form::create([
             'name' => 'Enquesta Cendrassos',
-            'description' => 'Com ta ha afectat el cendrassos?',
+            'description' => 'Com t\'ha afectat el cendrassos?',
             'user_id' => 1,
         ]);
     }
