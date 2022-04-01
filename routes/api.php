@@ -117,7 +117,7 @@ Route::get('/users/{user}', [UserController::class, 'getUser']);
 
 Route::get('/angular/countforms', [AngularController::class, 'countForms']);
 Route::get('/angular/countusers', [AngularController::class, 'countUsers']);
-Route::get('/angular/countQuestions', [AngularController::class, 'countQuestions']);
-Route::get('/angular/countAnswers', [AngularController::class, 'countAnswers']);
-Route::get('/angular/getRoles', [AngularController::class, 'getRoles']);
-Route::get('/angular/GetLast10Days', [AngularController::class, 'GetLast10Days']);
+Route::get('/angular/countquestions', [AngularController::class, 'countQuestions']);
+Route::get('/angular/countanswers', [AngularController::class, 'countAnswers']);
+Route::get('/angular/getroles', [AngularController::class, 'getRoles']);
+Route::get('/angular/getlast10days', [AngularController::class, 'GetLast10Days']);
