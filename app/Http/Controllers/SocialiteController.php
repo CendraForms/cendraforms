@@ -29,8 +29,7 @@ class SocialiteController extends Controller
 
     public function socialCallback($provider)
     {
-        try
-        {
+        try {
             $providers = ["google", "discord", "github", "gitlab"];
 
             if (!in_array($provider, $providers)) {
