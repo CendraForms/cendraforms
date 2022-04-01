@@ -58,7 +58,11 @@ class User extends Authenticatable
         }
 
         // Return forms avaiable object
-        return $formsAvaiable[0]->take($limit);
+        if (sizeof($formsAvaiable) > 0) {
+            return $formsAvaiable[0]->take($limit);
+        } else {
+            return [];
+        }
     }
 
     /**
@@ -140,7 +144,7 @@ class User extends Authenticatable
 
     /**
      * Checks if user can answer parsed Form.
-     * 
+     *
      * @param int Form id where to obtain the roles
      * @return bool true if user can answer parsed form, otherwise false.
      */

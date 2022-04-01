@@ -19,7 +19,7 @@ class HomeController extends Controller
      */
     public function home()
     {
-        // $user = User::where('id', 3)->get();
+        // $user = User::where('id', 5)->get();
 
         // Auth::login($user[0]);
 
