@@ -7,25 +7,53 @@ use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
+    /**
+     * Returns the view to list the roles.
+     *
+     * @return Response|ResponseFactory
+     */
     public function index()
     {
-        return view('roles.index', [
-            'roles' => Role::get()
+        return inertia('Role/index', [
+            'roles' => Role::all(),
         ]);
     }
 
+    /**
+     * Returns the view to create a role.
+     *
+     * @return Response|ResponseFactory
+     */
     public function create()
     {
-      return view('roles.create');
+      return inertia('Role/create');
     }
 
+    /**
+     * Returns the view to edit a role.
+     *
+     * @param Role $role role to edit
+     * @return Response|ResponseFactory
+     */
     public function edit(Role $role)
     {
-        return view('roles.edit', [
+        if ($role['active'] == 1) {
+            $role['active'] = true;
+        } else {
+            $role['active'] = false;
+        }
+
+        return inertia('Role/edit', [
             'role' => $role
         ]);
     }
 
+    /**
+     * Create a new Role.
+     *
+     * @param Request $request Http Request
+     * @return Response|ResponseFactory
+     */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -38,6 +66,13 @@ class RoleController extends Controller
         return redirect()->route('roles.index')->with('success', 'Rol creat.');
     }
 
+    /**
+     * Update a Role.
+     *
+     * @param Request $request Http Request
+     * @param Role $role role to update
+     * @return Response|ResponseFactory
+     */
     public function update(Request $request, Role $role)
     {
         $validated = $request->validate([
@@ -47,9 +82,15 @@ class RoleController extends Controller
 
         $role->update($validated);
 
-        return redirect()->back()->with('success', 'Rol actualitzat.');
+        return redirect()->route('roles.index')->with('success', 'Rol actualitzat.');
     }
 
+    /**
+     * Destroy a Role.
+     *
+     * @param Role $role role to destroy
+     * @return Response|ResponseFactory
+     */
     public function destroy(Role $role)
     {
         $role->delete();
