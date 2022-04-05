@@ -18,11 +18,15 @@ class Direccio
      */
     public function handle(Request $request, Closure $next)
     {
+        // if (!Auth::check()) {
+        //     Auth::login(User::where('id', 1)->get()[0]);
+        // }
+
         $roles = Auth::user()->roles;
 
         $comptador = 0;
         foreach ($roles as $role) {
-            if ($role->name == 'direccio') {
+            if ($role->name === 'direccio') {
                 $comptador++;
             }
         }
