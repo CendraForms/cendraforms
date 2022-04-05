@@ -67,27 +67,27 @@ Route::post('/kernel/answer', [AnswerController::class, 'store']);
  */
 Route::get('/roles', [RoleController::class, 'index'])
     ->name('roles.index')
-    ->middleware('auth');
+    ->middleware('direccio', 'auth');
 
 Route::get('/roles/crear', [RoleController::class, 'create'])
     ->name('roles.create')
-    ->middleware('auth');
+    ->middleware('direccio', 'auth');
 
 Route::get('/roles/{role}/editar', [RoleController::class, 'edit'])
     ->name('roles.edit')
-    ->middleware('auth');
+    ->middleware('direccio', 'auth');
 
 Route::post('/roles', [RoleController::class, 'store'])
     ->name('roles.store')
-    ->middleware('auth');
+    ->middleware('direccio', 'auth');
 
 Route::put('/roles/{role}', [RoleController::class, 'update'])
     ->name('roles.update')
-    ->middleware('auth');
+    ->middleware('direccio', 'auth');
 
 Route::delete('/roles/{role}', [RoleController::class, 'destroy'])
     ->name('roles.destroy')
-    ->middleware('auth');
+    ->middleware('direccio', 'auth');
 
 /**
  * Questions
