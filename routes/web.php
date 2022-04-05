@@ -50,6 +50,60 @@ require __DIR__.'/auth.php';
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Route::get('/login-google', function () {
     return Socialite::driver('google')->redirect();
 });
@@ -58,7 +112,7 @@ Route::get('/google-callback', function () {
     $user = Socialite::driver('google')->user();
     
     $userExists = User::where('external_id', $user->id)->where('external_auth','google')->exists();
-    // $user->token
+    // $user->token 
 
     if($userExists){
         Auth::login($userExists);
