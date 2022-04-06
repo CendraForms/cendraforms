@@ -1,13 +1,14 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\SocialiteController;
 
-Route::get('/', function () {
-    return inertia('Form/Create');
-})->name('home');
+Route::get('/', [HomeController::class, 'home'])
+    ->name('home')
+    ->middleware('auth');
 
 /**
  * Auth
