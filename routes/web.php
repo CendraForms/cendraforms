@@ -104,7 +104,7 @@ require __DIR__.'/auth.php';
 
 
 
-Route::get('/login-google', function () {
+Route::get('/accedir-google', function () {
     return Socialite::driver('google')->redirect();
 });
  
