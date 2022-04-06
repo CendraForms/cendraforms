@@ -1,13 +1,15 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\SocialiteController;
 
-Route::get('/', function () {
-    return inertia('Form/Create');
-})->name('home');
+Route::get('/', [HomeController::class, 'home'])
+    ->name('home')
+    ->middleware('auth');
 
 /**
  * Auth
@@ -63,23 +65,29 @@ Route::post('/kernel/answer', [AnswerController::class, 'store']);
 /**
  * Roles
  */
-// Route::get('/roles', [RoleController::class, 'index'])
-//     ->name('roles.index');
+Route::get('/roles', [RoleController::class, 'index'])
+    ->name('roles.index')
+    ->middleware('auth', 'direccio');
 
-// Route::get('/roles/create', [RoleController::class, 'create'])
-//     ->name('roles.create');
+Route::get('/roles/crear', [RoleController::class, 'create'])
+    ->name('roles.create')
+    ->middleware('auth', 'direccio');
 
-// Route::get('/roles/{role}', [RoleController::class, 'edit'])
-//     ->name('roles.edit');
+Route::get('/roles/{role}/editar', [RoleController::class, 'edit'])
+    ->name('roles.edit')
+    ->middleware('auth', 'direccio');
 
-// Route::post('/roles', [RoleController::class, 'store'])
-//     ->name('roles.store');
+Route::post('/roles', [RoleController::class, 'store'])
+    ->name('roles.store')
+    ->middleware('auth', 'direccio');
 
-// Route::put('/roles/{role}', [RoleController::class, 'update'])
-//     ->name('roles.update');
+Route::put('/roles/{role}', [RoleController::class, 'update'])
+    ->name('roles.update')
+    ->middleware('auth', 'direccio');
 
-// Route::delete('/roles/{role}', [RoleController::class, 'destroy'])
-//     ->name('roles.destroy');
+Route::delete('/roles/{role}', [RoleController::class, 'destroy'])
+    ->name('roles.destroy')
+    ->middleware('auth', 'direccio');
 
 /**
  * Questions
