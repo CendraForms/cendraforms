@@ -22,6 +22,7 @@ class RoleUserController extends Controller
             'roles' => $user->roles,
             'rolesLogin' => Auth::user()->roles,
         ]);
+
     }
 
     /**
