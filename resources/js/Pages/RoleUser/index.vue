@@ -1,20 +1,20 @@
 <template>
     <h1 class="mt-5 mb-5 text-center w-full text-4xl font-semibold">Llistat de Rols de l'Usuari {{ user.name }}</h1>
     <div class="cf-section mt-5">
-        <div v-for="role in rolesLogin" :key="role.id" class="flex items-center justify-start gap-4">
-            <div v-if="role.name == 'direccio'">
-                <button @click="allUsers" class="flex justify-center items-center uppercase p-3 text-base bg-stone-600 rounded hover:opacity-90 leading-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <circle cx="9" cy="7" r="4"></circle>
-                        <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
-                    </svg>
+        <div @click="allUsers" class="flex items-center justify-start gap-4">
+            <button class="flex justify-center items-center uppercase p-3 text-base bg-stone-600 rounded hover:opacity-90 leading-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
+                </svg>
 
-                    Tots els Usuaris
-                </button>
-                <button @click="allRoles" class="flex justify-center items-center uppercase p-3 text-base bg-stone-600 rounded hover:opacity-90 leading-none">
+                Tots els Usuaris
+            </button>
+            <div v-for="role in rolesLogin" :key="role.id">
+                <button v-if="role.name == 'direccio'" @click="allRoles" class="flex justify-center items-center uppercase p-3 text-base bg-stone-600 rounded hover:opacity-90 leading-none">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tags" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <path d="M7.859 6h-2.834a2.025 2.025 0 0 0 -2.025 2.025v2.834c0 .537 .213 1.052 .593 1.432l6.116 6.116a2.025 2.025 0 0 0 2.864 0l2.834 -2.834a2.025 2.025 0 0 0 0 -2.864l-6.117 -6.116a2.025 2.025 0 0 0 -1.431 -.593z"></path>
