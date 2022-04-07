@@ -1,8 +1,8 @@
 <template>
     <h1 class="mt-5 mb-5 text-center w-full text-4xl font-semibold">Llistat de Rols de l'Usuari {{ user.name }}</h1>
     <div class="cf-section mt-5">
-        <div @click="allUsers" class="flex items-center justify-start gap-4">
-            <button class="flex justify-center items-center uppercase p-3 text-base bg-stone-600 rounded hover:opacity-90 leading-none">
+        <div class="flex items-center justify-start gap-4">
+            <button @click="allUsers" class="flex justify-center items-center uppercase p-3 text-base bg-stone-600 rounded hover:opacity-90 leading-none">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <circle cx="9" cy="7" r="4"></circle>
