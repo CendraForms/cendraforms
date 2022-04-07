@@ -25,9 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->bind('path.public', function() {
-            return base_path().'/../public_html';
-        });
+       /*$this->app->bind('path.public', function() {
+            return base_path().'/../public';
+        });*/
         Schema::defaultStringLength(191);
 
         Validator::extend('string_or_array', function ($value) {
