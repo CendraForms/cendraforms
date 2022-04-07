@@ -2,95 +2,99 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Role;
-use App\Models\RoleUser;
-use Symfony\Contracts\Service\Attribute\Required;
-
-use function PHPUnit\Framework\isNull;
+use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
     /**
-     * Returns all roles
+     * Returns the view to list the roles.
      *
-     * @return JSON
+     * @return Response|ResponseFactory
      */
-    public static function getRoles()
+    public function index()
     {
-        return Role::get();
+        return inertia('Role/index', [
+            'roles' => Role::all(),
+        ]);
     }
 
     /**
-     * Returns specified role object
+     * Returns the view to create a role.
      *
-     * @param Role $role specified role id
+     * @return Response|ResponseFactory
      */
-    public function getRole(Role $role)
+    public function create()
     {
-        return $role;
-
-        //In Future
-        //return view('');
+      return inertia('Role/create');
     }
 
     /**
-     * Create new Role
+     * Returns the view to edit a role.
      *
-     * @param Request $request recipe parameters post
+     * @param Role $role role to edit
+     * @return Response|ResponseFactory
      */
-    public function createRole(Request $request)
+    public function edit(Role $role)
+    {
+        if ($role['active'] == 1) {
+            $role['active'] = true;
+        } else {
+            $role['active'] = false;
+        }
+
+        return inertia('Role/edit', [
+            'role' => $role
+        ]);
+    }
+
+    /**
+     * Create a new Role.
+     *
+     * @param Request $request Http Request
+     * @return Response|ResponseFactory
+     */
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'alpha_dash', 'min:3', 'max:30', 'unique:roles'],
+            'active' => ['required', 'boolean'],
+        ]);
+
+        Role::create($validated);
+
+        return redirect()->route('roles.index')->with('success', 'Rol creat.');
+    }
+
+    /**
+     * Update a Role.
+     *
+     * @param Request $request Http Request
+     * @param Role $role role to update
+     * @return Response|ResponseFactory
+     */
+    public function update(Request $request, Role $role)
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'active' => ['nullable', 'boolean'],
+            'active' => ['sometimes', 'boolean'],
         ]);
 
-        $role = new Role();
-        $role->name = $validated['name'];
-        if (isset($validated['active'])) {
-            $role->active = $validated['active'];
-        }
-        $role->save();
+        $role->update($validated);
 
-        return $role;
+        return redirect()->route('roles.index')->with('success', 'Rol actualitzat.');
     }
 
     /**
-     * Update Role
+     * Destroy a Role.
      *
-     * @param Request $request recipe parameters post
-     * @param Integer $id role id
+     * @param Role $role role to destroy
+     * @return Response|ResponseFactory
      */
-    public function updateRole(Request $request, Role $role)
+    public function destroy(Role $role)
     {
-        $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'active' => ['nullable', 'boolean'],
-        ]);
+        $role->delete();
 
-        $role->name = $validated['name'];
-        if (isset($validated['active'])) {
-            $role->active = $validated['active'];
-        }
-        $role->save();
-
-        return $role;
-    }
-
-    /**
-     * Delete Role
-     *
-     * @param Integer $id role id
-     */
-    public function deleteRole(Role $role)
-    {
-        $deleted = $role->deleteOrFail();
-
-        if ($deleted) {
-            RoleUser::where('role_id', $role['id'])->delete();
-        }
-
-        return $deleted;
+        return redirect()->route('roles.index')->with('success', 'Rol eliminat.');
     }
 }

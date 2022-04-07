@@ -17,9 +17,9 @@ class Question extends Model
      */
     protected $fillable = [
         'name',
+        'type',
         'content',
         'section_id',
-        'active',
     ];
 
     /**
@@ -34,8 +34,10 @@ class Question extends Model
 
     /**
      * Get the section that owns the question.
+     *
+     * @return BelongsTo
      */
-    public function section()
+    public function section(): BelongsTo
     {
         return $this->belongsTo(Section::class);
     }

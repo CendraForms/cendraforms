@@ -2,15 +2,12 @@
 
 namespace App\Models;
 
-use App\Models\Role;
-use App\Models\Section;
-use App\Models\Answer;
-use App\Models\Form;
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -24,7 +21,6 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
         'active',
         'avatar',
         'external_id',
@@ -38,50 +34,146 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
         'created_at',
         'updated_at',
     ];
 
     /**
-     * The attributes that should be cast.
+     * Return Forms to be Answered
      *
-     * @var array<string, string>
+     * @param Integer $limit forms limit
+     * @return Object Forms to be Answered
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-
-    /**
-     * The roles that belong to the user.
-     */
-    public function roles()
+    public function formsToBeAnswered($limit)
     {
-        return $this->belongsToMany(Role::class);
+        // Get roles the logged user
+        $roles = $this->roles;
+
+        $answerableForms = [];
+        // Get forms that logged user have permission to answer
+        foreach ($roles as $role) {
+            $answerableForms[] = $role->answerableForms;
+        }
+
+        $formsAvaiable = [];
+        // Filter forms where the field published is equals true
+        foreach ($answerableForms as $answerableForm) {
+            $formsAvaiable[] = $answerableForm->where('published', true);
+        }
+
+        // Return forms avaiable object
+        if (sizeof($formsAvaiable) > 0) {
+            return $formsAvaiable[0]->take($limit);
+        } else {
+            return [];
+        }
     }
 
     /**
-     * Get all of the sections for the user.
+     * Return Answered Forms
+     *
+     * @param Integer $limit forms limit
+     * @return Object Forms Answered
      */
-    public function sections()
+    public function answeredForms($limit)
+    {
+        // Get answers the logged user
+        $answers = $this->answers;
+
+        $forms = [];
+        // Get forms that logged user the answer
+        foreach ($answers as $answer) {
+            $forms[] = $answer->question->section->form;
+        }
+
+        // Get Forms Avaiable
+        $formsAvaiable = $this->formsToBeAnswered($limit);
+
+        $formsAnsweredAvaiable = [];
+        // Filter Forms where answered forms is avaiable
+        foreach ($formsAvaiable as $formAvaiable) {
+            foreach ($forms as $form) {
+                if ($formAvaiable->id == $form->id) {
+                    $formsAnsweredAvaiable[] = $form;
+                }
+            }
+        }
+
+        //Return forms avaiable and answer object
+        return $formsAnsweredAvaiable;
+    }
+
+    /**
+     * Get the roles that belong to the user.
+     *
+     * @return BelongsToMany
+     */
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class)->withTimestamps();
+    }
+
+    /**
+     * Get the sections that belong to the user.
+     *
+     * @return HasMany
+     */
+    public function sections(): HasMany
     {
         return $this->hasMany(Section::class);
     }
 
     /**
-     * Get all of the answers for the user.
+     * Get the answers that belong to the user.
+     *
+     * @return HasMany
      */
-    public function answers()
+    public function answers(): HasMany
     {
         return $this->hasMany(Answer::class);
     }
 
     /**
-     * Get all of the forms for the user.
+     * Get the forms that belong to the user.
+     *
+     * @return HasMany
      */
-    public function forms()
+    public function forms(): HasMany
     {
         return $this->hasMany(Form::class);
+    }
+
+    // juanjo -> està fent funció que retorna tots els formularis que l'usuari té per respondre
+    // juanjo -> està fent funció que retorna tots els formularis que l'usuari ja ha respost
+
+    /**
+     * Checks if user can answer parsed Form.
+     *
+     * @param int Form id where to obtain the roles
+     * @return bool true if user can answer parsed form, otherwise false.
+     */
+    public function canAnswerForm(int $formId): bool
+    {
+        // get user roles
+        $userRoles = $this->roles->all();
+
+        // get roles that can answer parsed form
+        $formRoleAnswerers = Form::where('id', '=', $formId)
+                                    ->first()
+                                    ->canBeAnsweredBy()
+                                    ->get()
+                                    ->all();
+
+        // find if user can answer the form
+        foreach ($formRoleAnswerers as $formRoleAnswerer) {
+            foreach ($userRoles as $userRole) {
+                dd($formRoleAnswerer->name);
+                if ($formRoleAnswerer->id == $userRole->id) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
