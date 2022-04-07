@@ -63,14 +63,16 @@
 
 <script setup>
 import { Inertia } from "@inertiajs/inertia";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, resolveComponent } from "vue";
 import Icon from '../../Shared/Icon.vue'
 
 const props = defineProps({
     'users': Object,
+    'rolesLogin': Object,
 })
 
 const users = ref(props.users)
+const rolesLogin = ref(props.rolesLogin)
 
 const newUser = () => {
     Inertia.get('/users/crear')

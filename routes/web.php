@@ -102,7 +102,7 @@ Route::delete('/roles/{role}', [RoleController::class, 'destroy'])
  */
 Route::get('/users', [UserController::class, 'index'])
     ->name('users.index')
-    ->middleware('auth', 'direccio');
+    ->middleware('auth', 'professor');
 
 Route::get('/users/crear', [UserController::class, 'create'])
     ->name('users.create')
