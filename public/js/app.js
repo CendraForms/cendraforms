@@ -20415,13 +20415,15 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    'users': Object
+    'users': Object,
+    'rolesLogin': Object
   },
   setup: function setup(__props, _ref) {
     var expose = _ref.expose;
     expose();
     var props = __props;
     var users = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(props.users);
+    var rolesLogin = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(props.rolesLogin);
 
     var newUser = function newUser() {
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.get('/users/crear');
@@ -20444,6 +20446,7 @@ __webpack_require__.r(__webpack_exports__);
     var __returned__ = {
       props: props,
       users: users,
+      rolesLogin: rolesLogin,
       newUser: newUser,
       editUser: editUser,
       deleteUser: deleteUser,
@@ -20451,6 +20454,7 @@ __webpack_require__.r(__webpack_exports__);
       Inertia: _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia,
       onMounted: vue__WEBPACK_IMPORTED_MODULE_1__.onMounted,
       ref: vue__WEBPACK_IMPORTED_MODULE_1__.ref,
+      resolveComponent: vue__WEBPACK_IMPORTED_MODULE_1__.resolveComponent,
       Icon: _Shared_Icon_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -22819,7 +22823,7 @@ var _hoisted_2 = {
   "class": "cf-section mt-5"
 };
 var _hoisted_3 = {
-  key: 0
+  "class": "flex items-center justify-start gap-4"
 };
 
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon icon-tabler icon-tabler-users\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\"></path><circle cx=\"9\" cy=\"7\" r=\"4\"></circle><path d=\"M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2\"></path><path d=\"M16 3.13a4 4 0 0 1 0 7.75\"></path><path d=\"M21 21v-2a4 4 0 0 0 -3 -3.85\"></path></svg> Tots els Usuaris ", 2);
@@ -22936,20 +22940,20 @@ var _hoisted_24 = [_hoisted_23];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", _hoisted_1, "Llistat de Rols de l'Usuari " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.user.name), 1
   /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.rolesLogin, function (role) {
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: $setup.allUsers,
+    "class": "flex justify-center items-center uppercase p-3 text-base bg-stone-600 rounded hover:opacity-90 leading-none"
+  }, _hoisted_6), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.rolesLogin, function (role) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-      key: role.id,
-      "class": "flex items-center justify-start gap-4"
-    }, [role.name == 'direccio' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-      onClick: $setup.allUsers,
-      "class": "flex justify-center items-center uppercase p-3 text-base bg-stone-600 rounded hover:opacity-90 leading-none"
-    }, _hoisted_6), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      key: role.id
+    }, [role.name == 'direccio' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+      key: 0,
       onClick: $setup.allRoles,
       "class": "flex justify-center items-center uppercase p-3 text-base bg-stone-600 rounded hover:opacity-90 leading-none"
-    }, _hoisted_9)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+    }, _hoisted_9)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
   }), 128
   /* KEYED_FRAGMENT */
-  )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return $setup.addRole($setup.user.id);
     }),
@@ -23452,12 +23456,18 @@ var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 
 var _hoisted_24 = [_hoisted_23];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "flex items-center justify-center mb-5 leading-none"
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    onClick: $setup.newUser,
-    "class": "flex items-center p-3 text-base uppercase bg-stone-600 rounded hover:opacity-90 leading-none"
-  }, _hoisted_5)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.users, function (user) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.rolesLogin, function (role) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+      key: role.id,
+      "class": "flex items-center justify-center mb-5 leading-none"
+    }, [role.name == 'direccio' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+      key: 0,
+      onClick: $setup.newUser,
+      "class": "flex items-center p-3 text-base uppercase bg-stone-600 rounded hover:opacity-90 leading-none"
+    }, _hoisted_5)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.users, function (user) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: user.id,
       "class": "bg-stone-500 border-solid rounded text-center"
@@ -23469,21 +23479,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       href: 'mailto:' + user.email
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(user.email), 9
     /* TEXT, PROPS */
-    , _hoisted_12)]), user.active ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("td", _hoisted_13, "Activat")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("td", _hoisted_14, "Desactivat")), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-      onClick: function onClick($event) {
-        return $setup.editUser(user.id);
-      },
-      "class": "flex items-center p-2 text-base text-indigo-100 bg-indigo-700 hover:opacity-90 rounded leading-none"
-    }, _hoisted_18, 8
-    /* PROPS */
-    , _hoisted_16), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-      onClick: function onClick($event) {
-        return $setup.deleteUser(user.id, user.name);
-      },
-      "class": "flex items-center p-2 text-base text-red-100 bg-red-700 hover:opacity-90 rounded leading-none"
-    }, _hoisted_21, 8
-    /* PROPS */
-    , _hoisted_19), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    , _hoisted_12)]), user.active ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("td", _hoisted_13, "Activat")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("td", _hoisted_14, "Desactivat")), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_15, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.rolesLogin, function (role) {
+      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+        key: role.id,
+        "class": "flex flex-row gap-1"
+      }, [role.name == 'direccio' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+        key: 0,
+        onClick: function onClick($event) {
+          return $setup.editUser(user.id);
+        },
+        "class": "flex items-center p-2 text-base text-indigo-100 bg-indigo-700 hover:opacity-90 rounded leading-none"
+      }, _hoisted_18, 8
+      /* PROPS */
+      , _hoisted_16)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), role.name == 'direccio' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+        key: 1,
+        onClick: function onClick($event) {
+          return $setup.deleteUser(user.id, user.name);
+        },
+        "class": "flex items-center p-2 text-base text-red-100 bg-red-700 hover:opacity-90 rounded leading-none"
+      }, _hoisted_21, 8
+      /* PROPS */
+      , _hoisted_19)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+    }), 128
+    /* KEYED_FRAGMENT */
+    )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: function onClick($event) {
         return $setup.getRoles(user.id);
       },
