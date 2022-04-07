@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\RoleUserController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
@@ -96,22 +98,50 @@ Route::delete('/roles/{role}', [RoleController::class, 'destroy'])
 //     ->name('questions.update');
 
 /**
- * User view
+ * Users
  */
-// Route::get('/users', [UserController::class, 'index'])
-//     ->name('users.index');
+Route::get('/users', [UserController::class, 'index'])
+    ->name('users.index')
+    ->middleware('auth', 'direccio');
 
-// Route::get('/users/create', [UserController::class, 'create'])
-//     ->name('users.create');
+Route::get('/users/crear', [UserController::class, 'create'])
+    ->name('users.create')
+    ->middleware('auth', 'direccio');
 
-// Route::get('/users/{user}', [UserController::class, 'edit'])
-//     ->name('users.edit');
+Route::get('/users/{user}/editar', [UserController::class, 'edit'])
+    ->name('users.edit')
+    ->middleware('auth', 'direccio');
 
-// Route::post('/users', [UserController::class, 'store'])
-//     ->name('users.store');
+Route::post('/users', [UserController::class, 'store'])
+    ->name('users.store')
+    ->middleware('auth', 'direccio');
 
-// Route::put('/users/{user}', [UserController::class, 'update'])
-//     ->name('users.update');
+Route::put('/users/{user}', [UserController::class, 'update'])
+    ->name('users.update')
+    ->middleware('auth', 'direccio');
+
+Route::delete('/users/{user}', [UserController::class, 'destroy'])
+    ->name('users.destroy')
+    ->middleware('auth', 'direccio');
+
+/**
+ * Roles User
+ */
+Route::get('/users/{user}/roles', [RoleUserController::class, 'index'])
+    ->name('usersroles.index')
+    ->middleware('auth', 'professor');
+
+Route::get('/users/{user}/roles/afegir', [RoleUserController::class, 'create'])
+    ->name('usersroles.create')
+    ->middleware('auth', 'professor');
+
+Route::post('/users/{user}/roles', [RoleUserController::class, 'store'])
+    ->name('usersroles.store')
+    ->middleware('auth', 'professor');
+
+Route::delete('/users/{user}/roles/{role}', [RoleUserController::class, 'destroy'])
+    ->name('usersroles.destroy')
+    ->middleware('auth', 'professor');
 
 /**
  * Role view

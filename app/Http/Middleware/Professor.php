@@ -2,12 +2,12 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
-class Direccio
+class Professor
 {
     /**
      * Handle an incoming request.
@@ -19,14 +19,14 @@ class Direccio
     public function handle(Request $request, Closure $next)
     {
         // if (!Auth::check()) {
-        //     Auth::login(User::where('id', 1)->get()[0]);
+        //     Auth::login(User::where('id', 2)->get()[0]);
         // }
 
         $roles = Auth::user()->roles;
 
         $comptador = 0;
         foreach ($roles as $role) {
-            if ($role->name === 'direccio') {
+            if ($role->name === 'direccio' || $role->name === 'professor') {
                 $comptador++;
             }
         }
