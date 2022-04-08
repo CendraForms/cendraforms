@@ -1,6 +1,14 @@
 <template>
     <h1 class="mt-5 mb-5 text-center w-full text-4xl font-semibold">Llistat d'Usuaris</h1>
     <div class="cf-section mt-5">
+        <button @click="back" class="flex justify-center items-center p-3 text-base bg-stone-600 rounded hover:opacity-90 leading-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-narrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <line x1="5" y1="12" x2="9" y2="16"></line>
+                <line x1="5" y1="12" x2="9" y2="8"></line>
+            </svg>
+        </button>
         <div v-for="role in rolesLogin" :key="role.id" class="flex items-center justify-center mb-5 leading-none">
             <button v-if="role.name == 'direccio'" @click="newUser" class="flex items-center p-3 text-base uppercase bg-stone-600 rounded hover:opacity-90 leading-none">
                 <svg class="h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -92,6 +100,10 @@ const deleteUser = (id, name) => {
 
 const getRoles = (id) => {
     Inertia.get('/users/'+id+'/roles')
+}
+
+const back = () => {
+    Inertia.get('/')
 }
 
 </script>
