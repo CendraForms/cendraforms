@@ -10,7 +10,7 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "@tailwindcss/forms": "^0.4.1",
+        "@tailwindcss/forms": "^0.5.0",
         "@types/lodash": "^4.14.180",
         "@vue/compiler-sfc": "^3.2.31",
         "alpinejs": "^3.4.2",
