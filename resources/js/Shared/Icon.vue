@@ -39,6 +39,14 @@
     </svg>
   </template>
 
+  <template v-if="name == 'plus'">
+    <svg v-bind="$attrs" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <line x1="12" y1="5" x2="12" y2="19" />
+      <line x1="5" y1="12" x2="19" y2="12" />
+    </svg>
+  </template>
+
   <template v-if="name == 'x'">
     <svg v-bind="$attrs" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -47,7 +55,25 @@
     </svg>
   </template>
 
+  <template v-if="name == 'addressBook'">
+    <svg v-bind="$attrs" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M20 6v12a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2z"></path>
+      <path d="M10 16h6"></path>
+      <circle cx="13" cy="11" r="2"></circle>
+      <path d="M4 8h3"></path>
+      <path d="M4 12h3"></path>
+      <path d="M4 16h3"></path>
+    </svg>
+  </template>
 
+  <template v-if="name == 'tag'">
+    <svg v-bind="$attrs" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <circle cx="8.5" cy="8.5" r="1" fill="currentColor"></circle>
+      <path d="M4 7v3.859c0 .537 .213 1.052 .593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834 -4.834a2.025 2.025 0 0 0 0 -2.864l-8.117 -8.116a2.025 2.025 0 0 0 -1.431 -.593h-3.859a3 3 0 0 0 -3 3z"></path>
+    </svg>
+  </template>
 </template>
 
 <script setup>

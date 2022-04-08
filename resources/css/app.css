@@ -2,5 +2,44 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-.cf-section { @apply mx-auto p-8 w-2/3 bg-stone-800 rounded-md; }
-.cf-input { @apply px-0.5 pt-0 bg-transparent border-0 border-b-2 border-stone-200 focus:ring-0 focus:border-white placeholder:text-stone-400; }
+body {
+  background-image: url(/background.webp)
+}
+
+/* .cf-section { @apply mx-auto p-8 w-2/3 bg-neutral-800 rounded-md shadow; } */
+.cf-section {
+  @apply
+  mx-auto
+  p-8
+  w-2/3
+  bg-[#2b2b36]
+  border-t-8
+  border-[#039ff4]
+  rounded-md
+  shadow-md;
+}
+
+/* .cf-input { @apply px-0.5 pt-0 bg-transparent border-0 border-b-2 border-neutral-200 focus:ring-0 focus:border-white placeholder:text-neutral-400; } */
+.cf-input {
+  @apply
+  px-0.5
+  pt-0
+  text-white
+  bg-transparent
+  border-0
+  border-b-2
+  border-gray-300
+  focus:ring-0
+  focus:border-white
+  placeholder:text-gray-300;
+}
+
+/* .cf-btn-add { @apply flex items-center gap-0.5 px-2 py-1 text-sm uppercase bg-neutral-600 rounded hover:opacity-90 leading-none; } */
+.cf-btn-add {
+  @apply
+  font-medium
+  text-lg
+  text-[#039ff4]
+  hover:opacity-90
+  leading-none;
+}

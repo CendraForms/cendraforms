@@ -113,11 +113,12 @@
         </template>
 
         <button
-          v-if="!section.collapsed && !section.locked"
+          v-if="!section.collapsed || !section.locked"
           class="cf-btn-add mt-5"
           @click="newQuestion(section)"
         >
-          Nova pregunta
+          <Icon class="h-4" name="plus" />
+          Pregunta
         </button>
       </div>
     </div>
@@ -125,8 +126,8 @@
 
   <div class="mx-auto mt-5 w-2/3">
     <button class="cf-btn-add" @click="newSection">
-      <!-- <Icon class="h-4" name="plus" />   -->
-      Nova secció
+      <Icon class="h-4" name="plus" />  
+      Secció
     </button>
   </div>
 
@@ -201,7 +202,7 @@
     </div>
   </div>
 
-  <div class="cf-section mt-10">
+  <div class="mx-auto mt-5 p-8 w-2/3 bg-stone-800 rounded-md">
     <span class="block text-3xl font-bold">
       Rols resposta
     </span>
@@ -237,7 +238,7 @@
                 v-slot="{ selected, active }"
               >
                 <li class="flex items-center justify-between px-4 py-2 select-none" :class="{ 'bg-stone-600': active }">
-                  {{ role.name }}
+                  {{ role }}
 
                   <svg v-if="selected" class="h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -276,11 +277,9 @@
   </div>
 
   <div class="flex items-start justify-between mx-auto mt-5 mb-10 w-2/3 leading-none">
-    <button class="px-2 py-1 text-lg font-medium text-[#2b2b36] bg-gray-300 rounded hover:opacity-90">
-      Tornar
-    </button>
+    <div></div>
 
-    <button class="px-2 py-1 text-lg font-medium bg-[#039ff4] rounded hover:opacity-90">
+    <button class="px-2 py-1 text-lg font-medium bg-emerald-600 rounded hover:opacity-90">
       Crear formulari
     </button>
   </div>
@@ -320,7 +319,6 @@ const form = ref(props.form || {
   name: '',
   description: '',
   published: false,
-  anonymized: false,
   sections: [
     {
       id: null,
@@ -332,7 +330,7 @@ const form = ref(props.form || {
         {
           id: null,
           name: '',
-          type: 'text',
+          type: 'number',
           visible: true,
           deleted: false,
           content: {},

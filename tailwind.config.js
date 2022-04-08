@@ -7,11 +7,12 @@ module.exports = {
   ],
 
   theme: {
-    fontFamily: {
-      display: 'Roboto system-ui sans-serif',
-      body: 'Roboto system-ui sans-serif',
+    extend: {
+      fontFamily: {
+        // 'sans': 'Poppins',
+        'sans': 'Nunito',
+      }
     },
-    extend: {},
   },
 
   plugins: [require('@tailwindcss/forms')],

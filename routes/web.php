@@ -10,8 +10,9 @@ use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\SocialiteController;
 
 Route::get('/', [HomeController::class, 'home'])
-    ->name('home')
-    ->middleware('auth');
+    ->name('home');
+    // ->middleware('auth');
+
 
 /**
  * Auth
