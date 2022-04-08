@@ -108,7 +108,7 @@ class FormController extends Controller
         $form['sections'] = $sections;
 
         // get the roles that can edit the form
-        $srcFormEditors = $srcForm->canBeEditedBy()->get();
+        $srcFormEditors = $srcForm->canBeEditedBy();
 
         $formEditors = [];
 
@@ -121,7 +121,7 @@ class FormController extends Controller
         $form['edit'] = $formEditors;
 
         // get the roles that can answer the form
-        $srcRolesAnswers = $srcForm->canBeAnsweredBy()->get();
+        $srcRolesAnswers = $srcForm->canBeAnsweredBy();
 
         $formAnswerers = [];
 
