@@ -61,7 +61,7 @@
       >
         <img
           class="w-8"
-          src="/img/logos/gitLab.png"
+          src="/img/logos/gitlab.png"
           draggable="false"
           alt="Logo GitLab"
         />

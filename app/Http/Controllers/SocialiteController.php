@@ -75,7 +75,7 @@ class SocialiteController extends Controller
 
             Auth::login($user); // Login user
 
-            return redirect()->route('form.create');
+            return redirect()->route('home');
         } catch (Exception) {
             return redirect('/accedir')->with('error', 'Error. Has d\'acceptar per poder accedir.');
         }

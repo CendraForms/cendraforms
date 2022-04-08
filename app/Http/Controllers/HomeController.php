@@ -20,6 +20,8 @@ class HomeController extends Controller
         // uncomment - test user
         $user = User::first();
         Auth::login($user);
+        // $userId = Auth::id();
+        // $user = User::where('id', '=', $userId);
 
         // get user roles names
         $srcUserRoles = $user->roles->all();

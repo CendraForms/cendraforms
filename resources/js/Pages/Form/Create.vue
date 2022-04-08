@@ -265,7 +265,7 @@
         <li v-for="(role, index) in form.roles.answer" class="flex items-center gap-1 p-2 border border-white/25 rounded">
           {{ role.name }}
           
-          <svg class="h-4 cursor-pointer hover:opacity-75" @click="removeEditRole(index)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="h-4 cursor-pointer hover:opacity-75" @click="removeAnswerRole(index)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <line x1="18" y1="6" x2="6" y2="18" />
             <line x1="6" y1="6" x2="18" y2="18" />
@@ -276,16 +276,19 @@
   </div>
 
   <div class="flex items-start justify-between mx-auto mt-5 mb-10 w-2/3 leading-none">
-    <button class="px-2 py-1 text-lg font-medium text-[#2b2b36] bg-gray-300 rounded hover:opacity-90">
+    <button class="px-2 py-1 text-lg font-medium text-[#2b2b36] bg-gray-300 rounded hover:opacity-90" @click="Inertia.get('/')">
       Tornar
     </button>
 
-    <button
-      class="px-2 py-1 text-lg font-medium bg-[#039ff4] rounded hover:opacity-90"
-      @click="Inertia.post(`/formulari/guardar`, { form })"
-    >
-      Crear formulari
-    </button>
+    <div class="flex gap-4">
+      <button class="px-2 py-1 text-lg font-medium bg-[#039ff4] rounded hover:opacity-90">
+        Publicar
+      </button>
+
+      <button class="px-2 py-1 text-lg font-medium bg-[#039ff4] rounded hover:opacity-90">
+        Crear formulari
+      </button>
+    </div>
   </div>
 
   <div v-if="$page.props.flash.message" class="alert">
@@ -298,6 +301,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { Inertia } from '@inertiajs/inertia'
 import lodash from 'lodash'
 import { Inertia } from "@inertiajs/inertia";
 
@@ -584,5 +588,9 @@ const addEditRole = () => {
 
 const removeEditRole = (index) => {
   form.value.roles.edit.splice(index, 1)
+}
+
+const removeAnswerRole = (index) => {
+  form.value.roles.answer.splice(index, 1)
 }
 </script>

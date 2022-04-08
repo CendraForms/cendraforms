@@ -146,8 +146,7 @@ class FormController extends Controller
      */
     public function answer(Form $form): Response|ResponseFactory
     {
-        // todo -> send $form to view!
-        return inertia('Form/Answer');
+        return inertia('Form/Answer', [ 'form' => $this->generateForm($form) ]);
     }
 
     /**
