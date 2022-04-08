@@ -33,5 +33,13 @@ class FormSeeder extends Seeder
             'published' => true,
             'anonymized' => true,
         ]);
+
+        Form::create([
+            'name' => 'Enquesta Cendrassos2',
+            'description' => 'Com t\'ha afectat el cendrassos?2',
+            'user_id' => 1,
+            'published' => true,
+            'anonymized' => true,
+        ]);
     }
 }

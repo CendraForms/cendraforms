@@ -20,6 +20,26 @@ class FormRoleAnswererSeeder extends Seeder
         ]);
 
         FormRoleAnswerer::create([
+            'form_id' => 1,
+            'role_id' => 1,
+        ]);
+
+        FormRoleAnswerer::create([
+            'form_id' => 2,
+            'role_id' => 1,
+        ]);
+
+        FormRoleAnswerer::create([
+            'form_id' => 3,
+            'role_id' => 1,
+        ]);
+
+        FormRoleAnswerer::create([
+            'form_id' => 4,
+            'role_id' => 1,
+        ]);
+
+        FormRoleAnswerer::create([
             'form_id' => 2,
             'role_id' => 2,
         ]);

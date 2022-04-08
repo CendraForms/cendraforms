@@ -15,7 +15,7 @@
 
       <div class="flex items-center gap-2">
         <a
-          href="/roles"
+          href="/users"
           title="Gestionar usuaris"
           class="bg-stone-700 p-1 rounded"
         >
