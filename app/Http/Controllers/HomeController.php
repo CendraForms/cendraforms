@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use App\Models\Question;
-use App\Models\Answer;
+use Illuminate\Support\Facades\Auth;
+use Inertia\Response;
 
 class HomeController extends Controller
 {
-    private $limit = 10;
+    private int $amount = 10;
 
     /**
      * Return Home Component Vue with Inertia
@@ -19,16 +17,57 @@ class HomeController extends Controller
      */
     public function home()
     {
-        // $user = User::where('id', 5)->get();
+        // uncomment - test user
+        $user = User::first();
+        Auth::login($user);
 
-        // Auth::login($user[0]);
+        // get user roles names
+        $srcUserRoles = $user->roles->all();
+        $userRoles = [];
+        foreach ($srcUserRoles as $srcUserRole) {
+            $userRoles[] = $srcUserRole->name;
+        }
 
-        // Return Home Component Vue with Inertia
+        // get user answered forms
+        $answeredForms = $user->answeredForms($this->amount);
+
+        // get user forms to be answered
+        $formsToBeAnswered = $user->formsToBeAnswered($this->amount)->all();
+
+        // get question counts of forms to be answered
+        $formsToBeAnsweredCounts = [];
+        foreach ($formsToBeAnswered as $form) {
+            $formsToBeAnsweredCounts[] = $form->questionCount();
+        }
+
+        // get roles of forms that can be answered by the user
+        $formsToBeAnsweredRoles = [];
+        foreach ($formsToBeAnswered as $form) {
+            $formsToBeAnsweredRoles[] = $form->canBeAnsweredBy();
+        }
+
+        // get question counts of answered forms
+        $answeredFormsCounts = [];
+        foreach ($answeredForms as $form) {
+            $answeredFormsCounts[] = $form->questionCount();
+        }
+
+        // get roles of user answered forms
+        $answeredFormsRoles = [];
+        foreach ($answeredForms as $form) {
+            $answeredFormsRoles[] = $form->canBeAnsweredBy();
+        }
+
         return inertia('Home', [
-            'avaiableForms' => Auth::user()->formsToBeAnswered($this->limit),
-            'answeredForms' => Auth::user()->answeredForms($this->limit),
-            'userLogin' => Auth::user(),
-            'roleLogin' => Auth::user()->roles,
+            'username' => $user->name,
+            'email' => $user->email,
+            'roles' => $userRoles,
+            'formsToBeAnswered' => $formsToBeAnswered,
+            'formsToBeAnsweredCounts' => $formsToBeAnsweredCounts,
+            'formsToBeAnsweredRoles' => $formsToBeAnsweredRoles,
+            'answeredForms' => $answeredForms,
+            'answeredFormsCounts' => $answeredFormsCounts,
+            'answeredFormsRoles' => $answeredFormsRoles,
         ]);
     }
 }
