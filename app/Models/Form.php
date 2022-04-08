@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -60,24 +60,48 @@ class Form extends Model
     /**
      * Get the roles that can edit the form.
      *
-     * @return BelongsToMany
+     * @return array
      */
-    public function canBeEditedBy(): BelongsToMany
+    public function canBeEditedBy(): array
     {
         return $this
             ->belongsToMany(Role::class, 'form_role_editor')
-            ->withTimestamps();
+            ->withTimestamps()
+            ->get()
+            ->all();
     }
 
     /**
      * Get the roles that can answer the form.
      *
-     * @return BelongsToMany
+     * @return array
      */
-    public function canBeAnsweredBy(): BelongsToMany
+    public function canBeAnsweredBy(): array
     {
         return $this
             ->belongsToMany(Role::class, 'form_role_answerer')
-            ->withTimestamps();
+            ->withTimestamps()
+            ->get()
+            ->all();
+    }
+
+    /**
+     * Get the total number of questions that the form has.
+     *
+     * @return int
+     */
+    public function questionCount(): int
+    {
+        $count = 0;
+
+        foreach ($this->sections as $section) {
+            foreach ($section['questions'] as $question) {
+                if ($question['id']) {
+                    $count++;
+                }
+            }
+        }
+
+        return $count;
     }
 }

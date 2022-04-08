@@ -38,9 +38,9 @@ class User extends Authenticatable
      * Return Forms to be Answered
      *
      * @param Integer $limit forms limit
-     * @return Object Forms to be Answered
+     * @return array Forms to be Answered
      */
-    public function formsToBeAnswered($limit)
+    public function formsToBeAnswered(int $limit)
     {
         // Get roles the logged user
         $roles = $this->roles;
@@ -58,7 +58,7 @@ class User extends Authenticatable
         }
 
         // Return forms avaiable object
-        if (sizeof($formsAvaiable) > 0) {
+        if (!empty($formsAvaiable)) {
             return $formsAvaiable[0]->take($limit);
         } else {
             return [];
@@ -68,10 +68,10 @@ class User extends Authenticatable
     /**
      * Return Answered Forms
      *
-     * @param Integer $limit forms limit
-     * @return Object Forms Answered
+     * @param int $limit forms limit
+     * @return array Forms Answered
      */
-    public function answeredForms($limit)
+    public function answeredForms(int $limit): array
     {
         // Get answers the logged user
         $answers = $this->answers;
@@ -139,9 +139,6 @@ class User extends Authenticatable
         return $this->hasMany(Form::class);
     }
 
-    // juanjo -> està fent funció que retorna tots els formularis que l'usuari té per respondre
-    // juanjo -> està fent funció que retorna tots els formularis que l'usuari ja ha respost
-
     /**
      * Checks if user can answer parsed Form.
      *
@@ -163,7 +160,6 @@ class User extends Authenticatable
         // find if user can answer the form
         foreach ($formRoleAnswerers as $formRoleAnswerer) {
             foreach ($userRoles as $userRole) {
-                dd($formRoleAnswerer->name);
                 if ($formRoleAnswerer->id == $userRole->id) {
                     return true;
                 }
