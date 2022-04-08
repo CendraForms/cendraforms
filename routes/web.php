@@ -39,7 +39,7 @@ Route::get('/formulari/{form}/editar', [FormController::class, 'edit'])
     ->name('form.edit')
     ->middleware('auth');
 
-Route::post('/formulari/{form}/editar', [FormController::class, 'store'])
+Route::post('/formulari/guardar', [FormController::class, 'store'])
     ->name('form.store')
     ->middleware('auth');
 

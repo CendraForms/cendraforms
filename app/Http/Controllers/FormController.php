@@ -174,7 +174,7 @@ class FormController extends Controller
         if (!Auth::id()) {
             return redirect()
                 ->back()
-                ->with('validationErrors', 'user must be authenticated');
+                ->with('message', 'user must be authenticated');
         }
 
         $validator = $this->validateRequest($request);
@@ -182,7 +182,7 @@ class FormController extends Controller
         if ($validator->fails()) {
             return redirect()
                 ->back()
-                ->with('validationErrors', $validator->errors());
+                ->with('message', $validator->errors());
         }
 
         $this->storeValidatedForm($validator->validated()['form']);

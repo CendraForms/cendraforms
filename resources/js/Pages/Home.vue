@@ -42,6 +42,57 @@
   </div>
 
   <div class="cf-section mt-10 mb-10 flex flex-col">
+    <div class="flex flex-row justify-between items-center">
+      <p class="mb-5 text-2xl font-bold">Els meus formularis</p>
+
+      <a
+        href="/formulari/crear"
+        title="Gestionar rols"
+        class="p-2 font-medium bg-gradient-to-r from-sky-500 to-indigo-500 leading-none rounded shadow hover:opacity-90"
+        v-text="`Crear formulari`"
+      />
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 w-full gap-5">
+      <div
+        v-for="(form, i) in formsToBeAnswered"
+        :key="form.id"
+        class="w-full bg-stone-700 rounded-xl"
+      >
+        <div class="w-full h-4 bg-gradient-to-r from-sky-500 to-indigo-500 rounded-t-xl"></div>
+
+        <div class="p-8 md:flex justify-between gap-8">
+          <div class="flex items-center flex-col">
+            <span class="text-2xl font-semibold">
+              {{ form.name }}
+            </span>
+
+            <ul class="flex flex-wrap gap-2 mt-2 text-xs leading-none">
+              <li v-for="(role) in formsToBeAnsweredRoles[i]" class="p-1.5 border border-white/25 rounded">
+                {{ role.name }}
+              </li>
+            </ul>
+          </div>
+
+          <div class="flex items-center flex-col justify-center mt-5 md:mt-0 gap-y-4">
+            <span>
+              {{ formsToBeAnsweredCounts[i] }}
+              {{ formsToBeAnsweredCounts[i] == 1 ? 'pregunta' : 'preguntes' }}
+            </span>
+
+            <a
+              :href="`/formulari/${formsToBeAnswered[i].id}`"
+              class="p-2 font-medium bg-gradient-to-r from-sky-500 to-indigo-500 leading-none rounded shadow hover:opacity-90"
+            >
+              Editar
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cf-section mt-10 mb-10 flex flex-col">
     <p class="mb-5 text-2xl font-bold">Formularis per respondre</p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 w-full gap-5">

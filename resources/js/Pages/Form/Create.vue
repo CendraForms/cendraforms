@@ -280,15 +280,26 @@
       Tornar
     </button>
 
-    <button class="px-2 py-1 text-lg font-medium bg-[#039ff4] rounded hover:opacity-90">
+    <button
+      class="px-2 py-1 text-lg font-medium bg-[#039ff4] rounded hover:opacity-90"
+      @click="Inertia.post(`/formulari/guardar`, { form })"
+    >
       Crear formulari
     </button>
+  </div>
+
+  <div v-if="$page.props.flash.message" class="alert">
+    {{ $page.props.flash.message }}
+  </div>
+  <div v-else>
+    nepes
   </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
 import lodash from 'lodash'
+import { Inertia } from "@inertiajs/inertia";
 
 // Components
 import Icon from '../../Shared/Icon.vue'
